@@ -61,6 +61,7 @@ abstract class AbstractMVVMBaseState<T extends AbstractMVVMBase>
   ///build body
   Widget buildBody(BuildContext context);
 
+  ///bottom navigation bar
   Widget getBottomNavigationBar() {
     return null;
   }
@@ -70,9 +71,12 @@ abstract class AbstractMVVMBaseState<T extends AbstractMVVMBase>
     return Scaffold(
       key: _scaffoldKey,
       appBar: getAppbar(),
-      body: SafeArea(
-        child: buildBody(context),
-      ),
+      //safe Area
+      body: getBottomNavigationBar() == null
+          ? SafeArea(
+              child: buildBody(context),
+            )
+          : buildBody(context),
       bottomNavigationBar: getBottomNavigationBar(),
     );
   }

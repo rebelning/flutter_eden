@@ -11,7 +11,7 @@ class AppState extends AbstractMVVMBaseNavState<App> {
   @override
   bool getHideToolbar() {
 
-    return false;
+    return true;
   }
 
   @override

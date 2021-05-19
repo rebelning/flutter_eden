@@ -10,7 +10,7 @@ class Home extends AbstractMVVMBase {
 class _HomePageState extends AbstractMVVMBaseState<Home> {
   @override
   bool getHideToolbar() {
-    return true;
+    return false;
   }
 
   @override
@@ -20,7 +20,7 @@ class _HomePageState extends AbstractMVVMBaseState<Home> {
 
   @override
   String getToolbarTitle() {
-    return "home";
+    return "首页";
   }
 
   @override
