@@ -14,23 +14,31 @@ class ToolbarWidget extends StatelessWidget implements PreferredSizeWidget {
   final bool logoWidget;
   final bool hideBackArrow;
 
-  const ToolbarWidget({Key key, this.hideBackArrow, this.logoWidget, this.leading, this.title, this.actions, this.color, this.elevation}) : super(key: key);
-  
+  const ToolbarWidget(
+      {Key key,
+      this.hideBackArrow,
+      this.logoWidget,
+      this.leading,
+      this.title,
+      this.actions,
+      this.color,
+      this.elevation})
+      : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      automaticallyImplyLeading: hideBackArrow == true ? false : true,
-      title: logoWidget == true ?
-          Center(child: LogoWidget(header: true, small: true))
-        :
-          TextWidget(
-            text: title,
-            accent: true,
-            big: true,
-          ),
-      leading: leading,
-      actions: actions,
-      elevation: elevation != null ? elevation : 0.0
-    );
+        automaticallyImplyLeading: hideBackArrow == true ? false : true,
+        title: logoWidget == true
+            ? Center(child: LogoWidget(header: true, small: true))
+            : TextWidget(
+                text: title,
+                color: color,
+                accent: true,
+                big: true,
+              ),
+        leading: leading,
+        actions: actions,
+        elevation: elevation != null ? elevation : 0.0);
   }
 }

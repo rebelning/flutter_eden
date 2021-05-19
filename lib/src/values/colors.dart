@@ -6,6 +6,8 @@ final Color accentLightColor = Color(0xFF53ac6d);
 final Color primaryColor = Color(0xFFd7dae0);
 final Color primaryColorDark = Color(0xFFabb2bf);
 
+final Color titleColor = Color(0xFFFFFFFF);
+
 final Color facebookColor = Color(0xFFf4d6cac);
 
 final Color backgroundColor = Color(0xFF21252b);
@@ -24,3 +26,7 @@ final Color canvasColor = Colors.transparent;
 final Color snackbarBackgroundColor = Colors.black38;
 final Color toastBackgroundColor = Colors.black38;
 final Color toastTextColor = Colors.white;
+
+extension ColorThemeHelpers on ColorScheme {
+  Color get toolbarTitleColor => titleColor;
+}

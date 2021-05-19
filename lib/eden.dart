@@ -2,11 +2,16 @@
 ///
 library eden;
 
+export 'src/core/abstract_mvvm_base.dart';
+export 'src/core/abstract_bottom_nav_base.dart';
+export 'src/core/view_model.base.dart';
+
 export 'src/core/view_model.base.dart';
 export 'src/components/log/debug_log.dart';
 export 'src/values/dimens.dart';
 export 'src/values/colors.dart';
 export 'src/values/theme.dart';
+export 'src/values/color_helpers.dart';
 ///widget
 export 'src/widgets/button.dart';
 export 'src/widgets/card_view.dart';
@@ -21,3 +26,6 @@ export 'src/widgets/tag.dart';
 export 'src/widgets/text.dart';
 export 'src/widgets/toast.dart';
 export 'src/widgets/toolbar.dart';
+
+///
+export 'src/components/log/debug_log.dart';

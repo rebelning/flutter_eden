@@ -35,6 +35,10 @@ dev_dependencies:
 
   flutter_eden:
     path: ../
+
+  #https://github.com/theyakka/fluro
+#  fluro: "^2.0.3"
+  fluro: "^1.7.8"
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
