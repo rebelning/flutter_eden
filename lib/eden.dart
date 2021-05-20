@@ -5,6 +5,7 @@ library eden;
 export 'src/core/abstract_mvvm_base.dart';
 export 'src/core/abstract_bottom_nav_base.dart';
 export 'src/core/view_model.base.dart';
+export 'src/di/injector_provider.dart';
 
 export 'src/core/view_model.base.dart';
 export 'src/components/log/debug_log.dart';
