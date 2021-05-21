@@ -8,8 +8,8 @@
  */
 import 'dart:convert';
 
-
 import 'package:example/app.dart';
+import 'package:example/ui/login/login_page.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter_eden/eden.dart';
 import 'package:fluro/fluro.dart';
@@ -19,6 +19,10 @@ import 'package:flutter/material.dart';
 var rootHandler = Handler(
     handlerFunc: (BuildContext context, Map<String, List<String>> params) {
   return App();
+});
+var loginHandler = Handler(
+    handlerFunc: (BuildContext context, Map<String, List<String>> params) {
+  return LoginPage();
 });
 
 /// Handles deep links into the app

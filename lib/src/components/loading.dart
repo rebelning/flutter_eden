@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../widgets/text.dart';
 
-import 'package:flutter_eden/src/values/colors.dart' as colors;
+import 'package:flutter_eden/src/values/color/colors.dart' as colors;
 
 class LoadingWidget extends StatefulWidget {
   final bool backgroundTransparent;

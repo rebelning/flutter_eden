@@ -22,7 +22,7 @@ class Routes {
       DebugLog.log("notFoundHandler", "ROUTE WAS NOT FOUND !!!");
     });
     router.define(root, handler: rootHandler);
-    // router.define(login, handler: loginHandler);
+    router.define(login, handler: loginHandler);
 //    router.define(deepLink, handler: deepLinkHandler);
   }
 }

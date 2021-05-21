@@ -1,0 +1,25 @@
+import 'package:example/domain/http_response.dart';
+import 'package:example/domain/repositories/login_repository.dart';
+import 'package:example/domain/service/login_service.dart';
+import 'package:flutter_eden/eden.dart';
+
+///
+class LoginRepository implements ILoginRepository {
+  LoginService service = inject<LoginService>();
+
+  ///
+  @override
+  Future<HttpResponse> login(String login, String password) async {
+    service.login(login, password);
+    HttpResponse response = HttpResponse();
+
+    // final hasConnection = await ConnectionHelper.hasConnection();
+    final hasConnection = true;
+    if (hasConnection) {
+      response = await this.service.login(login, password);
+    } else {
+      response.message = "Device offline";
+    }
+    return response;
+  }
+}

@@ -6,13 +6,22 @@ export 'src/core/abstract_mvvm_base.dart';
 export 'src/core/abstract_bottom_nav_base.dart';
 export 'src/core/view_model.base.dart';
 export 'src/di/injector_provider.dart';
+export 'src/di/http_client.dart';
 
 export 'src/core/view_model.base.dart';
 export 'src/components/log/debug_log.dart';
-export 'src/values/dimens.dart';
-export 'src/values/colors.dart';
+export 'src/values/dimen/dimens.dart';
+export 'src/values/color/colors.dart';
 export 'src/values/theme.dart';
-export 'src/values/color_helpers.dart';
+
+export 'src/values/color/color_helpers.dart';
+//anim
+export 'src/values/anim/nav_no_animation.dart';
+export 'src/values/anim/nav_slide_from_bottom.dart';
+export 'src/values/anim/nav_slide_from_left.dart';
+export 'src/values/anim/nav_slide_from_right.dart';
+export 'src/values/anim/nav_slide_from_top.dart';
+
 ///widget
 export 'src/widgets/button.dart';
 export 'src/widgets/card_view.dart';

@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_eden/eden.dart';
 
-class Home extends AbstractMVVMBase {
+class Home extends AbstractMvvmBase {
   @override
   State<StatefulWidget> createState() => _HomePageState();
 }
 
-class _HomePageState extends AbstractMVVMBaseState<Home> {
+class _HomePageState extends AbstractMvvmBaseState<Home> {
   @override
   bool getHideToolbar() {
     return false;
@@ -20,7 +20,7 @@ class _HomePageState extends AbstractMVVMBaseState<Home> {
 
   @override
   String getToolbarTitle() {
-    return "首页";
+    return "Home";
   }
 
   @override

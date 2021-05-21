@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_eden/src/values/colors.dart' as colors;
-import 'package:flutter_eden/src/values/dimens.dart' as dimens;
+import 'package:flutter_eden/src/values/color/colors.dart' as colors;
+import 'package:flutter_eden/src/values/dimen/dimens.dart' as dimens;
 
 import 'modal.dart';
 import 'text.dart';

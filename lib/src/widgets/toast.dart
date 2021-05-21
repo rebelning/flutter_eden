@@ -1,6 +1,6 @@
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:flutter_eden/src/values/colors.dart' as colors;
-import 'package:flutter_eden/src/values/dimens.dart' as dimens;
+import 'package:flutter_eden/src/values/color/colors.dart' as colors;
+import 'package:flutter_eden/src/values/dimen/dimens.dart' as dimens;
 
 class ToastWidget {
   static void show(String msg) => Fluttertoast.showToast(

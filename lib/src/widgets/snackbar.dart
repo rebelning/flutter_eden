@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_eden/src/values/colors.dart' as colors;
+import 'package:flutter_eden/src/values/color/colors.dart' as colors;
 import './text.dart';
 
 class SnackbarWidget {

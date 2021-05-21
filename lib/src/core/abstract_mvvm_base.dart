@@ -3,15 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_eden/eden.dart';
 
 ///
-abstract class AbstractMVVMBase extends StatefulWidget {
-  const AbstractMVVMBase({Key key}) : super(key: key);
+abstract class AbstractMvvmBase extends StatefulWidget {
+  const AbstractMvvmBase({Key key}) : super(key: key);
 }
 
 ///
-abstract class AbstractMVVMBaseState<T extends AbstractMVVMBase>
+abstract class AbstractMvvmBaseState<T extends AbstractMvvmBase>
     extends State<T> {
+  final Key _scaffoldKey = GlobalKey<ScaffoldState>();
   bool _debugShowCheckedModeBanner = true;
-  Key _scaffoldKey;
   String _toolbarTitle;
 
   ///hide toolbar
@@ -27,7 +27,10 @@ abstract class AbstractMVVMBaseState<T extends AbstractMVVMBase>
 
   /// toolbar title color
   Color getToolbarTitleColor() =>
-      Theme.of(context).colorScheme.toolbarTitleColor;
+      Theme
+          .of(context)
+          .colorScheme
+          .toolbarTitleColor;
 
   void setToolbarTitle(String toolbarTitle) {
     this._toolbarTitle = toolbarTitle;
@@ -49,10 +52,10 @@ abstract class AbstractMVVMBaseState<T extends AbstractMVVMBase>
     return getHideToolbar()
         ? null
         : ToolbarWidget(
-            hideBackArrow: getHideToolbarArrowBack(),
-            title: _toolbarTitle == null ? getToolbarTitle() : _toolbarTitle,
-            color: getToolbarTitleColor(),
-          );
+      hideBackArrow: getHideToolbarArrowBack(),
+      title: _toolbarTitle == null ? getToolbarTitle() : _toolbarTitle,
+      color: getToolbarTitleColor(),
+    );
   }
 
   ///
@@ -74,8 +77,8 @@ abstract class AbstractMVVMBaseState<T extends AbstractMVVMBase>
       //safe Area
       body: getBottomNavigationBar() == null
           ? SafeArea(
-              child: buildBody(context),
-            )
+        child: buildBody(context),
+      )
           : buildBody(context),
       bottomNavigationBar: getBottomNavigationBar(),
     );

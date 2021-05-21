@@ -1,16 +1,17 @@
+import 'package:example/ui/account/account_page.dart';
+import 'package:example/ui/course/course_page.dart';
 import 'package:example/ui/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_eden/eden.dart';
 
-class App extends AbstractMVVMBaseNav {
+class App extends AbstractMvvmBaseNav {
   @override
   State<StatefulWidget> createState() => AppState();
 }
 
-class AppState extends AbstractMVVMBaseNavState<App> {
+class AppState extends AbstractMvvmBaseNavState<App>  {
   @override
   bool getHideToolbar() {
-
     return true;
   }
 
@@ -28,15 +29,15 @@ class AppState extends AbstractMVVMBaseNavState<App> {
   List<BottomNavigationBarItem> getBarItems() {
     return [
       BottomNavigationBarItem(
-        label: Text("首页").data,
+        label: Text("Home").data,
         icon: Icon(Icons.home),
       ),
       BottomNavigationBarItem(
-        label: Text("课程").data,
+        label: Text("Course").data,
         icon: Icon(Icons.import_contacts),
       ),
       BottomNavigationBarItem(
-        label: Text("我的").data,
+        label: Text("Me").data,
         icon: Icon(Icons.account_circle),
       ),
     ];
@@ -44,12 +45,13 @@ class AppState extends AbstractMVVMBaseNavState<App> {
 
   @override
   List<Widget> getPages() {
-    return [Home(), Home(), Home()];
+    return [Home(), CoursePage(), AccountPage()];
   }
 
   @override
   void onNavTap(int index) {
     super.onNavTap(index);
+
     ///
     setToolbarTitle(getBarItems()[index].label);
   }

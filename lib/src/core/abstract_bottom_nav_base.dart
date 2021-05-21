@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_eden/eden.dart';
 
 ///abstract mvvm bottom navigation bar
-abstract class AbstractMVVMBaseNav extends AbstractMVVMBase {
-  const AbstractMVVMBaseNav({Key key}) : super(key: key);
+abstract class AbstractMvvmBaseNav extends AbstractMvvmBase {
+  const AbstractMvvmBaseNav({Key key}) : super(key: key);
 }
 
 ///
-abstract class AbstractMVVMBaseNavState<T extends AbstractMVVMBaseNav>
-    extends AbstractMVVMBaseState<T> {
+abstract class AbstractMvvmBaseNavState<T extends AbstractMvvmBaseNav>
+    extends AbstractMvvmBaseState<T> {
   var _pageController = PageController();
   int _currentIndex = 0;
 
