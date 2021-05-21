@@ -6,7 +6,6 @@
  * Copyright (c) 2019 Yakka, LLC. All rights reserved.
  * See LICENSE for distribution and usage details.
  */
-import 'dart:convert';
 
 import 'package:example/app.dart';
 import 'package:example/ui/login/login_page.dart';

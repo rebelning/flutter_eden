@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../widgets/text.dart';
 
 import 'package:flutter_eden/src/values/color/colors.dart' as colors;
+import 'package:flutter_eden/src/values/dimen/dimens.dart' as dimens;
 
 class LoadingWidget extends StatefulWidget {
   final bool backgroundTransparent;
@@ -25,29 +26,49 @@ class _LoadingWidgetState extends State<LoadingWidget> {
   @override
   Widget build(BuildContext context) {
     return Stack(
-      children: <Widget>[widget.child, _loadingWidget(widget.status)]
-    );
+        children: <Widget>[widget.child, _loadingWidget(widget.status)]);
   }
 
   Widget _loadingWidget(bool loadingWidget) {
     return loadingWidget == true
         ? Container(
             alignment: Alignment.center,
-            color: widget.backgroundTransparent == true
-                ? Colors.transparent
-                : Colors.grey.withOpacity(0.7),
+      color: widget.backgroundTransparent == true
+          ? Colors.transparent
+          : Colors.grey.withOpacity(0.7),
+
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: TextWidget(text: widget.message),
+                  Container(
+                    width: dimens.loading_width,
+                    height: dimens.loading_height,
+
+                    alignment: Alignment.center,
+                    decoration: ShapeDecoration(
+                      color: Colors.black54,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10)
+                      ),
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        CircularProgressIndicator(
+                          backgroundColor: Colors.transparent,
+                          valueColor: new AlwaysStoppedAnimation<Color>(
+                              colors.accentColor),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 30.0),
+                          child: TextWidget(
+                            text: widget.message,
+                            color: Colors.white,
+                          ),
+                        )
+                      ],
+                    ),
                   ),
-                  CircularProgressIndicator(
-                    backgroundColor: Colors.transparent,
-                    valueColor:
-                        new AlwaysStoppedAnimation<Color>(colors.accentColor),
-                  )
                 ]),
           )
         : Container();

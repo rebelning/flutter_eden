@@ -1,6 +1,6 @@
 import 'package:example/ui/account/account_page.dart';
 import 'package:example/ui/course/course_page.dart';
-import 'package:example/ui/home.dart';
+import 'package:example/ui/home/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_eden/eden.dart';
 
@@ -22,7 +22,7 @@ class AppState extends AbstractMvvmBaseNavState<App>  {
 
   @override
   String getToolbarTitle() {
-    return "首页";
+    return "Home";
   }
 
   @override

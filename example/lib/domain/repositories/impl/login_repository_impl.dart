@@ -10,7 +10,7 @@ class LoginRepository implements ILoginRepository {
   ///
   @override
   Future<HttpResponse> login(String login, String password) async {
-    service.login(login, password);
+
     HttpResponse response = HttpResponse();
 
     // final hasConnection = await ConnectionHelper.hasConnection();

@@ -7,13 +7,10 @@ import 'package:flutter_eden/eden.dart';
 
 class LoginPage extends AbstractMvvmBase {
   @override
-  State<StatefulWidget> createState() {
-    // TODO: implement createState
-    throw UnimplementedError();
-  }
+  State<StatefulWidget> createState() => _LoginPageState();
 }
 
-class LoginPageState extends AbstractMvvmBaseState with LoginWidget {
+class _LoginPageState extends AbstractMvvmBaseState with LoginWidget {
   final vm = inject<LoginViewModel>();
 
   @override
@@ -33,6 +30,15 @@ class LoginPageState extends AbstractMvvmBaseState with LoginWidget {
 
   @override
   Widget buildBody(BuildContext context) {
-    return form(context, getScaffoldKey());
+    return StreamBuilder(
+        stream: vm.loading,
+        builder: (context, snapshot) {
+          return LoadingWidget(
+              message: "Loading...",
+              status: snapshot.data,
+              child: SingleChildScrollView(
+                child: Container(child: form(context, getScaffoldKey())),
+              ));
+        });
   }
 }

@@ -2,12 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_eden/eden.dart';
 
-class Home extends AbstractMvvmBase {
+class Home extends AbstractMvvmKLiveBase {
   @override
   State<StatefulWidget> createState() => _HomePageState();
 }
 
-class _HomePageState extends AbstractMvvmBaseState<Home> {
+class _HomePageState extends AbstractMvvmKLiveBaseState<Home> {
+  // @override
+  // bool get wantKeepAlive => true;
+
   @override
   bool getHideToolbar() {
     return false;
@@ -26,7 +29,9 @@ class _HomePageState extends AbstractMvvmBaseState<Home> {
   @override
   Widget buildBody(BuildContext context) {
     return Center(
-      child: Text('home...'),
+      child: TextWidget(text: 'home...'),
     );
   }
+
+
 }

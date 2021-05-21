@@ -27,10 +27,7 @@ abstract class AbstractMvvmBaseState<T extends AbstractMvvmBase>
 
   /// toolbar title color
   Color getToolbarTitleColor() =>
-      Theme
-          .of(context)
-          .colorScheme
-          .toolbarTitleColor;
+      Theme.of(context).colorScheme.toolbarTitleColor;
 
   void setToolbarTitle(String toolbarTitle) {
     this._toolbarTitle = toolbarTitle;
@@ -52,10 +49,10 @@ abstract class AbstractMvvmBaseState<T extends AbstractMvvmBase>
     return getHideToolbar()
         ? null
         : ToolbarWidget(
-      hideBackArrow: getHideToolbarArrowBack(),
-      title: _toolbarTitle == null ? getToolbarTitle() : _toolbarTitle,
-      color: getToolbarTitleColor(),
-    );
+            hideBackArrow: getHideToolbarArrowBack(),
+            title: _toolbarTitle == null ? getToolbarTitle() : _toolbarTitle,
+            color: getToolbarTitleColor(),
+          );
   }
 
   ///
@@ -77,8 +74,8 @@ abstract class AbstractMvvmBaseState<T extends AbstractMvvmBase>
       //safe Area
       body: getBottomNavigationBar() == null
           ? SafeArea(
-        child: buildBody(context),
-      )
+              child: buildBody(context),
+            )
           : buildBody(context),
       bottomNavigationBar: getBottomNavigationBar(),
     );

@@ -13,7 +13,7 @@ import './route_handlers.dart';
 
 class Routes {
   static final String root = "/";
-  static final String login = "/login";
+  static final String login = "/account/login";
 
   static void configureRoutes(FluroRouter router) {
     router.notFoundHandler = Handler(

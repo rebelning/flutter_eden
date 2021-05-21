@@ -22,7 +22,6 @@ class LoginWidget {
     // Navigator.pushReplacement(context, NavSlideFromTop(
     //     page: HomePage()
     // ));
-
   }
 
   ///
@@ -60,14 +59,18 @@ class LoginWidget {
             Align(
                 alignment: Alignment.centerRight,
                 child: FlatButton(
-                  onPressed: () => print("forgot password click"),
+                  onPressed: () {},
                   child: TextWidget(
                     text: "Esqueci a senha",
                     small: true,
                   ),
                 )),
             SizedBox(height: 12),
-            ButtonWidget(label: "login", onPress: _onLogin),
+            ButtonWidget(
+                label: "login",
+                onPress: () {
+                  _onLogin(key);
+                }),
           ],
         ),
       ),

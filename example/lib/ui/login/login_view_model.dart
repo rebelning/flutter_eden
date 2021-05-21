@@ -36,5 +36,8 @@ class LoginViewModel extends BaseViewModel {
   }
 
   @override
-  void clear() {}
+  void clear() {
+    _login.add("");
+    _password.add("");
+  }
 }
