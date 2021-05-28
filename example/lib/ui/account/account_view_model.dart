@@ -19,7 +19,7 @@ class AccountViewModel extends BaseViewModel {
 
     await Future.delayed(Duration(seconds: 5));
     setLoading(false);
-    if (response.statusCode == 200) {
+    if (response.resCode == 200) {
       setMenuList(response.data);
       return true;
     }

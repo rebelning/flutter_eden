@@ -25,9 +25,8 @@ class LoginViewModel extends BaseViewModel {
     await Future.delayed(Duration(seconds: 1));
 
     HttpResponse ret = await repository.login(_login.value, _password.value);
-
     setLoading(false);
-    if (ret.statusCode == 200) {
+    if (ret.resCode == 200) {
       clear();
       return true;
     }

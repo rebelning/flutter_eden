@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:example/domain/http_response.dart';
-import 'package:example/domain/mappers/MenuMapper.dart';
+import 'package:example/domain/mappers/menu_mapper.dart';
 
 import 'package:flutter_eden/eden.dart';
 
@@ -10,7 +10,7 @@ class AccountService {
 
   Future<HttpResponse> getMenuList() async {
     HttpResponse response = HttpResponse();
-    response.statusCode = 200;
+    response.resCode = 200;
     List<Map<String, dynamic>> tmpList = [
       {"id": 1, "section": "setting"},
       {"id": 2, "section": "setting"},

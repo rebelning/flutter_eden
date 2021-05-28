@@ -40,7 +40,7 @@ class LoginWidget {
                 stream: vm.login,
                 builder: (context, snapshot) {
                   return InputWidget(
-                    placeholder: "LOGIN",
+                    placeholder: "login",
                     value: snapshot.data,
                     onChange: (value) => vm.setLogin(value),
                   );
@@ -50,7 +50,8 @@ class LoginWidget {
                 stream: vm.password,
                 builder: (context, snapshot) {
                   return InputWidget(
-                    placeholder: "SENHA",
+                    placeholder: "password",
+                    password: true,
                     value: snapshot.data,
                     onChange: (value) => vm.setPassword(value),
                   );
@@ -61,7 +62,7 @@ class LoginWidget {
                 child: FlatButton(
                   onPressed: () {},
                   child: TextWidget(
-                    text: "Esqueci a senha",
+                    text: "sign up",
                     small: true,
                   ),
                 )),

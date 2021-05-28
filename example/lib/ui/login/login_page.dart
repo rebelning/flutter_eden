@@ -37,7 +37,7 @@ class _LoginPageState extends AbstractMvvmBaseState with LoginWidget {
               message: "Loading...",
               status: snapshot.data,
               child: SingleChildScrollView(
-                child: Container(child: form(context, getScaffoldKey())),
+                child: form(context, getScaffoldKey()),
               ));
         });
   }

@@ -1,6 +1,13 @@
-class User {
-  int id;
-  String name;
+import 'package:example/domain/http_response.dart';
 
-  User({this.id, this.name});
+class User extends HttpResponse{
+  int userId;
+  String username;
+
+  User({this.userId, this.username});
+
+  @override
+  String toString() {
+    return 'User{userId: $userId, username: $username}';
+  }
 }

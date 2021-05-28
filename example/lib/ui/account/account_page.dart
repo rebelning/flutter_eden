@@ -40,7 +40,7 @@ class _AccountPageState extends AbstractMvvmKLiveBaseState with AccountWidget {
         stream: vm.loading,
         builder: (context, snapshot) {
           return LoadingWidget(
-            message: "Loading message",
+            message: "Loading...",
             status: snapshot.data,
             child: sliverView(context),
           );
