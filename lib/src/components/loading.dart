@@ -1,3 +1,5 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import '../widgets/text.dart';
 
@@ -33,34 +35,27 @@ class _LoadingWidgetState extends State<LoadingWidget> {
     return loadingWidget == true
         ? Container(
             alignment: Alignment.center,
-      color: widget.backgroundTransparent == true
-          ? Colors.transparent
-          : Colors.grey.withOpacity(0.7),
-
+            color: widget.backgroundTransparent == true
+                ? Colors.transparent
+                : Colors.grey.withOpacity(0.7),
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Container(
                     width: dimens.loading_width,
                     height: dimens.loading_height,
-
                     alignment: Alignment.center,
                     decoration: ShapeDecoration(
                       color: Colors.black54,
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10)
-                      ),
+                          borderRadius: BorderRadius.circular(10)),
                     ),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        CircularProgressIndicator(
-                          backgroundColor: Colors.transparent,
-                          valueColor: new AlwaysStoppedAnimation<Color>(
-                              colors.accentColor),
-                        ),
+                        _progress,
                         Padding(
-                          padding: const EdgeInsets.only(top: 30.0),
+                          padding: const EdgeInsets.only(top: 20.0),
                           child: TextWidget(
                             text: widget.message,
                             color: Colors.white,
@@ -73,4 +68,12 @@ class _LoadingWidgetState extends State<LoadingWidget> {
           )
         : Container();
   }
+
+  Widget get _progress => defaultTargetPlatform == TargetPlatform.iOS
+      ? const CupertinoActivityIndicator()
+      : CircularProgressIndicator(
+          strokeWidth: 2.0,
+          backgroundColor: Colors.transparent,
+          valueColor: new AlwaysStoppedAnimation<Color>(colors.accentColor),
+        );
 }
