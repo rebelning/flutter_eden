@@ -1,7 +1,7 @@
 import 'package:example/domain/http_response.dart';
 
 class User extends HttpResponse{
-  int userId;
+  String userId;
   String username;
 
   User({this.userId, this.username});

@@ -9,6 +9,7 @@ export 'src/core/abstract_mvvm_klive_base.dart';
 export 'src/core/view_model.base.dart';
 export 'src/di/injector_provider.dart';
 export 'src/di/http_client.dart';
+export 'src/cache/storage.helper.dart';
 
 export 'src/core/view_model.base.dart';
 export 'src/components/log/debug_log.dart';

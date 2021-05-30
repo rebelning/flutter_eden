@@ -11,6 +11,7 @@ class HttpClient {
     _client = Dio();
     _client.options.connectTimeout = connectTimeout;
     _client.options.receiveTimeout = receiveTimeout;
+    ///
     _client.interceptors.add(_interceptor());
     _client.interceptors.add(LogInterceptor(
         request: _debug,
@@ -19,7 +20,7 @@ class HttpClient {
         requestHeader: _debug,
         responseHeader: _debug));
   }
-
+  ///
   Interceptor _interceptor() {
     return InterceptorsWrapper(onRequest: (RequestOptions request) async {
       final storageToken = await StorageHelper.get(StorageKeys.token);

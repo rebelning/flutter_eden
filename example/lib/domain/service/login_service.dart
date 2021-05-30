@@ -8,17 +8,20 @@ class LoginService {
 
   Future<HttpResponse> login(String login, String password) async {
     HttpResponse<User> response = HttpResponse();
-    final url = "http://192.168.162.104:8080/eden/auth/login";
+    final url = "http://192.168.1.106:8080/eden/auth/login";
     final payload = {"username": login, "password": password};
     final retAuth = client.post(url, body: payload);
 
     await retAuth.then((res) {
       response.resCode = res.statusCode;
+      String token = res.data["accessToken"];
+      StorageHelper.set(StorageKeys.token, token);
       response.data = LoginMapper.fromJson(res.data);
     }).catchError((onError) {
       response.resCode = 500; //失败
-      response.data = onError;
+      // response.data = onError;
       response.message = "login failure";
+      print("onError=${onError.toString()}");
     });
     print("HttpResponse=$response");
     return response;

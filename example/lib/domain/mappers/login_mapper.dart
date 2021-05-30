@@ -7,7 +7,7 @@ class LoginMapper{
   static User fromJson(Map<String, dynamic> json) {
     return User(
 
-      userId: json["userId"] as int,
+      userId: json["userId"] as String,
       username: json["username"] as String
     );
   }
