@@ -1,5 +1,3 @@
-import 'package:example/config/application.dart';
-import 'package:example/config/routes.dart';
 import 'package:example/domain/models/menu.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_eden/eden.dart';
@@ -33,7 +31,7 @@ class AccountWidget {
   }
 
   void _login(BuildContext context) {
-    Application.router.navigateTo(context, Routes.login);
+    Application.router.navigateTo(context, Routes.root);
   }
 
   Widget sliverView(BuildContext context) {

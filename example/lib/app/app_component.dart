@@ -1,16 +1,8 @@
-/*
- * fluro
- * Created by Yakka
- * https://theyakka.com
- * 
- * Copyright (c) 2019 Yakka, LLC. All rights reserved.
- * See LICENSE for distribution and usage details.
- */
+
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
-
-import '../config/application.dart';
-import '../config/routes.dart';
+import 'package:flutter_eden/eden.dart';
+import 'package:example/config/routes_extension.dart';
 
 class AppComponent extends StatefulWidget {
   @override
@@ -22,7 +14,12 @@ class AppComponent extends StatefulWidget {
 class AppComponentState extends State<AppComponent> {
   AppComponentState() {
     final router = FluroRouter();
-    Routes.configureRoutes(router);
+    final routes=Routes();
+    ///
+    routes.configureParentRoutes(router);
+    ///
+    routes.configureRoutes(router);
+    ///
     Application.router = router;
   }
 

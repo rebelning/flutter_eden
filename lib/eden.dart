@@ -11,6 +11,10 @@ export 'src/di/injector_provider.dart';
 export 'src/di/http_client.dart';
 export 'src/cache/storage.helper.dart';
 
+export 'src/route/application.dart';
+export 'src/route/route_handlers.dart';
+export 'src/route/routes.dart';
+
 export 'src/core/view_model.base.dart';
 export 'src/components/log/debug_log.dart';
 export 'src/components/loading.dart';
