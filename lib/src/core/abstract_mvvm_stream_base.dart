@@ -5,13 +5,13 @@ import 'package:flutter_eden/src/core/stream_base.dart';
 import 'package:rxdart/rxdart.dart';
 
 ///
-abstract class AbstractMvvmBase extends StatefulWidget {
-  const AbstractMvvmBase({Key key}) : super(key: key);
+abstract class AbstractMvvmStreamBase extends AbstractMvvmBase {
+  const AbstractMvvmStreamBase({Key key}) : super(key: key);
 }
 
 ///
-abstract class AbstractMvvmBaseState<T extends AbstractMvvmBase>
-    extends State<T> {
+abstract class AbstractMvvmStreamBaseState<T extends AbstractMvvmStreamBase>
+    extends AbstractMvvmBaseState<T> implements BaseSteam {
   final Key _scaffoldKey = GlobalKey<ScaffoldState>();
   String _toolbarTitle;
 
@@ -71,15 +71,27 @@ abstract class AbstractMvvmBaseState<T extends AbstractMvvmBase>
       key: _scaffoldKey,
       appBar: getAppbar(),
       //safe Area
-      body:  getBottomNavigationBar() == null
-          ? SafeArea(
-        child: buildBody(context),
-      )
-          : buildBody(context),
+      body: streamBody(),
       bottomNavigationBar: getBottomNavigationBar(),
     );
   }
 
+  ///
+  Widget streamBody() {
+    return StreamBuilder(
+        stream: getStream(),
+        builder: (context, snapshot) {
+          return LoadingWidget(
+              message: "Loading...",
+              status: snapshot.data,
+              child: getBottomNavigationBar() == null
+                    ? SafeArea(
+                        child: buildBody(context),
+                      )
+                    : buildBody(context),
+              );
+        });
+  }
 
   void pop(context) {
     Navigator.pop(context);

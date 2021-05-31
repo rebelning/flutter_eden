@@ -7,6 +7,7 @@ export 'src/core/abstract_bottom_nav_base.dart';
 export 'src/core/abstract_mvvm_klive_base.dart';
 export 'src/core/fluro/application.dart';
 export 'src/core/fluro/navigate_router.dart';
+export 'src/core/abstract_mvvm_stream_base.dart';
 
 export 'src/core/view_model.base.dart';
 export 'src/di/injector_provider.dart';
