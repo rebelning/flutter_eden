@@ -15,9 +15,8 @@ class AccountViewModel extends BaseViewModel {
   Future<bool> getMenuList() async {
     setLoading(true);
     HttpResponse response = await _accountRepository.getMenuList();
-    DebugLog.log("data", response.data.toString());
 
-    await Future.delayed(Duration(seconds: 5));
+    await Future.delayed(Duration(seconds: 1));
     setLoading(false);
     if (response.resCode == 200) {
       setMenuList(response.data);

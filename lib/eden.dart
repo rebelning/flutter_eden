@@ -5,16 +5,13 @@ library eden;
 export 'src/core/abstract_mvvm_base.dart';
 export 'src/core/abstract_bottom_nav_base.dart';
 export 'src/core/abstract_mvvm_klive_base.dart';
+export 'src/core/fluro/application.dart';
+export 'src/core/fluro/navigate_router.dart';
 
 export 'src/core/view_model.base.dart';
 export 'src/di/injector_provider.dart';
 export 'src/di/http_client.dart';
 export 'src/cache/storage.helper.dart';
-
-export 'src/route/application.dart';
-export 'src/route/route_handlers.dart';
-export 'src/route/routes.dart';
-
 export 'src/core/view_model.base.dart';
 export 'src/components/log/debug_log.dart';
 export 'src/components/loading.dart';

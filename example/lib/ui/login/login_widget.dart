@@ -8,10 +8,11 @@ class LoginWidget {
   ///di(IOC)
   final vm = inject<LoginViewModel>();
 
-  void _onLogin(GlobalKey<ScaffoldState> key) async {
+  void _onLogin(BuildContext context, GlobalKey<ScaffoldState> key) async {
     final ret = await vm.signIn();
     if (ret) {
       SnackbarWidget(key, message: "SUCCESS");
+      NavigateRouter().pop(context);
     } else {
       SnackbarWidget(key,
           error: true, message: "NOT FOUND", actionMessage: "OK", action: () {
@@ -70,7 +71,7 @@ class LoginWidget {
             ButtonWidget(
                 label: "login",
                 onPress: () {
-                  _onLogin(key);
+                  _onLogin(context, key);
                 }),
           ],
         ),

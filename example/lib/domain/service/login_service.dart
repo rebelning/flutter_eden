@@ -18,12 +18,14 @@ class LoginService {
 
       User user = LoginMapper.fromJson(res.data["data"]);
       response.data=user;
-      StorageHelper.set(StorageKeys.token, user.username);
+      StorageHelper.set(StorageKeys.token, user.accessToken);
     }).catchError((onError) {
       response.resCode = 500; //失败
       // response.data = onError;
       response.message = "login failure";
-      print("onError=${onError.toString()}");
+      DebugLog.log("onError","${onError.toString()}");
+
+
     });
     print("HttpResponse=$response");
     return response;

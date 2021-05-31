@@ -1,4 +1,7 @@
+import 'package:example/config/routes.dart';
 import 'package:example/domain/models/menu.dart';
+import 'package:example/domain/models/user.dart';
+import 'package:example/ui/login/login_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_eden/eden.dart';
 import 'package:flutter_eden/src/values/dimen/dimens.dart' as dimens;
@@ -11,6 +14,9 @@ enum AppBarBehavior { normal, pinned, floating, snapping }
 ///
 class AccountWidget {
   final vm = inject<AccountViewModel>();
+
+  //login
+  final vmLogin = inject<LoginViewModel>();
   double _appBarHeight = 0.0;
   double screenWidth;
   double screenHeight;
@@ -18,6 +24,7 @@ class AccountWidget {
   double imageHeight;
   double _statusBarHeight;
   AppBarBehavior _appBarBehavior = AppBarBehavior.pinned;
+  String _title = "Me";
 
   void _getScreenInfo(context) {
     _statusBarHeight = MediaQuery.of(context).padding.top;
@@ -30,11 +37,15 @@ class AccountWidget {
     DebugLog.log('imageHeight:', imageHeight.toString());
   }
 
-  void _login(BuildContext context) {
-    Application.router.navigateTo(context, Routes.root);
+  void _getMenuList(BuildContext context, GlobalKey<ScaffoldState> key) {
+    vm.getMenuList();
   }
 
-  Widget sliverView(BuildContext context) {
+  void _login(BuildContext context) {
+    NavigateRouter().navigateTo(context, Routes.login);
+  }
+
+  Widget sliverView(BuildContext context, GlobalKey<ScaffoldState> key) {
     _getScreenInfo(context);
     this._appBarHeight = imageHeight - _statusBarHeight;
     return Container(
@@ -50,16 +61,16 @@ class AccountWidget {
               IconButton(
                 icon: (const Icon(Icons.settings)),
                 onPressed: () {
-                  vm.getMenuList();
+                  _getMenuList(context,key);
                 },
               )
             ],
-            flexibleSpace: new FlexibleSpaceBar(
+            flexibleSpace: FlexibleSpaceBar(
               centerTitle: true,
-              collapseMode: CollapseMode.none,
+              collapseMode: CollapseMode.parallax,
               title: Padding(
                 padding: EdgeInsets.only(left: 0.0),
-                child: new Text(
+                child: Text(
                   '',
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
@@ -69,10 +80,10 @@ class AccountWidget {
                   ),
                 ),
               ),
-              background: new Stack(
+              background: Stack(
                 fit: StackFit.expand,
                 children: <Widget>[
-                  _getUnLoginView(context),
+                  _userView(context),
                 ],
               ),
             ),
@@ -97,6 +108,45 @@ class AccountWidget {
     );
   }
 
+  ///user info
+  Widget _userView(BuildContext context) {
+    return StreamBuilder(
+      stream: vmLogin.isLogin,
+      builder: (context, snapshot) {
+        bool isLogin = false;
+        if (snapshot.data != null) {
+          isLogin = snapshot.data;
+        }
+        return isLogin ? _getLoginView(context) : _getUnLoginView(context);
+      },
+    );
+  }
+
+  ///login view
+  Widget _getLoginView(BuildContext context) {
+    return StreamBuilder(
+        stream: vmLogin.userInfo,
+        builder: (context, snapshot) {
+          User user = snapshot.data;
+          return Container(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                TextWidget(
+                  text: "${user?.username}",
+                  color: Theme.of(context).colorScheme.color_whitle,
+                ),
+                TextWidget(
+                  text: "${user?.mobile}",
+                  color: Theme.of(context).colorScheme.color_whitle,
+                )
+              ],
+            ),
+          );
+        });
+  }
+
+  ///unlogin view
   Widget _getUnLoginView(BuildContext context) {
     return Container(
       color: Theme.of(context).colorScheme.primary,

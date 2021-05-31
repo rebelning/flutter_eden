@@ -1,5 +1,6 @@
 import 'package:example/ui/account/account_view_model.dart';
 import 'package:example/ui/account/account_widget.dart';
+import 'package:example/ui/login/login_view_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_eden/eden.dart';
@@ -42,7 +43,7 @@ class _AccountPageState extends AbstractMvvmKLiveBaseState with AccountWidget {
           return LoadingWidget(
             message: "Loading...",
             status: snapshot.data,
-            child: sliverView(context),
+            child: sliverView(context, getScaffoldKey()),
           );
         });
   }

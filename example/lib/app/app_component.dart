@@ -1,8 +1,8 @@
 
+import 'package:example/config/routes.dart';
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_eden/eden.dart';
-import 'package:example/config/routes_extension.dart';
 
 class AppComponent extends StatefulWidget {
   @override
@@ -14,11 +14,10 @@ class AppComponent extends StatefulWidget {
 class AppComponentState extends State<AppComponent> {
   AppComponentState() {
     final router = FluroRouter();
-    final routes=Routes();
+
     ///
-    routes.configureParentRoutes(router);
+    Routes.configureRoutes(router);
     ///
-    routes.configureRoutes(router);
     ///
     Application.router = router;
   }

@@ -30,6 +30,7 @@ class _LoginPageState extends AbstractMvvmBaseState with LoginWidget {
 
   @override
   Widget buildBody(BuildContext context) {
+
     return StreamBuilder(
         stream: vm.loading,
         builder: (context, snapshot) {

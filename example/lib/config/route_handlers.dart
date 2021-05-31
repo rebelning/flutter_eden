@@ -7,21 +7,22 @@
  * See LICENSE for distribution and usage details.
  */
 
+import 'package:example/app.dart';
+import 'package:example/ui/login/login_page.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter_eden/eden.dart';
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 
-class RouteHandlers{
   ///root
-  // var rootHandler = Handler(
-  //     handlerFunc: (BuildContext context, Map<String, List<String>> params) {
-  //       return App();
-  //     });
-  // var loginHandler = Handler(
-  //     handlerFunc: (BuildContext context, Map<String, List<String>> params) {
-  //       return LoginPage();
-  //     });
+  var rootHandler = Handler(
+      handlerFunc: (BuildContext context, Map<String, List<String>> params) {
+        return App();
+      });
+  var loginHandler = Handler(
+      handlerFunc: (BuildContext context, Map<String, List<String>> params) {
+        return LoginPage();
+      });
 
   /// Handles deep links into the app
   /// To test on Android:
@@ -39,5 +40,4 @@ class RouteHandlers{
 //      message: "DEEEEEP LINK!!!", color: color, result: result);
         return null;
       });
-}
 
