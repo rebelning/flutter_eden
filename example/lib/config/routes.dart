@@ -15,6 +15,7 @@ class Routes {
   static final String root = "/";
 
   static final String login = "/account/login";
+  static final String message = "/account/message";
 
   static void configureRoutes(FluroRouter router) {
     router.notFoundHandler = Handler(
@@ -24,6 +25,7 @@ class Routes {
     });
     router.define(root, handler: rootHandler);
     router.define(login, handler: loginHandler);
+    router.define(message, handler: messageHandler);
 //    router.define(deepLink, handler: deepLinkHandler);
   }
 }

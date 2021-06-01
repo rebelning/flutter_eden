@@ -11,64 +11,12 @@ abstract class AbstractMvvmStreamBase extends AbstractMvvmBase {
 
 ///
 abstract class AbstractMvvmStreamBaseState<T extends AbstractMvvmStreamBase>
-    extends AbstractMvvmBaseState<T> implements BaseSteam {
-  final Key _scaffoldKey = GlobalKey<ScaffoldState>();
-  String _toolbarTitle;
-
-  ///hide toolbar
-  bool getHideToolbar();
-
-  /// hide toolbar arrow
-  bool getHideToolbarArrowBack();
-
-  ///tool title
-  String getToolbarTitle();
-
-  /// toolbar title color
-  Color getToolbarTitleColor() =>
-      Theme.of(context).colorScheme.toolbarTitleColor;
-
-  void setToolbarTitle(String toolbarTitle) {
-    this._toolbarTitle = toolbarTitle;
-    if (mounted) setState(() {});
-  }
-
-  ///toolbar arrow back
-  Widget getToolbarArrowBack() {
-    return IconButton(
-      icon: Icon(Icons.arrow_back),
-      onPressed: () {
-        pop(context);
-      },
-    );
-  }
-
-  ///
-  Widget getAppbar() {
-    return getHideToolbar()
-        ? null
-        : ToolbarWidget(
-            hideBackArrow: getHideToolbarArrowBack(),
-            title: _toolbarTitle == null ? getToolbarTitle() : _toolbarTitle,
-            color: getToolbarTitleColor(),
-          );
-  }
-
-  ///
-  Key getScaffoldKey() => _scaffoldKey;
-
-  ///build body
-  Widget buildBody(BuildContext context);
-
-  ///bottom navigation bar
-  Widget getBottomNavigationBar() {
-    return null;
-  }
+    extends AbstractMvvmBaseState<T> implements BaseStream {
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: _scaffoldKey,
+      key: getScaffoldKey(),
       appBar: getAppbar(),
       //safe Area
       body: streamBody(),
@@ -93,11 +41,4 @@ abstract class AbstractMvvmStreamBaseState<T extends AbstractMvvmStreamBase>
         });
   }
 
-  void pop(context) {
-    Navigator.pop(context);
-  }
-
-  void popResult(context, Object value) {
-    Navigator.pop(context, value);
-  }
 }

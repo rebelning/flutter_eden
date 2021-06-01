@@ -5,6 +5,10 @@ class MenuMapper {
       json.map((i) => fromJson(i)).toList();
 
   static Menu fromJson(Map<String, dynamic> json) {
-    return Menu(id: json["id"] as int, section: json["section"] as String);
+    return Menu(
+      menuId: json["menuId"] as String,
+      section: json["section"] as String,
+      action: json["action"] as String,
+    );
   }
 }

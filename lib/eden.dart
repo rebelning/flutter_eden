@@ -1,7 +1,7 @@
 
 ///
 library eden;
-
+export 'package:rxdart/rxdart.dart';
 export 'src/core/abstract_mvvm_base.dart';
 export 'src/core/abstract_bottom_nav_base.dart';
 export 'src/core/abstract_mvvm_klive_base.dart';

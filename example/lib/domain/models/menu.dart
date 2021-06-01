@@ -1,11 +1,11 @@
 class Menu {
-  int id;
+  String menuId;
   String section;
-
-  Menu({this.id, this.section});
+  String action;
+  Menu({this.menuId, this.section,this.action});
 
   @override
   String toString() {
-    return 'Menu{id: $id, section: $section}';
+    return 'Menu{menuId: $menuId, section: $section, action: $action}';
   }
 }

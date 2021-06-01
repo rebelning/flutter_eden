@@ -1,6 +1,6 @@
-import 'package:example/domain/http_response.dart';
 
-class User extends HttpResponse{
+
+class User{
   String userId;
   String username;
   String accessToken;

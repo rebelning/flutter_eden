@@ -45,6 +45,10 @@ class AccountWidget {
     NavigateRouter().navigateTo(context, Routes.login);
   }
 
+  void onTapMenu(BuildContext context, Menu info) {
+    NavigateRouter().navigateTo(context, info.action);
+  }
+
   Widget sliverView(BuildContext context, GlobalKey<ScaffoldState> key) {
     _getScreenInfo(context);
     this._appBarHeight = imageHeight - _statusBarHeight;
@@ -59,9 +63,9 @@ class AccountWidget {
             snap: _appBarBehavior == AppBarBehavior.snapping,
             actions: <Widget>[
               IconButton(
-                icon: (const Icon(Icons.settings)),
+                icon: (const Icon(Icons.refresh)),
                 onPressed: () {
-                  _getMenuList(context,key);
+                  _getMenuList(context, key);
                 },
               )
             ],
@@ -97,7 +101,6 @@ class AccountWidget {
                     delegate: SliverChildBuilderDelegate(
                   (context, index) {
                     Menu menu = tmpList[index];
-                    DebugLog.log("menu=", menu.toString());
                     return _getItem(context, menu);
                   },
                   childCount: tmpList == null ? 0 : tmpList.length,
@@ -217,7 +220,9 @@ class AccountWidget {
           ],
         ),
       ),
-      onTap: () {},
+      onTap: () {
+        onTapMenu(context, menu);
+      },
     );
   }
 }

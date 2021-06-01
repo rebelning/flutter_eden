@@ -1,7 +1,6 @@
 import 'package:example/domain/http_response.dart';
 import 'package:example/domain/models/user.dart';
 import 'package:example/domain/repositories/impl/login_repository_impl.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter_eden/eden.dart';
 import 'package:rxdart/rxdart.dart';
 

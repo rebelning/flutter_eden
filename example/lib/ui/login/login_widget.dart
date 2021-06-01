@@ -35,7 +35,7 @@ class LoginWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             SizedBox(height: 20),
-            LogoWidget(),
+            LogoWidget(small: true,),
             SizedBox(height: 20),
             StreamBuilder(
                 stream: vm.login,

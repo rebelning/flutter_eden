@@ -1,4 +1,4 @@
-///steam
-abstract class BaseSteam<S>{
+///stream
+abstract class BaseStream<S>{
   Stream<S> getStream();
 }
