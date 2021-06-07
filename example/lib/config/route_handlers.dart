@@ -10,6 +10,7 @@
 import 'package:example/app.dart';
 import 'package:example/ui/login/login_page.dart';
 import 'package:example/ui/message/message_page.dart';
+import 'package:example/ui/setting/setting_page.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter_eden/eden.dart';
 import 'package:fluro/fluro.dart';
@@ -27,6 +28,10 @@ import 'package:flutter/material.dart';
   var messageHandler = Handler(
       handlerFunc: (BuildContext context, Map<String, List<String>> params) {
         return MessagePage();
+      });
+  var settingHandler = Handler(
+      handlerFunc: (BuildContext context, Map<String, List<String>> params) {
+        return SettingPage();
       });
 
   /// Handles deep links into the app

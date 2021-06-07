@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_eden/src/cache/storage.helper.dart';
+import 'package:flutter_eden/src/di/interceptor/token_interceptor.dart';
 
 class HttpClient {
   static bool _debug = kDebugMode;
@@ -9,10 +10,15 @@ class HttpClient {
   int receiveTimeout = 5000; //5s
   HttpClient() {
     _client = Dio();
-    _client.options.connectTimeout = connectTimeout;
-    _client.options.receiveTimeout = receiveTimeout;
+    _client.options = BaseOptions(
+        connectTimeout: connectTimeout,
+        receiveTimeout: receiveTimeout,
+        responseType: ResponseType.json);
+
     ///
     _client.interceptors.add(_interceptor());
+    _client.interceptors.add(TokenInterceptor());
+
     _client.interceptors.add(LogInterceptor(
         request: _debug,
         requestBody: _debug,
@@ -20,6 +26,7 @@ class HttpClient {
         requestHeader: _debug,
         responseHeader: _debug));
   }
+
   ///
   Interceptor _interceptor() {
     return InterceptorsWrapper(onRequest: (RequestOptions request) async {

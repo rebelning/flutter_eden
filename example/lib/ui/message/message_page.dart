@@ -32,6 +32,7 @@ class _MessagePageState extends AbstractMvvmStreamBaseState<MessagePage>
 
   @override
   Widget buildBody(BuildContext context) {
+
     return Center(
       child: TextWidget(text: "Message"),
     );
