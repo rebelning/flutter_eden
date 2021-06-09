@@ -8,7 +8,7 @@ class LoginWidget {
   ///di(IOC)
   final vm = inject<LoginViewModel>();
 
-  void _onLogin(BuildContext context, GlobalKey<ScaffoldState> key) async {
+  void _onLogin(BuildContext context, GlobalKey<ScaffoldState>? key) async {
     final ret = await vm.signIn();
     if (ret) {
       SnackbarWidget(key, message: "SUCCESS");
@@ -26,7 +26,7 @@ class LoginWidget {
   }
 
   ///
-  Widget form(BuildContext context, GlobalKey<ScaffoldState> key) {
+  Widget form(BuildContext context, GlobalKey<ScaffoldState>? key) {
     return Padding(
       padding: EdgeInsets.all(dimens.margin),
       child: Padding(
@@ -42,7 +42,7 @@ class LoginWidget {
                 builder: (context, snapshot) {
                   return InputWidget(
                     placeholder: "login",
-                    value: snapshot.data,
+                    value: snapshot.data as String,
                     onChange: (value) => vm.setLogin(value),
                   );
                 }),
@@ -53,7 +53,7 @@ class LoginWidget {
                   return InputWidget(
                     placeholder: "password",
                     password: true,
-                    value: snapshot.data,
+                    value: snapshot.data as String,
                     onChange: (value) => vm.setPassword(value),
                   );
                 }),

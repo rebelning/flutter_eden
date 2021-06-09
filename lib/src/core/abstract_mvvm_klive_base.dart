@@ -4,7 +4,7 @@ import 'package:flutter_eden/eden.dart';
 
 ///AutomaticKeepAliveClientMixin
 abstract class AbstractMvvmKLiveBase extends AbstractMvvmBase {
-  const AbstractMvvmKLiveBase({Key key}) : super(key: key);
+  const AbstractMvvmKLiveBase({Key? key}) : super(key: key);
 }
 
 ///

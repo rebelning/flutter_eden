@@ -18,11 +18,11 @@ class AccountWidget {
   //login
   final vmLogin = inject<LoginViewModel>();
   double _appBarHeight = 0.0;
-  double screenWidth;
-  double screenHeight;
-  double imageWidth;
-  double imageHeight;
-  double _statusBarHeight;
+  double? screenWidth;
+  double? screenHeight;
+  double? imageWidth;
+  double? imageHeight;
+  double? _statusBarHeight;
   AppBarBehavior _appBarBehavior = AppBarBehavior.pinned;
   String _title = "Me";
 
@@ -32,12 +32,12 @@ class AccountWidget {
     screenWidth = MediaQuery.of(context).size.width;
     screenHeight = MediaQuery.of(context).size.height;
     imageWidth = screenWidth; // image width
-    imageHeight = imageWidth * 9 / 16.0; // image height4:3
+    imageHeight = imageWidth! * 9 / 16.0; // image height4:3
     DebugLog.log("imageWidth:", imageWidth.toString());
     DebugLog.log('imageHeight:', imageHeight.toString());
   }
 
-  void _getMenuList(BuildContext context, GlobalKey<ScaffoldState> key) {
+  void _getMenuList(BuildContext context, Key? key) {
     vm.getMenuList();
   }
 
@@ -45,13 +45,13 @@ class AccountWidget {
     NavigateRouter().navigateTo(context, Routes.login);
   }
 
-  void onTapMenu(BuildContext context, Menu info) {
-    NavigateRouter().navigateTo(context, info.action);
+  void onTapMenu(BuildContext context, Menu? info) {
+    NavigateRouter().navigateTo(context, info?.action);
   }
 
-  Widget sliverView(BuildContext context, GlobalKey<ScaffoldState> key) {
+  Widget sliverView(BuildContext context, Key? key) {
     _getScreenInfo(context);
-    this._appBarHeight = imageHeight - _statusBarHeight;
+    this._appBarHeight = imageHeight! - _statusBarHeight!;
     return Container(
       child: CustomScrollView(
         slivers: [
@@ -118,7 +118,7 @@ class AccountWidget {
       builder: (context, snapshot) {
         bool isLogin = false;
         if (snapshot.data != null) {
-          isLogin = snapshot.data;
+          isLogin = snapshot.data as bool;
         }
         return isLogin ? _getLoginView(context) : _getUnLoginView(context);
       },
@@ -130,7 +130,7 @@ class AccountWidget {
     return StreamBuilder(
         stream: vmLogin.userInfo,
         builder: (context, snapshot) {
-          User user = snapshot.data;
+          User user = snapshot.data as User;
           return Container(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -205,6 +205,7 @@ class AccountWidget {
                     textAlign: TextAlign.right,
                   ),
                   IconButton(
+                    onPressed: (){},
                     padding: EdgeInsets.all(0),
                     iconSize: dimens.padding_15,
                     constraints: BoxConstraints(

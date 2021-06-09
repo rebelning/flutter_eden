@@ -7,6 +7,8 @@ import 'package:flutter_eden/eden.dart';
 
 ///
 class AccountPage extends AbstractMvvmKLiveBase {
+
+
   @override
   State<StatefulWidget> createState() => _AccountPageState();
 }
@@ -42,7 +44,7 @@ class _AccountPageState extends AbstractMvvmKLiveBaseState with AccountWidget {
         builder: (context, snapshot) {
           return LoadingWidget(
             message: "Loading...",
-            status: snapshot.data,
+            status: snapshot.data as bool,
             child: sliverView(context, getScaffoldKey()),
           );
         });

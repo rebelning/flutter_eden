@@ -3,17 +3,17 @@ import 'package:flutter_eden/src/values/color/colors.dart' as colors;
 import 'package:flutter_eden/src/widgets/text.dart';
 
 class ButtonWidget extends StatelessWidget {
-  final String label;
-  final Function onPress;
-  final bool disabled;
-  final bool transparent;
-  final IconData icon;
-  final bool facebook;
+  final String? label;
+  final  Function()? onPress;
+  final bool? disabled;
+  final bool? transparent;
+  final IconData? icon;
+  final bool? facebook;
 
   final double _elevation = 3;
 
   const ButtonWidget({
-    Key key, 
+    Key? key,
     this.label,
     this.onPress,
     this.disabled,
@@ -24,7 +24,7 @@ class ButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final action = disabled == true ? null : onPress;
+    final action = disabled! == true ? null : onPress!;
 
     Color backgroundColor = colors.accentColor;
     Color borderColor = colors.accentColor;
@@ -57,7 +57,7 @@ class ButtonWidget extends StatelessWidget {
         onPressed: action,
         elevation: _elevation,
         color: backgroundColor,
-        child: TextWidget(text: label.toUpperCase() ?? "Label", small: true, color: textColor )
+        child: TextWidget(text: label?.toUpperCase() ?? "Label", small: true, color: textColor )
       ),
     );
   }

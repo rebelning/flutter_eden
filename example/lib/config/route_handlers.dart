@@ -18,19 +18,19 @@ import 'package:flutter/material.dart';
 
   ///root
   var rootHandler = Handler(
-      handlerFunc: (BuildContext context, Map<String, List<String>> params) {
+      handlerFunc: (BuildContext? context, Map<String, List<String>> params) {
         return App();
       });
   var loginHandler = Handler(
-      handlerFunc: (BuildContext context, Map<String, List<String>> params) {
+      handlerFunc: (BuildContext? context, Map<String, List<String>> params) {
         return LoginPage();
       });
   var messageHandler = Handler(
-      handlerFunc: (BuildContext context, Map<String, List<String>> params) {
+      handlerFunc: (BuildContext? context, Map<String, List<String>> params) {
         return MessagePage();
       });
   var settingHandler = Handler(
-      handlerFunc: (BuildContext context, Map<String, List<String>> params) {
+      handlerFunc: (BuildContext? context, Map<String, List<String>> params) {
         return SettingPage();
       });
 
@@ -39,9 +39,9 @@ import 'package:flutter/material.dart';
   ///
   /// `adb shell am start -W -a android.intent.action.VIEW -d "fluro://deeplink?path=/message&mesage=fluro%20rocks%21%21" com.theyakka.fluro`
   var deepLinkHandler = Handler(
-      handlerFunc: (BuildContext context, Map<String, List<String>> params) {
-        String colorHex = params["color_hex"]?.first;
-        String result = params["result"]?.first;
+      handlerFunc: (BuildContext? context, Map<String, List<String>>? params) {
+        String? colorHex = params!["color_hex"]?.first;
+        String? result = params!["result"]?.first;
         Color color = Color(0xFFFFFFFF);
         if (colorHex != null && colorHex.length > 0) {
           color = Color(ColorHelpers.fromHexString(colorHex));

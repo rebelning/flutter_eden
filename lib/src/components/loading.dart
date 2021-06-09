@@ -7,13 +7,13 @@ import 'package:flutter_eden/src/values/color/colors.dart' as colors;
 import 'package:flutter_eden/src/values/dimen/dimens.dart' as dimens;
 
 class LoadingWidget extends StatefulWidget {
-  final bool backgroundTransparent;
-  final String message;
-  final bool status;
-  final Widget child;
+  final bool? backgroundTransparent;
+  final String? message;
+  final bool? status;
+  final Widget? child;
 
   const LoadingWidget(
-      {Key key,
+      {Key? key,
       this.status,
       this.child,
       this.message,
@@ -28,7 +28,7 @@ class _LoadingWidgetState extends State<LoadingWidget> {
   @override
   Widget build(BuildContext context) {
     return Stack(
-        children: <Widget>[widget.child, _loadingWidget(widget.status)]);
+        children: <Widget>[widget.child!, _loadingWidget(widget.status!)]);
   }
 
   Widget _loadingWidget(bool loadingWidget) {

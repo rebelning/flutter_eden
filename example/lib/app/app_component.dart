@@ -41,7 +41,7 @@ class AppComponentState extends State<AppComponent> {
 //          visualDensity: VisualDensity.adaptivePlatformDensity,
         backgroundColor: Color(0xfff5f5f5),
       ),
-      onGenerateRoute: Application.router.generator,
+      onGenerateRoute: Application.router?.generator,
     );
 //    print("initial route = ${app.initialRoute}");
     return app;

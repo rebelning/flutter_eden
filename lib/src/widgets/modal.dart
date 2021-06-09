@@ -5,13 +5,13 @@ class ModalWidget {
   static Future show(
     BuildContext context, 
     { 
-      IconData icon,
-      String title, 
-      Widget body, 
-      String confirmLabel, 
-      Function confirmOnPress,
-      String cancelLabel, 
-      Function cancelOnPress 
+      IconData? icon,
+      String? title,
+      Widget? body,
+      String? confirmLabel,
+      Function? confirmOnPress,
+      String? cancelLabel,
+      Function? cancelOnPress
     }) =>
       showDialog(
         context: context,

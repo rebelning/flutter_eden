@@ -5,7 +5,7 @@ import 'package:flutter_eden/src/di/interceptor/token_interceptor.dart';
 
 class HttpClient {
   static bool _debug = kDebugMode;
-  Dio _client;
+  late Dio _client;
   int connectTimeout = 5000; //5s
   int receiveTimeout = 5000; //5s
   HttpClient() {
@@ -16,7 +16,7 @@ class HttpClient {
         responseType: ResponseType.json);
 
     ///
-    _client.interceptors.add(_interceptor());
+    // _client.interceptors.add(_interceptor());
     _client.interceptors.add(TokenInterceptor());
 
     _client.interceptors.add(LogInterceptor(
@@ -28,18 +28,18 @@ class HttpClient {
   }
 
   ///
-  Interceptor _interceptor() {
-    return InterceptorsWrapper(onRequest: (RequestOptions request) async {
-      final storageToken = await StorageHelper.get(StorageKeys.token);
-
-      if (storageToken != null)
-        request.headers.addAll({
-          "Authorization": 'Bearer $storageToken',
-        });
-
-      return request;
-    });
-  }
+  // Interceptor _interceptor() {
+  //   return InterceptorsWrapper(onRequest: (RequestOptions request) async {
+  //     final storageToken = await StorageHelper.get(StorageKeys.token);
+  //
+  //     if (storageToken != null)
+  //       request.headers.addAll({
+  //         "Authorization": 'Bearer $storageToken',
+  //       });
+  //
+  //     return request;
+  //   });
+  // }
 
   Future<Response> get(String url) => _client.get(url);
 

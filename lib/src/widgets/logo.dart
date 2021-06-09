@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 class LogoWidget extends StatelessWidget {
-  final bool header;
-  final bool small;
-  final bool challenge;
+  final bool? header;
+  final bool? small;
+  final bool? challenge;
 
-  const LogoWidget({Key key, this.challenge, this.small, this.header}) : super(key: key);
+  const LogoWidget({Key? key, this.challenge, this.small, this.header}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

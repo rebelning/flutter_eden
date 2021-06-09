@@ -4,7 +4,7 @@ import 'package:flutter_eden/eden.dart';
 
 ///abstract mvvm bottom navigation bar
 abstract class AbstractMvvmBaseNav extends AbstractMvvmBase {
-  const AbstractMvvmBaseNav({Key key}) : super(key: key);
+  const AbstractMvvmBaseNav({Key? key}) : super(key: key);
 }
 
 ///

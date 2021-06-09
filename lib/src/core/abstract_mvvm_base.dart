@@ -6,14 +6,14 @@ import 'package:rxdart/rxdart.dart';
 
 ///
 abstract class AbstractMvvmBase extends StatefulWidget {
-  const AbstractMvvmBase({Key key}) : super(key: key);
+  const AbstractMvvmBase({ Key? key}) : super(key: key);
 }
 
 ///
 abstract class AbstractMvvmBaseState<T extends AbstractMvvmBase>
     extends State<T> {
-  final Key _scaffoldKey = GlobalKey<ScaffoldState>();
-  String _toolbarTitle;
+  final GlobalKey<ScaffoldState>? _scaffoldKey = GlobalKey<ScaffoldState>();
+  String? _toolbarTitle;
 
   ///hide toolbar
   bool getHideToolbar();
@@ -44,7 +44,7 @@ abstract class AbstractMvvmBaseState<T extends AbstractMvvmBase>
   }
 
   ///
-  Widget getAppbar() {
+  PreferredSizeWidget? getAppbar() {
     return getHideToolbar()
         ? null
         : ToolbarWidget(
@@ -55,13 +55,13 @@ abstract class AbstractMvvmBaseState<T extends AbstractMvvmBase>
   }
 
   ///
-  Key getScaffoldKey() => _scaffoldKey;
+  GlobalKey<ScaffoldState>? getScaffoldKey() => _scaffoldKey!;
 
   ///build body
   Widget buildBody(BuildContext context);
 
   ///bottom navigation bar
-  Widget getBottomNavigationBar() {
+  Widget? getBottomNavigationBar() {
     return null;
   }
 

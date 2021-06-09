@@ -1,7 +1,7 @@
 class Menu {
-  String menuId;
-  String section;
-  String action;
+  String? menuId;
+  String? section;
+  String? action;
   Menu({this.menuId, this.section,this.action});
 
   @override

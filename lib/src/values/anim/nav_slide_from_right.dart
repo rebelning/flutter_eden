@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 class NavSlideFromRight extends PageRouteBuilder {
-  final Widget page;
+  final Widget? page;
   
-  NavSlideFromRight({ this.page }) : 
+  NavSlideFromRight({ this.page }) :
     super(pageBuilder: (BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation) {
-      return page;
+      return page!;
     },
     transitionsBuilder: (BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation, Widget child) {
       return new SlideTransition(

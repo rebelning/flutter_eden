@@ -7,14 +7,14 @@ import 'package:example/domain/base/end_points.dart' as Endpoints;
 class LoginService {
   HttpClient client = inject<HttpClient>();
 
-  Future<HttpResponse> login(String login, String password) async {
+  Future<HttpResponse> login(String? login, String? password) async {
     HttpResponse<User> response = HttpResponse();
     final url = Endpoints.login.login;
     final payload = {"username": login, "password": password};
     final retAuth = client.post(url, body: payload);
 
     await retAuth.then((res) {
-      response.resCode = res.statusCode;
+      response.resCode = res.statusCode!;
 
       User user = LoginMapper.fromJson(res.data["data"]);
       response.data=user;

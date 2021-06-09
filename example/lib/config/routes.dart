@@ -21,7 +21,7 @@ class Routes {
   static void configureRoutes(FluroRouter router) {
     router.notFoundHandler = Handler(
         // ignore: missing_return
-        handlerFunc: (BuildContext context, Map<String, List<String>> params) {
+        handlerFunc: (BuildContext? context, Map<String, List<String>> params) {
       DebugLog.log("notFoundHandler", "ROUTE WAS NOT FOUND !!!");
     });
     router.define(root, handler: rootHandler);

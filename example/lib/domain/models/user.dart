@@ -1,11 +1,11 @@
 
 
 class User{
-  String userId;
-  String username;
-  String accessToken;
-  String mobile;
-  String address;
+  String? userId;
+  String? username;
+  String? accessToken;
+  String? mobile;
+  String? address;
 
   User({this.userId, this.username,this.accessToken,this.mobile,this.address});
 

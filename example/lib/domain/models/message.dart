@@ -1,7 +1,7 @@
 class Message {
-  String msgId;
-  String title;
-  String content;
+  String? msgId;
+  String? title;
+  String? content;
 
 
   Message({this.msgId, this.title, this.content});

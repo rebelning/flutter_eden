@@ -7,11 +7,11 @@ import 'package:rxdart/rxdart.dart';
 ///Login viewModel
 class LoginViewModel extends BaseViewModel {
   ///
-  LoginRepository repository = inject<LoginRepository>();
+  LoginRepository? repository = inject<LoginRepository>();
   final _isLogin = BehaviorSubject<bool>.seeded(false);
   final _login = BehaviorSubject<String>.seeded("");
   final _password = BehaviorSubject<String>.seeded("");
-  final _userInfo = BehaviorSubject<User>.seeded(null);
+  final _userInfo = BehaviorSubject<User?>.seeded(null);
 
   Stream get isLogin => _isLogin.stream;
 
@@ -34,12 +34,12 @@ class LoginViewModel extends BaseViewModel {
 
     await Future.delayed(Duration(seconds: 1));
 
-    HttpResponse<User> ret =
-        await repository.login(_login.value, _password.value);
+    HttpResponse<User>? ret =
+        await repository?.login(_login.value, _password.value);
     setLoading(false);
-    if (ret.resCode == 200) {
+    if (ret?.resCode == 200) {
       setIsLogin(true);
-      setUserInfo(ret.data);
+      setUserInfo(ret?.data as User);
       clear();
       return true;
     }
