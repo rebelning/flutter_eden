@@ -92,18 +92,21 @@ class AccountWidget {
               ),
             ),
           ),
-          StreamBuilder(
+          StreamBuilder<List<Menu>?>(
               stream: vm.menuList,
               builder: (context, snapshot) {
-                List<Menu> tmpList = snapshot.data as List<Menu>;
+                List<Menu>? tmpList = snapshot.data;
 
                 return SliverList(
                     delegate: SliverChildBuilderDelegate(
                   (context, index) {
-                    Menu menu = tmpList[index];
+                    Menu? menu;
+                    if (tmpList != null) {
+                      menu = tmpList[index];
+                    }
                     return _getItem(context, menu);
                   },
-                  childCount: tmpList == null ? 0 : tmpList.length,
+                  childCount: tmpList?.length,
                 ));
               }),
         ],
@@ -127,10 +130,10 @@ class AccountWidget {
 
   ///login view
   Widget _getLoginView(BuildContext context) {
-    return StreamBuilder(
+    return StreamBuilder<User?>(
         stream: vmLogin.userInfo,
         builder: (context, snapshot) {
-          User user = snapshot.data as User;
+          User? user = snapshot.data;
           return Container(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -169,7 +172,7 @@ class AccountWidget {
   }
 
   ///
-  Widget _getItem(BuildContext context, Menu menu) {
+  Widget _getItem(BuildContext context, Menu? menu) {
     return InkWell(
       child: Container(
         decoration: ShapeDecoration(
@@ -185,7 +188,7 @@ class AccountWidget {
           children: [
             Expanded(
               child: Text(
-                "${menu.section}",
+                "${menu?.section}",
                 style: TextStyle(
                     color: Theme.of(context).colorScheme.color_333333,
                     fontSize: dimens.fontTextSmall),
@@ -205,7 +208,7 @@ class AccountWidget {
                     textAlign: TextAlign.right,
                   ),
                   IconButton(
-                    onPressed: (){},
+                    onPressed: () {},
                     padding: EdgeInsets.all(0),
                     iconSize: dimens.padding_15,
                     constraints: BoxConstraints(

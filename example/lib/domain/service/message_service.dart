@@ -7,7 +7,7 @@ import 'package:example/domain/base/end_points.dart' as EndPoints;
 class MessageService {
   HttpClient client = inject<HttpClient>();
 
-  Future<HttpResponse> getMessageList() async {
+  Future<HttpResponse<List<Message>>> getMessageList() async {
     HttpResponse<List<Message>> response = HttpResponse();
     String url = EndPoints.appList.messageList;
 

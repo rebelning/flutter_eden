@@ -20,9 +20,9 @@ class _MessagePageState extends AbstractMvvmStreamBaseState<MessagePage>
     return false;
   }
 
-  @override
-  Stream getStream() {
-    return null;
+ @override
+  Stream<bool?> getStream() {
+    return null!;
   }
 
   @override

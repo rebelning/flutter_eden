@@ -7,10 +7,10 @@ class MessageWidget {
   final vm = inject<MessageViewModel>();
 
   Widget messageView() {
-    return StreamBuilder(
+    return StreamBuilder<List<Message>?>(
         stream: vm.messageList,
         builder: (context, snapshot) {
-          List<Message> msgList = snapshot.data;
+          List<Message>? msgList = snapshot.data;
           return ListView.builder(
             itemBuilder: (context, index) {
               return Container();

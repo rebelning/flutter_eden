@@ -36,7 +36,7 @@ class InputWidget extends StatefulWidget {
 }
 
 class _InputWidgetState extends State<InputWidget> {
-  TextEditingController? _controller;
+  TextEditingController? _controller=null;
 
   @override
   void didChangeDependencies() {
@@ -47,11 +47,14 @@ class _InputWidgetState extends State<InputWidget> {
 
   @override
   Widget build(BuildContext context) {
-    _controller?.text = widget.value!;
+
     //fix the invertion of text editing
-    if (widget.value != null)
+    if (widget.value != null){
+      _controller?.text = widget.value!;
       _controller?.selection =
           TextSelection.collapsed(offset: widget.value!.length);
+    }
+
 
     return Padding(
       padding: EdgeInsets.only(top: dimens.fieldSpace),

@@ -72,7 +72,7 @@ class EdenOptions {
   TextDirection? resolvedTextDirection() {
     switch (customTextDirection) {
       case CustomTextDirection.localeBased:
-        final language = locale?.languageCode?.toLowerCase();
+        final language = locale.languageCode.toLowerCase();
         if (language == null) return null;
         return rtlLanguages.contains(language)
             ? TextDirection.rtl
@@ -239,7 +239,7 @@ class _ModelBindingState extends State<ModelBinding> {
   }
 
   void handleTimeDilation(EdenOptions newModel) {
-    if (currentModel?.timeDilation != newModel?.timeDilation) {
+    if (currentModel?.timeDilation != newModel.timeDilation) {
       _timeDilationTimer?.cancel();
       _timeDilationTimer = null;
       if (newModel.timeDilation! > 1) {

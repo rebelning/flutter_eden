@@ -4,7 +4,8 @@ import 'package:flutter_eden/src/values/dimen/dimens.dart' as dimens;
 
 class ToastWidget {
   static void show(String msg) => Fluttertoast.showToast(
-      msg: msg ?? "Toast message",
+      // msg: msg "Toast message",
+      msg: msg ,
       toastLength: Toast.LENGTH_LONG,
       gravity: ToastGravity.BOTTOM,
       timeInSecForIosWeb: 1,

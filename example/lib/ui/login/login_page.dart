@@ -39,7 +39,7 @@ class _LoginPageState extends AbstractMvvmStreamBaseState with LoginWidget {
   }
 
   @override
-  Stream getStream() {
-    return vm.loading;
+  Stream<bool> getStream() {
+    return vm.loading!;
   }
 }

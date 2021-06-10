@@ -13,19 +13,19 @@ class LoginViewModel extends BaseViewModel {
   final _password = BehaviorSubject<String>.seeded("");
   final _userInfo = BehaviorSubject<User?>.seeded(null);
 
-  Stream get isLogin => _isLogin.stream;
+  Stream<bool?> get isLogin => _isLogin.stream;
 
   void setIsLogin(bool value) => _isLogin.add(value);
 
-  Stream get login => _login.stream;
+  Stream<String?> get login => _login.stream;
 
   void setLogin(String value) => _login.add(value);
 
-  Stream get password => _password.stream;
+  Stream<String?> get password => _password.stream;
 
   void setPassword(String value) => _password.add(value);
 
-  Stream get userInfo => _userInfo.stream;
+  Stream<User?> get userInfo => _userInfo.stream;
 
   void setUserInfo(User value) => _userInfo.add(value);
 

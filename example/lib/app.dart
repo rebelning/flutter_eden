@@ -9,7 +9,7 @@ class App extends AbstractMvvmBaseNav {
   State<StatefulWidget> createState() => AppState();
 }
 
-class AppState extends AbstractMvvmBaseNavState<App>  {
+class AppState extends AbstractMvvmBaseNavState<App> {
   @override
   bool getHideToolbar() {
     return true;
@@ -53,6 +53,6 @@ class AppState extends AbstractMvvmBaseNavState<App>  {
     super.onNavTap(index);
 
     ///
-    setToolbarTitle(getBarItems()[index].label);
+    setToolbarTitle(getBarItems()[index].label!);
   }
 }

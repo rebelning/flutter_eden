@@ -27,11 +27,13 @@ class LoadingWidget extends StatefulWidget {
 class _LoadingWidgetState extends State<LoadingWidget> {
   @override
   Widget build(BuildContext context) {
-    return Stack(
-        children: <Widget>[widget.child!, _loadingWidget(widget.status!)]);
+    return Stack(children: <Widget>[
+      widget.child!,
+      _loadingWidget(widget.status),
+    ]);
   }
 
-  Widget _loadingWidget(bool loadingWidget) {
+  Widget _loadingWidget(bool? loadingWidget) {
     return loadingWidget == true
         ? Container(
             alignment: Alignment.center,

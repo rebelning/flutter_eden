@@ -10,7 +10,7 @@ abstract class AbstractMvvmStreamBase extends AbstractMvvmBase {
 
 ///
 abstract class AbstractMvvmStreamBaseState<T extends AbstractMvvmStreamBase>
-    extends AbstractMvvmBaseState<T> implements BaseStream {
+    extends AbstractMvvmBaseState<T> implements BaseStream<bool> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,12 +24,12 @@ abstract class AbstractMvvmStreamBaseState<T extends AbstractMvvmStreamBase>
 
   ///
   Widget streamBody() {
-    return StreamBuilder(
+    return StreamBuilder<bool?>(
         stream: getStream(),
         builder: (context, snapshot) {
           return LoadingWidget(
             message: "Loading...",
-            status: snapshot.data as bool,
+            status: snapshot.data,
             child: getBottomNavigationBar() == null
                 ? SafeArea(
                     child: buildBody(context),

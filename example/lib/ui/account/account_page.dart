@@ -39,12 +39,12 @@ class _AccountPageState extends AbstractMvvmKLiveBaseState with AccountWidget {
 
   @override
   Widget buildBody(BuildContext context) {
-    return StreamBuilder(
+    return StreamBuilder<bool>(
         stream: vm.loading,
-        builder: (context, snapshot) {
+        builder: (BuildContext context,AsyncSnapshot<bool> snapshot) {
           return LoadingWidget(
             message: "Loading...",
-            status: snapshot.data as bool,
+            status: snapshot.data,
             child: sliverView(context, getScaffoldKey()),
           );
         });

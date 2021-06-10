@@ -37,23 +37,23 @@ class LoginWidget {
             SizedBox(height: 20),
             LogoWidget(small: true,),
             SizedBox(height: 20),
-            StreamBuilder(
+            StreamBuilder<String?>(
                 stream: vm.login,
                 builder: (context, snapshot) {
                   return InputWidget(
                     placeholder: "login",
-                    value: snapshot.data as String,
+                    value: snapshot.data,
                     onChange: (value) => vm.setLogin(value),
                   );
                 }),
             SizedBox(height: 10),
-            StreamBuilder(
+            StreamBuilder<String?>(
                 stream: vm.password,
                 builder: (context, snapshot) {
                   return InputWidget(
                     placeholder: "password",
                     password: true,
-                    value: snapshot.data as String,
+                    value: snapshot.data,
                     onChange: (value) => vm.setPassword(value),
                   );
                 }),

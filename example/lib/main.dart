@@ -26,13 +26,13 @@ void main() {
 
 class ExampleApp extends StatelessWidget {
   const ExampleApp({
-    Key key,
+    Key? key,
     this.initialRoute,
     this.isTestMode = false,
   }) : super(key: key);
 
-  final bool isTestMode;
-  final String initialRoute;
+  final bool? isTestMode;
+  final String? initialRoute;
 
   @override
   Widget build(BuildContext context) {

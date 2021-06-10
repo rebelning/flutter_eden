@@ -24,7 +24,7 @@ class ButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final action = disabled! == true ? null : onPress!;
+    final action = disabled == true ? null : onPress;
 
     Color backgroundColor = colors.accentColor;
     Color borderColor = colors.accentColor;

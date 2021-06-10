@@ -6,9 +6,9 @@ import 'package:rxdart/subjects.dart';
 
 class AccountViewModel extends BaseViewModel {
   AccountRepository _accountRepository = inject<AccountRepository>();
-  final _menuList = BehaviorSubject<List<Menu>>.seeded([]);
+  final _menuList = BehaviorSubject<List<Menu>?>.seeded([]);
 
-  Stream get menuList => _menuList.stream;
+  Stream<List<Menu>?> get menuList => _menuList.stream;
 
   void setMenuList(List<Menu> value) => _menuList.add(value);
 

@@ -62,9 +62,9 @@ class _SettingPageState extends AbstractMvvmStreamBaseState<SettingPage> {
     return false;
   }
 
-  @override
-  Stream getStream() {
-    return null;
+ @override
+  Stream<bool> getStream() {
+    return null!;
   }
 
   @override
