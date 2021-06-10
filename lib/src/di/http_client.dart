@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_eden/src/cache/storage.helper.dart';
 import 'package:flutter_eden/src/di/interceptor/token_interceptor.dart';
 
 class HttpClient {

@@ -24,7 +24,7 @@ class AccountWidget {
   double? imageHeight;
   double? _statusBarHeight;
   AppBarBehavior _appBarBehavior = AppBarBehavior.pinned;
-  String _title = "Me";
+  // String _title = "Me";
 
   void _getScreenInfo(context) {
     _statusBarHeight = MediaQuery.of(context).padding.top;

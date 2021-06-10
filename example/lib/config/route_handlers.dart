@@ -11,8 +11,6 @@ import 'package:example/app.dart';
 import 'package:example/ui/login/login_page.dart';
 import 'package:example/ui/message/message_page.dart';
 import 'package:example/ui/setting/setting_page.dart';
-import 'package:flutter/painting.dart';
-import 'package:flutter_eden/eden.dart';
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 
@@ -40,12 +38,12 @@ import 'package:flutter/material.dart';
   /// `adb shell am start -W -a android.intent.action.VIEW -d "fluro://deeplink?path=/message&mesage=fluro%20rocks%21%21" com.theyakka.fluro`
   var deepLinkHandler = Handler(
       handlerFunc: (BuildContext? context, Map<String, List<String>> params) {
-        String? colorHex = params["color_hex"]?.first;
-        String? result = params["result"]?.first;
-        Color color = Color(0xFFFFFFFF);
-        if (colorHex != null && colorHex.length > 0) {
-          color = Color(ColorHelpers.fromHexString(colorHex));
-        }
+        // String? colorHex = params["color_hex"]?.first;
+        // String? result = params["result"]?.first;
+        // Color color = Color(0xFFFFFFFF);
+        // if (colorHex != null && colorHex.length > 0) {
+        //   color = Color(ColorHelpers.fromHexString(colorHex));
+        // }
 //  return DemoSimpleComponent(
 //      message: "DEEEEEP LINK!!!", color: color, result: result);
         return null;

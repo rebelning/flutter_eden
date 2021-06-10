@@ -1,4 +1,3 @@
-import 'package:example/domain/mappers/json_convert_content.dart';
 
 class HttpResponse<T> {
   int? resCode = 200;

@@ -1,8 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_eden/eden.dart';
-import 'package:flutter_eden/src/core/stream_base.dart';
-import 'package:rxdart/rxdart.dart';
 
 ///
 abstract class AbstractCoreWidget extends StatefulWidget {
