@@ -12,7 +12,7 @@ abstract class AbstractMvvmBase extends StatefulWidget {
 ///
 abstract class AbstractMvvmBaseState<T extends AbstractMvvmBase>
     extends State<T> {
-  final GlobalKey<ScaffoldState>? _scaffoldKey = GlobalKey<ScaffoldState>();
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   String? _toolbarTitle;
 
   ///hide toolbar
@@ -55,7 +55,7 @@ abstract class AbstractMvvmBaseState<T extends AbstractMvvmBase>
   }
 
   ///
-  GlobalKey<ScaffoldState>? getScaffoldKey() => _scaffoldKey!;
+  GlobalKey<ScaffoldState>? getScaffoldKey() => _scaffoldKey;
 
   ///build body
   Widget buildBody(BuildContext context);
