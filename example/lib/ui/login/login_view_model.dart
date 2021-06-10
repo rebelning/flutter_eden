@@ -27,19 +27,17 @@ class LoginViewModel extends BaseViewModel {
 
   Stream<User?> get userInfo => _userInfo.stream;
 
-  void setUserInfo(User value) => _userInfo.add(value);
+  void setUserInfo(User? value) => _userInfo.add(value);
 
   Future<bool> signIn() async {
     setLoading(true);
-
     await Future.delayed(Duration(seconds: 1));
-
     HttpResponse<User>? ret =
         await repository?.login(_login.value, _password.value);
     setLoading(false);
     if (ret?.resCode == 200) {
       setIsLogin(true);
-      setUserInfo(ret?.data as User);
+      setUserInfo(ret?.data);
       clear();
       return true;
     }

@@ -6,14 +6,14 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_eden/eden.dart';
 
 ///
-class AccountPage extends AbstractMvvmKLiveBase {
+class AccountPage extends AbstractCoreKLiveWidget {
 
 
   @override
   State<StatefulWidget> createState() => _AccountPageState();
 }
 
-class _AccountPageState extends AbstractMvvmKLiveBaseState with AccountWidget {
+class _AccountPageState extends AbstractCoreKLiveWidgetState with AccountWidget {
   final vm = inject<AccountViewModel>();
 
   @override

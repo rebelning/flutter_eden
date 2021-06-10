@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_eden/eden.dart';
 
-class Home extends AbstractMvvmKLiveBase {
+class Home extends AbstractCoreKLiveWidget {
   @override
   State<StatefulWidget> createState() => _HomePageState();
 }
 
-class _HomePageState extends AbstractMvvmKLiveBaseState<Home>{
+class _HomePageState extends AbstractCoreKLiveWidgetState<Home>{
   // @override
   // bool get wantKeepAlive => true;
 

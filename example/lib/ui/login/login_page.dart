@@ -6,12 +6,12 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_eden/eden.dart';
 
 ///login
-class LoginPage extends AbstractMvvmStreamBase {
+class LoginPage extends AbstractCoreStreamWidget {
   @override
   State<StatefulWidget> createState() => _LoginPageState();
 }
 
-class _LoginPageState extends AbstractMvvmStreamBaseState with LoginWidget {
+class _LoginPageState extends AbstractCoreStreamWidgetState with LoginWidget {
   final vm = inject<LoginViewModel>();
 
   @override

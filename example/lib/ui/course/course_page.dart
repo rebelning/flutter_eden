@@ -3,12 +3,12 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_eden/eden.dart';
 
 ///course page
-class CoursePage extends AbstractMvvmKLiveBase {
+class CoursePage extends AbstractCoreKLiveWidget {
   @override
   State<StatefulWidget> createState() => _CoursePageState();
 }
 
-class _CoursePageState extends AbstractMvvmKLiveBaseState {
+class _CoursePageState extends AbstractCoreKLiveWidgetState {
   @override
   bool get wantKeepAlive => true;
 

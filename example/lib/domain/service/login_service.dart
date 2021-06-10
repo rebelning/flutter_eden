@@ -7,7 +7,7 @@ import 'package:example/domain/base/end_points.dart' as Endpoints;
 class LoginService {
   HttpClient client = inject<HttpClient>();
 
-  Future<HttpResponse> login(String? login, String? password) async {
+  Future<HttpResponse<User>> login(String? login, String? password) async {
     HttpResponse<User> response = HttpResponse();
     final url = Endpoints.login.login;
     final payload = {"username": login, "password": password};

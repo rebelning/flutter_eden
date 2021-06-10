@@ -4,12 +4,12 @@ import 'package:example/ui/home/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_eden/eden.dart';
 
-class App extends AbstractMvvmBaseNav {
+class App extends AbstractCoreNavWidget {
   @override
   State<StatefulWidget> createState() => AppState();
 }
 
-class AppState extends AbstractMvvmBaseNavState<App> {
+class AppState extends AbstractCoreNavWidgetState<App> {
   @override
   bool getHideToolbar() {
     return true;

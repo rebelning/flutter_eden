@@ -3,12 +3,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_eden/eden.dart';
 
-class MessagePage extends AbstractMvvmStreamBase {
+class MessagePage extends AbstractCoreStreamWidget {
   @override
   State<StatefulWidget> createState() => _MessagePageState();
 }
 
-class _MessagePageState extends AbstractMvvmStreamBaseState<MessagePage>
+class _MessagePageState extends AbstractCoreStreamWidgetState<MessagePage>
     with MessageWidget {
   @override
   bool getHideToolbar() {

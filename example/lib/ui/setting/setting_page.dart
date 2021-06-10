@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_eden/eden.dart';
 
-class SettingPage extends AbstractMvvmStreamBase {
+class SettingPage extends AbstractCoreStreamWidget {
   @override
   State<StatefulWidget> createState() => _SettingPageState();
 }
 
-class _SettingPageState extends AbstractMvvmStreamBaseState<SettingPage> {
+class _SettingPageState extends AbstractCoreStreamWidgetState<SettingPage> {
   void _system(){
     
   }

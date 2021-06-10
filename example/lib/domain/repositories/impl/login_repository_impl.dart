@@ -11,7 +11,7 @@ class LoginRepository implements ILoginRepository {
   ///
   @override
   Future<HttpResponse<User>> login(String? login, String? password) async {
-    HttpResponse response = HttpResponse();
+    HttpResponse<User> response = HttpResponse();
     // final hasConnection = await ConnectionHelper.hasConnection();
     final hasConnection = true;
     if (hasConnection) {
@@ -19,6 +19,6 @@ class LoginRepository implements ILoginRepository {
     } else {
       response.message = "Device offline";
     }
-    return response.data;
+    return response;
   }
 }

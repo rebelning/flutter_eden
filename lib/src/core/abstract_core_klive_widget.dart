@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_eden/eden.dart';
 
 ///AutomaticKeepAliveClientMixin
-abstract class AbstractMvvmKLiveBase extends AbstractMvvmBase {
-  const AbstractMvvmKLiveBase({Key? key}) : super(key: key);
+abstract class AbstractCoreKLiveWidget extends AbstractCoreWidget {
+  const AbstractCoreKLiveWidget({Key? key}) : super(key: key);
 }
 
 ///
-abstract class AbstractMvvmKLiveBaseState<T extends AbstractMvvmKLiveBase>
-    extends AbstractMvvmBaseState<T> with AutomaticKeepAliveClientMixin {
+abstract class AbstractCoreKLiveWidgetState<T extends AbstractCoreKLiveWidget>
+    extends AbstractCoreWidgetState<T> with AutomaticKeepAliveClientMixin {
   @override
   bool get wantKeepAlive => true;
 

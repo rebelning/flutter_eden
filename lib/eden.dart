@@ -2,12 +2,12 @@
 ///
 library eden;
 export 'package:rxdart/rxdart.dart';
-export 'src/core/abstract_mvvm_base.dart';
-export 'src/core/abstract_bottom_nav_base.dart';
-export 'src/core/abstract_mvvm_klive_base.dart';
+export 'src/core/abstract_core_base_widget.dart';
+export 'src/core/abstract_core_nav_widget.dart';
+export 'src/core/abstract_core_klive_widget.dart';
 export 'src/core/fluro/application.dart';
 export 'src/core/fluro/navigate_router.dart';
-export 'src/core/abstract_mvvm_stream_base.dart';
+export 'src/core/abstract_core_stream_widget.dart';
 export 'src/core/options/eden_options.dart';
 
 export 'src/core/view_model.base.dart';

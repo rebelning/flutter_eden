@@ -5,12 +5,12 @@ import 'package:flutter_eden/src/core/stream_base.dart';
 import 'package:rxdart/rxdart.dart';
 
 ///
-abstract class AbstractMvvmBase extends StatefulWidget {
-  const AbstractMvvmBase({ Key? key}) : super(key: key);
+abstract class AbstractCoreWidget extends StatefulWidget {
+  const AbstractCoreWidget({ Key? key}) : super(key: key);
 }
 
 ///
-abstract class AbstractMvvmBaseState<T extends AbstractMvvmBase>
+abstract class AbstractCoreWidgetState<T extends AbstractCoreWidget>
     extends State<T> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   String? _toolbarTitle;
