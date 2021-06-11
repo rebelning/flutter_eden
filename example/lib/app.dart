@@ -55,4 +55,13 @@ class AppState extends AbstractCoreNavWidgetState<App> {
     ///
     setToolbarTitle(getBarItems()[index].label!);
   }
+  @override
+  void initData() {
+  }
+
+  @override
+  void dealloc() {
+  }
+
+
 }

@@ -12,18 +12,7 @@ class AccountService {
     String url = EndPoints.appList.menuList;
     final ret = client.get(url);
     ret.then((res) {
-      response.resCode = res.statusCode!;
-      // List<Map<String, dynamic>> tmpList = [
-      //   {"id": 1, "section": "setting"},
-      //   {"id": 2, "section": "setting"},
-      //   {"id": 3, "section": "setting"},
-      //   {"id": 4, "section": "setting"},
-      //   {"id": 4, "section": "setting"},
-      //   {"id": 4, "section": "setting"},
-      //   {"id": 4, "section": "setting"},
-      //   {"id": 4, "section": "setting"},
-      // ];
-
+      response.resCode = res.statusCode;
       response.data = MenuMapper.fromJsonList(res.data["data"]);
 
     }).catchError((onError) {

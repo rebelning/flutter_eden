@@ -28,6 +28,14 @@ class _CoursePageState extends AbstractCoreKLiveWidgetState {
   }
 
 
+
+  @override
+  void initData() {
+  }
+  @override
+  void dealloc() {
+  }
+
   // @override
   // Widget buildBody(BuildContext context) {
   //   return Container(

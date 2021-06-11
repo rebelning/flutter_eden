@@ -71,4 +71,12 @@ class _SettingPageState extends AbstractCoreStreamWidgetState<SettingPage> {
   String getToolbarTitle() {
     return "setting";
   }
+  @override
+  void initData() {
+  }
+  @override
+  void dealloc() {
+  }
+
+
 }

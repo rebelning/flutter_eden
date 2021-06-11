@@ -37,4 +37,12 @@ class _MessagePageState extends AbstractCoreStreamWidgetState<MessagePage>
       child: TextWidget(text: "Message"),
     );
   }
+  @override
+  void initData() {
+  }
+  @override
+  void dealloc() {
+  }
+
+
 }

@@ -4,7 +4,7 @@ import 'package:flutter_eden/eden.dart';
 
 ///
 abstract class AbstractCoreWidget extends StatefulWidget {
-  const AbstractCoreWidget({ Key? key}) : super(key: key);
+  const AbstractCoreWidget({Key? key}) : super(key: key);
 }
 
 ///
@@ -55,12 +55,33 @@ abstract class AbstractCoreWidgetState<T extends AbstractCoreWidget>
   ///
   GlobalKey<ScaffoldState>? getScaffoldKey() => _scaffoldKey;
 
+
+
+
+
+
+  ///dealloc
+  void dealloc();
+  ///init
+  void initData();
+
   ///build body
   Widget buildBody(BuildContext context);
-
   ///bottom navigation bar
   Widget? getBottomNavigationBar() {
     return null;
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    initData();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    dealloc();
   }
 
   @override
@@ -69,15 +90,14 @@ abstract class AbstractCoreWidgetState<T extends AbstractCoreWidget>
       key: _scaffoldKey,
       appBar: getAppbar(),
       //safe Area
-      body:  getBottomNavigationBar() == null
+      body: getBottomNavigationBar() == null
           ? SafeArea(
-        child: buildBody(context),
-      )
+              child: buildBody(context),
+            )
           : buildBody(context),
       bottomNavigationBar: getBottomNavigationBar(),
     );
   }
-
 
   void pop(context) {
     Navigator.pop(context);

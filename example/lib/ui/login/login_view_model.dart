@@ -49,5 +49,7 @@ class LoginViewModel extends BaseViewModel {
   void clear() {
     _login.add("");
     _password.add("");
+    setLoading(false);
+
   }
 }

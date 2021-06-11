@@ -49,5 +49,15 @@ class _AccountPageState extends AbstractCoreKLiveWidgetState with AccountWidget 
         });
   }
 
+  @override
+  void dealloc() {
+
+  }
+
+  @override
+  void initData() {
+
+  }
+
 
 }

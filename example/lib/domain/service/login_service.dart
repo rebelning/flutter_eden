@@ -14,7 +14,7 @@ class LoginService {
     final retAuth = client.post(url, body: payload);
 
     await retAuth.then((res) {
-      response.resCode = res.statusCode!;
+      response.resCode = res.statusCode;
 
       User user = LoginMapper.fromJson(res.data["data"]);
       response.data=user;
@@ -22,7 +22,7 @@ class LoginService {
     }).catchError((onError) {
       response.resCode = 500; //失败
       // response.data = onError;
-      response.message = "login failure";
+      response.message = "$onError";
       DebugLog.log("onError","${onError.toString()}");
 
 

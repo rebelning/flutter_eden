@@ -41,6 +41,14 @@ class _HomePageState extends AbstractCoreKLiveWidgetState<Home>{
       child: TextWidget(text: 'home...'),
     );
   }
+  @override
+  void initData() {
+  }
+
+  @override
+  void dealloc() {
+  }
+
 
 
 }

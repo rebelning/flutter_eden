@@ -40,6 +40,18 @@ class _LoginPageState extends AbstractCoreStreamWidgetState with LoginWidget {
 
   @override
   Stream<bool> getStream() {
-    return vm.loading!;
+    return vm.loading;
   }
+
+
+  @override
+  void initData() {
+  }
+  @override
+  void dealloc() {
+    vm.clear();
+  }
+
+
+
 }

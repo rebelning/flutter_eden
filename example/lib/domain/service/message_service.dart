@@ -13,7 +13,7 @@ class MessageService {
 
     final resMsg = client.get(url);
     resMsg.then((res) {
-      response.resCode = res.statusCode!;
+      response.resCode = res.statusCode;
       response.data = MessageMapper.fromJsonList(res.data["data"]);
       response.message = res.data["message"];
     }).catchError((onError) {
