@@ -1,4 +1,3 @@
-import 'package:example/domain/http_response.dart';
 import 'package:example/domain/mappers/message_mapper.dart';
 import 'package:example/domain/models/message.dart';
 import 'package:flutter_eden/eden.dart';

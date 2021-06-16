@@ -6,9 +6,9 @@ class MenuMapper {
 
   static Menu fromJson(Map<String, dynamic> json) {
     return Menu(
-      menuId: json["menuId"] as String,
-      section: json["section"] as String,
-      action: json["action"] as String,
+      menuId: json["menuId"],
+      section: json["section"],
+      action: json["action"],
     );
   }
 }

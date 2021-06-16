@@ -13,6 +13,7 @@ class AppComponent extends StatefulWidget {
 
 class AppComponentState extends State<AppComponent> {
   AppComponentState() {
+
     final router = FluroRouter();
 
     ///
@@ -22,6 +23,8 @@ class AppComponentState extends State<AppComponent> {
     ///
     Application.router = router;
   }
+
+
 
   @override
   Widget build(BuildContext context) {

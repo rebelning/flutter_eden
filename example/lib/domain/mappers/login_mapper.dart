@@ -6,10 +6,10 @@ class LoginMapper {
 
   static User fromJson(Map<String, dynamic> json) {
     return User(
-        userId: json["userId"] as String,
-        username: json["username"] as String,
-        accessToken: json["accessToken"] as String,
-        mobile: json["mobile"] as String,
-        address: json["address"] as String);
+        userId: json["userId"],
+        username: json["username"],
+        accessToken: json["accessToken"],
+        mobile: json["mobile"],
+        address: json["address"]);
   }
 }

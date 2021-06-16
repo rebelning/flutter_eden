@@ -1,4 +1,3 @@
-import 'package:example/domain/http_response.dart';
 import 'package:example/domain/mappers/login_mapper.dart';
 import 'package:example/domain/models/user.dart';
 import 'package:flutter_eden/eden.dart';

@@ -1,14 +1,14 @@
-import 'package:example/domain/http_response.dart';
 import 'package:example/domain/mappers/menu_mapper.dart';
-
+import 'package:example/domain/models/menu.dart';
+import 'package:flutter_eden/eden.dart';
 import 'package:flutter_eden/eden.dart';
 import 'package:example/domain/base/end_points.dart' as EndPoints;
 
 class AccountService {
   HttpClient client = inject<HttpClient>();
 
-  Future<HttpResponse> getMenuList() async {
-    HttpResponse response = HttpResponse();
+  Future<HttpResponse<List<Menu>>> getMenuList() async {
+    HttpResponse<List<Menu>> response = HttpResponse();
     String url = EndPoints.appList.menuList;
     final ret = client.get(url);
     ret.then((res) {

@@ -42,7 +42,7 @@ class TextWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final dynamic isBold = bold == true ? FontWeight.bold : FontWeight.normal;
 
-    final String textValue = text!;
+    final String textValue = text ?? "";
 
     final double fontSize = title == true
         ? dimens.fontTextTitle

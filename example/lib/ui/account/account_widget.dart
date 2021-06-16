@@ -24,6 +24,7 @@ class AccountWidget {
   double? imageHeight;
   double? _statusBarHeight;
   AppBarBehavior _appBarBehavior = AppBarBehavior.pinned;
+
   // String _title = "Me";
 
   void _getScreenInfo(context) {
@@ -37,8 +38,17 @@ class AccountWidget {
     DebugLog.log('imageHeight:', imageHeight.toString());
   }
 
-  void _getMenuList(BuildContext context, Key? key) {
-    vm.getMenuList();
+  void _getMenuList(BuildContext context, GlobalKey<ScaffoldState>? key) async {
+    // SnackMessage ret = await vm.getMenuList();
+    // if (ret.resCode==200) {
+    //   SnackbarWidget(key, message: ret.message);
+    // } else {
+    //   SnackbarWidget(key,
+    //       error: true,
+    //       message: ret.message,
+    //       actionMessage: "OK",
+    //       action: () {});
+    // }
   }
 
   void _login(BuildContext context) {
@@ -49,7 +59,7 @@ class AccountWidget {
     NavigateRouter().navigateTo(context, info?.action);
   }
 
-  Widget sliverView(BuildContext context, Key? key) {
+  Widget sliverView(BuildContext context, GlobalKey<ScaffoldState>? key) {
     _getScreenInfo(context);
     this._appBarHeight = imageHeight! - _statusBarHeight!;
     return Container(
@@ -188,7 +198,7 @@ class AccountWidget {
           children: [
             Expanded(
               child: Text(
-                "${menu?.section}",
+                "${menu?.section ?? ""}",
                 style: TextStyle(
                     color: Theme.of(context).colorScheme.color_333333,
                     fontSize: dimens.fontTextSmall),

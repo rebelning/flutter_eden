@@ -6,9 +6,9 @@ class MessageMapper {
 
   static Message fromJson(Map<String, dynamic> json) {
     return Message(
-      msgId: json["msgId"] as String,
-      title: json["title"] as String,
-      content: json["content"] as String,
+      msgId: json["msgId"] ,
+      title: json["title"],
+      content: json["content"],
     );
   }
 }

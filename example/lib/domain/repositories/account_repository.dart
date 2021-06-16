@@ -1,6 +1,6 @@
 
 
-import 'package:example/domain/http_response.dart';
+import 'package:flutter_eden/eden.dart';
 
 abstract class IAccountRepository{
   Future<HttpResponse> getMenuList();

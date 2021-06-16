@@ -1,4 +1,3 @@
-import 'package:example/domain/http_response.dart';
 import 'package:example/domain/models/message.dart';
 import 'package:example/domain/repositories/message_repository.dart';
 import 'package:example/domain/service/message_service.dart';

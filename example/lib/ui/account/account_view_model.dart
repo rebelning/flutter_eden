@@ -1,4 +1,3 @@
-import 'package:example/domain/http_response.dart';
 import 'package:example/domain/repositories/impl/account_repository_impl.dart';
 import 'package:flutter_eden/eden.dart';
 import 'package:example/domain/models/menu.dart';
@@ -10,11 +9,11 @@ class AccountViewModel extends BaseViewModel {
 
   Stream<List<Menu>?> get menuList => _menuList.stream;
 
-  void setMenuList(List<Menu> value) => _menuList.add(value);
+  void setMenuList(List<Menu>? value) => _menuList.add(value);
 
   Future<bool> getMenuList() async {
     setLoading(true);
-    HttpResponse response = await _accountRepository.getMenuList();
+    HttpResponse<List<Menu>> response = await _accountRepository.getMenuList();
 
     await Future.delayed(Duration(seconds: 1));
     setLoading(false);

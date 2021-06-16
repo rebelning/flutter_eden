@@ -1,4 +1,3 @@
-import 'package:example/domain/http_response.dart';
 import 'package:example/domain/models/user.dart';
 import 'package:example/domain/repositories/login_repository.dart';
 import 'package:example/domain/service/login_service.dart';

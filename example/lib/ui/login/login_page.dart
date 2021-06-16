@@ -13,7 +13,6 @@ class LoginPage extends AbstractCoreStreamWidget {
 
 class _LoginPageState extends AbstractCoreStreamWidgetState with LoginWidget {
   final vm = inject<LoginViewModel>();
-
   @override
   bool getHideToolbar() {
     return false;

@@ -55,18 +55,15 @@ abstract class AbstractCoreWidgetState<T extends AbstractCoreWidget>
   ///
   GlobalKey<ScaffoldState>? getScaffoldKey() => _scaffoldKey;
 
-
-
-
-
-
   ///dealloc
   void dealloc();
+
   ///init
   void initData();
 
   ///build body
   Widget buildBody(BuildContext context);
+
   ///bottom navigation bar
   Widget? getBottomNavigationBar() {
     return null;
@@ -105,5 +102,13 @@ abstract class AbstractCoreWidgetState<T extends AbstractCoreWidget>
 
   void popResult(context, Object value) {
     Navigator.pop(context, value);
+  }
+
+  void showSnack(String? message) {
+    SnackbarWidget(getScaffoldKey(),
+        error: true,
+        message: message ?? "",
+        actionMessage: "OK",
+        action: () {});
   }
 }
