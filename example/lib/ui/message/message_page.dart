@@ -33,8 +33,10 @@ class _MessagePageState extends AbstractCoreStreamWidgetState<MessagePage>
   @override
   Widget buildBody(BuildContext context) {
 
-    return Center(
-      child: TextWidget(text: "Message"),
+    return FutureBuilder(
+      builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+        return TextWidget(text: "Message");
+      },
     );
   }
   @override

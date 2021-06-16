@@ -32,4 +32,5 @@ Future<void> setupInjectionImpl() async {
   inject.registerLazySingleton(() => AccountViewModel());
 
   inject.registerLazySingleton(() => MessageViewModel());
+
 }
