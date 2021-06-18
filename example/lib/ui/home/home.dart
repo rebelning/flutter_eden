@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_eden/eden.dart';
+import 'package:get_it/get_it.dart';
 
 class Home extends AbstractCoreKLiveWidget {
   @override
@@ -30,6 +31,7 @@ class _HomePageState extends AbstractCoreKLiveWidgetState<Home>{
 
   @override
   Widget buildBody(BuildContext context) {
+
    Size size= window.physicalSize;
    // mediaQuery.devicePixelRatio
   final ratio= MediaQuery.of(context).devicePixelRatio;
@@ -43,6 +45,7 @@ class _HomePageState extends AbstractCoreKLiveWidgetState<Home>{
   }
   @override
   void initData() {
+
   }
 
   @override

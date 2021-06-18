@@ -1,18 +1,21 @@
 import 'dart:io';
-
 import 'package:example/app/app_component.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_eden/eden.dart';
 import 'package:example/di/injector_provider_impl.dart';
 import 'package:flutter/scheduler.dart' show timeDilation;
+
 // export 'package:gallery/data/demos.dart' show pumpDeferredLibraries;
 void main() {
 //  debugProfileBuildsEnabled = true;
   ///
+
   setupInjection();
+
   ///
   setupInjectionImpl();
+
   ///
   // runApp(AppComponent());
   runApp(ExampleApp());

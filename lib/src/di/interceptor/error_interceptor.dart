@@ -14,6 +14,8 @@ class ErrorInterceptor extends InterceptorsWrapper {
     snackMessage.message = err.message;
     final error = inject<ErrorClient>();
     error.setSnackMessage(snackMessage);
+    // error.setSnackClear();
+
 
   }
 }

@@ -4,7 +4,7 @@ import './text.dart';
 
 class SnackbarWidget {
   SnackbarWidget(
-    GlobalKey<ScaffoldState>? scaffoldKey, {
+      BuildContext context, {
     bool? error,
     String? message,
     Function? action,
@@ -28,6 +28,7 @@ class SnackbarWidget {
       ),
     );
 
-    scaffoldKey?.currentState?.showSnackBar(snackbar);
+    // scaffoldKey?.currentState?.showSnackBar(snackbar);
+    ScaffoldMessenger.of(context).showSnackBar(snackbar);
   }
 }

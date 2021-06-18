@@ -28,6 +28,7 @@ class AppComponentState extends State<AppComponent> {
 
   @override
   Widget build(BuildContext context) {
+
     final app = MaterialApp(
       localizationsDelegates: [
         GlobalMaterialLocalizations.delegate,

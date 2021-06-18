@@ -11,6 +11,7 @@ abstract class AbstractCoreWidget extends StatefulWidget {
 abstract class AbstractCoreWidgetState<T extends AbstractCoreWidget>
     extends State<T> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
   String? _toolbarTitle;
 
   ///hide toolbar
@@ -87,14 +88,16 @@ abstract class AbstractCoreWidgetState<T extends AbstractCoreWidget>
       key: _scaffoldKey,
       appBar: getAppbar(),
       //safe Area
-      body: getBottomNavigationBar() == null
-          ? SafeArea(
-              child: buildBody(context),
-            )
-          : buildBody(context),
+      body: parentBody,
       bottomNavigationBar: getBottomNavigationBar(),
     );
   }
+
+  Widget get parentBody => getBottomNavigationBar() == null
+      ? SafeArea(
+          child: buildBody(context),
+        )
+      : buildBody(context);
 
   void pop(context) {
     Navigator.pop(context);
@@ -104,11 +107,13 @@ abstract class AbstractCoreWidgetState<T extends AbstractCoreWidget>
     Navigator.pop(context, value);
   }
 
-  void showSnack(String? message) {
-    SnackbarWidget(getScaffoldKey(),
-        error: true,
-        message: message ?? "",
-        actionMessage: "OK",
-        action: () {});
+  ///show snack bar
+  void showSnack(BuildContext context, String? message) {
+    if (message == null) return;
+    ///
+    WidgetsBinding.instance!.addPostFrameCallback((_) {
+      SnackbarWidget(context,
+          error: true, message: message, actionMessage: "OK", action: () {});
+    });
   }
 }

@@ -13,7 +13,6 @@ class AccountPage extends AbstractCoreKLiveWidget {
 class _AccountPageState extends AbstractCoreKLiveWidgetState
     with AccountWidget {
   final vm = inject<AccountViewModel>();
-  final errorVM = inject<ErrorClient>();
 
   @override
   void initState() {
@@ -44,26 +43,15 @@ class _AccountPageState extends AbstractCoreKLiveWidgetState
           return LoadingWidget(
             message: "Loading...",
             status: snapshot.data,
-            child: _error(context),
+            child: sliverView(context, getScaffoldKey()),
           );
         });
   }
 
-  Widget _error(BuildContext context) {
-    return StreamBuilder<SnackMessage?>(
-        stream: errorVM.stream,
-        builder: (context, snapshot) {
-          WidgetsBinding.instance!.addPostFrameCallback((_) {
-            if (snapshot.data?.message != null)
-              showSnack(snapshot.data?.message);
-          });
-
-          return sliverView(context, getScaffoldKey());
-        });
-  }
-
   @override
-  void dealloc() {}
+  void dealloc() {
+    vm.clear();
+  }
 
   @override
   void initData() {}

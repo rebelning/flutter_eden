@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter_eden/src/di/interceptor/auth_interceptor.dart';
 import 'package:flutter_eden/src/di/interceptor/error_interceptor.dart';
 import 'package:flutter_eden/src/di/interceptor/token_interceptor.dart';
 
@@ -17,6 +18,7 @@ class HttpClient {
 
     ///
     _client.interceptors.add(TokenInterceptor());
+    _client.interceptors.add(AuthInterceptor());
     _client.interceptors.add(ErrorInterceptor());
     _client.interceptors.add(LogInterceptor(
         request: _debug,

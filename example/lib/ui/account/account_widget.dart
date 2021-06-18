@@ -39,7 +39,7 @@ class AccountWidget {
   }
 
   void _getMenuList(BuildContext context, GlobalKey<ScaffoldState>? key) async {
-    // SnackMessage ret = await vm.getMenuList();
+    bool flag= await vm.getMenuList();
     // if (ret.resCode==200) {
     //   SnackbarWidget(key, message: ret.message);
     // } else {
