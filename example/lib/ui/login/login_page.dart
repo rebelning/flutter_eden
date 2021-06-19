@@ -38,7 +38,7 @@ class _LoginPageState extends AbstractCoreStreamWidgetState with LoginWidget {
   }
 
   @override
-  Stream<bool> getStream() {
+  Stream<LoadingMessage> getStream() {
     return vm.loading;
   }
 

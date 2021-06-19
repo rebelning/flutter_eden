@@ -11,20 +11,17 @@ class LoginService {
     final url = Endpoints.login.login;
     final payload = {"username": login, "password": password};
     final retAuth = client.post(url, body: payload);
-
     await retAuth.then((res) {
       response.resCode = res.statusCode;
 
       User user = LoginMapper.fromJson(res.data["data"]);
-      response.data=user;
+      response.data = user;
       StorageHelper.set(StorageKeys.token, user.accessToken);
     }).catchError((onError) {
       response.resCode = 500; //失败
       // response.data = onError;
       response.message = "$onError";
-      DebugLog.log("onError","${onError.toString()}");
-
-
+      DebugLog.log("onError", "${onError.toString()}");
     });
     print("HttpResponse=$response");
     return response;

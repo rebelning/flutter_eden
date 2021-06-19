@@ -11,13 +11,13 @@ class LoginWidget {
   void _onLogin(BuildContext context, GlobalKey<ScaffoldState>? key) async {
     final ret = await vm.signIn();
     if (ret) {
-      SnackbarWidget(context, message: "SUCCESS");
+      // SnackbarWidget(context, message: "SUCCESS");
       NavigateRouter().pop(context);
     } else {
-      SnackbarWidget(context,
-          error: true, message: "NOT FOUND", actionMessage: "OK", action: () {
-        print("ACTION CLICKED");
-      });
+      // SnackbarWidget(context,
+      //     error: true, message: "NOT FOUND", actionMessage: "OK", action: () {
+      //   print("ACTION CLICKED");
+      // });
     }
     await Future.delayed(Duration(seconds: 1));
     // Navigator.pushReplacement(context, NavSlideFromTop(

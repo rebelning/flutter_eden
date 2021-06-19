@@ -63,7 +63,7 @@ class _SettingPageState extends AbstractCoreStreamWidgetState<SettingPage> {
   }
 
  @override
-  Stream<bool> getStream() {
+  Stream<LoadingMessage> getStream() {
     return null!;
   }
 

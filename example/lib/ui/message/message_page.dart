@@ -21,7 +21,7 @@ class _MessagePageState extends AbstractCoreStreamWidgetState<MessagePage>
   }
 
  @override
-  Stream<bool?> getStream() {
+  Stream<LoadingMessage?> getStream() {
     return null!;
   }
 

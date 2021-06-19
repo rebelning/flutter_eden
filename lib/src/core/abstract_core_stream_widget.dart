@@ -10,7 +10,7 @@ abstract class AbstractCoreStreamWidget extends AbstractCoreWidget {
 
 ///
 abstract class AbstractCoreStreamWidgetState<T extends AbstractCoreStreamWidget>
-    extends AbstractCoreWidgetState<T> implements BaseStream<bool> {
+    extends AbstractCoreWidgetState<T> implements BaseStream<LoadingMessage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,12 +24,14 @@ abstract class AbstractCoreStreamWidgetState<T extends AbstractCoreStreamWidget>
 
   ///
   Widget streamBody() {
-    return StreamBuilder<bool?>(
+    return StreamBuilder<LoadingMessage?>(
         stream: getStream(),
         builder: (context, snapshot) {
+          LoadingMessage? loadingMsg = snapshot.data;
+          showSnack(context, loadingMsg?.message);
           return LoadingWidget(
             message: "Loading...",
-            status: snapshot.data,
+            status: loadingMsg?.loading,
             child: getBottomNavigationBar() == null
                 ? SafeArea(
                     child: buildBody(context),

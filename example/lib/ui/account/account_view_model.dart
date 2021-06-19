@@ -12,15 +12,17 @@ class AccountViewModel extends BaseViewModel {
   void setMenuList(List<Menu>? value) => _menuList.add(value);
 
   Future<bool> getMenuList() async {
+    // setLoading(true);
     setLoading(true);
     HttpResponse<List<Menu>> response = await _accountRepository.getMenuList();
 
     await Future.delayed(Duration(seconds: 1));
-    setLoading(false);
+    setLoading(true);
     if (response.resCode == 200) {
       setMenuList(response.data);
       return true;
     }
+    setLoading(false, message: response.message);
     return false;
   }
 

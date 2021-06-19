@@ -33,6 +33,7 @@ class LoginViewModel extends BaseViewModel {
     await Future.delayed(Duration(seconds: 1));
     HttpResponse<User>? ret =
         await repository?.login(_login.value, _password.value);
+    //
     setLoading(false);
     if (ret?.resCode == 200) {
       setIsLogin(true);
@@ -40,7 +41,7 @@ class LoginViewModel extends BaseViewModel {
       clear();
       return true;
     }
-
+    setLoading(false, message: ret?.message);
     return false;
   }
 
@@ -49,6 +50,5 @@ class LoginViewModel extends BaseViewModel {
     _login.add("");
     _password.add("");
     setLoading(false);
-
   }
 }

@@ -12,6 +12,9 @@ abstract class AbstractCoreWidgetState<T extends AbstractCoreWidget>
     extends State<T> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
+  GlobalKey<ScaffoldState>? getScaffoldKey() => _scaffoldKey;
+
+  ///toolbar title
   String? _toolbarTitle;
 
   ///hide toolbar
@@ -54,7 +57,6 @@ abstract class AbstractCoreWidgetState<T extends AbstractCoreWidget>
   }
 
   ///
-  GlobalKey<ScaffoldState>? getScaffoldKey() => _scaffoldKey;
 
   ///dealloc
   void dealloc();
@@ -110,6 +112,7 @@ abstract class AbstractCoreWidgetState<T extends AbstractCoreWidget>
   ///show snack bar
   void showSnack(BuildContext context, String? message) {
     if (message == null) return;
+
     ///
     WidgetsBinding.instance!.addPostFrameCallback((_) {
       SnackbarWidget(context,
