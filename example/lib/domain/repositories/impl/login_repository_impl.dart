@@ -1,4 +1,4 @@
-import 'package:example/domain/http_response.dart';
+import 'package:example/domain/models/user.dart';
 import 'package:example/domain/repositories/login_repository.dart';
 import 'package:example/domain/service/login_service.dart';
 import 'package:flutter_eden/eden.dart';
@@ -9,10 +9,8 @@ class LoginRepository implements ILoginRepository {
 
   ///
   @override
-  Future<HttpResponse> login(String login, String password) async {
-    service.login(login, password);
-    HttpResponse response = HttpResponse();
-
+  Future<HttpResponse<User>> login(String? login, String? password) async {
+    HttpResponse<User> response = HttpResponse();
     // final hasConnection = await ConnectionHelper.hasConnection();
     final hasConnection = true;
     if (hasConnection) {

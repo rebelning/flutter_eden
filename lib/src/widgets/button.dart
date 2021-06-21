@@ -3,17 +3,17 @@ import 'package:flutter_eden/src/values/color/colors.dart' as colors;
 import 'package:flutter_eden/src/widgets/text.dart';
 
 class ButtonWidget extends StatelessWidget {
-  final String label;
-  final Function onPress;
-  final bool disabled;
-  final bool transparent;
-  final IconData icon;
-  final bool facebook;
+  final String? label;
+  final  Function()? onPress;
+  final bool? disabled;
+  final bool? transparent;
+  final IconData? icon;
+  final bool? facebook;
 
   final double _elevation = 3;
 
   const ButtonWidget({
-    Key key, 
+    Key? key,
     this.label,
     this.onPress,
     this.disabled,
@@ -31,9 +31,9 @@ class ButtonWidget extends StatelessWidget {
     Color textColor = Colors.white;
 
     if (transparent == true) {
-      backgroundColor = colors.backgroundColor;
-      borderColor = colors.accentLightColor;
-      textColor = colors.accentLightColor;
+      backgroundColor = colors.btnBackgroundColor;
+      borderColor = colors.lineColor;
+      textColor = colors.textColor;
     } else {
       backgroundColor = colors.accentLightColor;
       borderColor = colors.accentLightColor;
@@ -47,9 +47,9 @@ class ButtonWidget extends StatelessWidget {
     }
     
     return Padding(
-      padding: const EdgeInsets.only(top: 16.0),
+      padding: const EdgeInsets.only(top: 15.0),
       child: RaisedButton(
-        padding: EdgeInsets.symmetric(vertical: 16.0, horizontal: 45.0),
+        padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 45.0),
         shape: RoundedRectangleBorder(
           side: BorderSide( color: borderColor ),
           borderRadius: BorderRadius.circular(20)
@@ -57,7 +57,7 @@ class ButtonWidget extends StatelessWidget {
         onPressed: action,
         elevation: _elevation,
         color: backgroundColor,
-        child: TextWidget(text: label.toUpperCase() ?? "Label", small: true, color: textColor )
+        child: TextWidget(text: label?.toUpperCase() ?? "Label", small: true, color: textColor )
       ),
     );
   }

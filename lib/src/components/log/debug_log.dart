@@ -1,8 +1,10 @@
 /*
  *debug log
  */
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import'package:flutter/rendering.dart';
+import 'package:flutter/rendering.dart';
+
 class DebugLog {
   DebugLog();
 
@@ -10,23 +12,20 @@ class DebugLog {
    *print log
    */
   static void log(String tag, String des) {
-    debugPrint(tag + "=" + des);
+    if (kDebugMode) debugPrint(tag + "=" + des);
   }
-
-
 
   /*
    *
    */
   static void dumpApp() {
-    debugDumpApp();
+    if (kDebugMode) debugDumpApp();
   }
 
   /*
    *
    */
   static void dumpRenderTree() {
-    debugDumpRenderTree();
+    if (kDebugMode) debugDumpRenderTree();
   }
-
 }

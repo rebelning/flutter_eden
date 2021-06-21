@@ -4,6 +4,15 @@ Flutter eden MVVM.
 
 ## Getting Started
 
+
+
+flutter eden server:
+https://github.com/Terminators/go_eden
+
+##Thanks
+flutter-architecture
+https://github.com/tguizelini/flutter-architecture
+
 This project is a starting point for a Dart
 [package](https://flutter.dev/developing-packages/),
 a library module containing code that can be shared easily across

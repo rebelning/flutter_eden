@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 class NavSlideFromBottom extends PageRouteBuilder {
-  final Widget page;
+  final Widget? page;
   
-  NavSlideFromBottom({ this.page }) : 
+  NavSlideFromBottom({ this.page }) :
     super(pageBuilder: (BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation) {
-      return page;
+      return page!;
     },
     transitionDuration: Duration(milliseconds: 450),
     transitionsBuilder: (BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation, Widget child) {

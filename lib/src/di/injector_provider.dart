@@ -7,6 +7,7 @@ final GetIt inject = GetIt.I;
 Future<void> setupInjection() async {
   //Components
   inject.registerSingleton(HttpClient());
+  ///globalKey
 
   //Remote Services
   // inject.registerFactory(() => AuthService());

@@ -8,25 +8,25 @@ class LoginWidget {
   ///di(IOC)
   final vm = inject<LoginViewModel>();
 
-  void _onLogin(GlobalKey<ScaffoldState> key) async {
+  void _onLogin(BuildContext context, GlobalKey<ScaffoldState>? key) async {
     final ret = await vm.signIn();
     if (ret) {
-      SnackbarWidget(key, message: "SUCCESS");
+      // SnackbarWidget(context, message: "SUCCESS");
+      NavigateRouter().pop(context);
     } else {
-      SnackbarWidget(key,
-          error: true, message: "NOT FOUND", actionMessage: "OK", action: () {
-        print("ACTION CLICKED");
-      });
+      // SnackbarWidget(context,
+      //     error: true, message: "NOT FOUND", actionMessage: "OK", action: () {
+      //   print("ACTION CLICKED");
+      // });
     }
     await Future.delayed(Duration(seconds: 1));
     // Navigator.pushReplacement(context, NavSlideFromTop(
     //     page: HomePage()
     // ));
-
   }
 
   ///
-  Widget form(BuildContext context, GlobalKey<ScaffoldState> key) {
+  Widget form(BuildContext context, GlobalKey<ScaffoldState>? key) {
     return Padding(
       padding: EdgeInsets.all(dimens.margin),
       child: Padding(
@@ -35,23 +35,24 @@ class LoginWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             SizedBox(height: 20),
-            LogoWidget(),
+            LogoWidget(small: true,),
             SizedBox(height: 20),
-            StreamBuilder(
+            StreamBuilder<String?>(
                 stream: vm.login,
                 builder: (context, snapshot) {
                   return InputWidget(
-                    placeholder: "LOGIN",
+                    placeholder: "login",
                     value: snapshot.data,
                     onChange: (value) => vm.setLogin(value),
                   );
                 }),
             SizedBox(height: 10),
-            StreamBuilder(
+            StreamBuilder<String?>(
                 stream: vm.password,
                 builder: (context, snapshot) {
                   return InputWidget(
-                    placeholder: "SENHA",
+                    placeholder: "password",
+                    password: true,
                     value: snapshot.data,
                     onChange: (value) => vm.setPassword(value),
                   );
@@ -60,14 +61,18 @@ class LoginWidget {
             Align(
                 alignment: Alignment.centerRight,
                 child: FlatButton(
-                  onPressed: () => print("forgot password click"),
+                  onPressed: () {},
                   child: TextWidget(
-                    text: "Esqueci a senha",
+                    text: "sign up",
                     small: true,
                   ),
                 )),
             SizedBox(height: 12),
-            ButtonWidget(label: "login", onPress: _onLogin),
+            ButtonWidget(
+                label: "login",
+                onPress: () {
+                  _onLogin(context, key);
+                }),
           ],
         ),
       ),

@@ -1,23 +1,29 @@
-import 'package:example/domain/http_response.dart';
 import 'package:example/domain/mappers/login_mapper.dart';
+import 'package:example/domain/models/user.dart';
 import 'package:flutter_eden/eden.dart';
+import 'package:example/domain/base/end_points.dart' as Endpoints;
 
 class LoginService {
   HttpClient client = inject<HttpClient>();
 
-  Future<HttpResponse> login(String login, String password) async {
-    HttpResponse response = HttpResponse();
-    final payload = {login, password};
-    final retAuth = client.post("", body: payload);
-
+  Future<HttpResponse<User>> login(String? login, String? password) async {
+    HttpResponse<User> response = HttpResponse();
+    final url = Endpoints.login.login;
+    final payload = {"username": login, "password": password};
+    final retAuth = client.post(url, body: payload);
     await retAuth.then((res) {
-      response.statusCode = res.statusCode;
-      response.data = LoginMapper.fromJson(res.data);
-      response.message = res.statusMessage;
+      response.resCode = res.statusCode;
+
+      User user = LoginMapper.fromJson(res.data["data"]);
+      response.data = user;
+      StorageHelper.set(StorageKeys.token, user.accessToken);
     }).catchError((onError) {
-      response.statusCode = 500; //失败
-      response.data = onError;
-      response.message = "login failure";
+      response.resCode = 500; //失败
+      // response.data = onError;
+      response.message = "$onError";
+      DebugLog.log("onError", "${onError.toString()}");
     });
+    print("HttpResponse=$response");
+    return response;
   }
 }

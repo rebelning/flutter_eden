@@ -5,17 +5,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_eden/eden.dart';
 
-class LoginPage extends AbstractMvvmBase {
+///login
+class LoginPage extends AbstractCoreStreamWidget {
   @override
-  State<StatefulWidget> createState() {
-    // TODO: implement createState
-    throw UnimplementedError();
-  }
+  State<StatefulWidget> createState() => _LoginPageState();
 }
 
-class LoginPageState extends AbstractMvvmBaseState with LoginWidget {
+class _LoginPageState extends AbstractCoreStreamWidgetState with LoginWidget {
   final vm = inject<LoginViewModel>();
-
   @override
   bool getHideToolbar() {
     return false;
@@ -33,6 +30,28 @@ class LoginPageState extends AbstractMvvmBaseState with LoginWidget {
 
   @override
   Widget buildBody(BuildContext context) {
-    return form(context, getScaffoldKey());
+    return SingleChildScrollView(
+      child: SingleChildScrollView(
+        child: form(context, getScaffoldKey()),
+      ),
+    );
   }
+
+  @override
+  Stream<LoadingMessage> getStream() {
+    return vm.loading;
+  }
+
+
+  @override
+  void initData() {
+  }
+  @override
+  void dealloc() {
+    vm.clear();
+
+  }
+
+
+
 }

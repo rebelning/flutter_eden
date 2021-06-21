@@ -6,16 +6,16 @@ class ToolbarWidget extends StatelessWidget implements PreferredSizeWidget {
   @override
   Size get preferredSize => Size.fromHeight(kToolbarHeight);
 
-  final Widget leading;
-  final String title;
-  final List<Widget> actions;
-  final Color color;
-  final double elevation;
-  final bool logoWidget;
-  final bool hideBackArrow;
+  final Widget? leading;
+  final String? title;
+  final List<Widget>? actions;
+  final Color? color;
+  final double? elevation;
+  final bool? logoWidget;
+  final bool? hideBackArrow;
 
   const ToolbarWidget(
-      {Key key,
+      {Key? key,
       this.hideBackArrow,
       this.logoWidget,
       this.leading,

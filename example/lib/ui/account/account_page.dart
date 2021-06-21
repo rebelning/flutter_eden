@@ -1,25 +1,28 @@
+import 'package:example/ui/account/account_view_model.dart';
+import 'package:example/ui/account/account_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_eden/eden.dart';
 
-class AccountPage extends AbstractMvvmBase {
+///
+class AccountPage extends AbstractCoreKLiveWidget {
   @override
-  State<StatefulWidget> createState() => AccountPageState();
+  State<StatefulWidget> createState() => _AccountPageState();
 }
 
-class AccountPageState extends AbstractMvvmBaseState {
+class _AccountPageState extends AbstractCoreKLiveWidgetState
+    with AccountWidget {
+  final vm = inject<AccountViewModel>();
+
   @override
-  Widget buildBody(BuildContext context) {
-    return Center(
-      child: TextWidget(
-        text: "account",
-      ),
-    );
+  void initState() {
+    super.initState();
+    vm.getMenuList();
   }
 
   @override
   bool getHideToolbar() {
-    return false;
+    return true;
   }
 
   @override
@@ -29,6 +32,27 @@ class AccountPageState extends AbstractMvvmBaseState {
 
   @override
   String getToolbarTitle() {
-    return "Account";
+    return "Account...";
   }
+
+  @override
+  Widget buildBody(BuildContext context) {
+    return StreamBuilder<LoadingMessage>(
+        stream: vm.loading,
+        builder: (BuildContext context, snapshot) {
+          return LoadingWidget(
+            message: "Loading...",
+            status: snapshot.data?.loading,
+            child: sliverView(context, getScaffoldKey()),
+          );
+        });
+  }
+
+  @override
+  void dealloc() {
+    vm.clear();
+  }
+
+  @override
+  void initData() {}
 }

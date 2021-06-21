@@ -1,15 +1,15 @@
 import 'package:example/ui/account/account_page.dart';
 import 'package:example/ui/course/course_page.dart';
-import 'package:example/ui/home.dart';
+import 'package:example/ui/home/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_eden/eden.dart';
 
-class App extends AbstractMvvmBaseNav {
+class App extends AbstractCoreNavWidget {
   @override
   State<StatefulWidget> createState() => AppState();
 }
 
-class AppState extends AbstractMvvmBaseNavState<App>  {
+class AppState extends AbstractCoreNavWidgetState<App> {
   @override
   bool getHideToolbar() {
     return true;
@@ -22,7 +22,7 @@ class AppState extends AbstractMvvmBaseNavState<App>  {
 
   @override
   String getToolbarTitle() {
-    return "首页";
+    return "Home";
   }
 
   @override
@@ -53,6 +53,15 @@ class AppState extends AbstractMvvmBaseNavState<App>  {
     super.onNavTap(index);
 
     ///
-    setToolbarTitle(getBarItems()[index].label);
+    setToolbarTitle(getBarItems()[index].label!);
   }
+  @override
+  void initData() {
+  }
+
+  @override
+  void dealloc() {
+  }
+
+
 }
