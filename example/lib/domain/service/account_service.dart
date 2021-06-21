@@ -1,8 +1,7 @@
+import 'package:example/domain/base/end_points.dart' as EndPoints;
 import 'package:example/domain/mappers/menu_mapper.dart';
 import 'package:example/domain/models/menu.dart';
 import 'package:flutter_eden/eden.dart';
-import 'package:flutter_eden/eden.dart';
-import 'package:example/domain/base/end_points.dart' as EndPoints;
 
 class AccountService {
   HttpClient client = inject<HttpClient>();
@@ -11,8 +10,10 @@ class AccountService {
     HttpResponse<List<Menu>> response = HttpResponse();
     String url = EndPoints.appList.menuList;
     final ret = client.get(url);
-    ret.then((res) {
+    await ret.then((res) {
+      DebugLog.log("response-res=", res.toString());
       response.resCode = res.statusCode;
+      response.message=res.data["message"];
       response.data = MenuMapper.fromJsonList(res.data["data"]);
 
     }).catchError((onError) {

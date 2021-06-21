@@ -39,7 +39,7 @@ class _AccountPageState extends AbstractCoreKLiveWidgetState
   Widget buildBody(BuildContext context) {
     return StreamBuilder<LoadingMessage>(
         stream: vm.loading,
-        builder: (BuildContext context, AsyncSnapshot<LoadingMessage> snapshot) {
+        builder: (BuildContext context, snapshot) {
           return LoadingWidget(
             message: "Loading...",
             status: snapshot.data?.loading,
