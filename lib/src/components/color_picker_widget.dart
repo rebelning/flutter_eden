@@ -5,16 +5,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_eden/src/widgets/color_picker.dart';
 
-const backgroundColor_C = Color(0xFF272727);
+
 
 // The panel for editing a board point.
 // @immutable
 class ColorPickerWidget extends StatelessWidget {
   const ColorPickerWidget({
     Key? key,
+    this.colorValue,
     this.onColorSelection,
   }) : super(key: key);
-
+  final Color? colorValue;
   final ValueChanged<Color>? onColorSelection;
 
   @override
@@ -26,7 +27,7 @@ class ColorPickerWidget extends StatelessWidget {
       // GalleryThemeData.darkColorScheme.primary,
       // GalleryThemeData.darkColorScheme.primaryVariant,
       // GalleryThemeData.darkColorScheme.secondary,
-      backgroundColor_C,
+      
     };
 
     return Column(
@@ -35,7 +36,7 @@ class ColorPickerWidget extends StatelessWidget {
        
         ColorPicker(
           colors: boardPointColors,
-          selectedColor: Colors.blue,
+          selectedColor: colorValue,
           onColorSelection: onColorSelection,
         ),
       ],

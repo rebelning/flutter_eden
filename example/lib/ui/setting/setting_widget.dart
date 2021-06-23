@@ -9,6 +9,7 @@ class SettingWidget {
     //   title: "Theme",
     //   confirmLabel: "confirm",
     //   cancelLabel: "cancel",
+    Color color=Colors.blue;
     showModalBottomSheet<Widget>(
         context: context,
         builder: (context) {
@@ -17,6 +18,7 @@ class SettingWidget {
               height: 150,
               padding: const EdgeInsets.all(12),
               child: ColorPickerWidget(
+                colorValue:color ,
                 onColorSelection: (color) {
                   Navigator.pop(context);
                 },
