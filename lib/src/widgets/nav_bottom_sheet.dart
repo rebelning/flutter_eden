@@ -30,7 +30,7 @@ class NavBottomSheetWidget extends StatelessWidget{
             ),
             trailing: Padding(
               padding: const EdgeInsets.only(top:16.0),
-              child: FlatButton(
+              child: TextButton(
                   onPressed: (){
                     Navigator.push(context, MaterialPageRoute(builder: (context)=> pageToCall!));},
                   child: TextWidget(

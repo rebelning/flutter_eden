@@ -21,6 +21,7 @@ export 'src/cache/storage.helper.dart';
 export 'src/core/view_model.base.dart';
 export 'src/components/log/debug_log.dart';
 export 'src/components/loading.dart';
+export 'src/components/color_picker_widget.dart';
 export 'src/values/dimen/dimens.dart';
 export 'src/values/color/colors.dart';
 export 'src/values/theme.dart';
