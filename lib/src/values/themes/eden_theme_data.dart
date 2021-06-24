@@ -3,7 +3,6 @@
 // found in the LICENSE file.
 
 import 'package:flutter/material.dart';
-import 'package:flutter_eden/eden.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class EdenThemeData {
@@ -20,8 +19,8 @@ class EdenThemeData {
   static final Color _darkCursorColor = Color(0xffFFFFFF);
 
   ///line color
-  static final Color _lightLineColor = Color(0xff263238);
-  static final Color _darkLineColor = Color(0xffF5F5F5);
+  static final Color _lightLineColor = Color(0xffB0BEC5);
+  static final Color _darkLineColor = Color(0xff607D8B);
 
   ///light theme data
   static ThemeData lightThemeData = themeData(
@@ -73,7 +72,7 @@ class EdenThemeData {
         ),
         contentTextStyle: _textTheme.subtitle1?.apply(color: _darkFillColor),
       ),
-
+      dividerColor: lineColor,
       dividerTheme:
           DividerThemeData(color: lineColor, space: 0.6, thickness: 0.6),
 
