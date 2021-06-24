@@ -25,7 +25,7 @@ export 'src/components/color_picker_widget.dart';
 export 'src/values/dimen/dimens.dart';
 export 'src/values/color/colors.dart';
 export 'src/values/theme.dart';
-
+export 'src/values/themes/eden_theme_data.dart';
 export 'src/values/color/color_helpers.dart';
 //anim
 export 'src/values/anim/nav_no_animation.dart';

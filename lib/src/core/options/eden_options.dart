@@ -25,9 +25,9 @@ const systemLocaleOption = Locale('system');
 
 Locale? _deviceLocale;
 
-Locale get deviceLocale => _deviceLocale!;
+Locale? get deviceLocale => _deviceLocale;
 
-set deviceLocale(Locale locale) {
+set deviceLocale(Locale? locale) {
   _deviceLocale ??= locale;
 }
 
@@ -64,7 +64,7 @@ class EdenOptions {
     }
   }
 
-  Locale get locale => _locale ?? deviceLocale;
+  Locale? get locale => _locale ?? deviceLocale;
 
   /// Returns a text direction based on the [CustomTextDirection] setting.
   /// If it is based on locale and the locale cannot be determined, returns
@@ -72,7 +72,7 @@ class EdenOptions {
   TextDirection? resolvedTextDirection() {
     switch (customTextDirection) {
       case CustomTextDirection.localeBased:
-        final language = locale.languageCode.toLowerCase();
+        final language = locale?.languageCode.toLowerCase();
         if (language == null) return null;
         return rtlLanguages.contains(language)
             ? TextDirection.rtl

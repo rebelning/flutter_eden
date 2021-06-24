@@ -21,7 +21,7 @@ class ColorPickerWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final boardPointColors = <Color>{
-      Colors.white,
+      Colors.green.shade400,
       Colors.black,
       Colors.blue,
       // GalleryThemeData.darkColorScheme.primary,

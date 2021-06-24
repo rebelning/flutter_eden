@@ -32,5 +32,5 @@ final Color toastTextColor = Colors.white;
 final Color btnBackgroundColor = Colors.blue;
 
 extension ColorThemeHelpers on ColorScheme {
-  Color get toolbarTitleColor => titleColor;
+  
 }

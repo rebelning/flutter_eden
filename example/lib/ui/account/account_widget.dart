@@ -88,10 +88,7 @@ class AccountWidget {
                   '',
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
-                  style: new TextStyle(
-                    fontSize: dimens.fontTextSmall,
-                    color: Theme.of(context).colorScheme.toolbarTitleColor,
-                  ),
+                  style: Theme.of(context).textTheme.headline1,
                 ),
               ),
               background: Stack(
@@ -185,10 +182,11 @@ class AccountWidget {
   Widget _getItem(BuildContext context, Menu? menu) {
     return InkWell(
       child: Container(
+        
         decoration: ShapeDecoration(
           shape: Border(
             bottom: BorderSide(
-                color: Theme.of(context).colorScheme.color_line,
+                color: Theme.of(context).dividerColor,
                 width: dimens.padding_0),
           ),
         ),
@@ -196,12 +194,11 @@ class AccountWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+
             Expanded(
               child: Text(
                 "${menu?.section ?? ""}",
-                style: TextStyle(
-                    color: Theme.of(context).colorScheme.color_333333,
-                    fontSize: dimens.fontTextSmall),
+                style: Theme.of(context).textTheme.headline4,
                 textAlign: TextAlign.left,
               ),
               flex: 7,

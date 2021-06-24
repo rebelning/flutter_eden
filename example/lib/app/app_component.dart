@@ -13,7 +13,6 @@ class AppComponent extends StatefulWidget {
 
 class AppComponentState extends State<AppComponent> {
   AppComponentState() {
-
     final router = FluroRouter();
 
     ///
@@ -24,11 +23,8 @@ class AppComponentState extends State<AppComponent> {
     Application.router = router;
   }
 
-
-
   @override
   Widget build(BuildContext context) {
-
     final app = MaterialApp(
       localizationsDelegates: [
         GlobalMaterialLocalizations.delegate,
@@ -40,11 +36,18 @@ class AppComponentState extends State<AppComponent> {
         const Locale('zh', ''), // Spanish, no country code
       ],
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-//          visualDensity: VisualDensity.adaptivePlatformDensity,
-        backgroundColor: Color(0xfff5f5f5),
+      themeMode: EdenOptions.of(context).themeMode,
+      theme: EdenThemeData.lightThemeData.copyWith(
+        platform: EdenOptions.of(context).platform,
       ),
+      darkTheme: EdenThemeData.darkThemeData.copyWith(
+        platform: EdenOptions.of(context).platform,
+      ),
+      locale: EdenOptions.of(context).locale,
+      localeResolutionCallback: (locale, supportedLocales) {
+        deviceLocale = locale;
+        return locale;
+      },
       onGenerateRoute: Application.router?.generator,
     );
 //    print("initial route = ${app.initialRoute}");

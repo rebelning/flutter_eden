@@ -28,7 +28,7 @@ abstract class AbstractCoreWidgetState<T extends AbstractCoreWidget>
 
   /// toolbar title color
   Color getToolbarTitleColor() =>
-      Theme.of(context).colorScheme.toolbarTitleColor;
+      Theme.of(context).colorScheme.onPrimary;
 
   void setToolbarTitle(String toolbarTitle) {
     this._toolbarTitle = toolbarTitle;
