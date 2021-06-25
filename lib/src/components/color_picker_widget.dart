@@ -13,15 +13,17 @@ class ColorPickerWidget extends StatelessWidget {
   const ColorPickerWidget({
     Key? key,
     this.colorValue,
+    this.colors,
     this.onColorSelection,
   }) : super(key: key);
   final Color? colorValue;
+  final Set<Color>? colors;
   final ValueChanged<Color>? onColorSelection;
 
   @override
   Widget build(BuildContext context) {
+
     final boardPointColors = <Color>{
-      Colors.green.shade400,
       Colors.black,
       Colors.blue,
       // GalleryThemeData.darkColorScheme.primary,
@@ -35,7 +37,7 @@ class ColorPickerWidget extends StatelessWidget {
       children: [
        
         ColorPicker(
-          colors: boardPointColors,
+          colors: colors,
           selectedColor: colorValue,
           onColorSelection: onColorSelection,
         ),

@@ -43,13 +43,12 @@ class AppComponentState extends State<AppComponent> {
       context,
       options.copyWith(themeMode: ThemeMode.dark),
     );
-      DebugLog.log("EdenOptions.of(context).themeMode,", "${EdenOptions.of(context).themeMode}");
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    DebugLog.log("EdenOptions.of(context).themeMode,", "${EdenOptions.of(context).themeMode}");
+   DebugLog.log("EdenOptions.of(context).themeMode,", "${EdenOptions.of(context).themeMode}"); 
     final app = MaterialApp(
       localizationsDelegates: [
         GlobalMaterialLocalizations.delegate,
