@@ -12,11 +12,7 @@ class SettingPage extends AbstractCoreStreamWidget {
 class _SettingPageState extends AbstractCoreStreamWidgetState<SettingPage> with SettingWidget{
   final vm = inject<SettingViewModel>();
 
-  @override
-  Widget buildBody(BuildContext context) {
-    return  setting(context);
-  }
-
+ 
   @override
   bool getHideToolbar() {
     return false;
@@ -39,6 +35,11 @@ class _SettingPageState extends AbstractCoreStreamWidgetState<SettingPage> with 
 
   @override
   void initData() {}
+ @override
+  Widget buildBody(BuildContext context) {
+    
+    return  setting(context);
+  }
 
   @override
   void dealloc() {}

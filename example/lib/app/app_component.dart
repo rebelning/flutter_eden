@@ -3,6 +3,7 @@ import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_eden/eden.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AppComponent extends StatefulWidget {
   @override
@@ -22,9 +23,33 @@ class AppComponentState extends State<AppComponent> {
     ///
     Application.router = router;
   }
+  @override
+  void initState() {
+    super.initState();
+    getThemeMode();
+  }
+
+  void getThemeMode() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    int? mode = prefs.getInt("themeMode");
+    final options = EdenOptions.of(context);
+    if (mode == 0) {
+      EdenOptions.update(
+      context,
+      options.copyWith(themeMode: ThemeMode.light),
+    );
+    } else {
+    EdenOptions.update(
+      context,
+      options.copyWith(themeMode: ThemeMode.dark),
+    );
+      DebugLog.log("EdenOptions.of(context).themeMode,", "${EdenOptions.of(context).themeMode}");
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
+    DebugLog.log("EdenOptions.of(context).themeMode,", "${EdenOptions.of(context).themeMode}");
     final app = MaterialApp(
       localizationsDelegates: [
         GlobalMaterialLocalizations.delegate,

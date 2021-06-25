@@ -20,6 +20,9 @@ class EdenThemeData {
   ///card color
   static final Color _lightCardColor = Color(0xffECEFF1);
   static final Color _darkCardColor = Color(0xff455A64);///line color
+  //icon color
+  static final Color _lightIconColor = Color(0xffB0BEC5);
+  static final Color _darkIconColor = Color(0xff607D8B);
   ///
   static final Color _lightLineColor = Color(0xffB0BEC5);
   static final Color _darkLineColor = Color(0xff607D8B);
@@ -30,6 +33,7 @@ class EdenThemeData {
     _lightFocusColor,
     _lightCursorColor,
     _lightCardColor,
+    _lightIconColor,
     _lightLineColor,
   );
 
@@ -39,6 +43,7 @@ class EdenThemeData {
     _darkFocusColor,
     _darkCursorColor,
     _darkCardColor,
+    _darkIconColor,
     _darkLineColor,
   );
 
@@ -47,6 +52,7 @@ class EdenThemeData {
     Color focusColor,
     Color cursorColor,
     Color cardColor,
+    Color iconColor,
     Color lineColor,
   ) {
     return ThemeData(
@@ -64,7 +70,7 @@ class EdenThemeData {
         iconTheme: IconThemeData(color: colorScheme.onPrimary),
         brightness: colorScheme.brightness,
       ),
-      iconTheme: IconThemeData(color: colorScheme.onPrimary),
+      iconTheme: IconThemeData(color: iconColor),
       canvasColor: colorScheme.background,
       scaffoldBackgroundColor: colorScheme.background,
       highlightColor: Colors.transparent,
