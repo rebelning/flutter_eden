@@ -17,8 +17,10 @@ class EdenThemeData {
   ///cursor color
   static final Color _lightCursorColor = Color(0xff0091EA);
   static final Color _darkCursorColor = Color(0xffFFFFFF);
-
-  ///line color
+  ///card color
+  static final Color _lightCardColor = Color(0xffECEFF1);
+  static final Color _darkCardColor = Color(0xff455A64);///line color
+  ///
   static final Color _lightLineColor = Color(0xffB0BEC5);
   static final Color _darkLineColor = Color(0xff607D8B);
 
@@ -27,6 +29,7 @@ class EdenThemeData {
     lightColorScheme,
     _lightFocusColor,
     _lightCursorColor,
+    _lightCardColor,
     _lightLineColor,
   );
 
@@ -35,6 +38,7 @@ class EdenThemeData {
     darkColorScheme,
     _darkFocusColor,
     _darkCursorColor,
+    _darkCardColor,
     _darkLineColor,
   );
 
@@ -42,6 +46,7 @@ class EdenThemeData {
     ColorScheme colorScheme,
     Color focusColor,
     Color cursorColor,
+    Color cardColor,
     Color lineColor,
   ) {
     return ThemeData(
@@ -72,6 +77,7 @@ class EdenThemeData {
         ),
         contentTextStyle: _textTheme.subtitle1?.apply(color: _darkFillColor),
       ),
+      cardColor:cardColor ,
       dividerColor: lineColor,
       dividerTheme:
           DividerThemeData(color: lineColor, space: 0.6, thickness: 0.6),
@@ -112,6 +118,7 @@ class EdenThemeData {
     background: Color(0xff37474F),
     surface: Color(0xFF37474F),
     onBackground: Color(0xff37474F), // White with 0.05 opacity
+    
     error: _darkFillColor,
     onError: _darkFillColor,
     onPrimary: _darkFillColor,
@@ -138,3 +145,18 @@ class EdenThemeData {
     button: GoogleFonts.montserrat(fontWeight: _semiBold, fontSize: 14.0),
   );
 }
+// ThemeData({
+//   Brightness brightness, //深色还是浅色
+//   MaterialColor primarySwatch, //主题颜色样本，见下面介绍
+//   Color primaryColor, //主色，决定导航栏颜色
+//   Color accentColor, //次级色，决定大多数Widget的颜色，如进度条、开关等。
+//   Color cardColor, //卡片颜色
+//   Color dividerColor, //分割线颜色
+//   ButtonThemeData buttonTheme, //按钮主题
+//   Color cursorColor, //输入框光标颜色
+//   Color dialogBackgroundColor,//对话框背景颜色
+//   String fontFamily, //文字字体
+//   TextTheme textTheme,// 字体主题，包括标题、body等文字样式
+//   IconThemeData iconTheme, // Icon的默认样式
+//   TargetPlatform platform, //指定平台，应用特定平台控件风格
+// })

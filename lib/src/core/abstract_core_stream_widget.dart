@@ -11,6 +11,12 @@ abstract class AbstractCoreStreamWidget extends AbstractCoreWidget {
 ///
 abstract class AbstractCoreStreamWidgetState<T extends AbstractCoreStreamWidget>
     extends AbstractCoreWidgetState<T> implements BaseStream<LoadingMessage> {
+///
+  bool _isSafeArea = true;
+
+
+  bool get isSafeArea => _isSafeArea;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,6 +24,7 @@ abstract class AbstractCoreStreamWidgetState<T extends AbstractCoreStreamWidget>
       appBar: getAppbar(),
       //safe Area
       body: streamBody(),
+      floatingActionButton: getFloatingActionButton(),
       bottomNavigationBar: getBottomNavigationBar(),
     );
   }
@@ -32,8 +39,7 @@ abstract class AbstractCoreStreamWidgetState<T extends AbstractCoreStreamWidget>
           return LoadingWidget(
             message: "Loading...",
             status: loadingMsg?.loading,
-            child: getBottomNavigationBar() == null
-                ? SafeArea(
+            child: isSafeArea? SafeArea(
                     child: buildBody(context),
                   )
                 : buildBody(context),

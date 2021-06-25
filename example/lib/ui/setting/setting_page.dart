@@ -2,7 +2,6 @@ import 'package:example/ui/setting/setting_view_model.dart';
 import 'package:example/ui/setting/setting_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_eden/eden.dart';
 
 class SettingPage extends AbstractCoreStreamWidget {

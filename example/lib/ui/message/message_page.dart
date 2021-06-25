@@ -1,3 +1,4 @@
+import 'package:example/ui/message/message_view_model.dart';
 import 'package:example/ui/message/message_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -10,6 +11,7 @@ class MessagePage extends AbstractCoreStreamWidget {
 
 class _MessagePageState extends AbstractCoreStreamWidgetState<MessagePage>
     with MessageWidget {
+      final vm=inject<MessageViewModel>();
   @override
   bool getHideToolbar() {
     return false;
@@ -22,7 +24,7 @@ class _MessagePageState extends AbstractCoreStreamWidgetState<MessagePage>
 
  @override
   Stream<LoadingMessage?> getStream() {
-    return null!;
+    return vm.loading;
   }
 
   @override

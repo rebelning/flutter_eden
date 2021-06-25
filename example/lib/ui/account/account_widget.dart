@@ -1,6 +1,7 @@
 import 'package:example/config/routes.dart';
 import 'package:example/domain/models/menu.dart';
 import 'package:example/domain/models/user.dart';
+import 'package:example/ui/components/item_view.dart';
 import 'package:example/ui/login/login_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_eden/eden.dart';
@@ -39,7 +40,7 @@ class AccountWidget {
   }
 
   void _getMenuList(BuildContext context, GlobalKey<ScaffoldState>? key) async {
-    bool flag= await vm.getMenuList();
+    bool flag = await vm.getMenuList();
     // if (ret.resCode==200) {
     //   SnackbarWidget(key, message: ret.message);
     // } else {
@@ -180,59 +181,10 @@ class AccountWidget {
 
   ///
   Widget _getItem(BuildContext context, Menu? menu) {
-    return InkWell(
-      child: Container(
-        
-        decoration: ShapeDecoration(
-          shape: Border(
-            bottom: BorderSide(
-                color: Theme.of(context).dividerColor,
-                width: dimens.padding_0),
-          ),
-        ),
-        padding: EdgeInsets.all(dimens.padding_15),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-
-            Expanded(
-              child: Text(
-                "${menu?.section ?? ""}",
-                style: Theme.of(context).textTheme.headline4,
-                textAlign: TextAlign.left,
-              ),
-              flex: 7,
-            ),
-            Expanded(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Text(
-                    "",
-                    style: TextStyle(
-                        color: Theme.of(context).colorScheme.color_999999,
-                        fontSize: dimens.fontTextSmall),
-                    textAlign: TextAlign.right,
-                  ),
-                  IconButton(
-                    onPressed: () {},
-                    padding: EdgeInsets.all(0),
-                    iconSize: dimens.padding_15,
-                    constraints: BoxConstraints(
-                        minWidth: 0, minHeight: dimens.min_height),
-                    alignment: Alignment.centerRight,
-                    color: Theme.of(context).colorScheme.color_999999,
-                    icon: const Icon(Icons.arrow_forward_ios),
-                  ),
-                ],
-              ),
-              flex: 3,
-            ),
-          ],
-        ),
-      ),
-      onTap: () {
-        onTapMenu(context, menu);
+    return ItemView(
+      menu: menu,
+      onTapMenu: (context, menu) {
+        onTapMenu(context!, menu);
       },
     );
   }

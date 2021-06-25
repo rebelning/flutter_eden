@@ -8,6 +8,7 @@ import 'package:example/ui/account/account_view_model.dart';
 import 'package:example/ui/login/login_view_model.dart';
 import 'package:example/ui/message/message_view_model.dart';
 import 'package:example/ui/setting/setting_view_model.dart';
+import 'package:example/ui/sliver/sliver_view_model.dart';
 import 'package:flutter_eden/eden.dart';
 
 ///setup inject
@@ -36,5 +37,7 @@ Future<void> setupInjectionImpl() async {
 
   ///setting
   inject.registerLazySingleton(() => SettingViewModel());
+  ///sliver
+  inject.registerLazySingleton(() => SliverViewModel());
 
 }

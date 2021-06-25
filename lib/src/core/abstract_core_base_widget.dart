@@ -72,6 +72,9 @@ abstract class AbstractCoreWidgetState<T extends AbstractCoreWidget>
     return null;
   }
 
+  Widget? getFloatingActionButton(){
+    return null;
+  }
   @override
   void initState() {
     super.initState();
@@ -91,6 +94,7 @@ abstract class AbstractCoreWidgetState<T extends AbstractCoreWidget>
       appBar: getAppbar(),
       //safe Area
       body: parentBody,
+      floatingActionButton: getFloatingActionButton(),
       bottomNavigationBar: getBottomNavigationBar(),
     );
   }
