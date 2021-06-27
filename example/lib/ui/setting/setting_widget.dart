@@ -1,3 +1,4 @@
+import 'package:example/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_eden/eden.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -82,7 +83,6 @@ class SettingWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           TextButton(
-            
             child: Text(
               "theme",
               style: Theme.of(context).textTheme.button,
@@ -91,6 +91,19 @@ class SettingWidget {
               _selectSheet(context);
             },
           ),
+          ElevatedButton(
+            onPressed: () {},
+            child: Text(
+              S.of(context).language,
+              style: Theme.of(context).textTheme.button,
+            ),
+          ),
+          OutlinedButton(
+              onPressed: () {},
+              child: Text(
+                "outLine",
+                style: Theme.of(context).textTheme.button,
+              )),
         ],
       ),
     );

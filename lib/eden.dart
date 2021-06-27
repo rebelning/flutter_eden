@@ -27,6 +27,8 @@ export 'src/values/color/colors.dart';
 export 'src/values/theme.dart';
 export 'src/values/themes/eden_theme_data.dart';
 export 'src/values/color/color_helpers.dart';
+export 'src/values/style/eden_button_style.dart';
+export 'src/values/style/eden_text_style.dart';
 //anim
 export 'src/values/anim/nav_no_animation.dart';
 export 'src/values/anim/nav_slide_from_bottom.dart';

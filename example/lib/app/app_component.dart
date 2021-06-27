@@ -1,4 +1,5 @@
 import 'package:example/config/routes.dart';
+import 'package:example/generated/l10n.dart';
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_eden/eden.dart';
@@ -35,30 +36,22 @@ class AppComponentState extends State<AppComponent> {
     final options = EdenOptions.of(context);
     if (mode == 0) {
       EdenOptions.update(
-      context,
-      options.copyWith(themeMode: ThemeMode.light),
-    );
+        context,
+        options.copyWith(themeMode: ThemeMode.light),
+      );
     } else {
-    EdenOptions.update(
-      context,
-      options.copyWith(themeMode: ThemeMode.dark),
-    );
+      EdenOptions.update(
+        context,
+        options.copyWith(themeMode: ThemeMode.dark),
+      );
     }
   }
 
   @override
   Widget build(BuildContext context) {
-   DebugLog.log("EdenOptions.of(context).themeMode,", "${EdenOptions.of(context).themeMode}"); 
+    DebugLog.log("EdenOptions.of(context).themeMode,",
+        "${EdenOptions.of(context).themeMode}");
     final app = MaterialApp(
-      localizationsDelegates: [
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      supportedLocales: [
-        const Locale('en', ''), // English, no country code
-        const Locale('zh', ''), // Spanish, no country code
-      ],
       debugShowCheckedModeBanner: false,
       themeMode: EdenOptions.of(context).themeMode,
       theme: EdenThemeData.lightThemeData.copyWith(
@@ -68,6 +61,13 @@ class AppComponentState extends State<AppComponent> {
         platform: EdenOptions.of(context).platform,
       ),
       locale: EdenOptions.of(context).locale,
+      localizationsDelegates: const [
+        S.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: S.delegate.supportedLocales,
       localeResolutionCallback: (locale, supportedLocales) {
         deviceLocale = locale;
         return locale;
