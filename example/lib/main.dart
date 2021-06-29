@@ -45,7 +45,7 @@ class ExampleApp extends StatelessWidget {
         themeMode: ThemeMode.system,
         textScaleFactor: systemTextScaleFactorOption,
         customTextDirection: CustomTextDirection.localeBased,
-        locale: null, 
+        locale: null,
         timeDilation: timeDilation,
         // platform: defaultTargetPlatform,
         isTestMode: isTestMode,

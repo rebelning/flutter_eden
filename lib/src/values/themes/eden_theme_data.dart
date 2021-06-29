@@ -3,6 +3,7 @@
 // found in the LICENSE file.
 
 import 'package:flutter/material.dart';
+import 'package:flutter_eden/src/values/style/eden_button_style.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class EdenThemeData {
@@ -17,12 +18,16 @@ class EdenThemeData {
   ///cursor color
   static final Color _lightCursorColor = Color(0xff0091EA);
   static final Color _darkCursorColor = Color(0xffFFFFFF);
+
   ///card color
   static final Color _lightCardColor = Color(0xffECEFF1);
-  static final Color _darkCardColor = Color(0xff455A64);///line color
+  static final Color _darkCardColor = Color(0xff455A64);
+
+  ///line color
   //icon color
   static final Color _lightIconColor = Color(0xffB0BEC5);
   static final Color _darkIconColor = Color(0xff607D8B);
+
   ///
   static final Color _lightLineColor = Color(0xffB0BEC5);
   static final Color _darkLineColor = Color(0xff607D8B);
@@ -83,7 +88,7 @@ class EdenThemeData {
         ),
         contentTextStyle: _textTheme.subtitle1?.apply(color: _darkFillColor),
       ),
-      cardColor:cardColor ,
+      cardColor: cardColor,
       dividerColor: lineColor,
       dividerTheme:
           DividerThemeData(color: lineColor, space: 0.6, thickness: 0.6),
@@ -97,9 +102,13 @@ class EdenThemeData {
         cursorColor: cursorColor,
         selectionColor: colorScheme.onPrimary,
       ),
+      textButtonTheme: TextButtonThemeData(style: EdenButtonStyle.flatButtonStyle(colorScheme)),
+      elevatedButtonTheme: ElevatedButtonThemeData(style: EdenButtonStyle.raisedButtonStyle(colorScheme)),
+      outlinedButtonTheme: OutlinedButtonThemeData(style:EdenButtonStyle.outlineButtonStyle(colorScheme)),
     );
   }
 
+  ///light color scheme
   static const ColorScheme lightColorScheme = ColorScheme(
     primary: Color(0xFF0091EA),
     primaryVariant: Color(0xFF00B0FF),
@@ -116,6 +125,7 @@ class EdenThemeData {
     brightness: Brightness.light,
   );
 
+  ///dark color scheme
   static const ColorScheme darkColorScheme = ColorScheme(
     primary: Color(0xff263238),
     primaryVariant: Color(0xff5f7486),
@@ -124,7 +134,7 @@ class EdenThemeData {
     background: Color(0xff37474F),
     surface: Color(0xFF37474F),
     onBackground: Color(0xff37474F), // White with 0.05 opacity
-    
+
     error: _darkFillColor,
     onError: _darkFillColor,
     onPrimary: _darkFillColor,
@@ -150,6 +160,7 @@ class EdenThemeData {
     headline6: GoogleFonts.montserrat(fontWeight: _bold, fontSize: 16.0),
     button: GoogleFonts.montserrat(fontWeight: _semiBold, fontSize: 14.0),
   );
+ 
 }
 // ThemeData({
 //   Brightness brightness, //深色还是浅色
