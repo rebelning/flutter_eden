@@ -29,27 +29,30 @@ class AppComponentState extends State<AppComponent> {
     getThemeMode();
   }
 
+////Theme.of(context).brightness == Brightness.dark;
   void getThemeMode() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     int? mode = prefs.getInt("themeMode");
     final options = EdenOptions.of(context);
     if (mode == 0) {
       EdenOptions.update(
-      context,
-      options.copyWith(themeMode: ThemeMode.light),
-    );
+        context,
+        options.copyWith(themeMode: ThemeMode.light),
+      );
     } else {
-    EdenOptions.update(
-      context,
-      options.copyWith(themeMode: ThemeMode.dark),
-    );
-      DebugLog.log("EdenOptions.of(context).themeMode,", "${EdenOptions.of(context).themeMode}");
+      EdenOptions.update(
+        context,
+        options.copyWith(themeMode: ThemeMode.dark),
+      );
+      DebugLog.log("EdenOptions.of(context).themeMode,",
+          "${EdenOptions.of(context).themeMode}");
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    DebugLog.log("EdenOptions.of(context).themeMode,", "${EdenOptions.of(context).themeMode}");
+    DebugLog.log("EdenOptions.of(context).themeMode,",
+        "${EdenOptions.of(context).themeMode}");
     final app = MaterialApp(
       localizationsDelegates: [
         GlobalMaterialLocalizations.delegate,
