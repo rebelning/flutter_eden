@@ -25,12 +25,27 @@ class EdenThemeData {
 
   ///line color
   //icon color
-  static final Color _lightIconColor = Color(0xffB0BEC5);
-  static final Color _darkIconColor = Color(0xff607D8B);
+  static final Color _lightIconColor = Color(0xff607D8B);
+  static final Color _darkIconColor = Color(0xffB0BEC5);
 
   ///
   static final Color _lightLineColor = Color(0xffB0BEC5);
   static final Color _darkLineColor = Color(0xff607D8B);
+
+  ///selected
+  static final Color _lightSelectedLabelColor = Color(0xff0091EA);
+  static final Color _darkSelectedLabelColor = Color(0xffffffff);
+
+  ///Un selected
+  static final Color _lightUnSelectedLabelColor = Color(0xffB0BEC5);
+  static final Color _darkUnSelectedLabelColor = Color(0xffB0BEC5);
+
+  static final Color _lightSelectedItemColor = Color(0xff0091EA);
+  static final Color _darkSelectedItemColor = Color(0xffB0BEC5);
+
+  ///
+  static final Color _lightUnSelectedItemColor = Color(0xff455A64);
+  static final Color _darkUnSelectedItemColor = Color(0xffFFFFFF);
 
   ///light theme data
   static ThemeData lightThemeData = themeData(
@@ -40,6 +55,10 @@ class EdenThemeData {
     _lightCardColor,
     _lightIconColor,
     _lightLineColor,
+    _lightSelectedLabelColor,
+    _lightUnSelectedLabelColor,
+    _lightSelectedItemColor,
+    _lightUnSelectedItemColor,
   );
 
   ///dark theme data
@@ -50,6 +69,10 @@ class EdenThemeData {
     _darkCardColor,
     _darkIconColor,
     _darkLineColor,
+    _darkSelectedLabelColor,
+    _darkUnSelectedLabelColor,
+    _darkUnSelectedItemColor,
+    _darkSelectedItemColor,
   );
 
   static ThemeData themeData(
@@ -59,6 +82,10 @@ class EdenThemeData {
     Color cardColor,
     Color iconColor,
     Color lineColor,
+    Color selectedLabelColor,
+    Color unSelectedLabelColor,
+    Color selectedItemColor,
+    Color unSelectedItemColor,
   ) {
     return ThemeData(
       colorScheme: colorScheme,
@@ -102,9 +129,25 @@ class EdenThemeData {
         cursorColor: cursorColor,
         selectionColor: colorScheme.onPrimary,
       ),
-      textButtonTheme: TextButtonThemeData(style: EdenButtonStyle.flatButtonStyle(colorScheme)),
-      elevatedButtonTheme: ElevatedButtonThemeData(style: EdenButtonStyle.raisedButtonStyle(colorScheme)),
-      outlinedButtonTheme: OutlinedButtonThemeData(style:EdenButtonStyle.outlineButtonStyle(colorScheme)),
+      textButtonTheme: TextButtonThemeData(
+          style: EdenButtonStyle.flatButtonStyle(colorScheme)),
+      elevatedButtonTheme: ElevatedButtonThemeData(
+          style: EdenButtonStyle.raisedButtonStyle(colorScheme)),
+      outlinedButtonTheme: OutlinedButtonThemeData(
+          style: EdenButtonStyle.outlineButtonStyle(colorScheme)),
+      bottomNavigationBarTheme: BottomNavigationBarThemeData(
+        type: BottomNavigationBarType.fixed,
+        selectedLabelStyle: TextStyle(
+            color: selectedLabelColor,
+            fontFamily: _textTheme.headline3?.fontFamily),
+        unselectedLabelStyle: TextStyle(
+            color: unSelectedLabelColor,
+            fontFamily: _textTheme.headline3?.fontFamily),
+        selectedItemColor: selectedItemColor,
+        unselectedItemColor: unSelectedItemColor,
+        selectedIconTheme: IconThemeData(color: selectedItemColor),
+        unselectedIconTheme: IconThemeData(color: unSelectedItemColor),
+      ),
     );
   }
 
@@ -160,7 +203,6 @@ class EdenThemeData {
     headline6: GoogleFonts.montserrat(fontWeight: _bold, fontSize: 16.0),
     button: GoogleFonts.montserrat(fontWeight: _semiBold, fontSize: 14.0),
   );
- 
 }
 // ThemeData({
 //   Brightness brightness, //深色还是浅色
