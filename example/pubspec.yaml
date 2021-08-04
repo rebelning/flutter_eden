@@ -26,12 +26,14 @@ dependencies:
     sdk: flutter
   flutter_localizations: # Add this line
     sdk: flutter
-  intl: '^0.17.0'
 
-
+  # #enddocregion FlutterLocalizations
+  intl: ^0.17.0 # Add this line
+  # #enddocregion Intl
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.3
+  shared_preferences: ^2.0.6
 
 dev_dependencies:
   flutter_test:
@@ -41,11 +43,11 @@ dev_dependencies:
     path: ../
 
   #https://github.com/theyakka/fluro
-#  fluro: "^2.0.3"
+  #  fluro: "^2.0.3"
   fluro: ^2.0.3
+  #https://pub.flutter-io.cn/packages/shared_preferences
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
-
 # The following section is specific to Flutter.
 flutter:
   generate: true
@@ -63,10 +65,8 @@ flutter:
     - assets/logo_header.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
-
   # For details regarding adding assets from package dependencies, see
   # https://flutter.dev/assets-and-images/#from-packages
-
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a
   # "family" key with the font family name, and a "fonts" key with a
@@ -86,5 +86,8 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+flutter_intl:
+  enabled: true
+
 #flutter_intl:
 #  enabled: true

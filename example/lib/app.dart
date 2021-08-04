@@ -29,16 +29,22 @@ class AppState extends AbstractCoreNavWidgetState<App> {
   List<BottomNavigationBarItem> getBarItems() {
     return [
       BottomNavigationBarItem(
-        label: Text("Home").data,
-        icon: Icon(Icons.home),
+        label: "Home",
+        icon: Icon(
+          Icons.home,
+        ),
       ),
       BottomNavigationBarItem(
-        label: Text("Course").data,
-        icon: Icon(Icons.import_contacts),
+        label: "Course",
+        icon: Icon(
+          Icons.import_contacts,
+        ),
       ),
       BottomNavigationBarItem(
-        label: Text("Me").data,
-        icon: Icon(Icons.account_circle),
+        label: "Me",
+        icon: Icon(
+          Icons.account_circle,
+        ),
       ),
     ];
   }
@@ -55,13 +61,10 @@ class AppState extends AbstractCoreNavWidgetState<App> {
     ///
     setToolbarTitle(getBarItems()[index].label!);
   }
-  @override
-  void initData() {
-  }
 
   @override
-  void dealloc() {
-  }
+  void initData() {}
 
-
+  @override
+  void dealloc() {}
 }

@@ -10,7 +10,6 @@ abstract class AbstractCoreNavWidget extends AbstractCoreWidget {
 ///
 abstract class AbstractCoreNavWidgetState<T extends AbstractCoreNavWidget>
     extends AbstractCoreWidgetState<T> {
-
   var _pageController = PageController();
   int _currentIndex = 0;
 
@@ -35,10 +34,10 @@ abstract class AbstractCoreNavWidgetState<T extends AbstractCoreNavWidget>
   @override
   Widget buildBody(BuildContext context) {
     return PageView(
-          controller: _pageController,
-          physics: NeverScrollableScrollPhysics(),
-          children: getPages(),
-        );
+      controller: _pageController,
+      physics: NeverScrollableScrollPhysics(),
+      children: getPages(),
+    );
   }
 
   @override
@@ -48,7 +47,7 @@ abstract class AbstractCoreNavWidgetState<T extends AbstractCoreNavWidget>
       currentIndex: _currentIndex,
       onTap: onNavTap,
       type: BottomNavigationBarType.fixed,
-      fixedColor: Theme.of(context).primaryColor,
+      // fixedColor: Theme.of(context).primaryColor,
     );
   }
 }

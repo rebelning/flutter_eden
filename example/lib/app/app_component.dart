@@ -1,8 +1,10 @@
 import 'package:example/config/routes.dart';
+import 'package:example/generated/l10n.dart';
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_eden/eden.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AppComponent extends StatefulWidget {
   @override
@@ -13,7 +15,6 @@ class AppComponent extends StatefulWidget {
 
 class AppComponentState extends State<AppComponent> {
   AppComponentState() {
-
     final router = FluroRouter();
 
     ///
@@ -23,28 +24,58 @@ class AppComponentState extends State<AppComponent> {
     ///
     Application.router = router;
   }
+  @override
+  void initState() {
+    super.initState();
+    getThemeMode();
+  }
 
-
+////Theme.of(context).brightness == Brightness.dark;
+  void getThemeMode() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    int? mode = prefs.getInt("themeMode");
+    final options = EdenOptions.of(context);
+    if (mode == 0) {
+      EdenOptions.update(
+        context,
+        options.copyWith(themeMode: ThemeMode.light),
+      );
+    } else {
+      EdenOptions.update(
+        context,
+        options.copyWith(themeMode: ThemeMode.dark),
+      );
+      DebugLog.log("EdenOptions.of(context).themeMode,",
+          "${EdenOptions.of(context).themeMode}");
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-
+    DebugLog.log("EdenOptions.of(context).themeMode,",
+        "${EdenOptions.of(context).themeMode}");
     final app = MaterialApp(
-      localizationsDelegates: [
+      debugShowCheckedModeBanner: false,
+      themeMode: EdenOptions.of(context).themeMode,
+      theme: EdenThemeData.lightThemeData.copyWith(
+        platform: EdenOptions.of(context).platform,
+      ),
+      darkTheme: EdenThemeData.darkThemeData.copyWith(
+        platform: EdenOptions.of(context).platform,
+      ),
+      locale: EdenOptions.of(context).locale,
+      localizationsDelegates: const [
+        S.delegate,
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
+        EdenLocalizations.delegate,
       ],
-      supportedLocales: [
-        const Locale('en', ''), // English, no country code
-        const Locale('zh', ''), // Spanish, no country code
-      ],
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-//          visualDensity: VisualDensity.adaptivePlatformDensity,
-        backgroundColor: Color(0xfff5f5f5),
-      ),
+      supportedLocales: S.delegate.supportedLocales,
+      localeResolutionCallback: (locale, supportedLocales) {
+        deviceLocale = locale;
+        return locale;
+      },
       onGenerateRoute: Application.router?.generator,
     );
 //    print("initial route = ${app.initialRoute}");

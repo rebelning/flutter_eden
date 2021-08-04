@@ -1,3 +1,3 @@
 ////
-const  Prefix = "/eden";
-final HTTP_DOMAIN = "http://192.168.162.118:8080" + Prefix;
+const Prefix = "/eden";
+final HTTP_DOMAIN = "http://192.168.162.66:8080" + Prefix;

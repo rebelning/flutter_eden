@@ -5,12 +5,13 @@ import 'package:flutter/services.dart';
 import 'package:flutter_eden/eden.dart';
 import 'package:example/di/injector_provider_impl.dart';
 import 'package:flutter/scheduler.dart' show timeDilation;
+import 'package:google_fonts/google_fonts.dart';
 
 // export 'package:gallery/data/demos.dart' show pumpDeferredLibraries;
 void main() {
 //  debugProfileBuildsEnabled = true;
   ///
-
+  GoogleFonts.config.allowRuntimeFetching = false;
   setupInjection();
 
   ///

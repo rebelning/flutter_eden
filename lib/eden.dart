@@ -1,6 +1,6 @@
-
 ///
 library eden;
+
 export 'package:rxdart/rxdart.dart';
 export 'src/core/abstract_core_base_widget.dart';
 export 'src/core/abstract_core_nav_widget.dart';
@@ -21,11 +21,14 @@ export 'src/cache/storage.helper.dart';
 export 'src/core/view_model.base.dart';
 export 'src/components/log/debug_log.dart';
 export 'src/components/loading.dart';
+export 'src/components/color_picker_widget.dart';
 export 'src/values/dimen/dimens.dart';
 export 'src/values/color/colors.dart';
 export 'src/values/theme.dart';
-
+export 'src/values/themes/eden_theme_data.dart';
 export 'src/values/color/color_helpers.dart';
+export 'src/values/style/eden_button_style.dart';
+export 'src/values/style/eden_text_style.dart';
 //anim
 export 'src/values/anim/nav_no_animation.dart';
 export 'src/values/anim/nav_slide_from_bottom.dart';
@@ -34,6 +37,9 @@ export 'src/values/anim/nav_slide_from_right.dart';
 export 'src/values/anim/nav_slide_from_top.dart';
 
 export 'src/utils/constants.dart';
+
+//locale
+export 'src/locale/eden_localizations.dart';
 
 ///widget
 export 'src/widgets/button.dart';
