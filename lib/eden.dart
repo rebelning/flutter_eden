@@ -1,6 +1,6 @@
-
 ///
 library eden;
+
 export 'package:rxdart/rxdart.dart';
 export 'src/core/abstract_core_base_widget.dart';
 export 'src/core/abstract_core_nav_widget.dart';
@@ -37,6 +37,9 @@ export 'src/values/anim/nav_slide_from_right.dart';
 export 'src/values/anim/nav_slide_from_top.dart';
 
 export 'src/utils/constants.dart';
+
+//locale
+export 'src/locale/eden_localizations.dart';
 
 ///widget
 export 'src/widgets/button.dart';

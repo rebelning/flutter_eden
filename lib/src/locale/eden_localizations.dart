@@ -18,6 +18,9 @@ class EdenLocalizations {
 
   static const RefreshLocalizationsDelegate delegate =
       RefreshLocalizationsDelegate();
+  static EdenLocalizations? of(BuildContext context) {
+    return Localizations.of(context, EdenLocalizations);
+  }
 }
 
 class RefreshLocalizationsDelegate

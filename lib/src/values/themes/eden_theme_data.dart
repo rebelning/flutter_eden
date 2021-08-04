@@ -139,10 +139,10 @@ class EdenThemeData {
         type: BottomNavigationBarType.fixed,
         selectedLabelStyle: TextStyle(
             color: selectedLabelColor,
-            fontFamily: _textTheme.headline3?.fontFamily),
+            fontFamily: _textTheme.subtitle1?.fontFamily),
         unselectedLabelStyle: TextStyle(
             color: unSelectedLabelColor,
-            fontFamily: _textTheme.headline3?.fontFamily),
+            fontFamily: _textTheme.subtitle1?.fontFamily),
         selectedItemColor: selectedItemColor,
         unselectedItemColor: unSelectedItemColor,
         selectedIconTheme: IconThemeData(color: selectedItemColor),
