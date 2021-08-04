@@ -10,8 +10,19 @@ class AccountRepository implements IAccountRepository {
   @override
   Future<HttpResponse<List<Menu>>> getMenuList() async {
     HttpResponse<List<Menu>> response = HttpResponse();
-    response = await _accountService.getMenuList();
-
+    //response = await _accountService.getMenuList();
+    List<Menu> menus = [];
+    Menu menu =
+        Menu(menuId: "2001", section: "login", action: "/account/login");
+    menus.add(menu);
+    menu = Menu(menuId: "2002", section: "message", action: "/account/message");
+    menus.add(menu);
+    menu = Menu(menuId: "2003", section: "setting", action: "/account/setting");
+    menus.add(menu);
+    menu = Menu(menuId: "2004", section: "sliver", action: "/account/sliver");
+    menus.add(menu);
+    response.data = menus;
+    response.resCode = 200;
     return response;
   }
 }
