@@ -24,7 +24,7 @@ class _SliverPageState extends AbstractCoreStreamWidgetState<SliverPage>
   }
 
   @override
-  Stream<LoadingMessage?> getStream() {
+  Stream<LoadingMessage> getStream() {
     return vm.loading;
   }
 
@@ -40,16 +40,11 @@ class _SliverPageState extends AbstractCoreStreamWidgetState<SliverPage>
   void initData() {
     addController(() {
       _isArrowDown = true;
-      setState(() {
-      
-    });
+      setState(() {});
     }, () {
       _isArrowDown = false;
-      setState(() {
-      
+      setState(() {});
     });
-    });
-    
   }
 
   @override

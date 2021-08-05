@@ -1,4 +1,4 @@
 ///stream
-abstract class BaseStream<S>{
-  Stream<S?> getStream();
+abstract class BaseStream<S> {
+  Stream<S>? getStream();
 }

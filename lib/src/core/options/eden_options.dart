@@ -211,8 +211,7 @@ class ModelBinding extends StatefulWidget {
     Key? key,
     this.initialModel = const EdenOptions(),
     required this.child,
-  })  : assert(initialModel != null),
-        super(key: key);
+  }) : super(key: key);
 
   final EdenOptions initialModel;
   final Widget child;

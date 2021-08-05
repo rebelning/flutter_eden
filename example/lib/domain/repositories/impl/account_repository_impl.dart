@@ -21,6 +21,8 @@ class AccountRepository implements IAccountRepository {
     menus.add(menu);
     menu = Menu(menuId: "2004", section: "sliver", action: "/account/sliver");
     menus.add(menu);
+    menu = Menu(menuId: "2005", section: "stock", action: "/stock/stock");
+    menus.add(menu);
     response.data = menus;
     response.resCode = 200;
     return response;

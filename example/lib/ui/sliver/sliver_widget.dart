@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:example/domain/models/menu.dart';
 import 'package:example/ui/components/item_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_eden/eden.dart';
 
 enum AppBarBehavior { normal, pinned, floating, snapping }
@@ -19,6 +20,7 @@ class SliverWidget {
   double? _statusBarHeight = 50.0;
   AppBarBehavior _appBarBehavior = AppBarBehavior.pinned;
   // AppBarBehavior _appBarBehavior = AppBarBehavior.floating;
+  double? height = 0;
   void _getScreenInfo(context) {
     _statusBarHeight = MediaQuery.of(context).padding.top;
     // DebugLog.log('status-height:', _statusBarHeight.toString());
@@ -34,19 +36,29 @@ class SliverWidget {
     _controller.dispose();
   }
 
-  void addController(VoidCallback scrollUp,VoidCallback scrollDown) {
+  void addController(VoidCallback scrollUp, VoidCallback scrollDown) {
     _controller.addListener(() {
       if (_controller.offset == 0) {
         //up
         scrollUp();
-      } else if (_controller.offset > _appBarHeight * 2) {
+        // } else if (_controller.offset > _appBarHeight * 2) {
+      } else if (_controller.offset > height!) {
         ///down
         scrollDown();
       }
     });
-  }
 
-  
+    // SchedulerBinding?.instance?.addPostFrameCallback((_) {
+    WidgetsBinding.instance?.addPostFrameCallback((_) {
+      final keyContext = globalKey.currentContext;
+      if (keyContext != null) {
+        final box = keyContext.findRenderObject() as RenderBox;
+        final pos = box.localToGlobal(Offset.zero);
+        height = pos.dy + box.size.height;
+        print("height=$height");
+      }
+    });
+  }
 
   void arrowUp() {
     DebugLog.log("arrowDown", "");
@@ -65,13 +77,12 @@ class SliverWidget {
 
   void arrowDown() {
     DebugLog.log("arrowUp", "");
-    DebugLog.log("_controller.positions-2", "${_controller.positions.length}");
-    DebugLog.log("_controller.positions-2-height",
-        "${_controller.positions.elementAt(0).pixels}");
+
     DebugLog.log("_controller.offset", "${_controller.offset}");
     //_controller.jumpTo(_appBarHeight * 2);
     _controller.animateTo(
-      _controller.offset == 0 ? _appBarHeight * 2 : _controller.offset,
+      // _controller.offset == 0 ? _appBarHeight * 2 : _controller.offset,
+      _controller.offset == 0 ? height! : _controller.offset,
       duration: Duration(milliseconds: 500),
       curve: Curves.easeIn,
     );
@@ -98,11 +109,15 @@ class SliverWidget {
     );
   }
 
+  GlobalKey globalKey = GlobalKey();
+
   ///head view
   Widget _getHeadView(BuildContext context, double heiget) {
     return SliverToBoxAdapter(
       child: Container(
-        height: heiget * 2,
+        key: globalKey,
+        padding: EdgeInsets.only(top: 300),
+        //height: heiget * 2,
         color: Theme.of(context).primaryColor,
       ),
     );
