@@ -4,7 +4,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_eden/src/values/style/eden_button_style.dart';
-import 'package:google_fonts/google_fonts.dart';
+// import 'package:google_fonts/google_fonts.dart';
 
 class EdenThemeData {
   // static const _lightFillColor = Colors.black;
@@ -100,7 +100,7 @@ class EdenThemeData {
         color: colorScheme.primary,
         elevation: 0,
         iconTheme: IconThemeData(color: colorScheme.onPrimary),
-        brightness: colorScheme.brightness,
+        // brightness: colorScheme.brightness,
       ),
       iconTheme: IconThemeData(color: iconColor),
       canvasColor: colorScheme.background,
@@ -138,11 +138,13 @@ class EdenThemeData {
       bottomNavigationBarTheme: BottomNavigationBarThemeData(
         type: BottomNavigationBarType.fixed,
         selectedLabelStyle: TextStyle(
-            color: selectedLabelColor,
-            fontFamily: _textTheme.subtitle1?.fontFamily),
+          color: selectedLabelColor,
+          fontFamily: _textTheme.subtitle1?.fontFamily,
+        ),
         unselectedLabelStyle: TextStyle(
-            color: unSelectedLabelColor,
-            fontFamily: _textTheme.subtitle1?.fontFamily),
+          color: unSelectedLabelColor,
+          fontFamily: _textTheme.subtitle1?.fontFamily,
+        ),
         selectedItemColor: selectedItemColor,
         unselectedItemColor: unSelectedItemColor,
         selectedIconTheme: IconThemeData(color: selectedItemColor),
@@ -192,17 +194,21 @@ class EdenThemeData {
   static const _bold = FontWeight.w700;
 
   static final TextTheme _textTheme = TextTheme(
-    headline4: GoogleFonts.montserrat(fontWeight: _bold, fontSize: 20.0),
-    caption: GoogleFonts.oswald(fontWeight: _semiBold, fontSize: 16.0),
-    headline5: GoogleFonts.oswald(fontWeight: _medium, fontSize: 16.0),
-    subtitle1: GoogleFonts.montserrat(fontWeight: _medium, fontSize: 16.0),
-    overline: GoogleFonts.montserrat(fontWeight: _medium, fontSize: 12.0),
-    bodyText1: GoogleFonts.montserrat(fontWeight: _regular, fontSize: 14.0),
-    subtitle2: GoogleFonts.montserrat(fontWeight: _medium, fontSize: 14.0),
-    bodyText2: GoogleFonts.montserrat(fontWeight: _regular, fontSize: 16.0),
-    headline6: GoogleFonts.montserrat(fontWeight: _bold, fontSize: 16.0),
-    button: GoogleFonts.montserrat(fontWeight: _semiBold, fontSize: 14.0),
+    headline4: textFonts(fontWeight: _bold, fontSize: 20.0),
+    caption: textFonts(fontWeight: _semiBold, fontSize: 16.0),
+    headline5: textFonts(fontWeight: _medium, fontSize: 16.0),
+    subtitle1: textFonts(fontWeight: _medium, fontSize: 16.0),
+    overline: textFonts(fontWeight: _medium, fontSize: 12.0),
+    bodyText1: textFonts(fontWeight: _regular, fontSize: 14.0),
+    subtitle2: textFonts(fontWeight: _medium, fontSize: 14.0),
+    bodyText2: textFonts(fontWeight: _regular, fontSize: 16.0),
+    headline6: textFonts(fontWeight: _bold, fontSize: 16.0),
+    button: textFonts(fontWeight: _semiBold, fontSize: 14.0),
   );
+}
+
+TextStyle textFonts({fontWeight, fontSize}) {
+  return TextStyle(fontWeight: fontWeight, fontSize: fontSize);
 }
 // ThemeData({
 //   Brightness brightness, //深色还是浅色
