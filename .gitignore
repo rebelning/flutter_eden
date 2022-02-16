@@ -5,6 +5,8 @@
 *.aab
 
 .lh/
+.packages
+.dart_tool/
 
 # Files for the ART/Dalvik VM
 *.dex
