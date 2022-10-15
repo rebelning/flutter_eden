@@ -1,4 +1,4 @@
-package com.sparrow.example.example
+package com.eden.example
 
 import io.flutter.embedding.android.FlutterActivity
 
