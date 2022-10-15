@@ -8,7 +8,7 @@ Flutter eden MVVM.
 
 # flutter eden server:
 
-https://github.com/Terminators/go_eden
+https://github.com/rebelning/go_eden
 
 ## Thanks
 
