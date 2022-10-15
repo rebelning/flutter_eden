@@ -18,6 +18,7 @@ class Routes {
   static final String message = "/account/message";
   static final String setting = "/account/setting";
   static final String sliver = "/account/sliver";
+  static final String stock = "/stock/stock";
   static void configureRoutes(FluroRouter router) {
     router.notFoundHandler = Handler(
         // ignore: missing_return
@@ -29,6 +30,7 @@ class Routes {
     router.define(message, handler: messageHandler);
     router.define(setting, handler: settingHandler);
     router.define(sliver, handler: sliverHandler);
+    router.define(stock, handler: stockHandler);
 //    router.define(deepLink, handler: deepLinkHandler);
   }
 }

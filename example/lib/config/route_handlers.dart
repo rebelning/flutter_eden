@@ -12,6 +12,7 @@ import 'package:example/ui/login/login_page.dart';
 import 'package:example/ui/message/message_page.dart';
 import 'package:example/ui/setting/setting_page.dart';
 import 'package:example/ui/sliver/sliver_page.dart';
+import 'package:example/ui/stock/stock_page.dart';
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 
@@ -35,6 +36,12 @@ var settingHandler = Handler(
 var sliverHandler = Handler(
     handlerFunc: (BuildContext? context, Map<String, List<String>> params) {
   return SliverPage();
+});
+
+///
+var stockHandler = Handler(
+    handlerFunc: (BuildContext? context, Map<String, List<String>> params) {
+  return StockPage();
 });
 
 /// Handles deep links into the app

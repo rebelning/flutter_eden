@@ -1,7 +1,7 @@
 import 'package:example/ui/message/message_view_model.dart';
 import 'package:example/ui/message/message_widget.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/src/widgets/framework.dart';
+
 import 'package:flutter_eden/eden.dart';
 
 class MessagePage extends AbstractCoreStreamWidget {
@@ -11,7 +11,7 @@ class MessagePage extends AbstractCoreStreamWidget {
 
 class _MessagePageState extends AbstractCoreStreamWidgetState<MessagePage>
     with MessageWidget {
-      final vm=inject<MessageViewModel>();
+  final vm = inject<MessageViewModel>();
   @override
   bool getHideToolbar() {
     return false;
@@ -22,8 +22,8 @@ class _MessagePageState extends AbstractCoreStreamWidgetState<MessagePage>
     return false;
   }
 
- @override
-  Stream<LoadingMessage?> getStream() {
+  @override
+  Stream<LoadingMessage> getStream() {
     return vm.loading;
   }
 
@@ -34,19 +34,15 @@ class _MessagePageState extends AbstractCoreStreamWidgetState<MessagePage>
 
   @override
   Widget buildBody(BuildContext context) {
-
     return FutureBuilder(
       builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
         return TextWidget(text: "Message");
       },
     );
   }
-  @override
-  void initData() {
-  }
-  @override
-  void dealloc() {
-  }
 
-
+  @override
+  void initData() {}
+  @override
+  void dealloc() {}
 }

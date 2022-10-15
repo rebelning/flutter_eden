@@ -1,8 +1,8 @@
 name: flutter_eden
 description: flutter eden mvvm.
 version: 0.0.1
-author: null
-homepage: null
+author: rebelning
+homepage: https://github.com/rebelning/flutter_eden
 
 environment:
   sdk: '>=2.12.0 <3.0.0'
@@ -18,7 +18,7 @@ dependencies:
   fluttertoast: ^8.0.7
   get_it: ^7.1.3
   rxdart: ^0.27.1
-  google_fonts: ^2.1.0
+  # google_fonts: 2.3.0
 dev_dependencies:
   flutter_test:
     sdk: flutter

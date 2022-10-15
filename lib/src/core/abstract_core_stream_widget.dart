@@ -16,6 +16,15 @@ abstract class AbstractCoreStreamWidgetState<T extends AbstractCoreStreamWidget>
   bool _isSafeArea = true;
 
   bool get isSafeArea => _isSafeArea;
+  @override
+  bool getHideToolbar() {
+    return false;
+  }
+
+  @override
+  bool getHideToolbarArrowBack() {
+    return false;
+  }
 
   @override
   Widget build(BuildContext context) {
