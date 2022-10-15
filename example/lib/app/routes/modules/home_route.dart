@@ -2,7 +2,7 @@ import 'package:example/app/modules/home/controllers/home_controller.dart';
 import 'package:example/app/modules/home/views/home_index.dart';
 import 'package:flutter_eden/eden.dart';
 
-class HomeRoute extends AbstractBaseRoute {
+class HomeRoute extends EdenBaseRoute {
   @override
   String get prefix => "/home";
 

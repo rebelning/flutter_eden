@@ -4,15 +4,12 @@ import 'package:example/app/modules/login/controllers/login_controller.dart';
 import 'package:example/app/modules/login/views/login_page.dart';
 import 'package:example/app/modules/profile/controllers/profile_controller.dart';
 import 'package:example/app/modules/profile/views/profile_page.dart';
-import 'package:example/app/modules/root/controllers/app_controller.dart';
-import 'package:example/app/modules/root/views/app_component.dart';
-
 import 'package:example/domain/repositories/impl/login/login_provider.dart';
 import 'package:example/domain/repositories/impl/login/login_respository_impl.dart';
 import 'package:example/domain/repositories/login_respository.dart';
 import 'package:flutter_eden/eden.dart';
 
-class AppRoute extends AbstractBaseRoute {
+class AppRoute extends EdenBaseRoute {
   @override
   String get prefix => "/app";
 

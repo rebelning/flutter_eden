@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'base_route.dart';
 
 ///base route
-abstract class AbstractBaseRoute implements BaseRoute {
+abstract class EdenBaseRoute implements BaseRoute {
   ///
   GetPage routePage<T>({
     required String name,

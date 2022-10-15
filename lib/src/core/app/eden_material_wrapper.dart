@@ -13,11 +13,11 @@ class EdenMaterialWrapper extends StatelessWidget {
   final TransitionBuilder? splashBuilder;
   const EdenMaterialWrapper({
     Key? key,
+    required this.home,
+    this.theme,
+    this.getPages,
     this.designSize,
     this.unknownRoute,
-    this.getPages,
-    this.home,
-    this.theme,
     this.initialBinding,
     this.splashBuilder,
   }) : super(key: key);
