@@ -1,16 +1,17 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
 class StorageKeys {
-  static final String token = "TOKEN";
-  static final String cookie = "COOKIE";
-  static final String login = "LOGIN";
-  static final String senha = "SENHA";
+  static const String token = "TOKEN";
+  static const String cookie = "COOKIE";
+  static const String proxyIP = "PROXYIP";
+  static const String proxyPort = "PROXYPORT";
 }
 
 class StorageHelper {
   static SharedPreferences? _prefs;
 
-  static Future<dynamic> _getInstance() async => _prefs = await SharedPreferences.getInstance();
+  static Future<dynamic> _getInstance() async =>
+      _prefs = await SharedPreferences.getInstance();
 
   static Future<String?> get(String key) async {
     await _getInstance();
@@ -27,4 +28,3 @@ class StorageHelper {
     _prefs?.remove(key);
   }
 }
-

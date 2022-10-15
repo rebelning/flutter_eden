@@ -48,32 +48,56 @@ class EdenThemeData {
   static final Color _darkUnSelectedItemColor = Color(0xffFFFFFF);
 
   ///light theme data
-  static ThemeData lightThemeData = themeData(
-    lightColorScheme,
-    _lightFocusColor,
-    _lightCursorColor,
-    _lightCardColor,
-    _lightIconColor,
-    _lightLineColor,
-    _lightSelectedLabelColor,
-    _lightUnSelectedLabelColor,
-    _lightSelectedItemColor,
-    _lightUnSelectedItemColor,
-  );
+  static ThemeData lightThemeData({
+    ColorScheme? colorScheme,
+    Color? focusColor,
+    Color? cursorColor,
+    Color? cardColor,
+    Color? iconColor,
+    Color? lineColor,
+    Color? selectedLabelColor,
+    Color? unSelectedLabelColor,
+    Color? selectedItemColor,
+    Color? unSelectedItemColor,
+  }) =>
+      themeData(
+        colorScheme ?? lightColorScheme,
+        focusColor ?? _lightFocusColor,
+        cursorColor ?? _lightCursorColor,
+        cardColor ?? _lightCardColor,
+        iconColor ?? _lightIconColor,
+        lineColor ?? _lightLineColor,
+        selectedLabelColor ?? _lightSelectedLabelColor,
+        unSelectedLabelColor ?? _lightUnSelectedLabelColor,
+        selectedItemColor ?? _lightSelectedItemColor,
+        unSelectedItemColor ?? _lightUnSelectedItemColor,
+      );
 
   ///dark theme data
-  static ThemeData darkThemeData = themeData(
-    darkColorScheme,
-    _darkFocusColor,
-    _darkCursorColor,
-    _darkCardColor,
-    _darkIconColor,
-    _darkLineColor,
-    _darkSelectedLabelColor,
-    _darkUnSelectedLabelColor,
-    _darkUnSelectedItemColor,
-    _darkSelectedItemColor,
-  );
+  static ThemeData darkThemeData({
+    ColorScheme? colorScheme,
+    Color? focusColor,
+    Color? cursorColor,
+    Color? cardColor,
+    Color? iconColor,
+    Color? lineColor,
+    Color? selectedLabelColor,
+    Color? unSelectedLabelColor,
+    Color? selectedItemColor,
+    Color? unSelectedItemColor,
+  }) =>
+      themeData(
+        colorScheme ?? darkColorScheme,
+        focusColor ?? _darkFocusColor,
+        cursorColor ?? _darkCursorColor,
+        cardColor ?? _darkCardColor,
+        iconColor ?? _darkIconColor,
+        lineColor ?? _darkLineColor,
+        selectedLabelColor ?? _darkSelectedLabelColor,
+        unSelectedLabelColor ?? _darkUnSelectedLabelColor,
+        selectedItemColor ?? _darkUnSelectedItemColor,
+        unSelectedItemColor ?? _darkSelectedItemColor,
+      );
 
   static ThemeData themeData(
     ColorScheme colorScheme,
@@ -95,8 +119,9 @@ class EdenThemeData {
       primaryColor: colorScheme.primary,
       //appbar
       appBarTheme: AppBarTheme(
-        textTheme: _textTheme.apply(bodyColor: colorScheme.onPrimary),
+        // textTheme: _textTheme.apply(bodyColor: colorScheme.onPrimary),
         // color: colorScheme.background,
+        toolbarTextStyle: TextStyle(color: colorScheme.onPrimary),
         color: colorScheme.primary,
         elevation: 0,
         iconTheme: IconThemeData(color: colorScheme.onPrimary),
@@ -130,9 +155,9 @@ class EdenThemeData {
         selectionColor: colorScheme.onPrimary,
       ),
       textButtonTheme: TextButtonThemeData(
-          style: EdenButtonStyle.flatButtonStyle(colorScheme)),
+          style: EdenButtonStyle.textButtonStyle(colorScheme)),
       elevatedButtonTheme: ElevatedButtonThemeData(
-          style: EdenButtonStyle.raisedButtonStyle(colorScheme)),
+          style: EdenButtonStyle.elevatedButtonStyle(colorScheme)),
       outlinedButtonTheme: OutlinedButtonThemeData(
           style: EdenButtonStyle.outlineButtonStyle(colorScheme)),
       bottomNavigationBarTheme: BottomNavigationBarThemeData(

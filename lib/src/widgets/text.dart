@@ -19,24 +19,24 @@ class TextWidget extends StatelessWidget {
   final bool? underline;
   final TextAlign? align;
 
-  const TextWidget(
-      {Key? key,
-      this.align,
-      this.smaller,
-      this.underline,
-      this.text = "",
-      this.title,
-      this.bold,
-      this.big,
-      this.small,
-      this.center,
-      this.white,
-      this.dark,
-      this.accent,
-      this.primary,
-      this.color,
-      this.maxLines})
-      : super(key: key);
+  const TextWidget({
+    Key? key,
+    this.align,
+    this.smaller,
+    this.underline,
+    this.text = "",
+    this.title,
+    this.bold,
+    this.big,
+    this.small,
+    this.center = true,
+    this.white,
+    this.dark,
+    this.accent,
+    this.primary,
+    this.color,
+    this.maxLines,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -62,23 +62,15 @@ class TextWidget extends StatelessWidget {
                 ? colors.accentLightColor
                 : colors.primaryColorDark;
 
-    return Text(textValue,
-        maxLines: maxLines,
-        textAlign: center == true
-            ? TextAlign.center
-            : align == null
-                ? null
-                : align,
-        style: TextStyle(
-            decoration: underline == true
-                ? TextDecoration.underline
-                : TextDecoration.none,
-            fontSize: fontSize,
-            color: color == null
-                ? dark == true
-                    ? colors.backgroundColor
-                    : customColor
-                : color,
-            fontWeight: isBold));
+    return Text(
+      textValue,
+      textAlign: center == true ? TextAlign.center : align,
+      style: TextStyle(
+        decoration:
+            underline == true ? TextDecoration.underline : TextDecoration.none,
+        color: color ?? (dark == true ? colors.backgroundColor : customColor),
+        fontWeight: isBold,
+      ),
+    );
   }
 }
