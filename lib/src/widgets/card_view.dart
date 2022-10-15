@@ -27,11 +27,7 @@ class CardViewWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: autoHeight == true
-            ? null
-            : height == null
-                ? 100
-                : height,
+        height: autoHeight == true ? null : height ?? 100,
         width: width,
         margin: margin,
         alignment: alignment,

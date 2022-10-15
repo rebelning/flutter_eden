@@ -1,6 +1,6 @@
 # example
 
-A new Flutter project.
+sparrow flutter framework example.
 
 ## Getting Started
 

@@ -4,7 +4,7 @@ import './text.dart';
 
 class SnackbarWidget {
   SnackbarWidget(
-      BuildContext context, {
+    BuildContext context, {
     bool? error,
     String? message,
     Function? action,
@@ -15,7 +15,7 @@ class SnackbarWidget {
           ? null
           : SnackBarAction(
               label: actionMessage ?? "OK",
-              onPressed: () => action == null ? () => null : action(),
+              onPressed: () => action(),
               textColor: Colors.white54,
             ),
       backgroundColor:

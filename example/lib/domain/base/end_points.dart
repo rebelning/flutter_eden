@@ -1,7 +1,8 @@
+// ignore: library_prefixes
 import 'base_url.dart' as BASE_URL;
 
 class _Login {
-  final login = BASE_URL.HTTP_DOMAIN + "/auth/login";
+  final authLogin = BASE_URL.HTTP_DOMAIN + "/auth/login";
 }
 
 class _AppList {
