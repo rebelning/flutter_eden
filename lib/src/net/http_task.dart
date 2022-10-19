@@ -6,23 +6,34 @@ abstract class HttpTask<T> extends GetConnect {
   }
 
   ///unauthorized
-  void unauthorized() {
+  void _unauthorized() {
     if (HttpHook.unauthorizedCallback != null) {
       HttpHook.unauthorizedCallback!();
     }
   }
 
-  void onError(String? error) {
+  void _onError(String? error) {
     if (HttpHook.onErrorValue != null) {
       HttpHook.onErrorValue!(error);
     }
   }
 
-  String? token() {
+  String? _token() {
     if (HttpHook.token != null) {
       return HttpHook.token!();
     }
   }
+
+  String? _onFindProxy() {
+    if (HttpHook.onfindProxy != null) {
+      return HttpHook.onfindProxy!();
+    }
+  }
+
+  @override
+  String Function(Uri url)? get findProxy => (uri) {
+        return _onFindProxy() ?? "";
+      };
 
   @override
   void onInit() {
@@ -34,17 +45,19 @@ abstract class HttpTask<T> extends GetConnect {
   void _interceptor() {
     httpClient.addRequestModifier<T?>((request) {
       // print("addRequestModifier...");
-      request.headers['Authorization'] = token() ?? "";
+      request.headers['Authorization'] = _token() ?? "";
       return request;
     });
 
     httpClient.addResponseModifier<T?>((request, response) {
+      print("addResponseModifier...");
+
       if (response.hasError) {
         print("${response.status.code}");
         if (response.unauthorized) {
-          unauthorized();
+          _unauthorized();
         } else {
-          onError(response.statusText);
+          _onError(response.statusText);
         }
       }
       return response;

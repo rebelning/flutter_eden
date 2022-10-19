@@ -16,7 +16,7 @@ class ProfileController extends EdenBaseController {
     StorageHelper.remove(Constants.USER_INFO);
     await Get.find<AuthService>().init();
     Get.find<AccountController>().update();
-    RouteCore.until(Routes.app.root);
+    EdenRoute.until(Routes.app.root);
   }
 
   @override

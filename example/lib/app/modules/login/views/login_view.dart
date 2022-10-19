@@ -49,7 +49,6 @@ class LoginView {
                   onPressed: () {},
                   child: const TextWidget(
                     text: "sign up",
-                    small: true,
                   ),
                 )),
             const SizedBox(height: 12),

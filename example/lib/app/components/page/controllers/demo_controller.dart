@@ -22,7 +22,7 @@ class DemoController extends EdenBaseController {
   void onTapPageView(String? _tag) {
     print("TagName=$_tag");
     tagName = _tag;
-    RouteCore.to(DemoPage(),
+    EdenRoute.to(DemoPage(),
         binding: DemoBinding(tag: tagName), preventDuplicates: false);
   }
 

@@ -33,7 +33,7 @@ class AccountView {
   }
 
   void _login() {
-    RouteCore.push(Routes.app.login);
+    EdenRoute.push(Routes.app.login);
   }
 
   Widget sliverView(BuildContext context, AccountController? _controller) {
@@ -143,7 +143,7 @@ class AccountView {
       menu: menu,
       onTapMenu: (context, menu) {
         if (menu?.menuId == "2002") {
-          RouteCore.push(Routes.app.proxy);
+          EdenRoute.push(Routes.app.proxy);
         }
       },
     );

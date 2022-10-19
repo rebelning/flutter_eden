@@ -43,7 +43,7 @@ class AccountController extends EdenBaseController {
 
   ///to setting
   void toSetting() {
-    RouteCore.push(Routes.app.accountProfile);
+    EdenRoute.push(Routes.app.accountProfile);
   }
 
   @override

@@ -43,7 +43,7 @@ class AuthService extends EdenBaseService {
     HttpHook().setUnauthorized(() {
       print("setUnauthorized-unauthorized");
       clearLogin();
-      RouteCore.push(Routes.app.login);
+      EdenRoute.push(Routes.app.login);
     });
 
     HttpHook().setError((value) {

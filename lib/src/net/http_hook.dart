@@ -1,4 +1,5 @@
 import 'package:flutter_eden/eden.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HttpHook {
   static final HttpHook _instance = HttpHook._init();
@@ -11,6 +12,24 @@ class HttpHook {
   static ValueGetter<String?>? get token => _token;
   void setToken(ValueGetter<String?> onToken) {
     _token = onToken;
+  }
+
+  static ValueGetter<String?>? _findProxy;
+  static ValueGetter<String?>? get onfindProxy => _findProxy;
+  Future setHttpProxy() async {
+    final prefs = await SharedPreferences.getInstance();
+    String? proxyIP = prefs.getString(StorageKeys.proxyIP);
+    String? proxyPort = prefs.getString(StorageKeys.proxyPort);
+    String? localProxy = "PROXY $proxyIP:$proxyPort";
+    if (proxyIP?.isEmpty == true || proxyPort?.isEmpty == true) {
+      localProxy = null;
+    }
+    print("localProxy=$localProxy");
+    if (localProxy != null) {
+      _findProxy = () {
+        return localProxy;
+      };
+    }
   }
 
   ///unauthorized

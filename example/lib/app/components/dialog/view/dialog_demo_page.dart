@@ -16,7 +16,7 @@ class DialogDemoPage extends EdenBaseWidget<DialogDemoController>
   Widget buildBody(BuildContext context, DialogDemoController _controller) {
     return renderItemView(() {
       print("onTap");
-      // RouteCore.push(Routes.component.dialog, preventDuplicates: false);
+      // EdenRoute.push(Routes.component.dialog, preventDuplicates: false);
     });
   }
 }

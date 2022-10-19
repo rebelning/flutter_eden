@@ -10,8 +10,8 @@ class HomeController extends EdenBaseListController {
   void onMenuInfo(MenuInfo? menu) {
     print("menu-path=${menu?.action}");
 
-    // RouteCore.push(menu?.action ?? Routes.app.error404);
-    RouteCore.push(menu?.action ?? "");
+    // EdenRoute.push(menu?.action ?? Routes.app.error404);
+    EdenRoute.push(menu?.action ?? "");
   }
 
   @override
