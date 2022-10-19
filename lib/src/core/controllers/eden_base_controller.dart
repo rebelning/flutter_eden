@@ -26,5 +26,5 @@ abstract class EdenBaseController extends GetxController {
 
   void init();
   void dealloc();
-  Future doRequest(bool isPull);
+  Future doRequest(bool isPull) async {}
 }

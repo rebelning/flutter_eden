@@ -251,7 +251,7 @@ class CustomDialog extends StatelessWidget {
 
         if (isPopDialogOnClickCancel) {
           // Navigator.of(context).pop();
-          RouteCore.back();
+          EdenRoute.back();
         }
       },
     );

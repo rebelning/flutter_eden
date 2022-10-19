@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
-import './text.dart';
-import 'logo.dart';
+import 'package:flutter_eden/eden.dart';
 
 class ToolbarWidget extends StatelessWidget implements PreferredSizeWidget {
   @override
@@ -32,19 +30,18 @@ class ToolbarWidget extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-        automaticallyImplyLeading: hideBackArrow == true ? false : true,
-        centerTitle: centerTitle,
-        backgroundColor: backgroundColor,
-        title: logoWidget == true
-            ? const Center(child: LogoWidget(header: true, small: true))
-            : TextWidget(
-                text: title,
-                color: color,
-                accent: true,
-                big: true,
-              ),
-        leading: leading,
-        actions: actions,
-        elevation: elevation ?? 0.0);
+      automaticallyImplyLeading: hideBackArrow == true ? false : true,
+      centerTitle: centerTitle,
+      backgroundColor: backgroundColor,
+      title: logoWidget == true
+          ? const Center(child: LogoWidget(header: true, small: true))
+          : TextWidget(
+              text: title,
+              color: color,
+            ),
+      leading: leading,
+      actions: actions,
+      elevation: elevation ?? 0.0,
+    );
   }
 }

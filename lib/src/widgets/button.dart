@@ -18,6 +18,8 @@ class ButtonWidget extends StatelessWidget {
   final double _elevation = 0;
   final Color? onPrimary;
   final Color? primary;
+  final double? fontSize;
+  final double? fontHeight;
 
   const ButtonWidget({
     Key? key,
@@ -30,6 +32,8 @@ class ButtonWidget extends StatelessWidget {
     this.minimumSize,
     this.onPrimary,
     this.primary,
+    this.fontSize,
+    this.fontHeight,
   }) : super(key: key);
 
   @override
@@ -91,10 +95,8 @@ class ButtonWidget extends StatelessWidget {
   }
 
   Widget buttonText() {
-    return TextWidget(
-      text: label ?? "Label",
-      small: true,
-      // color: textColor,
+    return Text(
+      label ?? "Label",
     );
   }
 
@@ -106,8 +108,10 @@ class ButtonWidget extends StatelessWidget {
       elevation: _elevation,
       padding: EdgeInsets.symmetric(horizontal: 20.rpx, vertical: 20.rpx),
       textStyle: TextStyle(
-        fontSize: 26.rpx,
-        fontWeight: FontWeight.normal,
+        fontSize: fontSize ?? 26.rpx,
+        fontWeight: FontWeight.w500,
+        color: onPrimary,
+        height: fontHeight,
       ),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.all(Radius.circular(44.rpx)),
@@ -138,7 +142,7 @@ class ButtonWidget extends StatelessWidget {
       ),
       textStyle: TextStyle(
         color: EdenColors.colorB0B4B8,
-        fontSize: 28.rpx,
+        fontSize: fontSize ?? 26.rpx,
         height: 1.4,
       ),
     ).copyWith(
@@ -172,7 +176,7 @@ class ButtonWidget extends StatelessWidget {
       ),
       textStyle: TextStyle(
         color: EdenColors.color2C83F5,
-        fontSize: 28.rpx,
+        fontSize: fontSize ?? 26.rpx,
         height: 1.4,
       ),
     ).copyWith(

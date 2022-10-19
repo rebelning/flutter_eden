@@ -56,8 +56,6 @@ class DropdownWidget extends StatelessWidget {
                     children: <Widget>[
                       TextWidget(
                         text: label == null ? "" : label?.toUpperCase(),
-                        bold: true,
-                        accent: true,
                       ),
                       SizedBox(height: 10),
                       ...options

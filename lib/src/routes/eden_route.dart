@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-class RouteCore {
+class EdenRoute {
   /// 打开新页面
   static Future<T?> push<T>(
     /// 页面路径

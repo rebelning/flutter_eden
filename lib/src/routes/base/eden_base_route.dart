@@ -26,4 +26,12 @@ abstract class EdenBaseRoute implements BaseRoute {
       transition: transition ?? Transition.cupertino,
     );
   }
+
+  S edenFind<S>({String? tag}) => Get.find<S>(tag: tag);
+
+  ///
+  void edenLazyPut<S>(InstanceBuilderCallback<S> builder,
+      {String? tag, bool fenix = false}) {
+    Get.lazyPut<S>(builder, tag: tag, fenix: fenix);
+  }
 }

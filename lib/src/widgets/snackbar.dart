@@ -21,9 +21,6 @@ class SnackbarWidget {
       backgroundColor:
           error == true ? Colors.redAccent : colors.snackbarBackgroundColor,
       content: TextWidget(
-        white: true,
-        bold: true,
-        small: true,
         text: message,
       ),
     );

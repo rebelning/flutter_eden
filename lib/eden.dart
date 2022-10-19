@@ -19,9 +19,9 @@ export 'src/net/http_task.dart';
 export 'src/net/http_hook.dart';
 
 ///routes
-export 'src/routes/base/base_route.dart';
-export 'src/routes/base/abstract_base_route.dart';
-export 'src/routes/route_core.dart';
+// export 'src/routes/base/base_route.dart';
+export 'src/routes/base/eden_base_route.dart';
+export 'src/routes/eden_route.dart';
 
 ///values
 export 'src/values/themes/eden_theme_data.dart';

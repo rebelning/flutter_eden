@@ -64,7 +64,6 @@ class _TagWidgetState extends State<TagWidget> {
           children: <Widget>[
             TextWidget(
                 text: widget.label,
-                small: true,
                 color: _isActive == true
                     ? colors.backgroundColor
                     : colors.accentColor),

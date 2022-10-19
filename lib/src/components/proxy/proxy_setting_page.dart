@@ -57,7 +57,7 @@ class _ProxySettingPageState extends State<ProxySettingPage>
           confirmText: "重启",
           cancelText: "取消",
           confirmTap: () {
-            RouteCore.back();
+            EdenRoute.back();
             _exitReset();
           },
         );

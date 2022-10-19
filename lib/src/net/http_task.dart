@@ -39,8 +39,6 @@ abstract class HttpTask<T> extends GetConnect {
     });
 
     httpClient.addResponseModifier<T?>((request, response) {
-      print("addResponseModifier...");
-
       if (response.hasError) {
         print("${response.status.code}");
         if (response.unauthorized) {

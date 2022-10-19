@@ -7,13 +7,15 @@ class EdenMaterialWrapper extends StatelessWidget {
   final Size? designSize;
   final GetPage? unknownRoute;
   final List<GetPage>? getPages;
+  final String? initialRoute;
   final Widget? home;
   final ThemeData? theme;
   final Bindings? initialBinding;
   final TransitionBuilder? splashBuilder;
   const EdenMaterialWrapper({
     Key? key,
-    required this.home,
+    this.home,
+    this.initialRoute,
     this.theme,
     this.getPages,
     this.designSize,
@@ -71,6 +73,7 @@ class EdenMaterialWrapper extends StatelessWidget {
         unknownRoute: unknownRoute,
         // home: AppComponent(),
         home: home,
+        initialRoute: initialRoute,
         routingCallback: (route) {
           print("route=${route?.current}");
         },

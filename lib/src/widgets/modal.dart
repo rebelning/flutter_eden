@@ -41,7 +41,9 @@ class ModalWidget {
                   if (confirmLabel != null && cancelLabel == null)
                     FlatButton(
                         // child: TextWidget(text: confirmLabel ?? "Button Label", accent: true),
-                        child: TextWidget(text: confirmLabel, accent: true),
+                        child: TextWidget(
+                          text: confirmLabel,
+                        ),
                         onPressed: () {
                           if (confirmOnPress != null) confirmOnPress();
                           Navigator.pop(context);
@@ -50,7 +52,9 @@ class ModalWidget {
                   if (cancelLabel != null)
                     FlatButton(
                       // child: TextWidget(text: confirmLabel ?? "Button Label", accent: true),
-                      child: TextWidget(text: confirmLabel, accent: true),
+                      child: TextWidget(
+                        text: confirmLabel,
+                      ),
                       onPressed: () {
                         if (confirmOnPress != null) confirmOnPress();
                         Navigator.pop(context);

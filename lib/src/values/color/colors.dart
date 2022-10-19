@@ -7,6 +7,7 @@ const Color primaryColor = Color(0xFFd7dae0);
 const Color primaryColorDark = Color(0xFFabb2bf);
 
 const Color titleColor = Color(0xFFFFFFFF);
+const Color titleLightColor = Color(0xFF000000);
 
 const Color facebookColor = Color(0xFFf4dcac);
 const Color lineColor = Color(0xFFF5F5F5);
