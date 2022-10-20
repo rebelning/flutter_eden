@@ -36,8 +36,6 @@ void main() {
         },
       ),
       splashBuilder: (context, child) {
-        final botToastBuilder = BotToastInit();
-        child = botToastBuilder(context, child);
         return FutureBuilder<void>(
           key: const ValueKey('initFuture'),
           future: Get.find<SplashService>().init(),

@@ -1,9 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_eden/eden.dart';
+import 'package:flutter_eden/src/core/logger/eden_logger.dart';
 import 'package:flutter_eden/src/plugin/eden_plugin.dart';
 
 class EdenMaterialWrapper extends StatelessWidget {
-  ///widht=750
+  final bool? enableLog;
   final Size? designSize;
   final GetPage? unknownRoute;
   final List<GetPage>? getPages;
@@ -12,8 +13,10 @@ class EdenMaterialWrapper extends StatelessWidget {
   final ThemeData? theme;
   final Bindings? initialBinding;
   final TransitionBuilder? splashBuilder;
+  final ValueChanged<Routing?>? routingCallback;
   const EdenMaterialWrapper({
     Key? key,
+    this.enableLog,
     this.home,
     this.initialRoute,
     this.theme,
@@ -22,6 +25,7 @@ class EdenMaterialWrapper extends StatelessWidget {
     this.unknownRoute,
     this.initialBinding,
     this.splashBuilder,
+    this.routingCallback,
   }) : super(key: key);
 
   @override
@@ -64,7 +68,7 @@ class EdenMaterialWrapper extends StatelessWidget {
 
   ///
   Widget get materialApp => GetMaterialApp(
-        enableLog: true,
+        enableLog: enableLog ?? true,
         defaultTransition: Transition.cupertino,
         // opaqueRoute: Get.isOpaqueRouteDefault,
         // popGesture: Get.isPopGestureEnable,
@@ -74,36 +78,20 @@ class EdenMaterialWrapper extends StatelessWidget {
         // home: AppComponent(),
         home: home,
         initialRoute: initialRoute,
-        routingCallback: (route) {
-          print("route=${route?.current}");
-        },
+        logWriterCallback: Logger.edenWrite,
+        routingCallback: routingCallback,
         theme: theme ?? EdenThemeData.darkThemeData(),
         initialBinding: initialBinding,
-        // initialBinding: BindingsBuilder(() {
-        //   Get.putAsync(() => AuthService().init());
-        //   Get.lazyPut(() => SplashService());
-        //   Get.lazyPut(() => AppController());
-        //   Get.lazyPut(() => HomeController());
-        //   Get.lazyPut(() => MessageController());
-        //   Get.lazyPut<IAccountPorvider>(() => AccountProvider());
-        //   Get.lazyPut<IAccountRespository>(
-        //       () => AccountRespositoryImpl(porvider: Get.find()));
-        //   Get.lazyPut(() => AccountController(accountRespository: Get.find()));
-        // }),
-        builder: splashBuilder,
-        // builder: (context, child) {
-        //   final botToastBuilder = BotToastInit();
-        //   child = botToastBuilder(context, child);
-        //   return FutureBuilder<void>(
-        //     key: const ValueKey('initFuture'),
-        //     future: Get.find<SplashService>().init(),
-        //     builder: (context, snapshot) {
-        //       if (snapshot.connectionState == ConnectionState.done) {
-        //         return child ?? const SizedBox.shrink();
-        //       }
-        //       return SplashView();
-        //     },
-        //   );
-        // },
+
+        navigatorObservers: [BotToastNavigatorObserver()],
+        localizationsDelegates: const [
+          RefreshLocalizations.delegate,
+        ],
+        builder: (BuildContext context, Widget? child) {
+          final botToastBuilder = BotToastInit();
+          child = botToastBuilder(context, child);
+
+          return splashBuilder == null ? child : splashBuilder!(context, child);
+        },
       );
 }

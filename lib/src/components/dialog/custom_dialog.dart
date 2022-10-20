@@ -102,7 +102,7 @@ class CustomDialog extends StatelessWidget {
     return UnconstrainedBox(
       constrainedAxis: Axis.vertical,
       child: SizedBox(
-        width: width ?? 590,
+        width: width ?? 590.rpx,
         child: Dialog(
           insetPadding: EdgeInsets.zero,
           shape: const RoundedRectangleBorder(
@@ -118,15 +118,15 @@ class CustomDialog extends StatelessWidget {
                 // content
 
                 Container(
-                  padding: const EdgeInsets.only(
-                    left: 32,
-                    right: 32,
-                    top: 24,
-                    bottom: 24,
+                  padding: EdgeInsets.only(
+                    left: 32.rpx,
+                    right: 32.rpx,
+                    top: 24.rpx,
+                    bottom: 24.rpx,
                   ),
                   constraints: BoxConstraints(
-                    maxHeight: maxHeight ?? 300,
-                    minHeight: minHeight ?? 100,
+                    maxHeight: maxHeight ?? 300.rpx,
+                    minHeight: minHeight ?? 100.rpx,
                   ),
                   child: SingleChildScrollView(
                     child: _renderContent(),
@@ -163,26 +163,26 @@ class CustomDialog extends StatelessWidget {
     /// 如果指定文本标题，使用通用文本标题，否则使用[title]的widget作为标题
     if (titleText != null) {
       return Container(
-        margin: const EdgeInsets.only(
-          top: 80,
-          right: 57,
-          left: 57,
+        margin: EdgeInsets.only(
+          top: 80.rpx,
+          right: 57.rpx,
+          left: 57.rpx,
         ),
-        height: 44,
+        height: 44.rpx,
         child: Text(
           '$titleText',
           textAlign: TextAlign.center,
-          style: const TextStyle(
+          style: TextStyle(
             color: Color(0xff000000),
-            fontSize: 34,
-            height: 1,
+            fontSize: 34.rpx,
+            height: 1.rpx,
             fontWeight: FontWeight.w500,
           ),
         ),
       );
     } else {
       return Container(
-        padding: const EdgeInsets.only(top: 50, bottom: 25),
+        padding: EdgeInsets.only(top: 50.rpx, bottom: 25.rpx),
         child: title,
       );
     }
@@ -196,7 +196,7 @@ class CustomDialog extends StatelessWidget {
         textAlign: contentTextAlign,
         style: TextStyle(
           color: contentColor ?? const Color(0xffB3B3B3),
-          fontSize: 28,
+          fontSize: 28.rpx,
         ),
       );
     } else {
@@ -214,8 +214,8 @@ class CustomDialog extends StatelessWidget {
           child: _renderCancelButton(context),
         ),
         Container(
-          width: 1,
-          height: 94,
+          width: 1.rpx,
+          height: 94.rpx,
           color: const Color(0xffd9d9d9),
         ),
         Expanded(
@@ -229,13 +229,13 @@ class CustomDialog extends StatelessWidget {
   Widget _renderCancelButton(BuildContext context) {
     return InkWell(
       child: Container(
-        height: 94,
+        height: 94.rpx,
         child: Text(
           cancelText != null ? cancelText! : "取消",
           textAlign: TextAlign.center,
-          style: const TextStyle(
+          style: TextStyle(
             color: Color(0xff8b8b8b),
-            fontSize: 32,
+            fontSize: 32.rpx,
             height: 74 / 32,
           ),
         ),
@@ -261,13 +261,13 @@ class CustomDialog extends StatelessWidget {
   Widget _renderConfirmButton(BuildContext context) {
     return InkWell(
       child: Container(
-        height: 94,
+        height: 94.rpx,
         child: Text(
           confirmText != null ? confirmText! : "确定",
           textAlign: TextAlign.center,
           style: TextStyle(
             color: _confirmTextColors[confirmTextColor],
-            fontSize: 32,
+            fontSize: 32.rpx,
             height: 74 / 32,
           ),
         ),

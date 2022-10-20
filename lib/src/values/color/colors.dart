@@ -8,10 +8,16 @@ const Color primaryColorDark = Color(0xFFabb2bf);
 
 const Color titleColor = Color(0xFFFFFFFF);
 const Color titleLightColor = Color(0xFF000000);
+const Color textFieldColor = Color(0xFFFFFFFF);
+const Color textFieldLightColor = Color(0xFF000000);
 
+///
 const Color facebookColor = Color(0xFFf4dcac);
 const Color lineColor = Color(0xFFF5F5F5);
+
+///
 const Color textColor = Color(0xFFFFFFFF);
+const Color textLightColor = Color(0xFF000000);
 
 const Color backgroundColor = Color(0xFFFFFFFF);
 const Color backgroundDarkColor = Color(0xFF21252b);

@@ -15,7 +15,7 @@ class AuthService extends EdenBaseService {
   String? storageToken;
   Future<AuthService> init() async {
     storageToken = await StorageHelper.get(StorageKeys.token);
-    HttpHook().setToken(() => "Bearer $storageToken");
+    EdenHttpHook().setToken(() => "Bearer $storageToken");
     StorageHelper.get(Constants.USER_INFO).then((value) {
       print("userInfo=$value");
       if (value != null) {
@@ -40,13 +40,13 @@ class AuthService extends EdenBaseService {
   void onInit() {
     super.onInit();
     print("auth service init...");
-    HttpHook().setUnauthorized(() {
+    EdenHttpHook().setUnauthorized(() {
       print("setUnauthorized-unauthorized");
       clearLogin();
       EdenRoute.push(Routes.app.login);
     });
 
-    HttpHook().setError((value) {
+    EdenHttpHook().setError((value) {
       print("httpHook-error=$value");
       SnackbarWidget(Get.context!, error: true, message: value?.toString());
     });

@@ -1,12 +1,12 @@
-import 'package:flutter_eden/eden.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_eden/eden.dart';
 
-class HttpHook {
-  static final HttpHook _instance = HttpHook._init();
+class EdenHttpHook {
+  static final EdenHttpHook _instance = EdenHttpHook._init();
 
-  HttpHook._init();
+  EdenHttpHook._init();
 
-  factory HttpHook() => _instance;
+  factory EdenHttpHook() => _instance;
 
   static ValueGetter<String?>? _token;
   static ValueGetter<String?>? get token => _token;

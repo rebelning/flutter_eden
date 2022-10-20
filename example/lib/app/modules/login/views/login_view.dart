@@ -29,16 +29,16 @@ class LoginView {
             InputWidget(
               placeholder: "login",
               // value: snapshot.data,
-              onChange: (value) {
+              onChanged: (value) {
                 _controller.setUsername(value);
               },
             ),
             const SizedBox(height: 10),
             InputWidget(
               placeholder: "password",
-              password: true,
+
               // value: snapshot.data,
-              onChange: (value) {
+              onChanged: (value) {
                 _controller.setPassword(value);
               },
             ),

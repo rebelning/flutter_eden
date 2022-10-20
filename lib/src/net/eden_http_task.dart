@@ -7,26 +7,26 @@ abstract class HttpTask<T> extends GetConnect {
 
   ///unauthorized
   void _unauthorized() {
-    if (HttpHook.unauthorizedCallback != null) {
-      HttpHook.unauthorizedCallback!();
+    if (EdenHttpHook.unauthorizedCallback != null) {
+      EdenHttpHook.unauthorizedCallback!();
     }
   }
 
   void _onError(String? error) {
-    if (HttpHook.onErrorValue != null) {
-      HttpHook.onErrorValue!(error);
+    if (EdenHttpHook.onErrorValue != null) {
+      EdenHttpHook.onErrorValue!(error);
     }
   }
 
   String? _token() {
-    if (HttpHook.token != null) {
-      return HttpHook.token!();
+    if (EdenHttpHook.token != null) {
+      return EdenHttpHook.token!();
     }
   }
 
   String? _onFindProxy() {
-    if (HttpHook.onfindProxy != null) {
-      return HttpHook.onfindProxy!();
+    if (EdenHttpHook.onfindProxy != null) {
+      return EdenHttpHook.onfindProxy!();
     }
   }
 

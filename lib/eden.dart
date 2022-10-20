@@ -15,8 +15,8 @@ export 'package:flutter/physics.dart';
 export 'src/core/eden_core.dart';
 
 ///net
-export 'src/net/http_task.dart';
-export 'src/net/http_hook.dart';
+export 'src/net/eden_http_task.dart';
+export 'src/net/eden_http_hook.dart';
 
 ///routes
 // export 'src/routes/base/base_route.dart';
