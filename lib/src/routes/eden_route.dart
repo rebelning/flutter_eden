@@ -57,8 +57,12 @@ class EdenRoute {
 
   static void back<T>({
     T? result,
+    closeOverlays = false,
   }) {
-    Get.back<T>(result: result);
+    Get.back<T>(
+      result: result,
+      closeOverlays: closeOverlays,
+    );
   }
 
   static void until<T>(

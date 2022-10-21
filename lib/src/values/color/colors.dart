@@ -19,6 +19,11 @@ const Color lineColor = Color(0xFFF5F5F5);
 const Color textColor = Color(0xFFFFFFFF);
 const Color textLightColor = Color(0xFF000000);
 
+Color snackBarColor = const Color(0xFFFFFFFF);
+Color snackBarTextColor = const Color(0xFF000000);
+Color snackBarLightColor = const Color(0xFF000000).withOpacity(0.6);
+Color snackBarTextLightColor = const Color(0xFFFFFFFF);
+
 const Color backgroundColor = Color(0xFFFFFFFF);
 const Color backgroundDarkColor = Color(0xFF21252b);
 const Color cardColor = Color(0xFF2b2d34);

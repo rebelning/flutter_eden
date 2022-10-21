@@ -5,6 +5,10 @@ abstract class HttpTask<T> extends GetConnect {
     return true;
   }
 
+  void close() {
+    httpClient.close();
+  }
+
   ///unauthorized
   void _unauthorized() {
     if (EdenHttpHook.unauthorizedCallback != null) {

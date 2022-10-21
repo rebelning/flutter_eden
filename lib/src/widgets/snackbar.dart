@@ -1,31 +1,24 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_eden/src/values/color/colors.dart' as colors;
-import './text.dart';
+import 'package:flutter_eden/eden.dart';
 
-class SnackbarWidget {
-  SnackbarWidget(
-    BuildContext context, {
+class Snackbar {
+  Snackbar(
+    String message, {
+    String? title,
     bool? error,
-    String? message,
     Function? action,
     String? actionMessage,
   }) {
-    final snackbar = SnackBar(
-      action: action == null
-          ? null
-          : SnackBarAction(
-              label: actionMessage ?? "OK",
-              onPressed: () => action(),
-              textColor: Colors.white54,
-            ),
-      backgroundColor:
-          error == true ? Colors.redAccent : colors.snackbarBackgroundColor,
-      content: TextWidget(
-        text: message,
-      ),
+    Get.snackbar(
+      title ?? "Message",
+      message,
+      colorText: kIsDark ? snackBarTextColor : snackBarTextLightColor,
+      backgroundColor: kIsDark ? snackBarColor : snackBarLightColor,
     );
+  }
+}
 
-    // scaffoldKey?.currentState?.showSnackBar(snackbar);
-    ScaffoldMessenger.of(context).showSnackBar(snackbar);
+void closeAllSnackbars() {
+  if (kIsSnackbarOpen) {
+    Get.closeAllSnackbars();
   }
 }

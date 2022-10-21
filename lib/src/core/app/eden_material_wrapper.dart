@@ -71,22 +71,27 @@ class EdenMaterialWrapper extends StatelessWidget {
         enableLog: enableLog ?? true,
         defaultTransition: Transition.cupertino,
         // opaqueRoute: Get.isOpaqueRouteDefault,
-        // popGesture: Get.isPopGestureEnable,
+        popGesture: Get.isPopGestureEnable,
         getPages: getPages ?? [],
-        // initialRoute: Routes.app.root,
+
         unknownRoute: unknownRoute,
-        // home: AppComponent(),
+
         home: home,
         initialRoute: initialRoute,
         logWriterCallback: Logger.edenWrite,
-        routingCallback: routingCallback,
+        routingCallback: routingCallback ??
+            (route) {
+              closeAllSnackbars();
+              // hideOverlayLoading();
+            },
         theme: theme ?? EdenThemeData.darkThemeData(),
         initialBinding: initialBinding,
 
-        navigatorObservers: [BotToastNavigatorObserver()],
         localizationsDelegates: const [
           RefreshLocalizations.delegate,
         ],
+        navigatorObservers: [BotToastNavigatorObserver()],
+        // builder: splashBuilder,
         builder: (BuildContext context, Widget? child) {
           final botToastBuilder = BotToastInit();
           child = botToastBuilder(context, child);

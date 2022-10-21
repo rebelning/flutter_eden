@@ -1,15 +1,17 @@
+import 'package:example/app/components/button/controllers/demo_button_controller.dart';
 import 'package:flutter_eden/eden.dart';
 
 class DemoButtonView {
-  Widget renderListView(BuildContext context) {
+  Widget renderListView(
+      BuildContext context, DemoButtonController _controller) {
     return Container(
       padding: EdgeInsets.only(left: 32.rpx, right: 32.rpx),
       child: ListView(
         children: [
           SizedBox(height: 40.rpx),
-          _elevatedButtonView(),
+          _elevatedButtonView(_controller),
           SizedBox(height: 40.rpx),
-          _textButtonView(),
+          _textButtonView(_controller),
           SizedBox(height: 40.rpx),
           _outLinedButtonView(),
           SizedBox(height: 40.rpx),
@@ -18,21 +20,25 @@ class DemoButtonView {
     );
   }
 
-  Widget _elevatedButtonView() {
+  Widget _elevatedButtonView(DemoButtonController _controller) {
     return Container(
       child: ButtonWidget(
-        label: "Elevated Button",
+        label: "snackbar",
         buttonType: ButtonType.ELEVATED,
-        onPressed: () {},
+        onPressed: () {
+          _controller.showSnackbar();
+        },
       ),
     );
   }
 
-  Widget _textButtonView() {
+  Widget _textButtonView(DemoButtonController _controller) {
     return ButtonWidget(
-      label: "Text Button",
+      label: "showLoading",
       buttonType: ButtonType.TEXT,
-      onPressed: () {},
+      onPressed: () {
+        _controller.showLoad();
+      },
     );
   }
 

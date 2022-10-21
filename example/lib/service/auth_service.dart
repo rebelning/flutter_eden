@@ -48,7 +48,8 @@ class AuthService extends EdenBaseService {
 
     EdenHttpHook().setError((value) {
       print("httpHook-error=$value");
-      SnackbarWidget(Get.context!, error: true, message: value?.toString());
+
+      Snackbar("${value?.toString()}", title: "Error");
     });
   }
 }
