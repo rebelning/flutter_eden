@@ -1,9 +1,18 @@
+import 'package:example/app/modules/account/controllers/account_controller.dart';
+import 'package:example/app/modules/account/views/account_page.dart';
 import 'package:example/app/modules/error/controllers/error_controller.dart';
 import 'package:example/app/modules/error/view/error_page.dart';
+import 'package:example/app/modules/home/controllers/home_controller.dart';
+import 'package:example/app/modules/home/views/home_index.dart';
 import 'package:example/app/modules/login/controllers/login_controller.dart';
 import 'package:example/app/modules/login/views/login_page.dart';
+import 'package:example/app/modules/message/controllers/message_controller.dart';
+import 'package:example/app/modules/message/views/message_page.dart';
 import 'package:example/app/modules/profile/controllers/profile_controller.dart';
 import 'package:example/app/modules/profile/views/profile_page.dart';
+import 'package:example/app/modules/root/bindings/app_bindings.dart';
+
+import 'package:example/app/modules/root/views/app_component.dart';
 import 'package:example/domain/repositories/impl/login/login_provider.dart';
 import 'package:example/domain/repositories/impl/login/login_respository_impl.dart';
 import 'package:example/domain/repositories/login_respository.dart';
@@ -14,6 +23,10 @@ class AppRoute extends EdenBaseRoute {
   String get prefix => "/app";
 
   String get root => "/";
+
+  String get home => prefix + "/home";
+  String get message => prefix + "/message";
+  String get account => prefix + "/account";
 
   ///
   String get login => prefix + "/login";
@@ -32,13 +45,37 @@ class AppRoute extends EdenBaseRoute {
   @override
   List<GetPage> getRoutePages() {
     return [
-      // routePage(
-      //   name: root,
-      //   page: () => AppComponent(),
-      //   bindingsBuilder: () {
-      //     Get.lazyPut(() => AppController());
-      //   },
-      // ),
+      routePage(
+        name: root,
+        page: () => AppComponent(),
+        bindings: [
+          AppBindings(),
+        ],
+        bindingsBuilder: () {
+          // Get.lazyPut(() => AppController());
+        },
+        children: [
+          routePage(
+            name: home,
+            page: () => HomeIndex(),
+            bindingsBuilder: () {
+              // Get.lazyPut(() => HomeController());
+            },
+          ),
+          routePage(
+            name: message,
+            page: () => MessagePage(),
+            bindingsBuilder: () {
+              // Get.lazyPut(() => MessageController());
+            },
+          ),
+          routePage(
+            name: account,
+            page: () => AccountPage(),
+            bindingsBuilder: () {},
+          ),
+        ],
+      ),
       routePage(
         name: proxy,
         page: () => ProxySettingPage(),

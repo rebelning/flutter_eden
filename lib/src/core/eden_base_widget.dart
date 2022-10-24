@@ -19,6 +19,9 @@ abstract class EdenBaseWidget<T extends EdenBaseController> extends GetView<T> {
 
   ///tool title
   String toolbarTitle();
+  Color? backgroundColor() {
+    return Color(0xffF8F8F8);
+  }
 
   void setToolbarTitle(String? toolbarTitle) {
     _toolbarTitle = toolbarTitle;
@@ -61,6 +64,8 @@ abstract class EdenBaseWidget<T extends EdenBaseController> extends GetView<T> {
             title: _toolbarTitle ?? toolbarTitle(),
             color: toolbarTitleColor,
             actions: toolbarActions(),
+            fontSize: 35.rpx,
+            fontWeight: FontWeight.w500,
           );
   }
 
@@ -84,6 +89,7 @@ abstract class EdenBaseWidget<T extends EdenBaseController> extends GetView<T> {
           return Scaffold(
             appBar: appToolbar(context),
             body: buildBody(context, controller),
+            backgroundColor: backgroundColor(),
             floatingActionButton: floatingActionButton(),
             bottomNavigationBar: bottomNavigationBar(),
           );

@@ -49,14 +49,14 @@ class LoginController extends EdenBaseController {
       StorageHelper.set(Constants.USER_INFO, login?.toRawJson());
       return true;
     } else {
-      Snackbar("${login?.message}", title: "Message");
+      EdenSnackbar("${login?.message}", title: "Message");
       return false;
     }
   }
 
   bool _loginFailure(dynamic error) {
     print("error=$error");
-    Snackbar("${error.toString()}", title: "Error");
+    EdenSnackbar("${error.toString()}", title: "Error");
 
     return false;
   }

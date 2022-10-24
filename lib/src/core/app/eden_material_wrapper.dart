@@ -70,17 +70,16 @@ class EdenMaterialWrapper extends StatelessWidget {
   Widget get materialApp => GetMaterialApp(
         enableLog: enableLog ?? true,
         defaultTransition: Transition.cupertino,
-        // opaqueRoute: Get.isOpaqueRouteDefault,
+
         popGesture: Get.isPopGestureEnable,
         getPages: getPages ?? [],
-
         unknownRoute: unknownRoute,
-
         home: home,
         initialRoute: initialRoute,
         logWriterCallback: Logger.edenWrite,
         routingCallback: routingCallback ??
             (route) {
+              print("route=${route?.route?.currentResult}");
               closeAllSnackbars();
               // hideOverlayLoading();
             },

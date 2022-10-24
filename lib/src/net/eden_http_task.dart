@@ -28,16 +28,19 @@ abstract class HttpTask<T> extends GetConnect {
     }
   }
 
-  String? _onFindProxy() {
+  String _onFindProxy() {
     if (EdenHttpHook.onfindProxy != null) {
       return EdenHttpHook.onfindProxy!();
     }
+    return "";
   }
 
   @override
-  String Function(Uri url)? get findProxy => (uri) {
-        return _onFindProxy() ?? "";
-      };
+  String Function(Uri url)? get findProxy => EdenHttpHook.onfindProxy == null
+      ? super.findProxy
+      : (uri) {
+          return _onFindProxy();
+        };
 
   @override
   void onInit() {

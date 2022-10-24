@@ -5,8 +5,15 @@ abstract class EdenBaseController extends GetxController {
 
   bool? get isRequest => _isRequest;
 
-  void setRequest(bool? request) {
-    _isRequest = request;
+  Future futureDelayed(
+    Future computation, {
+    int seconds = 1,
+  }) {
+    return Future.delayed(
+        Duration(
+          seconds: seconds,
+        ),
+        () => computation);
   }
 
   @override
@@ -27,4 +34,11 @@ abstract class EdenBaseController extends GetxController {
   void init();
   void dealloc();
   Future doRequest(bool isPull) async {}
+
+  void hideKeyboard() {
+    FocusScope.of(kContext!).requestFocus(FocusNode());
+  }
+
+  ///
+  S edenFind<S>({String? tag}) => Get.find<S>(tag: tag);
 }

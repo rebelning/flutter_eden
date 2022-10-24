@@ -20,19 +20,13 @@ void main() {
     EdenMaterialWrapper(
       unknownRoute: Routes.app.unknownRoute,
       getPages: Routes.getPages(),
-      home: AppComponent(),
+      // home: AppComponent(),
+      initialRoute: Routes.app.root,
       theme: EdenThemeData.lightThemeData(),
       initialBinding: BindingsBuilder(
         () {
           Get.putAsync(() => AuthService().init());
           Get.lazyPut(() => SplashService());
-          Get.lazyPut(() => AppController());
-          Get.lazyPut(() => HomeController());
-          Get.lazyPut(() => MessageController());
-          Get.lazyPut<IAccountPorvider>(() => AccountProvider());
-          Get.lazyPut<IAccountRespository>(
-              () => AccountRespositoryImpl(porvider: Get.find()));
-          Get.lazyPut(() => AccountController(accountRespository: Get.find()));
         },
       ),
       splashBuilder: (context, child) {

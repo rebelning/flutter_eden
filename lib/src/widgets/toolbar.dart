@@ -13,6 +13,8 @@ class ToolbarWidget extends StatelessWidget implements PreferredSizeWidget {
   final bool? hideBackArrow;
   final bool? centerTitle;
   final Color? backgroundColor;
+  final double? fontSize;
+  final FontWeight? fontWeight;
 
   const ToolbarWidget({
     Key? key,
@@ -23,6 +25,8 @@ class ToolbarWidget extends StatelessWidget implements PreferredSizeWidget {
     this.title,
     this.actions,
     this.color,
+    this.fontSize,
+    this.fontWeight,
     this.backgroundColor,
     this.elevation,
   }) : super(key: key);
@@ -38,6 +42,8 @@ class ToolbarWidget extends StatelessWidget implements PreferredSizeWidget {
           : TextWidget(
               text: title,
               color: color,
+              fontSize: fontSize,
+              fontWeight: fontWeight,
             ),
       leading: leading,
       actions: actions,

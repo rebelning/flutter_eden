@@ -3,10 +3,9 @@ import 'package:flutter_eden/eden.dart';
 
 ///ListView controller
 abstract class EdenBaseListController extends EdenBaseController {
-  late final RefreshController _refreshController =
-      RefreshController(initialRefresh: enablePull);
+  RefreshController? _refreshController;
 
-  RefreshController get refreshController => _refreshController;
+  RefreshController? get refreshController => _refreshController;
   int pageSize = 10;
   int pageIndex = 1;
   bool _isNext = false;
@@ -16,7 +15,9 @@ abstract class EdenBaseListController extends EdenBaseController {
   bool get enablePull => _enablePull;
 
   @override
-  void init() {}
+  void init() {
+    _refreshController = RefreshController(initialRefresh: enablePull);
+  }
 
   void setNext(bool hasNext) {
     _isNext = hasNext;

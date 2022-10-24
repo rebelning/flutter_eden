@@ -12,6 +12,8 @@ class EdenThemeData {
   static const _lightFillColor = Colors.black;
   // static const _lightFillColor = Colors.white;
   static const _darkFillColor = Colors.white;
+  static const _lightbackgroundColor = Color(0xffF8F8F8);
+  static const _backgroundColor = Color(0xff607D8B);
 
   ///
   static final Color _lightFocusColor = Colors.black.withOpacity(0.12);
@@ -197,7 +199,7 @@ class EdenThemeData {
     secondaryVariant: Color(0xFFFAFBFB),
     background: Color(0xFFFFFFFF),
     surface: Color(0xFFFAFBFB),
-    onBackground: Colors.white,
+    onBackground: _lightbackgroundColor,
     error: _lightFillColor,
     onError: _lightFillColor,
     onPrimary: _lightFillColor,
@@ -214,7 +216,7 @@ class EdenThemeData {
     secondaryVariant: Color(0xff5f7486),
     background: Color(0xff37474F),
     surface: Color(0xFF37474F),
-    onBackground: Color(0xff37474F), // White with 0.05 opacity
+    onBackground: _backgroundColor, // White with 0.05 opacity
 
     error: _darkFillColor,
     onError: _darkFillColor,

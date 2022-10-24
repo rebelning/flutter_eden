@@ -6,6 +6,6 @@ class DemoBinding extends Bindings {
   DemoBinding({@required this.tag});
   @override
   void dependencies() {
-    Get.put(DemoController(tag: tag), tag: tag);
+    Get.lazyPut(() => DemoController(tag: tag), tag: tag);
   }
 }

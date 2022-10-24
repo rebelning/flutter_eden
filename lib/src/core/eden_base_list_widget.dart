@@ -9,7 +9,7 @@ abstract class EdenBaseListWidget<T extends EdenBaseListController>
   Widget buildListView(BuildContext context, T _controller);
 
   void requestRefresh() {
-    controller.refreshController.requestRefresh();
+    controller.refreshController?.requestRefresh();
   }
 
   ///
@@ -21,7 +21,7 @@ abstract class EdenBaseListWidget<T extends EdenBaseListController>
     await controller.doRequest(true);
 
     await Future.delayed(const Duration(seconds: 1));
-    controller.refreshController.refreshCompleted();
+    controller.refreshController?.refreshCompleted();
   }
 
   ///
@@ -31,7 +31,7 @@ abstract class EdenBaseListWidget<T extends EdenBaseListController>
     await controller.doRequest(false);
 
     await Future.delayed(const Duration(seconds: 1));
-    controller.refreshController.loadComplete();
+    controller.refreshController?.loadComplete();
   }
 
   void getPageIndex(String? hasNext) {
@@ -71,7 +71,8 @@ abstract class EdenBaseListWidget<T extends EdenBaseListController>
           child: SmartRefresher(
             enablePullDown: controller.enablePull,
             enablePullUp: controller.isNext(),
-            controller: controller.refreshController,
+            controller: controller.refreshController ??
+                RefreshController(initialRefresh: false),
             onRefresh: () {
               _onRefresh();
             },

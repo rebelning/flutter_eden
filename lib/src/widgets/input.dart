@@ -6,6 +6,7 @@ class InputWidget extends StatelessWidget {
     this.controller,
     this.focusNode,
     this.keyboardType,
+    this.obscureText,
     this.inputFormatters,
     this.showBorder = true,
     this.borderWidth,
@@ -34,6 +35,7 @@ class InputWidget extends StatelessWidget {
   /// 输入框控制器
   final TextEditingController? controller;
   final FocusNode? focusNode;
+  final bool? obscureText;
 
   /// 键盘类型
   final TextInputType? keyboardType;
@@ -113,6 +115,7 @@ class InputWidget extends StatelessWidget {
         focusNode: focusNode,
         textAlign: textAlign ?? TextAlign.left,
         controller: controller,
+        obscureText: obscureText ?? false,
         keyboardType: keyboardType,
         maxLines: maxLines,
         minLines: minLines,

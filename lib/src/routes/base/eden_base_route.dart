@@ -9,6 +9,7 @@ abstract class EdenBaseRoute implements BaseRoute {
     required String name,
     required GetPageBuilder page,
     required Function bindingsBuilder,
+    List<Bindings>? bindings,
     bool? preventDuplicates,
     List<GetMiddleware>? middlewares,
     List<GetPage<dynamic>>? children,
@@ -21,6 +22,7 @@ abstract class EdenBaseRoute implements BaseRoute {
       binding: BindingsBuilder(() {
         bindingsBuilder();
       }),
+      bindings: bindings ?? [],
       middlewares: middlewares,
       children: children ?? [],
       transition: transition ?? Transition.cupertino,

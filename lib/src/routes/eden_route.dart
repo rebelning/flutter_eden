@@ -1,6 +1,8 @@
 import 'package:get/get.dart';
 
 class EdenRoute {
+  EdenRoute._();
+
   /// 打开新页面
   static Future<T?> push<T>(
     /// 页面路径
@@ -24,8 +26,8 @@ class EdenRoute {
     );
   }
 
-  /// 打开新页面，替换当前页面
-  static Future<T?> replace<T>(
+  /// offAndToNamed
+  static Future<T?> offAndToNamed<T>(
     String path, {
     Map<String, String>? parameters,
     dynamic arguments,
@@ -33,6 +35,20 @@ class EdenRoute {
     // 整理参数
     // 输出URL
     return Get.offAndToNamed<T>(
+      path,
+      parameters: parameters,
+      arguments: arguments,
+    );
+  }
+
+  static Future<T?> offAllToNamed<T>(
+    String path, {
+    Map<String, String>? parameters,
+    dynamic arguments,
+  }) async {
+    // 整理参数
+    // 输出URL
+    return Get.offAllNamed<T>(
       path,
       parameters: parameters,
       arguments: arguments,

@@ -1,7 +1,7 @@
 import 'package:flutter_eden/eden.dart';
 
-class Snackbar {
-  Snackbar(
+class EdenSnackbar {
+  EdenSnackbar(
     String message, {
     String? title,
     bool? error,
