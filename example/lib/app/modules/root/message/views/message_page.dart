@@ -1,4 +1,4 @@
-import 'package:example/app/modules/message/controllers/message_controller.dart';
+import 'package:example/app/modules/root/message/controllers/message_controller.dart';
 import 'package:flutter_eden/eden.dart';
 
 class MessagePage extends EdenBaseWidget<MessageController> {

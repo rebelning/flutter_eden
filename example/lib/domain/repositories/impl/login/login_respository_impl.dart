@@ -1,5 +1,5 @@
 import 'package:example/domain/entity/login_model.dart';
-import 'package:example/domain/repositories/impl/account/account_provider.dart';
+
 import 'package:example/domain/repositories/impl/login/login_provider.dart';
 import 'package:example/domain/repositories/login_respository.dart';
 

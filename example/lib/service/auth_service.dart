@@ -2,10 +2,16 @@ import 'package:example/app/modules/account/controllers/account_controller.dart'
 import 'package:example/app/routes/routes.dart';
 import 'package:example/config/constants.dart';
 import 'package:example/domain/entity/login_model.dart';
+import 'package:example/domain/entity/net_checked_model.dart';
 import 'package:example/domain/entity/user_model.dart';
+import 'package:example/domain/repositories/auth_respository.dart';
 import 'package:flutter_eden/eden.dart';
 
 class AuthService extends EdenBaseService {
+  final IAuthRespository respository;
+  AuthService({
+    required this.respository,
+  });
   bool? _isLogin;
   bool? get isLogin => _isLogin;
 
@@ -40,6 +46,7 @@ class AuthService extends EdenBaseService {
   void onInit() {
     super.onInit();
     print("auth service init...");
+
     EdenHttpHook.setUnauthorized(() {
       print("setUnauthorized-unauthorized");
       clearLogin();
@@ -49,7 +56,18 @@ class AuthService extends EdenBaseService {
     EdenHttpHook.setError((value) {
       print("httpHook-error=$value");
 
-      EdenSnackbar("${value?.toString()}", title: "Error");
+      // EdenSnackbar("${value?.toString()}", title: "Error");
+    });
+    _netChecked();
+  }
+
+  Future _netChecked() async {
+    respository.doNetChecked().then((value) {
+      print("netChecked-value=${value?.toRawJson()}");
+    }).onError((error, stackTrace) {
+      print("netChecked-error=${error.toString()}");
+
+      print("AuthService-netChecked-stackTrace=${stackTrace.toString()}");
     });
   }
 }

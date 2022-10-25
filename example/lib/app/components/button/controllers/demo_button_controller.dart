@@ -5,16 +5,16 @@ class DemoButtonController extends EdenBaseController {
   void init() {}
 
   void showSnackbar() {
-    // Snackbar("showSnackbar..");
+    EdenSnackbar("showSnackbar..");
   }
 
   void showLoad() {
-    // showLoading(_loading());
-    showOverlayLoading(_loading);
+    showLoading(_loading());
+    // showOverlayLoading(_loading);
   }
 
   Future _loading() async {
-    return await Future.delayed(Duration(seconds: 5));
+    return await Future.delayed(const Duration(seconds: 5));
   }
 
   @override

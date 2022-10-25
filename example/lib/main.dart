@@ -1,18 +1,12 @@
-import 'package:example/app/modules/root/controllers/app_controller.dart';
-import 'package:example/app/modules/root/views/app_component.dart';
-
+import 'package:example/domain/repositories/auth_respository.dart';
+import 'package:example/domain/repositories/impl/auth/auth_provider.dart';
+import 'package:example/domain/repositories/impl/auth/auth_respository_impl.dart';
 import 'package:flutter_eden/eden.dart';
 
-import 'app/modules/account/controllers/account_controller.dart';
-
-import 'app/modules/home/controllers/home_controller.dart';
-import 'app/modules/message/controllers/message_controller.dart';
 import 'app/modules/splash/controllers/splash_service.dart';
 import 'app/modules/splash/views/splash_view.dart';
 import 'app/routes/routes.dart';
-import 'domain/repositories/account_respository.dart';
-import 'domain/repositories/impl/account/account_provider.dart';
-import 'domain/repositories/impl/account/account_respository_impl.dart';
+
 import 'service/auth_service.dart';
 
 void main() {
@@ -25,7 +19,10 @@ void main() {
       theme: EdenThemeData.lightThemeData(),
       initialBinding: BindingsBuilder(
         () {
-          Get.putAsync(() => AuthService().init());
+          Get.lazyPut<IAuthProvider>(() => AuthProvider());
+          Get.lazyPut<IAuthRespository>(
+              () => AuthRespositoryImpl(provider: Get.find()));
+          Get.putAsync(() => AuthService(respository: Get.find()).init());
           Get.lazyPut(() => SplashService());
         },
       ),
@@ -36,6 +33,7 @@ void main() {
           key: const ValueKey('initFuture'),
           future: Get.find<SplashService>().init(),
           builder: (context, snapshot) {
+            print("snapshot=${snapshot.connectionState}");
             if (snapshot.connectionState == ConnectionState.done) {
               return child ?? const SizedBox.shrink();
             }

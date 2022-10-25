@@ -11,6 +11,8 @@ class AccountController extends EdenBaseController {
   AuthService? authService;
 
   List<MenuInfo>? menuList = [];
+  final _refreshController = RefreshController();
+  RefreshController get refreshController => _refreshController;
   @override
   void onInit() {
     super.onInit();
@@ -23,7 +25,51 @@ class AccountController extends EdenBaseController {
 
     if (authService?.isLogin == true) {
       getMenuList();
+    } else {
+      initMenu();
     }
+  }
+
+  ///
+  Future onRefresh() async {
+    // monitor network fetch
+    menuList?.clear();
+    initMenu();
+    await Future.delayed(const Duration(seconds: 2));
+    _refreshController.refreshCompleted();
+  }
+
+  void initMenu() {
+    menuList?.add(
+      MenuInfo(
+        menuId: "1",
+        section: "Home",
+      ),
+    );
+    menuList?.add(
+      MenuInfo(
+        menuId: "2",
+        section: "Setting",
+      ),
+    );
+    menuList?.add(
+      MenuInfo(
+        menuId: "3",
+        section: "About",
+      ),
+    );
+    menuList?.add(
+      MenuInfo(
+        menuId: "4",
+        section: "Proxy Setting",
+      ),
+    );
+    for (int i = 0; i < 20; i++) {
+      menuList?.add(
+        MenuInfo(),
+      );
+    }
+    update();
   }
 
   Future getMenuList() async {

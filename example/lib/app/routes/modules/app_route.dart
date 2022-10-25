@@ -1,16 +1,15 @@
-import 'package:example/app/modules/account/controllers/account_controller.dart';
 import 'package:example/app/modules/account/views/account_page.dart';
 import 'package:example/app/modules/error/controllers/error_controller.dart';
 import 'package:example/app/modules/error/view/error_page.dart';
-import 'package:example/app/modules/home/controllers/home_controller.dart';
-import 'package:example/app/modules/home/views/home_index.dart';
+
 import 'package:example/app/modules/login/controllers/login_controller.dart';
 import 'package:example/app/modules/login/views/login_page.dart';
-import 'package:example/app/modules/message/controllers/message_controller.dart';
-import 'package:example/app/modules/message/views/message_page.dart';
+
 import 'package:example/app/modules/profile/controllers/profile_controller.dart';
 import 'package:example/app/modules/profile/views/profile_page.dart';
 import 'package:example/app/modules/root/bindings/app_bindings.dart';
+import 'package:example/app/modules/root/home/views/home_index.dart';
+import 'package:example/app/modules/root/message/views/message_page.dart';
 
 import 'package:example/app/modules/root/views/app_component.dart';
 import 'package:example/domain/repositories/impl/login/login_provider.dart';

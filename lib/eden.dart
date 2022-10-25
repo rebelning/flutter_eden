@@ -5,10 +5,10 @@ export 'package:flutter/foundation.dart';
 export 'package:flutter/services.dart';
 export 'package:get/get.dart';
 export 'package:flutter/physics.dart';
-// export 'package:flutter/cupertino.dart';
+export 'package:flutter/cupertino.dart' hide RefreshCallback;
 
-/// public plugin
-///
+export 'package:pull_to_refresh/pull_to_refresh.dart'
+    hide RefreshIndicator, RefreshIndicatorState;
 
 ///core
 

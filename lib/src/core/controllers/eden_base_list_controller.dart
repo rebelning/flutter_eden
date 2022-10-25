@@ -1,4 +1,3 @@
-import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:flutter_eden/eden.dart';
 
 ///ListView controller
