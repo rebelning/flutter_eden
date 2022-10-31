@@ -8,10 +8,13 @@ import 'package:example/app/modules/login/views/login_page.dart';
 import 'package:example/app/modules/profile/controllers/profile_controller.dart';
 import 'package:example/app/modules/profile/views/profile_page.dart';
 import 'package:example/app/modules/root/bindings/app_bindings.dart';
+
 import 'package:example/app/modules/root/home/views/home_index.dart';
+
 import 'package:example/app/modules/root/message/views/message_page.dart';
 
 import 'package:example/app/modules/root/views/app_component.dart';
+
 import 'package:example/domain/repositories/impl/login/login_provider.dart';
 import 'package:example/domain/repositories/impl/login/login_respository_impl.dart';
 import 'package:example/domain/repositories/login_respository.dart';
@@ -21,7 +24,7 @@ class AppRoute extends EdenBaseRoute {
   @override
   String get prefix => "/app";
 
-  String get root => "/";
+  String get root => "/root";
 
   String get home => prefix + "/home";
   String get message => prefix + "/message";
@@ -50,6 +53,7 @@ class AppRoute extends EdenBaseRoute {
         bindings: [
           AppBindings(),
         ],
+        // middlewares: [AuthMiddleware(priority: 0)],
         bindingsBuilder: () {
           // Get.lazyPut(() => AppController());
         },

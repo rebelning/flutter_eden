@@ -17,7 +17,7 @@ class AppBindings extends Bindings {
     Get.lazyPut(() => MessageController());
     Get.lazyPut<IAccountPorvider>(() => AccountProvider());
     Get.lazyPut<IAccountRespository>(
-        () => AccountRespositoryImpl(porvider: Get.find()));
+        () => AccountRespositoryImpl(provider: Get.find()));
     Get.lazyPut(() => AccountController(accountRespository: Get.find()));
   }
 }

@@ -8,7 +8,7 @@ class HomeController extends EdenBaseListController {
   List<MenuInfo>? sourceList = [];
 
   void onMenuInfo(MenuInfo? menu) {
-    print("menu-path=${menu?.action}");
+    print("menu-path=${menu?.action ?? "/unkown"}");
 
     // EdenRoute.push(menu?.action ?? Routes.app.error404);
     EdenRoute.push(menu?.action ?? "");
@@ -18,6 +18,9 @@ class HomeController extends EdenBaseListController {
   void init() {
     print("init...");
   }
+
+  @override
+  bool? get isRequest => true;
 
   @override
   bool get enablePull => true;

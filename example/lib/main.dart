@@ -12,10 +12,10 @@ import 'service/auth_service.dart';
 void main() {
   runApp(
     EdenMaterialWrapper(
+      logTag: "Example",
+      initialRoute: Routes.app.root,
       unknownRoute: Routes.app.unknownRoute,
       getPages: Routes.getPages(),
-      // home: AppComponent(),
-      initialRoute: Routes.app.root,
       theme: EdenThemeData.lightThemeData(),
       initialBinding: BindingsBuilder(
         () {

@@ -1,6 +1,7 @@
 mixin Logger {
   // Sample of abstract logging function
-  static void edenWrite(String text, {bool isError = false}) {
-    Future.microtask(() => print('Eden $text. isError: [$isError]'));
+  static void edenWrite(String text,
+      {String? logTag = "Eden", bool isError = false}) {
+    Future.microtask(() => print('$logTag $text. isError: [$isError]'));
   }
 }

@@ -5,10 +5,6 @@ abstract class HttpTask<T> extends GetConnect {
     return true;
   }
 
-  void close() {
-    httpClient.close();
-  }
-
   ///unauthorized
   void _unauthorized() {
     if (EdenHttpHook.unauthorizedCallback != null) {
@@ -28,18 +24,24 @@ abstract class HttpTask<T> extends GetConnect {
     }
   }
 
-  String _onFindProxy() {
+  Map<String, String> _headers() {
+    if (EdenHttpHook.headers != null) {
+      return EdenHttpHook.headers!();
+    }
+    return {};
+  }
+
+  String? _onFindProxy() {
     if (EdenHttpHook.onfindProxy != null) {
       return EdenHttpHook.onfindProxy!();
     }
-    return "";
   }
 
   @override
   String Function(Uri url)? get findProxy => EdenHttpHook.onfindProxy == null
       ? super.findProxy
       : (uri) {
-          return _onFindProxy();
+          return _onFindProxy() ?? "";
         };
 
   @override
@@ -53,6 +55,7 @@ abstract class HttpTask<T> extends GetConnect {
     httpClient.addRequestModifier<T?>((request) {
       // print("addRequestModifier...");
       request.headers['Authorization'] = _token() ?? "";
+      request.headers.addAll(_headers());
       return request;
     });
 

@@ -1,30 +1,35 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter_eden/eden.dart';
 import 'package:flutter_eden/src/core/logger/eden_logger.dart';
-import 'package:flutter_eden/src/plugin/eden_plugin.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 class EdenMaterialWrapper extends StatelessWidget {
   final bool? enableLog;
-  final Size? designSize;
-  final GetPage? unknownRoute;
-  final List<GetPage>? getPages;
-  final String? initialRoute;
+  final String? logTag;
   final Widget? home;
+  final String? initialRoute;
+  final List<GetPage>? getPages;
+  final GetPage? unknownRoute;
+  final Size? designSize;
   final ThemeData? theme;
   final Bindings? initialBinding;
   final TransitionBuilder? splashBuilder;
+  final Iterable<Locale>? supportedLocales;
+  final Iterable<LocalizationsDelegate<dynamic>>? localizationsDelegates;
   final ValueChanged<Routing?>? routingCallback;
   const EdenMaterialWrapper({
     Key? key,
     this.enableLog,
+    this.logTag,
     this.home,
     this.initialRoute,
-    this.theme,
-    this.getPages,
     this.designSize,
     this.unknownRoute,
+    this.getPages,
+    this.theme,
     this.initialBinding,
     this.splashBuilder,
+    this.supportedLocales,
+    this.localizationsDelegates,
     this.routingCallback,
   }) : super(key: key);
 
@@ -70,27 +75,35 @@ class EdenMaterialWrapper extends StatelessWidget {
   Widget get materialApp => GetMaterialApp(
         enableLog: enableLog ?? true,
         defaultTransition: Transition.cupertino,
-
-        popGesture: Get.isPopGestureEnable,
-        getPages: getPages ?? [],
-        unknownRoute: unknownRoute,
         home: home,
         initialRoute: initialRoute,
-        logWriterCallback: Logger.edenWrite,
-        routingCallback: routingCallback ??
-            (route) {
-              print("route=${route?.route?.currentResult}");
-              closeAllSnackbars();
-              // hideOverlayLoading();
-            },
+        getPages: getPages ?? [],
+        unknownRoute: unknownRoute,
         theme: theme ?? EdenThemeData.darkThemeData(),
         initialBinding: initialBinding,
-
-        localizationsDelegates: const [
+        logWriterCallback: (String text, {bool isError = false}) {
+          return Logger.edenWrite(text, logTag: logTag, isError: isError);
+        },
+        routingCallback: routingCallback ??
+            (route) {
+              closeAllSnackbars();
+            },
+        navigatorObservers: [BotToastNavigatorObserver()],
+        localizationsDelegates: [
+          ...localizationsDelegates ?? [],
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
           RefreshLocalizations.delegate,
         ],
-        navigatorObservers: [BotToastNavigatorObserver()],
-        // builder: splashBuilder,
+        supportedLocales: [
+          ...supportedLocales ?? [],
+          const Locale.fromSubtags(
+            languageCode: 'zh',
+            scriptCode: 'Hans',
+            countryCode: 'CN',
+          ),
+        ],
         builder: (BuildContext context, Widget? child) {
           final botToastBuilder = BotToastInit();
           child = botToastBuilder(context, child);

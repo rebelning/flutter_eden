@@ -10,12 +10,19 @@ class EdenHttpHook {
 
   static ValueGetter<String?>? _token;
   static ValueGetter<String?>? get token => _token;
-  static void setToken(ValueGetter<String?> onToken) {
+  static setToken(ValueGetter<String?> onToken) {
     _token = onToken;
   }
 
-  static ValueGetter<String>? _findProxy;
-  static ValueGetter<String>? get onfindProxy => _findProxy;
+  ///setting headers
+  static ValueGetter<Map<String, String>>? _headers;
+  static ValueGetter<Map<String, String>>? get headers => _headers;
+  static setHeaders(ValueGetter<Map<String, String>> headers) {
+    _headers = headers;
+  }
+
+  static ValueGetter<String?>? _findProxy;
+  static ValueGetter<String?>? get onfindProxy => _findProxy;
   static Future setHttpProxy() async {
     final prefs = await SharedPreferences.getInstance();
     String? proxyIP = prefs.getString(StorageKeys.proxyIP);

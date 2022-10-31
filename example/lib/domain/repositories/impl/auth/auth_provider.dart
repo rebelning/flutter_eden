@@ -6,7 +6,7 @@ abstract class IAuthProvider {
   Future<Response<NetCheckedModel>> doNetChecked();
 }
 
-class AuthProvider extends HttpTask implements IAuthProvider {
+class AuthProvider extends EdenBaseProvider implements IAuthProvider {
   @override
   Future<Response<NetCheckedModel>> doNetChecked() {
     final path = auth.netChecked;

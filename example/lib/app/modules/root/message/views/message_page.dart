@@ -4,7 +4,7 @@ import 'package:flutter_eden/eden.dart';
 class MessagePage extends EdenBaseWidget<MessageController> {
   @override
   String toolbarTitle() {
-    return "hello world";
+    return "Message";
   }
 
   @override

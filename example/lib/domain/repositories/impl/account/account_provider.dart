@@ -6,7 +6,7 @@ abstract class IAccountPorvider {
   Future<Response<MenuModel?>> getMenuList();
 }
 
-class AccountProvider extends HttpTask implements IAccountPorvider {
+class AccountProvider extends EdenBaseProvider implements IAccountPorvider {
   @override
   void onInit() {
     httpClient.defaultDecoder =
