@@ -1,31 +1,21 @@
-import 'package:example/domain/repositories/auth_respository.dart';
-import 'package:example/domain/repositories/impl/auth/auth_provider.dart';
-import 'package:example/domain/repositories/impl/auth/auth_respository_impl.dart';
+import 'package:example/service/bindings/service_bindings.dart';
+
 import 'package:flutter_eden/eden.dart';
 
 import 'app/modules/splash/controllers/splash_service.dart';
 import 'app/modules/splash/views/splash_view.dart';
 import 'app/routes/routes.dart';
 
-import 'service/auth_service.dart';
-
 void main() {
   runApp(
     EdenMaterialWrapper(
       logTag: "Example",
+      enableLog: true,
       initialRoute: Routes.app.root,
       unknownRoute: Routes.app.unknownRoute,
       getPages: Routes.getPages(),
       theme: EdenThemeData.lightThemeData(),
-      initialBinding: BindingsBuilder(
-        () {
-          Get.lazyPut<IAuthProvider>(() => AuthProvider());
-          Get.lazyPut<IAuthRespository>(
-              () => AuthRespositoryImpl(provider: Get.find()));
-          Get.putAsync(() => AuthService(respository: Get.find()).init());
-          Get.lazyPut(() => SplashService());
-        },
-      ),
+      initialBinding: ServiceBindings(),
       splashBuilder: (context, child) {
         // final botToastBuilder = BotToastInit();
         // child = botToastBuilder(context, child);

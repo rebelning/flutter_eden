@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_eden/src/widgets/text.dart';
-import 'package:flutter_eden/src/values/color/colors.dart' as colors;
 
 class TagWidget extends StatefulWidget {
   final String? label;
@@ -49,30 +47,30 @@ class _TagWidgetState extends State<TagWidget> {
             _isActive = newIsActive;
           });
       },
-      child: Container(
-        padding:
-            EdgeInsets.only(top: 6, bottom: 6, left: 22, right: rightPadding),
-        margin: EdgeInsets.only(left: 12),
-        decoration: BoxDecoration(
-          color:
-              _isActive == true ? colors.accentColor : colors.backgroundColor,
-          borderRadius: BorderRadius.circular(16),
-          border: Border.all(color: colors.accentColor, width: 1),
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: <Widget>[
-            TextWidget(
-                text: widget.label,
-                color: _isActive == true
-                    ? colors.backgroundColor
-                    : colors.accentColor),
-            if (widget.arrow == true) SizedBox(width: 8),
-            if (widget.arrow == true)
-              Icon(Icons.arrow_drop_down, color: colors.accentColor)
-          ],
-        ),
-      ),
+      // child: Container(
+      //   padding:
+      //       EdgeInsets.only(top: 6, bottom: 6, left: 22, right: rightPadding),
+      //   margin: EdgeInsets.only(left: 12),
+      //   decoration: BoxDecoration(
+      //     color:
+      //         _isActive == true ? colors.accentColor : colors.backgroundColor,
+      //     borderRadius: BorderRadius.circular(16),
+      //     border: Border.all(color: colors.accentColor, width: 1),
+      //   ),
+      //   child: Row(
+      //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      //     children: <Widget>[
+      //       TextWidget(
+      //           text: widget.label,
+      //           color: _isActive == true
+      //               ? colors.backgroundColor
+      //               :colors.backgroundColor ),
+      //       if (widget.arrow == true) SizedBox(width: 8),
+      //       if (widget.arrow == true)
+      //         Icon(Icons.arrow_drop_down, color: colors.canvasColor)
+      //     ],
+      //   ),
+      // ),
     );
   }
 }

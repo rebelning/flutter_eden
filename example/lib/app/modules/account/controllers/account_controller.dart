@@ -14,8 +14,7 @@ class AccountController extends EdenBaseController {
   final _refreshController = RefreshController();
   RefreshController get refreshController => _refreshController;
   @override
-  void onInit() {
-    super.onInit();
+  void init() {
     print("Account init...");
 
     authService = Get.find<AuthService>();
@@ -55,13 +54,21 @@ class AccountController extends EdenBaseController {
     menuList?.add(
       MenuInfo(
         menuId: "3",
-        section: "About",
+        section: "Login",
+        action: Routes.app.login,
       ),
     );
     menuList?.add(
       MenuInfo(
         menuId: "4",
+        section: "About",
+      ),
+    );
+    menuList?.add(
+      MenuInfo(
+        menuId: "5",
         section: "Proxy Setting",
+        action: Routes.eden.proxySeting,
       ),
     );
     for (int i = 0; i < 20; i++) {
@@ -70,6 +77,10 @@ class AccountController extends EdenBaseController {
       );
     }
     update();
+  }
+
+  void onRouteView(String? route) {
+    EdenRoute.push(route ?? "");
   }
 
   Future getMenuList() async {
@@ -97,7 +108,4 @@ class AccountController extends EdenBaseController {
 
   @override
   void dealloc() {}
-
-  @override
-  void init() {}
 }

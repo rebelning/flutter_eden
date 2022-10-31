@@ -1,5 +1,4 @@
 import 'package:flutter_eden/eden.dart';
-import 'package:flutter_eden/src/values/color/colors.dart' as colors;
 
 enum ButtonType {
   ELEVATED,
@@ -39,20 +38,6 @@ class ButtonWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final action = disabled == true ? null : onPressed;
-
-    Color backgroundColor = colors.accentColor;
-    Color borderColor = colors.accentColor;
-    Color textColor = Colors.white;
-
-    if (transparent == true) {
-      backgroundColor = colors.btnBackgroundColor;
-      borderColor = colors.lineColor;
-      textColor = colors.textColor;
-    } else {
-      backgroundColor = colors.accentLightColor;
-      borderColor = colors.accentLightColor;
-      textColor = Colors.white;
-    }
 
     if (kIsDark == true) {}
 

@@ -41,12 +41,14 @@ abstract class HttpTask<T> extends GetConnect {
   String Function(Uri url)? get findProxy => EdenHttpHook.onfindProxy == null
       ? super.findProxy
       : (uri) {
+          print("_onFindProxy=${_onFindProxy()}");
           return _onFindProxy() ?? "";
         };
 
   @override
   void onInit() {
-    print("HttpTask-onInit...");
+    print("HttpTask-onInit-runtimeType=$runtimeType");
+    print("onInit_onFindProxy=${_onFindProxy()}");
     _interceptor();
     super.onInit();
   }

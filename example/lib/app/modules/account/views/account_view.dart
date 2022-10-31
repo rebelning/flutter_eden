@@ -57,7 +57,13 @@ class AccountView {
                       (BuildContext context, int index) {
                         if (index > 3) return _renderEmptyItem();
                         MenuInfo? menu = AccountController.to.menuList?[index];
-                        return _getItem(context, menu);
+                        return _getItem(
+                          context,
+                          menu,
+                          (route) {
+                            _controller.onRouteView(route);
+                          },
+                        );
                       },
                       childCount: _controller.menuList?.length,
                     ),
@@ -125,53 +131,6 @@ class AccountView {
     );
   }
 
-  Widget sliverView1(BuildContext context, AccountController? _controller) {
-    return CustomScrollView(
-      slivers: [
-        SliverAppBar(
-          actions: <Widget>[
-            IconButton(
-              icon: (const Icon(Icons.settings)),
-              onPressed: () {
-                // _getMenuList(context, key);
-                _controller?.toSetting();
-              },
-            )
-          ],
-          flexibleSpace: FlexibleSpaceBar(
-            centerTitle: true,
-            collapseMode: CollapseMode.parallax,
-            title: Padding(
-              padding: const EdgeInsets.only(left: 0.0),
-              child: Text(
-                '',
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                style: Theme.of(context).textTheme.headline1,
-              ),
-            ),
-            background: Stack(
-              fit: StackFit.expand,
-              children: <Widget>[
-                _userView(context, _controller),
-              ],
-            ),
-          ),
-        ),
-        SliverList(
-          delegate: SliverChildBuilderDelegate(
-            (context, index) {
-              MenuInfo? menu = AccountController.to.menuList?[index];
-
-              return _getItem(context, menu);
-            },
-            childCount: AccountController.to.menuList?.length,
-          ),
-        ),
-      ],
-    );
-  }
-
   ///user info
   Widget _userView(BuildContext context, AccountController? _controller) {
     final isLogin = _controller?.authService?.isLogin;
@@ -220,13 +179,18 @@ class AccountView {
   }
 
   ///
-  Widget _getItem(BuildContext context, MenuInfo? menu) {
+  Widget _getItem(
+    BuildContext context,
+    MenuInfo? menu,
+    Function(String? route) onItemClick,
+  ) {
     return ItemView(
       menu: menu,
       onTapMenu: (context, menu) {
-        if (menu?.menuId == "2002") {
-          EdenRoute.push(Routes.app.proxy);
-        }
+        onItemClick(menu?.action);
+        // if (menu?.menuId == "2002") {
+        //   EdenRoute.push(Routes.app.proxy);
+        // }
       },
     );
   }

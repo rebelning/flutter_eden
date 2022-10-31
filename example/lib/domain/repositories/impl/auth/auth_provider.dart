@@ -9,9 +9,12 @@ abstract class IAuthProvider {
 class AuthProvider extends EdenBaseProvider implements IAuthProvider {
   @override
   Future<Response<NetCheckedModel>> doNetChecked() {
+    // final path = auth.netChecked;
     final path = auth.netChecked;
-    return get<NetCheckedModel>(
+
+    return post<NetCheckedModel>(
       path,
+      {},
       decoder: (val) => NetCheckedModel.fromJson(val as Map<String, dynamic>),
     );
   }

@@ -19,8 +19,8 @@ abstract class EdenBaseWidget<T extends EdenBaseController> extends GetView<T> {
 
   ///tool title
   String toolbarTitle();
-  Color? backgroundColor() {
-    return Color(0xffF8F8F8);
+  Color? getBackgroundColor() {
+    return kIsDark ? backgroundColor : backgroundLightColor;
   }
 
   void setToolbarTitle(String? toolbarTitle) {
@@ -35,7 +35,8 @@ abstract class EdenBaseWidget<T extends EdenBaseController> extends GetView<T> {
   }
 
   /// toolbar background color
-  Color? _toolbarBackgroundColor;
+  Color? _toolbarBackgroundColor =
+      kIsDark ? toolBarbgColor : toolBarbgLightColor;
   Color? get toolbarBackgroundColor => _toolbarBackgroundColor;
   void setToolbarBackgroundColor(Color? backgroundColor) {
     _toolbarBackgroundColor = backgroundColor;
@@ -89,7 +90,7 @@ abstract class EdenBaseWidget<T extends EdenBaseController> extends GetView<T> {
           return Scaffold(
             appBar: appToolbar(context),
             body: buildBody(context, controller),
-            backgroundColor: backgroundColor(),
+            backgroundColor: getBackgroundColor(),
             floatingActionButton: floatingActionButton(),
             bottomNavigationBar: bottomNavigationBar(),
           );

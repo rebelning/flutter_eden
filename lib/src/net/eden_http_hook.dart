@@ -23,7 +23,7 @@ class EdenHttpHook {
 
   static ValueGetter<String?>? _findProxy;
   static ValueGetter<String?>? get onfindProxy => _findProxy;
-  static Future setHttpProxy() async {
+  static Future<String?> setHttpProxy() async {
     final prefs = await SharedPreferences.getInstance();
     String? proxyIP = prefs.getString(StorageKeys.proxyIP);
     String? proxyPort = prefs.getString(StorageKeys.proxyPort);
@@ -39,7 +39,8 @@ class EdenHttpHook {
         return localProxy!;
       };
     }
-    return null;
+    return localProxy;
+    // return null;
   }
 
   ///unauthorized
