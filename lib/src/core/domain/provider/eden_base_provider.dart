@@ -1,4 +1,4 @@
 import 'package:flutter_eden/eden.dart';
 
 ///
-abstract class EdenBaseProvider extends HttpTask {}
+abstract class EdenBaseProvider<T> extends HttpTask<T> {}

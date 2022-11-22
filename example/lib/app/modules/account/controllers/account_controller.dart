@@ -22,11 +22,11 @@ class AccountController extends EdenBaseController {
     print("ac-isLogin=${authService?.isLogin}");
     print("ac-userInfo=${authService?.userInfo?.toRawJson()}");
 
-    if (authService?.isLogin == true) {
-      getMenuList();
-    } else {
-      initMenu();
-    }
+    // if (authService?.isLogin == true) {
+    //   getMenuList();
+    // } else {
+    // }
+    initMenu();
   }
 
   ///

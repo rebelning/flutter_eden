@@ -10,9 +10,12 @@ class ServiceBindings extends Bindings {
   @override
   void dependencies() {
     Get.putAsync(() => ConfigService().init());
+
     Get.lazyPut<IAuthProvider>(() => AuthProvider());
     Get.lazyPut<IAuthRespository>(
         () => AuthRespositoryImpl(provider: Get.find()));
+
+    ///
     Get.putAsync(() => AuthService().init());
     Get.lazyPut(() => SplashService());
   }

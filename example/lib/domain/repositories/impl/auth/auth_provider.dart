@@ -15,7 +15,10 @@ class AuthProvider extends EdenBaseProvider implements IAuthProvider {
     return post<NetCheckedModel>(
       path,
       {},
-      decoder: (val) => NetCheckedModel.fromJson(val as Map<String, dynamic>),
+      decoder: (val) {
+        print("val=$val");
+        return NetCheckedModel.fromJson(val as Map<String, dynamic>);
+      },
     );
   }
 }

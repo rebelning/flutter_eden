@@ -3,15 +3,15 @@ import 'package:example/app/routes/routes.dart';
 import 'package:example/config/constants.dart';
 import 'package:example/domain/entity/login_model.dart';
 import 'package:example/domain/entity/net_checked_model.dart';
+
 import 'package:example/domain/entity/user_model.dart';
 import 'package:example/domain/repositories/auth_respository.dart';
-import 'package:example/domain/repositories/impl/auth/auth_provider.dart';
-import 'package:example/domain/repositories/impl/auth/auth_respository_impl.dart';
+
 import 'package:flutter_eden/eden.dart';
 
 class AuthService extends EdenBaseService {
   // final IAuthRespository respository;
-  AuthService();
+  // AuthService({required this.respository});
   bool? _isLogin;
   bool? get isLogin => _isLogin;
 
@@ -68,10 +68,11 @@ class AuthService extends EdenBaseService {
     IAuthRespository respository = Get.find<IAuthRespository>();
     respository.doNetChecked().then((value) {
       print("netChecked-value=${value?.toRawJson()}");
-    }).onError((error, stackTrace) {
+    }).onError((error, stackTrace) async {
       print("netChecked-error=${error.toString()}");
-
       print("AuthService-netChecked-stackTrace=${stackTrace.toString()}");
+
+      // EdenSnackbar(error.toString());
     });
   }
 }

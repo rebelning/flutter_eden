@@ -18,6 +18,9 @@ export 'src/core/eden_core.dart';
 export 'src/net/eden_http_task.dart';
 export 'src/net/eden_http_hook.dart';
 
+export 'src/net/model/http_response.dart';
+export 'src/net/model/loading_message.dart';
+
 ///routes
 // export 'src/routes/base/base_route.dart';
 export 'src/routes/base/eden_base_route.dart';
