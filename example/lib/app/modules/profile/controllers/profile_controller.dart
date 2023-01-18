@@ -6,10 +6,6 @@ import 'package:flutter_eden/eden.dart';
 
 ///
 class ProfileController extends EdenBaseController {
-  @override
-  void onInit() {
-    super.onInit();
-  }
 
   void onExitLogin() async {
     print("onExitLogin");

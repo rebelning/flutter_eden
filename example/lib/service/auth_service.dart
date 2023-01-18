@@ -2,7 +2,6 @@ import 'package:example/app/modules/account/controllers/account_controller.dart'
 import 'package:example/app/routes/routes.dart';
 import 'package:example/config/constants.dart';
 import 'package:example/domain/entity/login_model.dart';
-import 'package:example/domain/entity/net_checked_model.dart';
 
 import 'package:example/domain/entity/user_model.dart';
 import 'package:example/domain/repositories/auth_respository.dart';

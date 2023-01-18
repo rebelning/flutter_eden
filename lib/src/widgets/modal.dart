@@ -27,39 +27,39 @@ class ModalWidget {
                     body != null ? SingleChildScrollView(child: body) : null,
                 actions: <Widget>[
                   //CANCEL BUTTON
-                  if (cancelLabel != null)
-                    FlatButton(
-                        // child: TextWidget(text: cancelLabel ?? "Button Label", color: Colors.grey[400]),
-                        child: TextWidget(
-                            text: cancelLabel, color: Colors.grey[400]),
-                        onPressed: () {
-                          if (cancelOnPress != null) cancelOnPress();
-                          Navigator.pop(context);
-                        }),
+                  // if (cancelLabel != null)
+                  //   FlatButton(
+                  //       // child: TextWidget(text: cancelLabel ?? "Button Label", color: Colors.grey[400]),
+                  //       child: TextWidget(
+                  //           text: cancelLabel, color: Colors.grey[400]),
+                  //       onPressed: () {
+                  //         if (cancelOnPress != null) cancelOnPress();
+                  //         Navigator.pop(context);
+                  //       }),
 
-                  //CONFIRM BUTTONS
-                  if (confirmLabel != null && cancelLabel == null)
-                    FlatButton(
-                        // child: TextWidget(text: confirmLabel ?? "Button Label", accent: true),
-                        child: TextWidget(
-                          text: confirmLabel,
-                        ),
-                        onPressed: () {
-                          if (confirmOnPress != null) confirmOnPress();
-                          Navigator.pop(context);
-                        }),
+                  // //CONFIRM BUTTONS
+                  // if (confirmLabel != null && cancelLabel == null)
+                  //   FlatButton(
+                  //       // child: TextWidget(text: confirmLabel ?? "Button Label", accent: true),
+                  //       child: TextWidget(
+                  //         text: confirmLabel,
+                  //       ),
+                  //       onPressed: () {
+                  //         if (confirmOnPress != null) confirmOnPress();
+                  //         Navigator.pop(context);
+                  //       }),
 
-                  if (cancelLabel != null)
-                    FlatButton(
-                      // child: TextWidget(text: confirmLabel ?? "Button Label", accent: true),
-                      child: TextWidget(
-                        text: confirmLabel,
-                      ),
-                      onPressed: () {
-                        if (confirmOnPress != null) confirmOnPress();
-                        Navigator.pop(context);
-                      },
-                    )
+                  // if (cancelLabel != null)
+                  //   FlatButton(
+                  //     // child: TextWidget(text: confirmLabel ?? "Button Label", accent: true),
+                  //     child: TextWidget(
+                  //       text: confirmLabel,
+                  //     ),
+                  //     onPressed: () {
+                  //       if (confirmOnPress != null) confirmOnPress();
+                  //       Navigator.pop(context);
+                  //     },
+                  //   )
                 ],
               ));
 }

@@ -56,7 +56,7 @@ class LoginController extends EdenBaseController {
 
   bool _loginFailure(dynamic error) {
     print("error=$error");
-    EdenSnackbar("${error.toString()}", title: "Error");
+    EdenSnackbar(error.toString(), title: "Error");
 
     return false;
   }

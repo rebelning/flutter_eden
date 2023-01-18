@@ -19,10 +19,11 @@ void main() {
       splashBuilder: (context, child) {
         // final botToastBuilder = BotToastInit();
         // child = botToastBuilder(context, child);
+
         return FutureBuilder<void>(
           key: const ValueKey('initFuture'),
           future: Get.find<SplashService>().init(),
-          builder: (context, snapshot) {
+          builder: (BuildContext context, AsyncSnapshot<void> snapshot) {
             print("snapshot=${snapshot.connectionState}");
             if (snapshot.connectionState == ConnectionState.done) {
               return child ?? const SizedBox.shrink();
