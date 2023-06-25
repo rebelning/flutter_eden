@@ -35,7 +35,7 @@ dependencies:
   bot_toast: ^4.0.1
   intl: ^0.17.0
   pull_to_refresh: ^2.0.0
-  flutter_screenutil: ^5.5.4
+  flutter_screenutil: ^5.7.0
   visibility_detector: 0.2.2
  
 
