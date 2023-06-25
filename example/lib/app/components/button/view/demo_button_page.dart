@@ -12,6 +12,6 @@ class DemoButtonPage extends EdenBaseWidget<DemoButtonController>
 
   @override
   Widget buildBody(BuildContext context, DemoButtonController _controller) {
-    return renderListView(context);
+    return renderListView(context, _controller);
   }
 }

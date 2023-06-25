@@ -57,7 +57,7 @@ class _ProxySettingPageState extends State<ProxySettingPage>
           confirmText: "重启",
           cancelText: "取消",
           confirmTap: () {
-            RouteCore.back();
+            EdenRoute.back();
             _exitReset();
           },
         );
@@ -79,9 +79,11 @@ class _ProxySettingPageState extends State<ProxySettingPage>
     // settingProvider = Provider.of<SettingsProvider>(context);
 
     return Scaffold(
-      appBar: const ToolbarWidget(
+      appBar: ToolbarWidget(
         title: "Proxy setting",
+        backgroundColor: kIsDark ? toolBarbgColor : toolBarbgLightColor,
       ),
+      backgroundColor: kIsDark ? backgroundColor : backgroundLightColor,
       body: renderView(context, onCallPorxy),
     );
   }

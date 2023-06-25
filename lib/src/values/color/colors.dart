@@ -1,19 +1,33 @@
 import 'package:flutter_eden/eden.dart';
 
-const Color accentColor = Color(0xFF53ac6d);
-const Color accentLightColor = Color(0xFF53ac6d);
-
 const Color primaryColor = Color(0xFFd7dae0);
 const Color primaryColorDark = Color(0xFFabb2bf);
 
-const Color titleColor = Color(0xFFFFFFFF);
+/// toolbar backgroudColor
+const Color toolBarbgLightColor = Color(0xffFFFFFF);
+const Color toolBarbgColor = Color(0xff2b2d34);
 
+///backgroud color
+const Color backgroundLightColor = Color(0xffF8F8F8);
+const Color backgroundColor = Color(0xFF21252b);
+const Color titleColor = Color(0xFFFFFFFF);
+const Color titleLightColor = Color(0xFF000000);
+const Color textFieldColor = Color(0xFFFFFFFF);
+const Color textFieldLightColor = Color(0xFF000000);
+
+///
 const Color facebookColor = Color(0xFFf4dcac);
 const Color lineColor = Color(0xFFF5F5F5);
-const Color textColor = Color(0xFFFFFFFF);
 
-const Color backgroundColor = Color(0xFFFFFFFF);
-const Color backgroundDarkColor = Color(0xFF21252b);
+///
+const Color textColor = Color(0xFFFFFFFF);
+const Color textLightColor = Color(0xFF000000);
+
+Color snackBarColor = const Color(0xFFFFFFFF);
+Color snackBarTextColor = const Color(0xFF000000);
+Color snackBarLightColor = const Color(0xFF000000).withOpacity(0.6);
+Color snackBarTextLightColor = const Color(0xFFFFFFFF);
+
 const Color cardColor = Color(0xFF2b2d34);
 
 const Color backgroundGradient1 = Color(0xFF202025);

@@ -6,17 +6,13 @@ import 'package:flutter_eden/eden.dart';
 
 ///
 class ProfileController extends EdenBaseController {
-  @override
-  void onInit() {
-    super.onInit();
-  }
 
   void onExitLogin() async {
     print("onExitLogin");
     StorageHelper.remove(Constants.USER_INFO);
     await Get.find<AuthService>().init();
     Get.find<AccountController>().update();
-    RouteCore.until(Routes.app.root);
+    EdenRoute.until(Routes.app.root);
   }
 
   @override

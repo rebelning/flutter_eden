@@ -2,14 +2,18 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/material.dart';
+import 'dart:io';
+
+import 'package:flutter_eden/eden.dart';
 import 'package:flutter_eden/src/values/style/eden_button_style.dart';
 // import 'package:google_fonts/google_fonts.dart';
 
 class EdenThemeData {
-  // static const _lightFillColor = Colors.black;
-  static const _lightFillColor = Colors.white;
+  static const _lightFillColor = Colors.black;
+  // static const _lightFillColor = Colors.white;
   static const _darkFillColor = Colors.white;
+  static const _lightbackgroundColor = Color(0xffF8F8F8);
+  static const _backgroundColor = Color(0xff607D8B);
 
   ///
   static final Color _lightFocusColor = Colors.black.withOpacity(0.12);
@@ -46,6 +50,15 @@ class EdenThemeData {
   ///
   static final Color _lightUnSelectedItemColor = Color(0xff455A64);
   static final Color _darkUnSelectedItemColor = Color(0xffFFFFFF);
+  static void systemUiOverlay() {
+    if (Platform.isAndroid) {
+      SystemUiOverlayStyle systemUiOverlayStyle = SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+        statusBarIconBrightness: kIsDark ? Brightness.light : Brightness.dark,
+      );
+      SystemChrome.setSystemUIOverlayStyle(systemUiOverlayStyle);
+    }
+  }
 
   ///light theme data
   static ThemeData lightThemeData({
@@ -180,13 +193,13 @@ class EdenThemeData {
 
   ///light color scheme
   static const ColorScheme lightColorScheme = ColorScheme(
-    primary: Color(0xFF0091EA),
-    primaryVariant: Color(0xFF00B0FF),
+    primary: Color(0xFFFFFFFF),
+    primaryVariant: Color(0xFF030303),
     secondary: Color(0xFFEFF3F3),
     secondaryVariant: Color(0xFFFAFBFB),
-    background: Color(0xFFE6EBEB),
+    background: Color(0xFFFFFFFF),
     surface: Color(0xFFFAFBFB),
-    onBackground: Colors.white,
+    onBackground: _lightbackgroundColor,
     error: _lightFillColor,
     onError: _lightFillColor,
     onPrimary: _lightFillColor,
@@ -203,7 +216,7 @@ class EdenThemeData {
     secondaryVariant: Color(0xff5f7486),
     background: Color(0xff37474F),
     surface: Color(0xFF37474F),
-    onBackground: Color(0xff37474F), // White with 0.05 opacity
+    onBackground: _backgroundColor, // White with 0.05 opacity
 
     error: _darkFillColor,
     onError: _darkFillColor,

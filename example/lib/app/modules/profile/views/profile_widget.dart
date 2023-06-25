@@ -30,8 +30,8 @@ class ProfileWidget {
         child: Row(
           children: [
             Text(
-              '$section',
-              style: TextStyle(),
+              section,
+              style: const TextStyle(),
             )
           ],
         ),

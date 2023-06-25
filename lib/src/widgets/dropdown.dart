@@ -56,8 +56,6 @@ class DropdownWidget extends StatelessWidget {
                     children: <Widget>[
                       TextWidget(
                         text: label == null ? "" : label?.toUpperCase(),
-                        bold: true,
-                        accent: true,
                       ),
                       SizedBox(height: 10),
                       ...options
@@ -72,7 +70,7 @@ class DropdownWidget extends StatelessWidget {
               //errorText: snapshot.error,
               //hintText: placeholder,
               labelText: label ?? "",
-              enabledBorder: UnderlineInputBorder(
+              enabledBorder: const UnderlineInputBorder(
                 borderSide: BorderSide(
                     color: colors.primaryColorDark, //cor da borda
                     width: 0.0),

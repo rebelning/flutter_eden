@@ -6,7 +6,7 @@ import 'package:example/app/components/page/controllers/demo_controller.dart';
 import 'package:example/app/components/page/view/demo_page.dart';
 import 'package:flutter_eden/eden.dart';
 
-class ComponentRoute extends AbstractBaseRoute {
+class ComponentRoute extends EdenBaseRoute {
   @override
   String get prefix => "/components";
 
@@ -29,6 +29,9 @@ class ComponentRoute extends AbstractBaseRoute {
         name: page,
         preventDuplicates: false,
         page: () => DemoPage(),
+        // bindings: [
+        //   DemoBinding(tag: 'demo'),
+        // ],
         bindingsBuilder: () {
           Get.lazyPut(() => DemoController(tag: "tag/1"));
         },

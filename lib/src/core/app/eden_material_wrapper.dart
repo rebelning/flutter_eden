@@ -1,25 +1,36 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter_eden/eden.dart';
-import 'package:flutter_eden/src/plugin/eden_plugin.dart';
+import 'package:flutter_eden/src/core/logger/eden_logger.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 class EdenMaterialWrapper extends StatelessWidget {
-  ///widht=750
-  final Size? designSize;
-  final GetPage? unknownRoute;
-  final List<GetPage>? getPages;
+  final bool? enableLog;
+  final String? logTag;
   final Widget? home;
+  final String? initialRoute;
+  final List<GetPage>? getPages;
+  final GetPage? unknownRoute;
+  final Size? designSize;
   final ThemeData? theme;
   final Bindings? initialBinding;
   final TransitionBuilder? splashBuilder;
+  final Iterable<Locale>? supportedLocales;
+  final Iterable<LocalizationsDelegate<dynamic>>? localizationsDelegates;
+  final ValueChanged<Routing?>? routingCallback;
   const EdenMaterialWrapper({
     Key? key,
+    this.enableLog,
+    this.logTag,
+    this.home,
+    this.initialRoute,
     this.designSize,
     this.unknownRoute,
     this.getPages,
-    this.home,
     this.theme,
     this.initialBinding,
     this.splashBuilder,
+    this.supportedLocales,
+    this.localizationsDelegates,
+    this.routingCallback,
   }) : super(key: key);
 
   @override
@@ -62,45 +73,42 @@ class EdenMaterialWrapper extends StatelessWidget {
 
   ///
   Widget get materialApp => GetMaterialApp(
-        enableLog: true,
+        enableLog: enableLog ?? true,
         defaultTransition: Transition.cupertino,
-        // opaqueRoute: Get.isOpaqueRouteDefault,
-        // popGesture: Get.isPopGestureEnable,
-        getPages: getPages ?? [],
-        // initialRoute: Routes.app.root,
-        unknownRoute: unknownRoute,
-        // home: AppComponent(),
         home: home,
-        routingCallback: (route) {
-          print("route=${route?.current}");
-        },
+        initialRoute: initialRoute,
+        getPages: getPages ?? [],
+        unknownRoute: unknownRoute,
         theme: theme ?? EdenThemeData.darkThemeData(),
         initialBinding: initialBinding,
-        // initialBinding: BindingsBuilder(() {
-        //   Get.putAsync(() => AuthService().init());
-        //   Get.lazyPut(() => SplashService());
-        //   Get.lazyPut(() => AppController());
-        //   Get.lazyPut(() => HomeController());
-        //   Get.lazyPut(() => MessageController());
-        //   Get.lazyPut<IAccountPorvider>(() => AccountProvider());
-        //   Get.lazyPut<IAccountRespository>(
-        //       () => AccountRespositoryImpl(porvider: Get.find()));
-        //   Get.lazyPut(() => AccountController(accountRespository: Get.find()));
-        // }),
-        builder: splashBuilder,
-        // builder: (context, child) {
-        //   final botToastBuilder = BotToastInit();
-        //   child = botToastBuilder(context, child);
-        //   return FutureBuilder<void>(
-        //     key: const ValueKey('initFuture'),
-        //     future: Get.find<SplashService>().init(),
-        //     builder: (context, snapshot) {
-        //       if (snapshot.connectionState == ConnectionState.done) {
-        //         return child ?? const SizedBox.shrink();
-        //       }
-        //       return SplashView();
-        //     },
-        //   );
-        // },
+        logWriterCallback: (String text, {bool isError = false}) {
+          return Logger.edenWrite(text, logTag: logTag, isError: isError);
+        },
+        routingCallback: routingCallback ??
+            (route) {
+              closeAllSnackbars();
+            },
+        navigatorObservers: [BotToastNavigatorObserver()],
+        localizationsDelegates: [
+          ...localizationsDelegates ?? [],
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+          RefreshLocalizations.delegate,
+        ],
+        supportedLocales: [
+          ...supportedLocales ?? [],
+          const Locale.fromSubtags(
+            languageCode: 'zh',
+            scriptCode: 'Hans',
+            countryCode: 'CN',
+          ),
+        ],
+        builder: (BuildContext context, Widget? child) {
+          final botToastBuilder = BotToastInit();
+          child = botToastBuilder(context, child);
+
+          return splashBuilder == null ? child : splashBuilder!(context, child);
+        },
       );
 }

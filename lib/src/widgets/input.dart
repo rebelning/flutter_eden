@@ -1,122 +1,196 @@
 import 'package:flutter_eden/eden.dart';
-import 'package:flutter_eden/src/values/color/colors.dart' as colors;
-import 'package:flutter_eden/src/values/dimen/dimens.dart' as dimens;
 
-class InputWidget extends StatefulWidget {
-  final bool? autofocus;
-  final String? value;
-  final Function(dynamic)? onChange;
-  final String? placeholder;
-  final TextInputType? keyboardType;
-  final bool? password;
-  final bool? dark;
-  final bool? multiline;
-  final String? errorMessage;
-  final String? labelText;
-  final String? mask;
-  final int? maxLength;
-  final TextAlign? textAlign;
-  final List<TextInputFormatter>? inputFormatters;
-  InputWidget({
+class InputWidget extends StatelessWidget {
+  const InputWidget({
     Key? key,
-    this.autofocus,
-    this.value,
-    this.errorMessage,
-    this.onChange,
-    this.placeholder,
+    this.controller,
+    this.focusNode,
     this.keyboardType,
-    this.password,
-    this.dark,
-    this.multiline,
-    this.labelText,
-    this.mask,
-    this.maxLength,
-    this.textAlign,
+    this.obscureText,
     this.inputFormatters,
+    this.showBorder = true,
+    this.borderWidth,
+    this.borderColor,
+    this.maxLines = 1,
+    this.minLines = 1,
+    this.hintMaxLines = 1,
+    this.height,
+    this.autoFocus = false,
+    this.maxLength,
+    this.borderFocusColor,
+    this.placeholder,
+    this.placeholderStyle,
+    this.contentPadding,
+    this.textStyle,
+    this.textAlign,
+    this.suffix,
+    this.prefix,
+    this.prefixIcon,
+    this.suffixIcon,
+    this.textInputAction,
+    this.onSubmitted,
+    this.onChanged,
   }) : super(key: key);
 
-  @override
-  _InputWidgetState createState() => _InputWidgetState();
-}
+  /// 输入框控制器
+  final TextEditingController? controller;
+  final FocusNode? focusNode;
+  final bool? obscureText;
 
-class _InputWidgetState extends State<InputWidget> {
-  TextEditingController? _controller;
+  /// 键盘类型
+  final TextInputType? keyboardType;
 
-  @override
-  void didChangeDependencies() {
-    _controller = TextEditingController();
+  /// 用于指定输入格式；当用户输入内容改变时，会根据指定的格式来校验。
+  final List<TextInputFormatter>? inputFormatters;
 
-    super.didChangeDependencies();
-  }
+  final bool? showBorder;
 
+  /// 边框的宽度
+  final double? borderWidth;
+
+  /// 边框的颜色
+  final Color? borderColor;
+
+  /// 边框聚焦时候的颜色
+  final Color? borderFocusColor;
+
+  /// 输入框没有内容时候的占位内容
+  final String? placeholder;
+
+  /// 占位内容的文字样式
+  final TextStyle? placeholderStyle;
+
+  /// 输入框内边距
+  final EdgeInsetsGeometry? contentPadding;
+
+  /// 输入框文字样式
+  final TextStyle? textStyle;
+
+  /// 输入框的文字对齐方式
+  final TextAlign? textAlign;
+
+  /// 左侧内容
+  final Widget? prefix;
+  final Widget? prefixIcon;
+
+  /// 右侧内容
+  final Widget? suffix;
+  final Widget? suffixIcon;
+
+  ///最大行数
+  final int maxLines;
+
+  ///最小行数
+  final int minLines;
+
+  ///最大长度
+  final int? maxLength;
+  final int? hintMaxLines;
+  final double? height;
+
+  ///
+  final bool autoFocus;
+
+  /// 键盘右下角按钮显示的文字
+  final TextInputAction? textInputAction;
+
+  final Function? onSubmitted;
+  final ValueChanged<String>? onChanged;
   @override
   Widget build(BuildContext context) {
-    //fix the invertion of text editing
-    if (widget.value != null) {
-      _controller?.text = widget.value ?? "";
-      _controller?.selection =
-          TextSelection.collapsed(offset: widget.value?.length ?? 0);
-    }
+    return maxLines == 1
+        ? Container(
+            alignment: Alignment.centerLeft,
+            height: height ?? 80.rpx,
+            child: textField(context),
+          )
+        : Container(
+            alignment: Alignment.centerLeft,
+            child: textField(context),
+          );
+  }
 
-    return Padding(
-      padding: const EdgeInsets.only(top: dimens.fieldSpace),
-      child: TextField(
-        controller: _controller,
-        obscureText: widget.password == true ? true : false,
-        maxLength: widget.maxLength,
-        textAlign: widget.textAlign ?? TextAlign.start,
-        inputFormatters: widget.inputFormatters ?? [],
-        onChanged: (value) {
-          if (widget.onChange != null) widget.onChange!(value);
-        },
-        maxLines: widget.multiline == true ? null : 1,
-        keyboardType: widget.multiline == true
-            ? TextInputType.multiline
-            : widget.keyboardType,
-        style: TextStyle(
-            color: widget.dark == false
-                ? colors.primaryColor
-                : colors.primaryColorDark //cor do texto ao digitar,
-            ),
-        autofocus: widget.autofocus == null ? false : true,
+  ///textfield
+  Widget textField(BuildContext context) => TextField(
+        focusNode: focusNode,
+        textAlign: textAlign ?? TextAlign.left,
+        controller: controller,
+        obscureText: obscureText ?? false,
+        keyboardType: keyboardType,
+        maxLines: maxLines,
+        minLines: minLines,
+        maxLength: maxLength,
+        // cursorWidth: 1.0,
+        autofocus: autoFocus,
+        // 设置弹出键盘为亮色模式
+        keyboardAppearance: Brightness.light,
+        textInputAction: textInputAction ?? TextInputAction.done,
+        inputFormatters: inputFormatters,
+
         decoration: InputDecoration(
-          contentPadding: const EdgeInsets.only(bottom: 4),
-          hintText: widget.value ?? "Holder",
-          labelText: widget.labelText ?? widget.placeholder,
-          //errorText: widget.errorText,
-          enabledBorder: UnderlineInputBorder(
-            borderSide: BorderSide(
-                color: widget.dark == false
-                    ? Colors.white
-                    : colors.primaryColor, //cor da borda
-                width: 0.5),
+          // filled: true,
+          counterStyle: TextStyle(
+            fontSize: 24.rpx,
+            color: const Color(0xFFBEBEBE),
+            height: 1.2,
           ),
-          hintStyle: const TextStyle(
-              color: Colors.transparent, //cor do placeholder com foco
-              fontSize: dimens.fontInputWidget),
-          enabled: true,
-          labelStyle: TextStyle(
-              fontSize: dimens.fontInputWidget,
-              color: widget.dark == false
-                  ? colors.accentColor
-                  : colors.primaryColor //cor da label
+          // 给输入框内容添加内边距可以使内容居中
+          contentPadding: contentPadding ??
+              EdgeInsets.fromLTRB(20.rpx, 0.rpx, 10.rpx, 0.rpx),
+          // contentPadding: contentPadding ?? EdgeInsets.all(10.rpx),
+          border: showBorder == false
+              ? const OutlineInputBorder(borderSide: BorderSide.none)
+              : null,
+          // 可使用的边框
+          enabledBorder: showBorder == true
+              ? OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(8.rpx)),
+                  borderSide: BorderSide(
+                      // color: borderColor ?? rgba(217, 217, 217, 1),
+                      color: borderColor ?? const Color(0xffd9d9d9),
+                      width: borderWidth ?? 1.rpx),
+                )
+              : null,
+          // 聚焦的边框
+          focusedBorder: showBorder == true
+              ? OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(8.rpx)),
+                  borderSide: BorderSide(
+                      color: borderFocusColor ?? const Color(0xff1077FE),
+                      width: borderWidth ?? 1.rpx),
+                )
+              : null,
+          // 没有内容时候的占位符与样式
+          hintText: placeholder ?? "",
+          hintStyle: placeholderStyle ??
+              TextStyle(
+                color: const Color(0xffB3B3B3),
+                fontSize: 28.rpx,
+                height: 1.2,
               ),
-          border: UnderlineInputBorder(
-            borderSide: BorderSide(
-              color: colors.accentColor,
-              //cor da label quando esta com focus
-              width: 0,
-            ),
-          ),
-          focusedBorder: UnderlineInputBorder(
-            borderSide: BorderSide(
-                color: widget.dark == false
-                    ? colors.primaryColor
-                    : colors.accentColor, //cor da label quando esta com focus
-                width: 1),
+          // hintMaxLines: 1,
+          hintMaxLines: hintMaxLines,
+          suffix: suffix,
+          prefix: prefixIcon == null ? prefix : null,
+          prefixIcon: prefixIcon,
+          suffixIcon: suffixIcon,
+          suffixIconConstraints: BoxConstraints(
+            maxWidth: 40.rpx,
+            maxHeight: 40.rpx,
           ),
         ),
-      ),
-    );
-  }
+
+        // 输入框输入的内容的样式
+
+        textAlignVertical: TextAlignVertical.center,
+        style: textStyle ??
+            TextStyle(
+              color: kIsDark ? textFieldColor : textFieldLightColor,
+              fontSize: 28.rpx,
+            ),
+        onSubmitted: (value) {
+          if (onSubmitted != null) onSubmitted!(value);
+        },
+        onChanged: onChanged,
+      );
 }

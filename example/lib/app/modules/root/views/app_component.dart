@@ -1,6 +1,7 @@
 import 'package:example/app/modules/account/views/account_page.dart';
-import 'package:example/app/modules/home/views/home_index.dart';
-import 'package:example/app/modules/message/views/message_page.dart';
+import 'package:example/app/modules/root/home/views/home_index.dart';
+import 'package:example/app/modules/root/message/views/message_page.dart';
+
 import 'package:flutter_eden/eden.dart';
 
 import '../controllers/app_controller.dart';

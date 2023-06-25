@@ -6,7 +6,7 @@ abstract class ILoginProvider {
   Future<Response<LoginModel>> doLogin(String? username, String? password);
 }
 
-class LoginProvider extends HttpTask implements ILoginProvider {
+class LoginProvider extends EdenBaseProvider implements ILoginProvider {
   @override
   void onInit() {
     httpClient.defaultDecoder =

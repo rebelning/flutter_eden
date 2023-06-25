@@ -14,9 +14,7 @@ class LoginController extends EdenBaseController {
   String? get password => _password;
 
   @override
-  void onInit() {
-    super.onInit();
-  }
+  void init() {}
 
   void setUsername(String? username) {
     _username = username;
@@ -51,30 +49,18 @@ class LoginController extends EdenBaseController {
       StorageHelper.set(Constants.USER_INFO, login?.toRawJson());
       return true;
     } else {
-      SnackbarWidget(Get.context!, error: true, message: login?.message);
+      EdenSnackbar("${login?.message}", title: "Message");
       return false;
     }
   }
 
   bool _loginFailure(dynamic error) {
     print("error=$error");
-    SnackbarWidget(Get.context!, error: true, message: error.toString());
+    EdenSnackbar(error.toString(), title: "Error");
+
     return false;
   }
 
   @override
-  void dealloc() {
-    // TODO: implement dealloc
-  }
-
-  @override
-  Future doRequest(bool isPull) {
-    // TODO: implement doRequest
-    throw UnimplementedError();
-  }
-
-  @override
-  void init() {
-    // TODO: implement init
-  }
+  void dealloc() {}
 }

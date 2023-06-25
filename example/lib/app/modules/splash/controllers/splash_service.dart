@@ -4,7 +4,7 @@ import 'package:async/async.dart';
 import 'package:flutter_eden/eden.dart';
 
 class SplashService extends EdenBaseService {
-  final welcomeStr = ['sparrow', 'loadding...'];
+  final welcomeStr = ['Eden', 'loadding...'];
   final activeStr = 0.obs;
 
   final memo = AsyncMemoizer<void>();

@@ -3,7 +3,7 @@ import 'package:example/app/modules/account/controllers/account_controller.dart'
 import 'package:example/app/routes/routes.dart';
 import 'package:example/domain/entity/menu_model.dart';
 import 'package:example/domain/entity/user_model.dart';
-import 'package:pull_to_refresh/pull_to_refresh.dart';
+import 'package:example/values/example_images.dart';
 
 import 'package:flutter_eden/eden.dart';
 
@@ -13,80 +13,121 @@ import 'item_view.dart';
 enum AppBarBehavior { normal, pinned, floating, snapping }
 
 class AccountView {
-  double _appBarHeight = 0.0;
-  double? screenWidth;
-  double? screenHeight;
-  double? imageWidth;
-  double? imageHeight;
-  double? _statusBarHeight;
-  AppBarBehavior _appBarBehavior = AppBarBehavior.pinned;
-
-  void _getScreenInfo(context) {
-    _statusBarHeight = MediaQuery.of(context).padding.top;
-    // DebugLog.log('status-height:', _statusBarHeight.toString());
-    screenWidth = MediaQuery.of(context).size.width;
-    screenHeight = MediaQuery.of(context).size.height;
-    imageWidth = screenWidth; // image width
-    imageHeight = imageWidth! * 9 / 16.0; // image height4:3
-    // DebugLog.log("imageWidth:", imageWidth.toString());
-    // DebugLog.log('imageHeight:', imageHeight.toString());
-  }
-
   void _login() {
-    RouteCore.push(Routes.app.login);
+    EdenRoute.push(Routes.app.login);
   }
 
-  Widget sliverView(BuildContext context, AccountController? _controller) {
-    _getScreenInfo(context);
-    _appBarHeight = imageHeight ?? 0 - _statusBarHeight!;
-    return CustomScrollView(
-      slivers: [
-        SliverAppBar(
-          expandedHeight: _appBarHeight,
-          pinned: _appBarBehavior == AppBarBehavior.pinned,
-          floating: _appBarBehavior == AppBarBehavior.floating ||
-              _appBarBehavior == AppBarBehavior.snapping,
-          snap: _appBarBehavior == AppBarBehavior.snapping,
-          actions: <Widget>[
-            IconButton(
-              icon: (const Icon(Icons.settings)),
-              onPressed: () {
-                // _getMenuList(context, key);
-                _controller?.toSetting();
-              },
-            )
-          ],
-          flexibleSpace: FlexibleSpaceBar(
-            centerTitle: true,
-            collapseMode: CollapseMode.parallax,
-            title: Padding(
-              padding: const EdgeInsets.only(left: 0.0),
-              child: Text(
-                '',
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                style: Theme.of(context).textTheme.headline1,
+  Widget sliverView(BuildContext context, AccountController _controller) {
+    return ExtendedNestedScrollView(
+      onlyOneScrollInBody: true,
+      pinnedHeaderSliverHeightBuilder: () {
+        return MediaQuery.of(context).padding.top + kToolbarHeight;
+      },
+      headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+        return <Widget>[
+          // SliverOverlapAbsorber(
+          //   handle: NestedScrollView.sliverOverlapAbsorberHandleFor(context),
+          //   sliver: _renderSliverAppBar(
+          //     innerBoxIsScrolled,
+          //     _controller,
+          //   ),
+          // ),
+          _renderSliverAppBar(
+            innerBoxIsScrolled,
+            _controller,
+          )
+        ];
+      },
+      body: Column(
+        children: [
+          Expanded(
+              child: ExtendedVisibilityDetector(
+            uniqueKey: const Key('nestedScrollView'),
+            child: SmartRefresher(
+              controller: _controller.refreshController,
+              onRefresh: _controller.onRefresh,
+              child: CustomScrollView(
+                slivers: [
+                  // SliverOverlapInjector(
+                  //   handle: NestedScrollView.sliverOverlapAbsorberHandleFor(
+                  //       context),
+                  // ),
+                  SliverList(
+                    delegate: SliverChildBuilderDelegate(
+                      (BuildContext context, int index) {
+                        if (index > 4) return _renderEmptyItem();
+                        MenuInfo? menu = AccountController.to.menuList?[index];
+                        return _getItem(
+                          context,
+                          menu,
+                          (route) {
+                            _controller.onRouteView(route);
+                          },
+                        );
+                      },
+                      childCount: _controller.menuList?.length,
+                    ),
+                  ),
+                ],
               ),
             ),
-            background: Stack(
-              fit: StackFit.expand,
-              children: <Widget>[
-                _userView(context, _controller),
-              ],
+          )),
+        ],
+      ),
+    );
+  }
+
+  _renderEmptyItem() {
+    return Container(
+      color: Colors.transparent,
+      height: 60.rpx,
+      child: const ListTile(),
+    );
+  }
+
+  _renderSliverAppBar(
+    bool innerBoxIsScrolled,
+    AccountController _controller,
+  ) {
+    return SliverAppBar(
+      title: innerBoxIsScrolled == false
+          ? const Text("")
+          : Text('Me',
+              style: TextStyle(
+                color: const Color(0xff000000),
+                fontSize: 35.rpx,
+                fontWeight: FontWeight.w500,
+              )),
+      centerTitle: true,
+      pinned: true,
+      floating: false,
+      // snap: true,
+      // expandedHeight: 410.rpx,
+      expandedHeight: 210.rpx,
+      // collapsedHeight: 300.rpx,
+      stretchTriggerOffset: 200.rpx,
+      forceElevated: innerBoxIsScrolled,
+
+      flexibleSpace: FlexibleSpaceBar(
+        background: Container(
+          padding: EdgeInsets.only(left: 40.rpx, top: 20.rpx, right: 40.rpx),
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              fit: BoxFit.cover,
+              image: AssetImage(
+                ExampleImages.account_background,
+              ),
             ),
           ),
+          child: Container(),
         ),
-        SliverList(
-          delegate: SliverChildBuilderDelegate(
-            (context, index) {
-              MenuInfo? menu = AccountController.to.menuList?[index];
-
-              return _getItem(context, menu);
-            },
-            childCount: AccountController.to.menuList?.length,
-          ),
-        ),
-      ],
+        collapseMode: CollapseMode.parallax,
+        stretchModes: const [
+          StretchMode.zoomBackground,
+          StretchMode.blurBackground,
+          StretchMode.fadeTitle,
+        ],
+      ),
     );
   }
 
@@ -138,13 +179,18 @@ class AccountView {
   }
 
   ///
-  Widget _getItem(BuildContext context, MenuInfo? menu) {
+  Widget _getItem(
+    BuildContext context,
+    MenuInfo? menu,
+    Function(String? route) onItemClick,
+  ) {
     return ItemView(
       menu: menu,
       onTapMenu: (context, menu) {
-        if (menu?.menuId == "2002") {
-          RouteCore.push(Routes.app.proxy);
-        }
+        onItemClick(menu?.action);
+        // if (menu?.menuId == "2002") {
+        //   EdenRoute.push(Routes.app.proxy);
+        // }
       },
     );
   }

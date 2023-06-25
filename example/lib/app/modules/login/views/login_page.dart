@@ -17,7 +17,7 @@ class LoginPage extends EdenBaseWidget<LoginController> with LoginView {
   void _onLogin() {
     showLoading(controller.onLogin()).then((value) {
       if (value == true) {
-        RouteCore.back();
+        EdenRoute.back();
       } else {}
     });
   }

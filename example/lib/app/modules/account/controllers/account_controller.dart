@@ -11,9 +11,10 @@ class AccountController extends EdenBaseController {
   AuthService? authService;
 
   List<MenuInfo>? menuList = [];
+  final _refreshController = RefreshController();
+  RefreshController get refreshController => _refreshController;
   @override
-  void onInit() {
-    super.onInit();
+  void init() {
     print("Account init...");
 
     authService = Get.find<AuthService>();
@@ -21,9 +22,65 @@ class AccountController extends EdenBaseController {
     print("ac-isLogin=${authService?.isLogin}");
     print("ac-userInfo=${authService?.userInfo?.toRawJson()}");
 
-    if (authService?.isLogin == true) {
-      getMenuList();
+    // if (authService?.isLogin == true) {
+    //   getMenuList();
+    // } else {
+    // }
+    initMenu();
+  }
+
+  ///
+  Future onRefresh() async {
+    // monitor network fetch
+    menuList?.clear();
+    initMenu();
+    await Future.delayed(const Duration(seconds: 2));
+    _refreshController.refreshCompleted();
+  }
+
+  void initMenu() {
+    menuList?.add(
+      MenuInfo(
+        menuId: "1",
+        section: "Home",
+      ),
+    );
+    menuList?.add(
+      MenuInfo(
+        menuId: "2",
+        section: "Setting",
+      ),
+    );
+    menuList?.add(
+      MenuInfo(
+        menuId: "3",
+        section: "Login",
+        action: Routes.app.login,
+      ),
+    );
+    menuList?.add(
+      MenuInfo(
+        menuId: "4",
+        section: "About",
+      ),
+    );
+    menuList?.add(
+      MenuInfo(
+        menuId: "5",
+        section: "Proxy Setting",
+        action: Routes.eden.proxySeting,
+      ),
+    );
+    for (int i = 0; i < 20; i++) {
+      menuList?.add(
+        MenuInfo(),
+      );
     }
+    update();
+  }
+
+  void onRouteView(String? route) {
+    EdenRoute.push(route ?? "");
   }
 
   Future getMenuList() async {
@@ -43,7 +100,7 @@ class AccountController extends EdenBaseController {
 
   ///to setting
   void toSetting() {
-    RouteCore.push(Routes.app.accountProfile);
+    EdenRoute.push(Routes.app.accountProfile);
   }
 
   @override
@@ -51,7 +108,4 @@ class AccountController extends EdenBaseController {
 
   @override
   void dealloc() {}
-
-  @override
-  void init() {}
 }
