@@ -1,4 +1,2 @@
 ///texts style
-class EdenTextStyle{
-  
-}
+class EdenTextStyle {}

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 ///buttons style
 class EdenButtonStyle {
   ///Text Button
-  static ButtonStyle flatButtonStyle(ColorScheme colorScheme) {
+  static ButtonStyle textButtonStyle(ColorScheme colorScheme) {
     return TextButton.styleFrom(
       primary: colorScheme.primary,
       minimumSize: Size(88, 36),
@@ -25,13 +25,13 @@ class EdenButtonStyle {
 //   );
 
   /// Elevated Button
-  static ButtonStyle raisedButtonStyle(ColorScheme colorScheme) {
+  static ButtonStyle elevatedButtonStyle(ColorScheme colorScheme) {
     return ElevatedButton.styleFrom(
       onPrimary: colorScheme.onPrimary,
       primary: colorScheme.primary,
-      minimumSize: Size(88, 36),
+      minimumSize: const Size(88, 36),
       elevation: 0,
-      padding: EdgeInsets.symmetric(horizontal: 16),
+      padding: const EdgeInsets.symmetric(horizontal: 16),
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.all(Radius.circular(2)),
       ),
@@ -51,21 +51,22 @@ class EdenButtonStyle {
   static ButtonStyle outlineButtonStyle(ColorScheme colorScheme) {
     return OutlinedButton.styleFrom(
       primary: colorScheme.primary,
-      minimumSize: Size(88, 36),
-      padding: EdgeInsets.symmetric(horizontal: 16),
+      minimumSize: const Size(88, 36),
+      padding: const EdgeInsets.symmetric(horizontal: 16),
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.all(Radius.circular(2)),
       ),
     ).copyWith(
       side: MaterialStateProperty.resolveWith<BorderSide?>(
         (Set<MaterialState> states) {
-          if (states.contains(MaterialState.pressed))
-            return BorderSide(
+          if (states.contains(MaterialState.pressed)) {
+            return const BorderSide(
               //color: Theme.of(context).colorScheme.primary,
               color: Colors.blue,
               width: 1,
             );
-          return null; // Defer to the widget's default.
+          }
+          // Defer to the widget's default.
         },
       ),
     );

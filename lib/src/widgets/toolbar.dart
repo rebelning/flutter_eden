@@ -1,10 +1,8 @@
-import 'package:flutter/material.dart';
-import './text.dart';
-import 'logo.dart';
+import 'package:flutter_eden/eden.dart';
 
 class ToolbarWidget extends StatelessWidget implements PreferredSizeWidget {
   @override
-  Size get preferredSize => Size.fromHeight(kToolbarHeight);
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 
   final Widget? leading;
   final String? title;
@@ -13,32 +11,43 @@ class ToolbarWidget extends StatelessWidget implements PreferredSizeWidget {
   final double? elevation;
   final bool? logoWidget;
   final bool? hideBackArrow;
+  final bool? centerTitle;
+  final Color? backgroundColor;
+  final double? fontSize;
+  final FontWeight? fontWeight;
 
-  const ToolbarWidget(
-      {Key? key,
-      this.hideBackArrow,
-      this.logoWidget,
-      this.leading,
-      this.title,
-      this.actions,
-      this.color,
-      this.elevation})
-      : super(key: key);
+  const ToolbarWidget({
+    Key? key,
+    this.hideBackArrow,
+    this.centerTitle,
+    this.logoWidget,
+    this.leading,
+    this.title,
+    this.actions,
+    this.color,
+    this.fontSize,
+    this.fontWeight,
+    this.backgroundColor,
+    this.elevation,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-        automaticallyImplyLeading: hideBackArrow == true ? false : true,
-        title: logoWidget == true
-            ? Center(child: LogoWidget(header: true, small: true))
-            : TextWidget(
-                text: title,
-                color: color,
-                accent: true,
-                big: true,
-              ),
-        leading: leading,
-        actions: actions,
-        elevation: elevation != null ? elevation : 0.0);
+      automaticallyImplyLeading: hideBackArrow == true ? false : true,
+      centerTitle: centerTitle,
+      backgroundColor: backgroundColor,
+      title: logoWidget == true
+          ? const Center(child: LogoWidget(header: true, small: true))
+          : TextWidget(
+              text: title,
+              color: color,
+              fontSize: fontSize,
+              fontWeight: fontWeight,
+            ),
+      leading: leading,
+      actions: actions,
+      elevation: elevation ?? 0.0,
+    );
   }
 }

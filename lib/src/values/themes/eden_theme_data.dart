@@ -2,14 +2,18 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/material.dart';
+import 'dart:io';
+
+import 'package:flutter_eden/eden.dart';
 import 'package:flutter_eden/src/values/style/eden_button_style.dart';
 // import 'package:google_fonts/google_fonts.dart';
 
 class EdenThemeData {
-  // static const _lightFillColor = Colors.black;
-  static const _lightFillColor = Colors.white;
+  static const _lightFillColor = Colors.black;
+  // static const _lightFillColor = Colors.white;
   static const _darkFillColor = Colors.white;
+  static const _lightbackgroundColor = Color(0xffF8F8F8);
+  static const _backgroundColor = Color(0xff607D8B);
 
   ///
   static final Color _lightFocusColor = Colors.black.withOpacity(0.12);
@@ -46,34 +50,67 @@ class EdenThemeData {
   ///
   static final Color _lightUnSelectedItemColor = Color(0xff455A64);
   static final Color _darkUnSelectedItemColor = Color(0xffFFFFFF);
+  static void systemUiOverlay() {
+    if (Platform.isAndroid) {
+      SystemUiOverlayStyle systemUiOverlayStyle = SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+        statusBarIconBrightness: kIsDark ? Brightness.light : Brightness.dark,
+      );
+      SystemChrome.setSystemUIOverlayStyle(systemUiOverlayStyle);
+    }
+  }
 
   ///light theme data
-  static ThemeData lightThemeData = themeData(
-    lightColorScheme,
-    _lightFocusColor,
-    _lightCursorColor,
-    _lightCardColor,
-    _lightIconColor,
-    _lightLineColor,
-    _lightSelectedLabelColor,
-    _lightUnSelectedLabelColor,
-    _lightSelectedItemColor,
-    _lightUnSelectedItemColor,
-  );
+  static ThemeData lightThemeData({
+    ColorScheme? colorScheme,
+    Color? focusColor,
+    Color? cursorColor,
+    Color? cardColor,
+    Color? iconColor,
+    Color? lineColor,
+    Color? selectedLabelColor,
+    Color? unSelectedLabelColor,
+    Color? selectedItemColor,
+    Color? unSelectedItemColor,
+  }) =>
+      themeData(
+        colorScheme ?? lightColorScheme,
+        focusColor ?? _lightFocusColor,
+        cursorColor ?? _lightCursorColor,
+        cardColor ?? _lightCardColor,
+        iconColor ?? _lightIconColor,
+        lineColor ?? _lightLineColor,
+        selectedLabelColor ?? _lightSelectedLabelColor,
+        unSelectedLabelColor ?? _lightUnSelectedLabelColor,
+        selectedItemColor ?? _lightSelectedItemColor,
+        unSelectedItemColor ?? _lightUnSelectedItemColor,
+      );
 
   ///dark theme data
-  static ThemeData darkThemeData = themeData(
-    darkColorScheme,
-    _darkFocusColor,
-    _darkCursorColor,
-    _darkCardColor,
-    _darkIconColor,
-    _darkLineColor,
-    _darkSelectedLabelColor,
-    _darkUnSelectedLabelColor,
-    _darkUnSelectedItemColor,
-    _darkSelectedItemColor,
-  );
+  static ThemeData darkThemeData({
+    ColorScheme? colorScheme,
+    Color? focusColor,
+    Color? cursorColor,
+    Color? cardColor,
+    Color? iconColor,
+    Color? lineColor,
+    Color? selectedLabelColor,
+    Color? unSelectedLabelColor,
+    Color? selectedItemColor,
+    Color? unSelectedItemColor,
+  }) =>
+      themeData(
+        colorScheme ?? darkColorScheme,
+        focusColor ?? _darkFocusColor,
+        cursorColor ?? _darkCursorColor,
+        cardColor ?? _darkCardColor,
+        iconColor ?? _darkIconColor,
+        lineColor ?? _darkLineColor,
+        selectedLabelColor ?? _darkSelectedLabelColor,
+        unSelectedLabelColor ?? _darkUnSelectedLabelColor,
+        selectedItemColor ?? _darkUnSelectedItemColor,
+        unSelectedItemColor ?? _darkSelectedItemColor,
+      );
 
   static ThemeData themeData(
     ColorScheme colorScheme,
@@ -95,8 +132,9 @@ class EdenThemeData {
       primaryColor: colorScheme.primary,
       //appbar
       appBarTheme: AppBarTheme(
-        textTheme: _textTheme.apply(bodyColor: colorScheme.onPrimary),
+        // textTheme: _textTheme.apply(bodyColor: colorScheme.onPrimary),
         // color: colorScheme.background,
+        toolbarTextStyle: TextStyle(color: colorScheme.onPrimary),
         color: colorScheme.primary,
         elevation: 0,
         iconTheme: IconThemeData(color: colorScheme.onPrimary),
@@ -130,9 +168,9 @@ class EdenThemeData {
         selectionColor: colorScheme.onPrimary,
       ),
       textButtonTheme: TextButtonThemeData(
-          style: EdenButtonStyle.flatButtonStyle(colorScheme)),
+          style: EdenButtonStyle.textButtonStyle(colorScheme)),
       elevatedButtonTheme: ElevatedButtonThemeData(
-          style: EdenButtonStyle.raisedButtonStyle(colorScheme)),
+          style: EdenButtonStyle.elevatedButtonStyle(colorScheme)),
       outlinedButtonTheme: OutlinedButtonThemeData(
           style: EdenButtonStyle.outlineButtonStyle(colorScheme)),
       bottomNavigationBarTheme: BottomNavigationBarThemeData(
@@ -155,13 +193,13 @@ class EdenThemeData {
 
   ///light color scheme
   static const ColorScheme lightColorScheme = ColorScheme(
-    primary: Color(0xFF0091EA),
-    primaryVariant: Color(0xFF00B0FF),
+    primary: Color(0xFFFFFFFF),
+    primaryVariant: Color(0xFF030303),
     secondary: Color(0xFFEFF3F3),
     secondaryVariant: Color(0xFFFAFBFB),
-    background: Color(0xFFE6EBEB),
+    background: Color(0xFFFFFFFF),
     surface: Color(0xFFFAFBFB),
-    onBackground: Colors.white,
+    onBackground: _lightbackgroundColor,
     error: _lightFillColor,
     onError: _lightFillColor,
     onPrimary: _lightFillColor,
@@ -178,7 +216,7 @@ class EdenThemeData {
     secondaryVariant: Color(0xff5f7486),
     background: Color(0xff37474F),
     surface: Color(0xFF37474F),
-    onBackground: Color(0xff37474F), // White with 0.05 opacity
+    onBackground: _backgroundColor, // White with 0.05 opacity
 
     error: _darkFillColor,
     onError: _darkFillColor,

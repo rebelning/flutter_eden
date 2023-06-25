@@ -1,60 +1,38 @@
-import 'dart:io';
-import 'package:example/app/app_component.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:example/service/bindings/service_bindings.dart';
+
 import 'package:flutter_eden/eden.dart';
-import 'package:example/di/injector_provider_impl.dart';
-import 'package:flutter/scheduler.dart' show timeDilation;
-// import 'package:google_fonts/google_fonts.dart';
 
-// export 'package:gallery/data/demos.dart' show pumpDeferredLibraries;
+import 'app/modules/splash/controllers/splash_service.dart';
+import 'app/modules/splash/views/splash_view.dart';
+import 'app/routes/routes.dart';
+
 void main() {
-//  debugProfileBuildsEnabled = true;
-  ///
-  // GoogleFonts.config.allowRuntimeFetching = false;
-  setupInjection();
+  runApp(
+    EdenMaterialWrapper(
+      logTag: "Example",
+      enableLog: true,
+      initialRoute: Routes.app.root,
+      unknownRoute: Routes.app.unknownRoute,
+      getPages: Routes.getPages(),
+      theme: EdenThemeData.lightThemeData(),
+      initialBinding: ServiceBindings(),
+      splashBuilder: (context, child) {
+        // final botToastBuilder = BotToastInit();
+        // child = botToastBuilder(context, child);
 
-  ///
-  setupInjectionImpl();
-
-  ///
-  // runApp(AppComponent());
-  runApp(ExampleApp());
-//  runApp(App());
-  if (Platform.isAndroid) {
-    SystemUiOverlayStyle systemUiOverlayStyle =
-        SystemUiOverlayStyle(statusBarColor: Colors.transparent);
-    SystemChrome.setSystemUIOverlayStyle(systemUiOverlayStyle);
-  }
-}
-
-class ExampleApp extends StatelessWidget {
-  const ExampleApp({
-    Key? key,
-    this.initialRoute,
-    this.isTestMode = false,
-  }) : super(key: key);
-
-  final bool? isTestMode;
-  final String? initialRoute;
-
-  @override
-  Widget build(BuildContext context) {
-    return ModelBinding(
-      initialModel: EdenOptions(
-        themeMode: ThemeMode.system,
-        textScaleFactor: systemTextScaleFactorOption,
-        customTextDirection: CustomTextDirection.localeBased,
-        locale: null,
-        timeDilation: timeDilation,
-        // platform: defaultTargetPlatform,
-        isTestMode: isTestMode,
-      ),
-      child: Builder(
-        builder: (context) {
-          return AppComponent();
-        },
-      ),
-    );
-  }
+        return FutureBuilder<void>(
+          key: const ValueKey('initFuture'),
+          future: Get.find<SplashService>().init(),
+          builder: (BuildContext context, AsyncSnapshot<void> snapshot) {
+            print("snapshot=${snapshot.connectionState}");
+            if (snapshot.connectionState == ConnectionState.done) {
+              return child ?? const SizedBox.shrink();
+            }
+            return SplashView();
+          },
+        );
+      },
+    ),
+  );
+  EdenThemeData.systemUiOverlay();
 }
