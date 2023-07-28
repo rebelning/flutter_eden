@@ -7,15 +7,18 @@ class EdenMaterialWrapper extends StatelessWidget {
   final String? logTag;
   final Widget? home;
   final String? initialRoute;
-  final List<GetPage>? getPages;
+  // final List<GetPage>? getPages;
+  final List<GetPage>? Function()? onGetPages;
   final GetPage? unknownRoute;
   final Size? designSize;
-  final ThemeData? theme;
+  // final ThemeData? theme;
+  final ThemeData? Function()? onTheme;
   final Bindings? initialBinding;
   final TransitionBuilder? splashBuilder;
   final Iterable<Locale>? supportedLocales;
   final Iterable<LocalizationsDelegate<dynamic>>? localizationsDelegates;
   final ValueChanged<Routing?>? routingCallback;
+  final GlobalKey<NavigatorState>? navigatorKey;
   const EdenMaterialWrapper({
     Key? key,
     this.enableLog,
@@ -24,13 +27,14 @@ class EdenMaterialWrapper extends StatelessWidget {
     this.initialRoute,
     this.designSize,
     this.unknownRoute,
-    this.getPages,
-    this.theme,
+    this.onGetPages,
+    this.onTheme,
     this.initialBinding,
     this.splashBuilder,
     this.supportedLocales,
     this.localizationsDelegates,
     this.routingCallback,
+    this.navigatorKey,
   }) : super(key: key);
 
   @override
@@ -74,12 +78,14 @@ class EdenMaterialWrapper extends StatelessWidget {
   ///
   Widget get materialApp => GetMaterialApp(
         enableLog: enableLog ?? true,
+        navigatorKey: navigatorKey,
         defaultTransition: Transition.cupertino,
         home: home,
         initialRoute: initialRoute,
-        getPages: getPages ?? [],
+        getPages: onGetPages == null ? [] : onGetPages!(),
         unknownRoute: unknownRoute,
-        theme: theme ?? EdenThemeData.darkThemeData(),
+        // theme: theme ?? EdenThemeData.darkThemeData(),
+        theme: onTheme == null ? EdenThemeData.darkThemeData() : onTheme!(),
         initialBinding: initialBinding,
         logWriterCallback: (String text, {bool isError = false}) {
           return Logger.edenWrite(text, logTag: logTag, isError: isError);
@@ -107,8 +113,13 @@ class EdenMaterialWrapper extends StatelessWidget {
         builder: (BuildContext context, Widget? child) {
           final botToastBuilder = BotToastInit();
           child = botToastBuilder(context, child);
-
-          return splashBuilder == null ? child : splashBuilder!(context, child);
+          final MediaQueryData data = MediaQuery.of(context);
+          // return splashBuilder == null ? child : splashBuilder!(context, child);
+          return MediaQuery(
+            data: data.copyWith(textScaleFactor: 1.0),
+            child:
+                splashBuilder == null ? child : splashBuilder!(context, child),
+          );
         },
       );
 }
