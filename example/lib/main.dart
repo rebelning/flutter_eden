@@ -1,5 +1,4 @@
-import 'package:example/service/bindings/service_bindings.dart';
-
+import 'package:example/service/auth_service.dart';
 import 'package:flutter_eden/eden.dart';
 
 import 'app/modules/splash/controllers/splash_service.dart';
@@ -13,9 +12,14 @@ void main() {
       enableLog: true,
       initialRoute: Routes.app.root,
       unknownRoute: Routes.app.unknownRoute,
-      getPages: Routes.getPages(),
-      theme: EdenThemeData.lightThemeData(),
-      initialBinding: ServiceBindings(),
+      onGetPages: () => Routes.getPages(),
+      onTheme: () => EdenThemeData.lightThemeData(),
+      initialBinding: BindingsBuilder(
+        () {
+          Get.putAsync(() => AuthService().init());
+          Get.lazyPut(() => SplashService());
+        },
+      ),
       splashBuilder: (context, child) {
         // final botToastBuilder = BotToastInit();
         // child = botToastBuilder(context, child);
