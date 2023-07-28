@@ -10,6 +10,10 @@ export 'package:flutter/cupertino.dart' hide RefreshCallback;
 export 'package:pull_to_refresh/pull_to_refresh.dart'
     hide RefreshIndicator, RefreshIndicatorState;
 
+
+///extended_nested_scroll
+export 'package:extended_nested_scroll_view/extended_nested_scroll_view.dart';
+
 ///core
 
 export 'src/core/eden_core.dart';
