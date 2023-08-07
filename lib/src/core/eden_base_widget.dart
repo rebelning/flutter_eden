@@ -19,9 +19,6 @@ abstract class EdenBaseWidget<T extends EdenBaseController> extends GetView<T> {
 
   ///tool title
   String toolbarTitle();
-  Color? getBackgroundColor() {
-    return kIsDark ? backgroundColor : backgroundLightColor;
-  }
 
   void setToolbarTitle(String? toolbarTitle) {
     _toolbarTitle = toolbarTitle;
@@ -35,15 +32,33 @@ abstract class EdenBaseWidget<T extends EdenBaseController> extends GetView<T> {
   }
 
   /// toolbar background color
-  Color? _toolbarBackgroundColor =
-      kIsDark ? toolBarbgColor : toolBarbgLightColor;
+  Color? _toolbarBackgroundColor;
   Color? get toolbarBackgroundColor => _toolbarBackgroundColor;
   void setToolbarBackgroundColor(Color? backgroundColor) {
     _toolbarBackgroundColor = backgroundColor;
   }
 
+  IconThemeData? _iconTheme;
+  IconThemeData? get iconTheme => _iconTheme;
+  IconThemeData? _actionsIconTheme;
+  IconThemeData? get actionsIconTheme => _actionsIconTheme;
+  bool? _resizeToAvoidBottomInset;
+  bool? get resizeToAvoidBottomInset => _resizeToAvoidBottomInset;
+
   List<Widget>? toolbarActions() {
     return [];
+  }
+
+  Widget? toolbarLeading() {
+    return null;
+  }
+
+  double? leadingWidth() {
+    return null;
+  }
+
+  double? toolbarHeight() {
+    return null;
   }
 
   ///toolbar arrow back
@@ -62,11 +77,14 @@ abstract class EdenBaseWidget<T extends EdenBaseController> extends GetView<T> {
             centerTitle: true,
             backgroundColor: toolbarBackgroundColor,
             hideBackArrow: hideToolbarArrowBack(),
+            iconTheme: iconTheme,
+            actionsIconTheme: actionsIconTheme,
             title: _toolbarTitle ?? toolbarTitle(),
             color: toolbarTitleColor,
+            leading: toolbarLeading(),
+            leadingWidth: leadingWidth(),
+            toolbarHeight: toolbarHeight(),
             actions: toolbarActions(),
-            fontSize: 35.rpx,
-            fontWeight: FontWeight.w500,
           );
   }
 
@@ -88,9 +106,9 @@ abstract class EdenBaseWidget<T extends EdenBaseController> extends GetView<T> {
         init: controller,
         builder: (controller) {
           return Scaffold(
+            resizeToAvoidBottomInset: _resizeToAvoidBottomInset,
             appBar: appToolbar(context),
             body: buildBody(context, controller),
-            backgroundColor: getBackgroundColor(),
             floatingActionButton: floatingActionButton(),
             bottomNavigationBar: bottomNavigationBar(),
           );
