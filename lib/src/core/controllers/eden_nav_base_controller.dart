@@ -8,8 +8,10 @@ abstract class EdenNavBaseController extends EdenBaseController {
 
   void onNavTap(int index) {
     _currentIndex = index;
-    _handleOnChange(index);
-    update();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _handleOnChange(index);
+      update();
+    });
   }
 
   void _handleOnChange(int index) {
