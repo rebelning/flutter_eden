@@ -7,6 +7,7 @@ export 'eden_nav_base_widget.dart';
 ///controller
 export 'controllers/eden_base_controller.dart';
 export 'controllers/eden_base_list_controller.dart';
+export 'controllers/eden_nav_base_controller.dart';
 
 ///service
 export 'service/eden_base_service.dart';

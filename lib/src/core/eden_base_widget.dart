@@ -49,19 +49,14 @@ abstract class EdenBaseWidget<T extends EdenBaseController> extends GetView<T> {
     return [];
   }
 
-  Widget? toolbarLeading() {
-    return null;
-  }
+  Widget? toolbarLeading() => null;
 
-  double? leadingWidth() {
-    return null;
-  }
+  double? leadingWidth() => null;
 
-  double? toolbarHeight() {
-    return null;
-  }
+  double? toolbarHeight() => null;
 
   ///toolbar arrow back
+  @protected
   Widget toolbarArrowBack() {
     return IconButton(
       icon: const Icon(Icons.arrow_back),
@@ -70,6 +65,7 @@ abstract class EdenBaseWidget<T extends EdenBaseController> extends GetView<T> {
   }
 
   ///
+  @protected
   PreferredSizeWidget? appToolbar(BuildContext context) {
     return hideToolbar()
         ? null
@@ -89,16 +85,14 @@ abstract class EdenBaseWidget<T extends EdenBaseController> extends GetView<T> {
   }
 
   ///build body
+  @protected
   Widget buildBody(BuildContext context, T _controller);
 
   ///bottom navigation bar
-  Widget? bottomNavigationBar() {
-    return null;
-  }
-
-  Widget? floatingActionButton() {
-    return null;
-  }
+  @protected
+  Widget? bottomNavigationBar() => null;
+  @protected
+  Widget? floatingActionButton() => null;
 
   @override
   Widget build(BuildContext context) {

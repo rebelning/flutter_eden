@@ -1,6 +1,6 @@
 import 'package:flutter_eden/eden.dart';
 
-class AppController extends EdenBaseController {
+class AppController extends EdenNavBaseController {
   static AppController get to => Get.find();
 
   @override
@@ -16,18 +16,13 @@ class AppController extends EdenBaseController {
   }
 
   @override
-  void dealloc() {
-    // TODO: implement dealloc
-  }
+  void dealloc() {}
 
   @override
   Future doRequest(bool isPull) {
-    // TODO: implement doRequest
     throw UnimplementedError();
   }
 
   @override
-  void init() {
-    // TODO: implement init
-  }
+  void init() {}
 }
