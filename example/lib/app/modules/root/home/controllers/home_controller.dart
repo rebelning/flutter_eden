@@ -73,6 +73,13 @@ class HomeController extends EdenBaseListController {
     menuInfo.menuId = "5";
     menuInfo.section = "Loadding";
     sourceList?.add(menuInfo);
+
+    ///tab
+    menuInfo = MenuInfo();
+    menuInfo.menuId = "6";
+    menuInfo.section = "Tab Index";
+    menuInfo.action = Routes.component.tabIndex;
+    sourceList?.add(menuInfo);
     update();
   }
 }

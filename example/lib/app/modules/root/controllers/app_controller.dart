@@ -7,6 +7,8 @@ class AppController extends EdenNavBaseController {
   void onInit() {
     super.onInit();
     print("App onInit ...");
+    final data = Get.parameters["data"];
+    print("data=$data");
   }
 
   @override

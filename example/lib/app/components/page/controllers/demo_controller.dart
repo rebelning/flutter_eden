@@ -1,5 +1,6 @@
 import 'package:example/app/components/page/bindings/demo_binding.dart';
 import 'package:example/app/components/page/view/demo_page.dart';
+import 'package:example/app/routes/routes.dart';
 import 'package:flutter_eden/eden.dart';
 
 class DemoController extends EdenBaseController {
@@ -24,6 +25,7 @@ class DemoController extends EdenBaseController {
     tagName = _tag;
     EdenRoute.to(DemoPage(),
         binding: DemoBinding(tag: tagName), preventDuplicates: false);
+    // EdenRoute.offAllToNamed(Routes.app.root, parameters: {"data": "123"});
   }
 
   @override
