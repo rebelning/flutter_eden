@@ -5,7 +5,7 @@ import 'package:flutter_eden/eden.dart';
 
 class AccountRespositoryImpl extends EdenBaseRespository
     implements IAccountRespository {
-  final IAccountPorvider provider;
+  final IAccountProvider provider;
   AccountRespositoryImpl({required this.provider});
   @override
   Future<MenuModel?> getMenuList() async {

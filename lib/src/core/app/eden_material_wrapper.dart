@@ -17,6 +17,9 @@ class EdenMaterialWrapper extends StatelessWidget {
   final TransitionBuilder? splashBuilder;
   final Iterable<Locale>? supportedLocales;
   final Iterable<LocalizationsDelegate<dynamic>>? localizationsDelegates;
+  final Translations? translations;
+  final Locale? locale;
+  final Locale? fallbackLocale;
   final ValueChanged<Routing?>? routingCallback;
   final GlobalKey<NavigatorState>? navigatorKey;
   const EdenMaterialWrapper({
@@ -33,6 +36,9 @@ class EdenMaterialWrapper extends StatelessWidget {
     this.splashBuilder,
     this.supportedLocales,
     this.localizationsDelegates,
+    this.translations,
+    this.locale,
+    this.fallbackLocale,
     this.routingCallback,
     this.navigatorKey,
   }) : super(key: key);
@@ -110,6 +116,10 @@ class EdenMaterialWrapper extends StatelessWidget {
             countryCode: 'CN',
           ),
         ],
+        translations: translations ?? EdenAppTranslations(), // 使用你定义的本地化字符串
+        locale: locale ?? const Locale('en', 'US'), //Locale('en', 'US') 默认的语言
+        fallbackLocale: fallbackLocale ??
+            const Locale('en', 'US'), // 当指定的语言没有提供本地化字符串时使用的备用语言
         builder: (BuildContext context, Widget? child) {
           final botToastBuilder = BotToastInit();
           child = botToastBuilder(context, child);
