@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:flutter/cupertino.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter_eden/eden.dart';
 
@@ -33,7 +32,7 @@ Future<T> showLoading1<T>(Future<T> future,
     T res = await future;
     return res;
   } catch (e) {
-    throw e;
+    rethrow;
   } finally {
     cancelFunc();
   }
@@ -42,7 +41,8 @@ Future<T> showLoading1<T>(Future<T> future,
 ///
 Future<T> showNewLoading<T>(
   Future<T> future, {
-  String? desc = "加载中...",
+  // String? desc = "加载中...",
+  String? desc,
   Duration duration = const Duration(seconds: 15),
 }) async {
   future.then((value) {});
@@ -68,7 +68,7 @@ Future<T> showNewLoading<T>(
               SizedBox(height: 25.rpx),
 
               Text(
-                "$desc",
+                desc ?? 'loading'.tr,
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 26.rpx,
@@ -85,7 +85,7 @@ Future<T> showNewLoading<T>(
     T res = await future;
     return res;
   } catch (e) {
-    throw e;
+    rethrow;
   } finally {
     cancelFunc();
   }
@@ -105,7 +105,7 @@ Future<T> showProgressLoading<T>(
           builder: (BuildContext context, AsyncSnapshot<double> snapshot) {
             return Container(
               decoration: const BoxDecoration(
-                color: Color(0xff1A000000),
+                color: Color(0xff1A0000),
               ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -127,7 +127,9 @@ Future<T> showProgressLoading<T>(
                   SizedBox(height: 30.rpx),
 
                   Text(
-                    "${snapshot.data == 1.0 ? "上传完成" : "上传中 ${NumberFormat("0").format((snapshot.data! * 100))}%..."}",
+                    snapshot.data == 1.0
+                        ? "uploaded".tr
+                        : "${'uploading'.tr} ${NumberFormat("0").format((snapshot.data! * 100))}%...",
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 30.rpx,
@@ -156,13 +158,14 @@ Future<T> showProgressLoading<T>(
 ///
 Future<T> showLoading<T>(
   Future<T> future, {
-  String? desc = "加载中...",
+  String? desc,
   Duration duration = const Duration(seconds: 15),
 }) async {
   future.then((value) {});
   CancelFunc cancelFunc = BotToast.showCustomLoading(
     toastBuilder: (_) {
-      return _CustomLoadWidget(cancelFunc: () {}, loadingText: desc);
+      return _CustomLoadWidget(
+          cancelFunc: () {}, loadingText: desc ?? 'loading'.tr);
     },
   );
 
@@ -170,7 +173,7 @@ Future<T> showLoading<T>(
     T res = await future;
     return res;
   } catch (e) {
-    throw e;
+    rethrow;
   } finally {
     cancelFunc();
   }
@@ -253,7 +256,7 @@ class _CustomLoadWidgetState extends State<_CustomLoadWidget>
             Padding(
               padding: EdgeInsets.only(top: 30.rpx),
               child: Text(
-                "${widget.loadingText ?? ""}",
+                widget.loadingText ?? "",
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 26.rpx,

@@ -10,7 +10,6 @@ export 'package:flutter/cupertino.dart' hide RefreshCallback;
 export 'package:pull_to_refresh/pull_to_refresh.dart'
     hide RefreshIndicator, RefreshIndicatorState;
 
-
 ///extended_nested_scroll
 export 'package:extended_nested_scroll_view/extended_nested_scroll_view.dart';
 
@@ -30,6 +29,9 @@ export 'src/net/model/loading_message.dart';
 export 'src/routes/base/eden_base_route.dart';
 export 'src/routes/eden_route.dart';
 export 'src/routes/modules/eden_module_route.dart';
+
+///locale
+export 'src/values/locale/eden_app_translations.dart';
 
 ///values
 export 'src/values/themes/eden_theme_data.dart';
