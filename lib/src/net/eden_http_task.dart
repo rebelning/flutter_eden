@@ -37,6 +37,7 @@ abstract class HttpTask<T> extends GetConnect {
     if (EdenHttpHook.token != null) {
       return EdenHttpHook.token!();
     }
+    return "";
   }
 
   Map<String, String> _headers() {
@@ -50,6 +51,7 @@ abstract class HttpTask<T> extends GetConnect {
     if (EdenHttpHook.onFindProxy != null) {
       return EdenHttpHook.onFindProxy!();
     }
+    return null;
   }
 
   @override
@@ -62,6 +64,11 @@ abstract class HttpTask<T> extends GetConnect {
   @override
   void onInit() {
     print("HttpTask-onInit...");
+    if (EdenHttpHook.onFindProxy != null) {
+      allowAutoSignedCert = true;
+    } else {
+      allowAutoSignedCert = false;
+    }
     _interceptor();
     super.onInit();
   }
