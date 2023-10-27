@@ -29,6 +29,8 @@ export 'src/net/model/loading_message.dart';
 export 'src/routes/base/eden_base_route.dart';
 export 'src/routes/eden_route.dart';
 export 'src/routes/modules/eden_module_route.dart';
+export 'src/routes/middleware/eden_base_middleware.dart';
+export 'src/routes/bindings/eden_base_bindings.dart';
 
 ///locale
 export 'src/values/locale/eden_app_translations.dart';
