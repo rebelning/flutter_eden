@@ -2,7 +2,7 @@ import 'package:example/app/modules/account/views/item_view.dart';
 import 'package:example/domain/entity/menu_model.dart';
 import 'package:flutter/material.dart';
 
-class HomeView {
+mixin class HomeView {
   Widget renderItemView(
     BuildContext context,
     List<MenuInfo>? sourceList,

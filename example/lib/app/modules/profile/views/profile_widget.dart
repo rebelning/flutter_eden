@@ -1,7 +1,7 @@
 import 'package:example/app/modules/profile/controllers/profile_controller.dart';
 import 'package:flutter/material.dart';
 
-class ProfileWidget {
+mixin class ProfileWidget {
   Widget renderView(BuildContext context, ProfileController? _controller) {
     return ListView(
       children: [renderItemView(context, _controller, "退出登录")],

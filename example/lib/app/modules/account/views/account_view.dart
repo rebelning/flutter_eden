@@ -12,7 +12,7 @@ import 'item_view.dart';
 ///
 enum AppBarBehavior { normal, pinned, floating, snapping }
 
-class AccountView {
+mixin class AccountView {
   void _login() {
     EdenRoute.push(Routes.app.login);
   }

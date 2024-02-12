@@ -3,7 +3,7 @@ import 'package:flutter_eden/eden.dart';
 
 import 'package:flutter_eden/src/values/dimen/dimens.dart' as dimens;
 
-class LoginView {
+mixin class LoginView {
   Widget renderView(
       BuildContext context, LoginController _controller, Function() onLogin) {
     return SingleChildScrollView(

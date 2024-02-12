@@ -87,4 +87,10 @@ class _ProxySettingPageState extends State<ProxySettingPage>
       body: renderView(context, onCallPorxy),
     );
   }
+
+  @override
+  void dispose() {
+    super.dispose();
+    disposeView();
+  }
 }

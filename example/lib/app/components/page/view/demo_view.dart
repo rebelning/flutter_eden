@@ -2,7 +2,7 @@ import 'package:example/app/components/page/controllers/demo_controller.dart';
 
 import 'package:flutter_eden/eden.dart';
 
-class DmeoView {
+mixin class DemoView {
   Widget renderItemView(
       DemoController _controller, Function(String? tag) onTap) {
     return Column(

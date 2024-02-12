@@ -1,6 +1,6 @@
 import 'package:flutter_eden/eden.dart';
 
-class DialogDemoView {
+mixin class DialogDemoView {
   Widget renderItemView(Function() onTap) {
     return Container(
       child: Column(

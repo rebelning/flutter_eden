@@ -1,7 +1,7 @@
 import 'package:example/app/components/button/controllers/demo_button_controller.dart';
 import 'package:flutter_eden/eden.dart';
 
-class DemoButtonView {
+mixin class DemoButtonView {
   Widget renderListView(
       BuildContext context, DemoButtonController _controller) {
     return Container(

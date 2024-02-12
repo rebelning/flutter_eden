@@ -192,9 +192,9 @@ class EdenThemeData {
   ///light color scheme
   static const ColorScheme lightColorScheme = ColorScheme(
     primary: Color(0xFFFFFFFF),
-    primaryVariant: Color(0xFF030303),
+    // primaryVariant: Color(0xFF030303),
     secondary: Color(0xFFEFF3F3),
-    secondaryVariant: Color(0xFFFAFBFB),
+    // secondaryVariant: Color(0xFFFAFBFB),
     background: Color(0xFFF2F5FC),
     surface: Color(0xFFFAFBFB),
     onBackground: Colors.white,
@@ -209,9 +209,9 @@ class EdenThemeData {
   ///dark color scheme
   static const ColorScheme darkColorScheme = ColorScheme(
     primary: Color(0xff263238),
-    primaryVariant: Color(0xff5f7486),
+    // primaryVariant: Color(0xff5f7486),
     secondary: Color(0xff5f7486),
-    secondaryVariant: Color(0xff5f7486),
+    // secondaryVariant: Color(0xff5f7486),
     background: Color(0xff37474F),
     surface: Color(0xFF37474F),
     onBackground: Color(0xff37474F), // White with 0.05 opacity

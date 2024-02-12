@@ -1,7 +1,6 @@
-import 'package:flutter/services.dart';
 import 'package:flutter_eden/eden.dart';
 
-class ProxySettingWdiget {
+mixin class ProxySettingWdiget {
   TextEditingController _serverController = TextEditingController();
   TextEditingController _portController = TextEditingController();
 
@@ -143,5 +142,10 @@ class ProxySettingWdiget {
         ),
       ),
     );
+  }
+
+  void disposeView() {
+    _serverController.dispose();
+    _portController.dispose();
   }
 }
