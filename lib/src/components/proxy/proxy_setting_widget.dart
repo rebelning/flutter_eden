@@ -112,8 +112,9 @@ mixin class ProxySettingWdiget {
 
   static ButtonStyle raisedButtonStyle(ThemeData theme) {
     return ElevatedButton.styleFrom(
-      onPrimary: const Color(0xff2C83F5),
-      primary: btnBackgroundColor,
+      // onPrimary: const Color(0xff2C83F5),
+      // primary: btnBackgroundColor,
+      backgroundColor: btnBackgroundColor,
       minimumSize: Size(200.rpx, 88.rpx),
       elevation: 0,
       padding: EdgeInsets.symmetric(horizontal: 16.rpx),
