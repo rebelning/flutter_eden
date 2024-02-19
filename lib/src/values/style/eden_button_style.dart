@@ -5,7 +5,8 @@ class EdenButtonStyle {
   ///Text Button
   static ButtonStyle textButtonStyle(ColorScheme colorScheme) {
     return TextButton.styleFrom(
-      primary: colorScheme.primary,
+      // primary: colorScheme.primary,
+      backgroundColor: colorScheme.primary,
       minimumSize: Size(88, 36),
       padding: EdgeInsets.symmetric(horizontal: 16.0),
       shape: const RoundedRectangleBorder(
@@ -27,8 +28,9 @@ class EdenButtonStyle {
   /// Elevated Button
   static ButtonStyle elevatedButtonStyle(ColorScheme colorScheme) {
     return ElevatedButton.styleFrom(
-      onPrimary: colorScheme.onPrimary,
-      primary: colorScheme.primary,
+      // onPrimary: colorScheme.onPrimary,
+      // primary: colorScheme.primary,
+      backgroundColor: colorScheme.primary,
       minimumSize: const Size(88, 36),
       elevation: 0,
       padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -50,7 +52,8 @@ class EdenButtonStyle {
   ///OutlineButton
   static ButtonStyle outlineButtonStyle(ColorScheme colorScheme) {
     return OutlinedButton.styleFrom(
-      primary: colorScheme.primary,
+      // primary: colorScheme.primary,
+      backgroundColor: colorScheme.primary,
       minimumSize: const Size(88, 36),
       padding: const EdgeInsets.symmetric(horizontal: 16),
       shape: const RoundedRectangleBorder(

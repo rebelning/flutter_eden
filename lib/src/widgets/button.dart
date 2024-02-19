@@ -87,8 +87,9 @@ class ButtonWidget extends StatelessWidget {
 
   ButtonStyle _elevatedButtonStyle() {
     return ElevatedButton.styleFrom(
-      onPrimary: onPrimary ?? EdenColors.colorfafafa,
-      primary: primary ?? EdenColors.color1077FE,
+      // onPrimary: onPrimary ?? EdenColors.colorfafafa,
+      // primary: primary ?? EdenColors.color1077FE,
+      backgroundColor: primary ?? EdenColors.color1077FE,
       minimumSize: Size(88.rpx, 36.rpx),
       elevation: _elevation,
       padding: EdgeInsets.symmetric(horizontal: 20.rpx, vertical: 20.rpx),
@@ -106,7 +107,8 @@ class ButtonWidget extends StatelessWidget {
 
   ButtonStyle _textButtonStyle() {
     return TextButton.styleFrom(
-      primary: primary ?? EdenColors.color8b8b8b,
+      // primary: primary ?? EdenColors.color8b8b8b,
+      backgroundColor: primary ?? EdenColors.color8b8b8b,
       minimumSize: Size(88.rpx, 60.rpx),
       padding: EdgeInsets.symmetric(horizontal: 16.0.rpx),
       shape: RoundedRectangleBorder(
@@ -118,7 +120,7 @@ class ButtonWidget extends StatelessWidget {
   ///normal
   ButtonStyle _outlinedNormalButtonStyle() {
     return OutlinedButton.styleFrom(
-      primary: primary ?? EdenColors.colorF5F9FD,
+      // primary: primary ?? EdenColors.colorF5F9FD,
       backgroundColor: EdenColors.colorF5F9FD,
       minimumSize: Size(64.rpx, 64.rpx),
       // padding: EdgeInsets.symmetric(horizontal: 16),
@@ -152,7 +154,7 @@ class ButtonWidget extends StatelessWidget {
 
   ButtonStyle _outlinedButtonStyle() {
     return OutlinedButton.styleFrom(
-      primary: primary ?? EdenColors.colorF0F9FF,
+      // primary: primary ?? EdenColors.colorF0F9FF,
       backgroundColor: EdenColors.color1077FE,
       minimumSize: Size(64.rpx, 64.rpx),
       // padding: EdgeInsets.symmetric(horizontal: 16),
