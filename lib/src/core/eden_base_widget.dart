@@ -1,8 +1,12 @@
 import 'package:flutter_eden/eden.dart';
 
 ///
+// ignore: must_be_immutable
 abstract class EdenBaseWidget<T extends EdenBaseController> extends GetView<T> {
   EdenBaseWidget({Key? key}) : super(key: key);
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
+  GlobalKey<ScaffoldState>? getScaffoldKey() => _scaffoldKey;
 
   ///toolbar title
   String? _toolbarTitle;
@@ -93,6 +97,14 @@ abstract class EdenBaseWidget<T extends EdenBaseController> extends GetView<T> {
   Widget? bottomNavigationBar() => null;
   @protected
   Widget? floatingActionButton() => null;
+  Widget? endDrawer() => null;
+  void openEndDrawer() {
+    _scaffoldKey.currentState?.openEndDrawer();
+  }
+
+  bool endDrawerEnableOpenDragGesture() {
+    return true;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -100,9 +112,12 @@ abstract class EdenBaseWidget<T extends EdenBaseController> extends GetView<T> {
         init: controller,
         builder: (controller) {
           return Scaffold(
+            key: _scaffoldKey,
             resizeToAvoidBottomInset: _resizeToAvoidBottomInset,
             appBar: appToolbar(context),
             body: buildBody(context, controller),
+            endDrawer: endDrawer(),
+            endDrawerEnableOpenDragGesture: endDrawerEnableOpenDragGesture(),
             floatingActionButton: floatingActionButton(),
             bottomNavigationBar: bottomNavigationBar(),
           );
