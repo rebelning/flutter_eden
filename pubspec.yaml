@@ -33,7 +33,7 @@ dependencies:
   get: ^4.6.1
   shared_preferences: ^2.0.6
   bot_toast: ^4.0.1
-  intl: ^0.17.0
+  intl: ^0.18.1
   pull_to_refresh: ^2.0.0
   flutter_screenutil: ^5.7.0
   visibility_detector: 0.2.2
