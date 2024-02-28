@@ -67,6 +67,13 @@ class AccountController extends EdenBaseController {
     menuList?.add(
       MenuInfo(
         menuId: "5",
+        section: "language",
+        action: Routes.app.language,
+      ),
+    );
+    menuList?.add(
+      MenuInfo(
+        menuId: "6",
         section: "Proxy Setting",
         action: Routes.eden.proxySeting,
       ),

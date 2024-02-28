@@ -37,6 +37,8 @@ dependencies:
   pull_to_refresh: ^2.0.0
   flutter_screenutil: ^5.9.0
   visibility_detector: 0.2.2
+  # visibility_detector: 0.2.2
+  extended_nested_scroll_view: ^6.0.0
  
 
 dev_dependencies:

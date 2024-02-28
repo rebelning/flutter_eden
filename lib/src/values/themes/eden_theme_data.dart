@@ -12,44 +12,42 @@ class EdenThemeData {
   static const _lightFillColor = Colors.black;
   // static const _lightFillColor = Colors.white;
   static const _darkFillColor = Colors.white;
-  static const _lightbackgroundColor = Color(0xffF8F8F8);
-  static const _backgroundColor = Color(0xff607D8B);
 
   ///
   static final Color _lightFocusColor = Colors.black.withOpacity(0.12);
   static final Color _darkFocusColor = Colors.white.withOpacity(0.12);
 
   ///cursor color
-  static final Color _lightCursorColor = Color(0xff0091EA);
-  static final Color _darkCursorColor = Color(0xffFFFFFF);
+  static const _lightCursorColor = Color(0xff0091EA);
+  static const Color _darkCursorColor = Color(0xffFFFFFF);
 
   ///card color
-  static final Color _lightCardColor = Color(0xffECEFF1);
-  static final Color _darkCardColor = Color(0xff455A64);
+  static const Color _lightCardColor = Color(0xffECEFF1);
+  static const Color _darkCardColor = Color(0xff455A64);
 
   ///line color
   //icon color
-  static final Color _lightIconColor = Color(0xff607D8B);
-  static final Color _darkIconColor = Color(0xffB0BEC5);
+  static const Color _lightIconColor = Color(0xff607D8B);
+  static const Color _darkIconColor = Color(0xffB0BEC5);
 
   ///
-  static final Color _lightLineColor = Color(0xffB0BEC5);
-  static final Color _darkLineColor = Color(0xff607D8B);
+  static const Color _lightLineColor = Color(0xffB0BEC5);
+  static const Color _darkLineColor = Color(0xff607D8B);
 
   ///selected
-  static final Color _lightSelectedLabelColor = Color(0xff0091EA);
-  static final Color _darkSelectedLabelColor = Color(0xffffffff);
+  static const Color _lightSelectedLabelColor = Color(0xff0091EA);
+  static const Color _darkSelectedLabelColor = Color(0xffffffff);
 
   ///Un selected
-  static final Color _lightUnSelectedLabelColor = Color(0xffB0BEC5);
-  static final Color _darkUnSelectedLabelColor = Color(0xffB0BEC5);
+  static const Color _lightUnSelectedLabelColor = Color(0xffB0BEC5);
+  static const Color _darkUnSelectedLabelColor = Color(0xffB0BEC5);
 
-  static final Color _lightSelectedItemColor = Color(0xff0091EA);
-  static final Color _darkSelectedItemColor = Color(0xffB0BEC5);
+  static const Color _lightSelectedItemColor = Color(0xff0091EA);
+  static const Color _darkSelectedItemColor = Color(0xffB0BEC5);
 
   ///
-  static final Color _lightUnSelectedItemColor = Color(0xff455A64);
-  static final Color _darkUnSelectedItemColor = Color(0xffFFFFFF);
+  static const Color _lightUnSelectedItemColor = Color(0xff455A64);
+  static const Color _darkUnSelectedItemColor = Color(0xffFFFFFF);
   static void systemUiOverlay() {
     if (Platform.isAndroid) {
       SystemUiOverlayStyle systemUiOverlayStyle = SystemUiOverlayStyle(
@@ -197,9 +195,9 @@ class EdenThemeData {
     primaryVariant: Color(0xFF030303),
     secondary: Color(0xFFEFF3F3),
     secondaryVariant: Color(0xFFFAFBFB),
-    background: Color(0xFFFFFFFF),
+    background: Color(0xFFF2F5FC),
     surface: Color(0xFFFAFBFB),
-    onBackground: _lightbackgroundColor,
+    onBackground: Colors.white,
     error: _lightFillColor,
     onError: _lightFillColor,
     onPrimary: _lightFillColor,
@@ -216,7 +214,7 @@ class EdenThemeData {
     secondaryVariant: Color(0xff5f7486),
     background: Color(0xff37474F),
     surface: Color(0xFF37474F),
-    onBackground: _backgroundColor, // White with 0.05 opacity
+    onBackground: Color(0xff37474F), // White with 0.05 opacity
 
     error: _darkFillColor,
     onError: _darkFillColor,

@@ -1,6 +1,8 @@
 import 'package:example/app/modules/account/views/account_page.dart';
 import 'package:example/app/modules/error/controllers/error_controller.dart';
 import 'package:example/app/modules/error/view/error_page.dart';
+import 'package:example/app/modules/locale/controller/locale_switch_controller.dart';
+import 'package:example/app/modules/locale/views/locale_switch_view.dart';
 
 import 'package:example/app/modules/login/controllers/login_controller.dart';
 import 'package:example/app/modules/login/views/login_page.dart';
@@ -33,6 +35,8 @@ class AppRoute extends EdenBaseRoute {
   ///
   String get login => prefix + "/login";
   String get accountProfile => prefix + "/account/profile";
+
+  String get language => prefix + "/account/localeSwitch";
   String get proxy => prefix + "/proxy";
 
   /// 找不到页面
@@ -42,7 +46,7 @@ class AppRoute extends EdenBaseRoute {
       name: error404,
       page: () => ErrorPage(),
       bindingsBuilder: () {
-        Get.lazyPut(() => ErrorController());
+        edenLazyPut(() => ErrorController());
       });
   @override
   List<GetPage> getRoutePages() {
@@ -91,13 +95,13 @@ class AppRoute extends EdenBaseRoute {
         page: () => LoginPage(),
         bindingsBuilder: () {
           //dao
-          Get.lazyPut<ILoginProvider>(() => LoginProvider());
+          edenLazyPut<ILoginProvider>(() => LoginProvider());
 
           //service
-          Get.lazyPut<ILoginRespository>(
+          edenLazyPut<ILoginRespository>(
               () => LoginRespositoryImpl(provider: Get.find()));
           //controller
-          Get.lazyPut(() => LoginController(loginRespository: Get.find()));
+          edenLazyPut(() => LoginController(loginRespository: Get.find()));
         },
       ),
       //profile
@@ -105,14 +109,20 @@ class AppRoute extends EdenBaseRoute {
         name: accountProfile,
         page: () => ProfilePage(),
         bindingsBuilder: () {
-          Get.lazyPut(() => ProfileController());
+          edenLazyPut(() => ProfileController());
         },
       ),
+      routePage(
+          name: language,
+          page: () => LocaleSwitchView(),
+          bindingsBuilder: () {
+            edenLazyPut(() => LocaleSwitchController());
+          }),
       routePage(
           name: error404,
           page: () => ErrorPage(),
           bindingsBuilder: () {
-            Get.lazyPut(() => ErrorController());
+            edenLazyPut(() => ErrorController());
           })
     ];
   }

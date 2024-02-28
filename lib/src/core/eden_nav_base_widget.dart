@@ -1,36 +1,30 @@
 import 'package:flutter_eden/eden.dart';
 
-abstract class EdenNavBaseWidget<T extends EdenBaseController>
+abstract class EdenNavBaseWidget<T extends EdenNavBaseController>
     extends EdenBaseWidget<T> {
-  final _pageController = PageController();
-  int _currentIndex = 0;
-  int get currentIndex => _currentIndex;
-
   ///page list
+  @protected
   List<Widget> renderPages();
-
-  TextStyle? selectedLabelStyle() {}
-  TextStyle? unselectedLabelStyle() {}
-  Color? selectedItemColor() {}
-  Color? unselectedItemColor() {}
-  IconThemeData? selectedIconTheme() {}
-  Color? navBackgroundColor() {}
+  @protected
+  TextStyle? selectedLabelStyle() => null;
+  @protected
+  TextStyle? unselectedLabelStyle() => null;
+  @protected
+  Color? selectedItemColor() => null;
+  @protected
+  Color? unselectedItemColor() => null;
+  @protected
+  IconThemeData? selectedIconTheme() => null;
+  @protected
+  Color? navBackgroundColor() => null;
+  @protected
   List<BottomNavigationBarItem> renderBarItems();
-  void onNavTap(int index) {
-    _currentIndex = index;
-    _handleOnChange(index);
-    controller.update();
-  }
-
-  void _handleOnChange(int index) {
-    _pageController.jumpToPage(index);
-  }
 
   ///build body
   @override
   Widget buildBody(BuildContext context, T contoller) {
     return PageView(
-      controller: _pageController,
+      controller: controller.pageController,
       physics: const NeverScrollableScrollPhysics(),
       children: renderPages(),
     );
@@ -46,8 +40,8 @@ abstract class EdenNavBaseWidget<T extends EdenBaseController>
       unselectedItemColor: unselectedItemColor(),
       selectedIconTheme: selectedIconTheme(),
       backgroundColor: navBackgroundColor(),
-      currentIndex: currentIndex,
-      onTap: onNavTap,
+      currentIndex: controller.currentIndex,
+      onTap: controller.onNavTap,
       type: BottomNavigationBarType.fixed,
       // fixedColor: Theme.of(context).primaryColor,
     );
