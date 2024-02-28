@@ -22,8 +22,8 @@ class EdenHttpHook {
   }
 
   static ValueGetter<String?>? _findProxy;
-  static ValueGetter<String?>? get onfindProxy => _findProxy;
-  static Future<String?> setHttpProxy() async {
+  static ValueGetter<String?>? get onFindProxy => _findProxy;
+  static Future setHttpProxy() async {
     final prefs = await SharedPreferences.getInstance();
     String? proxyIP = prefs.getString(StorageKeys.proxyIP);
     String? proxyPort = prefs.getString(StorageKeys.proxyPort);
@@ -39,8 +39,7 @@ class EdenHttpHook {
         return localProxy!;
       };
     }
-    return localProxy;
-    // return null;
+    return null;
   }
 
   ///unauthorized
@@ -59,10 +58,29 @@ class EdenHttpHook {
     _onValueChanged = mOnValueChanged;
   }
 
+  ///
   static ValueChanged<dynamic>? _onErrorValue;
   static ValueChanged<dynamic>? get onErrorValue => _onErrorValue;
 
-  static setError(ValueChanged<dynamic>? mOnError) {
+  ///statusCode
+  static ValueChanged<int?>? _onErrorStatusCode;
+  static ValueChanged<int?>? get onErrorStatusCode => _onErrorStatusCode;
+
+  ///custom response
+  static ValueChanged<Response>? _onCustomResponse;
+  static ValueChanged<Response>? get onCustomResponse => _onCustomResponse;
+
+  ///
+  static setError(
+    ValueChanged<int?>? mOnStatusCode,
+    ValueChanged<dynamic>? mOnError,
+  ) {
     _onErrorValue = mOnError;
+    _onErrorStatusCode = mOnStatusCode;
+  }
+
+  ///custom response
+  static setCustomResp(ValueChanged<Response>? onMCustomResponse) {
+    _onCustomResponse = onMCustomResponse;
   }
 }

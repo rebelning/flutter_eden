@@ -1,8 +1,14 @@
 import 'package:flutter_eden/eden.dart';
 
 abstract class HttpTask<T> extends GetConnect {
+  ///
   bool? needToken() {
     return true;
+  }
+
+  ///
+  bool? isCustomResp() {
+    return false;
   }
 
   ///unauthorized
@@ -12,9 +18,18 @@ abstract class HttpTask<T> extends GetConnect {
     }
   }
 
-  void _onError(String? error) {
+  void _onError(int? statusCode, String? error) {
     if (EdenHttpHook.onErrorValue != null) {
       EdenHttpHook.onErrorValue!(error);
+    }
+    if (EdenHttpHook.onErrorStatusCode != null) {
+      EdenHttpHook.onErrorStatusCode!(statusCode);
+    }
+  }
+
+  void _onCustomResp(Response response) {
+    if (EdenHttpHook.onCustomResponse != null) {
+      EdenHttpHook.onCustomResponse!(response);
     }
   }
 
@@ -22,6 +37,7 @@ abstract class HttpTask<T> extends GetConnect {
     if (EdenHttpHook.token != null) {
       return EdenHttpHook.token!();
     }
+    return "";
   }
 
   Map<String, String> _headers() {
@@ -32,23 +48,27 @@ abstract class HttpTask<T> extends GetConnect {
   }
 
   String? _onFindProxy() {
-    if (EdenHttpHook.onfindProxy != null) {
-      return EdenHttpHook.onfindProxy!();
+    if (EdenHttpHook.onFindProxy != null) {
+      return EdenHttpHook.onFindProxy!();
     }
+    return null;
   }
 
   @override
-  String Function(Uri url)? get findProxy => EdenHttpHook.onfindProxy == null
+  String Function(Uri url)? get findProxy => EdenHttpHook.onFindProxy == null
       ? super.findProxy
       : (uri) {
-          print("_onFindProxy=${_onFindProxy()}");
           return _onFindProxy() ?? "";
         };
 
   @override
   void onInit() {
-    print("HttpTask-onInit-runtimeType=$runtimeType");
-    print("onInit_onFindProxy=${_onFindProxy()}");
+    print("HttpTask-onInit...");
+    if (EdenHttpHook.onFindProxy != null) {
+      allowAutoSignedCert = true;
+    } else {
+      allowAutoSignedCert = false;
+    }
     _interceptor();
     super.onInit();
   }
@@ -62,16 +82,30 @@ abstract class HttpTask<T> extends GetConnect {
     });
 
     httpClient.addResponseModifier<T?>((request, response) {
-      print("addResponseModifier...");
-
-      if (response.hasError) {
-        print("${response.status.code}");
-        if (response.unauthorized) {
-          _unauthorized();
-        } else {
-          _onError(response.statusText);
+      if (isCustomResp() == true) {
+        _onCustomResp(response);
+      } else {
+        if (response.hasError) {
+          print("${response.status.code}");
+          if (response.unauthorized) {
+            _unauthorized();
+          } else {
+            if (response.body is EdenHttpResponse) {
+              EdenHttpResponse? res = response.body as EdenHttpResponse;
+              _onError(
+                response.statusCode,
+                res.message,
+              );
+            } else {
+              _onError(
+                response.statusCode,
+                response.statusText,
+              );
+            }
+          }
         }
       }
+
       return response;
     });
 

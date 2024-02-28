@@ -19,9 +19,6 @@ abstract class EdenBaseWidget<T extends EdenBaseController> extends GetView<T> {
 
   ///tool title
   String toolbarTitle();
-  Color? getBackgroundColor() {
-    return kIsDark ? backgroundColor : backgroundLightColor;
-  }
 
   void setToolbarTitle(String? toolbarTitle) {
     _toolbarTitle = toolbarTitle;
@@ -35,18 +32,31 @@ abstract class EdenBaseWidget<T extends EdenBaseController> extends GetView<T> {
   }
 
   /// toolbar background color
-  Color? _toolbarBackgroundColor =
-      kIsDark ? toolBarbgColor : toolBarbgLightColor;
+  Color? _toolbarBackgroundColor;
   Color? get toolbarBackgroundColor => _toolbarBackgroundColor;
   void setToolbarBackgroundColor(Color? backgroundColor) {
     _toolbarBackgroundColor = backgroundColor;
   }
 
+  IconThemeData? _iconTheme;
+  IconThemeData? get iconTheme => _iconTheme;
+  IconThemeData? _actionsIconTheme;
+  IconThemeData? get actionsIconTheme => _actionsIconTheme;
+  bool? _resizeToAvoidBottomInset;
+  bool? get resizeToAvoidBottomInset => _resizeToAvoidBottomInset;
+
   List<Widget>? toolbarActions() {
     return [];
   }
 
+  Widget? toolbarLeading() => null;
+
+  double? leadingWidth() => null;
+
+  double? toolbarHeight() => null;
+
   ///toolbar arrow back
+  @protected
   Widget toolbarArrowBack() {
     return IconButton(
       icon: const Icon(Icons.arrow_back),
@@ -55,6 +65,7 @@ abstract class EdenBaseWidget<T extends EdenBaseController> extends GetView<T> {
   }
 
   ///
+  @protected
   PreferredSizeWidget? appToolbar(BuildContext context) {
     return hideToolbar()
         ? null
@@ -62,25 +73,26 @@ abstract class EdenBaseWidget<T extends EdenBaseController> extends GetView<T> {
             centerTitle: true,
             backgroundColor: toolbarBackgroundColor,
             hideBackArrow: hideToolbarArrowBack(),
+            iconTheme: iconTheme,
+            actionsIconTheme: actionsIconTheme,
             title: _toolbarTitle ?? toolbarTitle(),
             color: toolbarTitleColor,
+            leading: toolbarLeading(),
+            leadingWidth: leadingWidth(),
+            toolbarHeight: toolbarHeight(),
             actions: toolbarActions(),
-            fontSize: 35.rpx,
-            fontWeight: FontWeight.w500,
           );
   }
 
   ///build body
+  @protected
   Widget buildBody(BuildContext context, T _controller);
 
   ///bottom navigation bar
-  Widget? bottomNavigationBar() {
-    return null;
-  }
-
-  Widget? floatingActionButton() {
-    return null;
-  }
+  @protected
+  Widget? bottomNavigationBar() => null;
+  @protected
+  Widget? floatingActionButton() => null;
 
   @override
   Widget build(BuildContext context) {
@@ -88,9 +100,9 @@ abstract class EdenBaseWidget<T extends EdenBaseController> extends GetView<T> {
         init: controller,
         builder: (controller) {
           return Scaffold(
+            resizeToAvoidBottomInset: _resizeToAvoidBottomInset,
             appBar: appToolbar(context),
             body: buildBody(context, controller),
-            backgroundColor: getBackgroundColor(),
             floatingActionButton: floatingActionButton(),
             bottomNavigationBar: bottomNavigationBar(),
           );

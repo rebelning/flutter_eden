@@ -13,8 +13,10 @@ class ToolbarWidget extends StatelessWidget implements PreferredSizeWidget {
   final bool? hideBackArrow;
   final bool? centerTitle;
   final Color? backgroundColor;
-  final double? fontSize;
-  final FontWeight? fontWeight;
+  final IconThemeData? iconTheme;
+  final IconThemeData? actionsIconTheme;
+  final double? toolbarHeight;
+  final double? leadingWidth;
 
   const ToolbarWidget({
     Key? key,
@@ -25,29 +27,30 @@ class ToolbarWidget extends StatelessWidget implements PreferredSizeWidget {
     this.title,
     this.actions,
     this.color,
-    this.fontSize,
-    this.fontWeight,
     this.backgroundColor,
     this.elevation,
+    this.iconTheme,
+    this.actionsIconTheme,
+    this.toolbarHeight,
+    this.leadingWidth,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      automaticallyImplyLeading: hideBackArrow == true ? false : true,
-      centerTitle: centerTitle,
-      backgroundColor: backgroundColor,
-      title: logoWidget == true
-          ? const Center(child: LogoWidget(header: true, small: true))
-          : TextWidget(
-              text: title,
-              color: color,
-              fontSize: fontSize,
-              fontWeight: fontWeight,
-            ),
-      leading: leading,
-      actions: actions,
-      elevation: elevation ?? 0.0,
-    );
+        automaticallyImplyLeading: hideBackArrow == true ? false : true,
+        centerTitle: centerTitle,
+        iconTheme: iconTheme,
+        actionsIconTheme: actionsIconTheme,
+        backgroundColor: backgroundColor,
+        title: TextWidget(
+          text: title,
+          color: color,
+        ),
+        leading: leading,
+        leadingWidth: leadingWidth,
+        toolbarHeight: toolbarHeight,
+        actions: actions,
+        elevation: elevation ?? 0.0);
   }
 }
