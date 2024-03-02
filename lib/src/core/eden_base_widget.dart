@@ -106,6 +106,9 @@ abstract class EdenBaseWidget<T extends EdenBaseController> extends GetView<T> {
     return true;
   }
 
+  void onEndDrawerChanged(bool changed) {}
+  void onDrawerChanged(bool changed) {}
+
   @override
   Widget build(BuildContext context) {
     return GetBuilder<T>(
@@ -117,6 +120,8 @@ abstract class EdenBaseWidget<T extends EdenBaseController> extends GetView<T> {
             appBar: appToolbar(context),
             body: buildBody(context, controller),
             endDrawer: endDrawer(),
+            onEndDrawerChanged: onEndDrawerChanged,
+            onDrawerChanged: onDrawerChanged,
             endDrawerEnableOpenDragGesture: endDrawerEnableOpenDragGesture(),
             floatingActionButton: floatingActionButton(),
             bottomNavigationBar: bottomNavigationBar(),
