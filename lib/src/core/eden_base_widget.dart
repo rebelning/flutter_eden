@@ -108,11 +108,20 @@ abstract class EdenBaseWidget<T extends EdenBaseController> extends GetView<T> {
 
   void onEndDrawerChanged(bool changed) {}
   void onDrawerChanged(bool changed) {}
+  void onInitState(GetBuilderState<T> state) {}
+  void onDispose(GetBuilderState<T> dispose) {}
+  void didChangeDependencies(GetBuilderState<T> dispose) {}
+  void didUpdateWidget(
+      GetBuilder<GetxController> controller, GetBuilderState<T> state) {}
 
   @override
   Widget build(BuildContext context) {
     return GetBuilder<T>(
         init: controller,
+        initState: onInitState,
+        dispose: onDispose,
+        didChangeDependencies: didChangeDependencies,
+        didUpdateWidget: didUpdateWidget,
         builder: (controller) {
           return Scaffold(
             key: _scaffoldKey,
