@@ -30,6 +30,9 @@ class InputWidget extends StatelessWidget {
     this.textInputAction,
     this.onSubmitted,
     this.onChanged,
+    this.cursorColor,
+    this.cursorHeight,
+    this.cursorWidth = 2.0,
   }) : super(key: key);
 
   /// 输入框控制器
@@ -44,6 +47,9 @@ class InputWidget extends StatelessWidget {
   final List<TextInputFormatter>? inputFormatters;
 
   final bool? showBorder;
+  final Color? cursorColor;
+  final double? cursorHeight;
+  final double? cursorWidth;
 
   /// 边框的宽度
   final double? borderWidth;
@@ -94,7 +100,7 @@ class InputWidget extends StatelessWidget {
   /// 键盘右下角按钮显示的文字
   final TextInputAction? textInputAction;
 
-  final Function? onSubmitted;
+  final Function(String)? onSubmitted;
   final ValueChanged<String>? onChanged;
   @override
   Widget build(BuildContext context) {
@@ -112,6 +118,9 @@ class InputWidget extends StatelessWidget {
 
   ///textfield
   Widget textField(BuildContext context) => TextField(
+        cursorColor: cursorColor,
+        cursorHeight: cursorHeight,
+        cursorWidth: cursorWidth ?? 2.0,
         focusNode: focusNode,
         textAlign: textAlign ?? TextAlign.left,
         controller: controller,
