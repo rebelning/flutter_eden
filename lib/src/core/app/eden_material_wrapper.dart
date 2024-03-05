@@ -4,6 +4,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 
 class EdenMaterialWrapper extends StatelessWidget {
   final bool? enableLog;
+  final bool? debugShowCheckedModeBanner;
   final String? logTag;
   final Widget? home;
   final String? initialRoute;
@@ -25,6 +26,7 @@ class EdenMaterialWrapper extends StatelessWidget {
   const EdenMaterialWrapper({
     Key? key,
     this.enableLog,
+    this.debugShowCheckedModeBanner,
     this.logTag,
     this.home,
     this.initialRoute,
@@ -84,6 +86,7 @@ class EdenMaterialWrapper extends StatelessWidget {
   ///
   Widget get materialApp => GetMaterialApp(
         enableLog: enableLog ?? true,
+        debugShowCheckedModeBanner: debugShowCheckedModeBanner ?? true,
         navigatorKey: navigatorKey,
         defaultTransition: Transition.cupertino,
         home: home,
@@ -126,7 +129,7 @@ class EdenMaterialWrapper extends StatelessWidget {
           final MediaQueryData data = MediaQuery.of(context);
           // return splashBuilder == null ? child : splashBuilder!(context, child);
           return MediaQuery(
-            data: data.copyWith(textScaleFactor: 1.0),
+            data: data.copyWith(textScaler: const TextScaler.linear(1.0)),
             child:
                 splashBuilder == null ? child : splashBuilder!(context, child),
           );
