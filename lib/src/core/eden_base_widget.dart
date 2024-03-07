@@ -98,8 +98,15 @@ abstract class EdenBaseWidget<T extends EdenBaseController> extends GetView<T> {
   @protected
   Widget? floatingActionButton() => null;
   Widget? endDrawer() => null;
+
+  ///
   void openEndDrawer() {
     _scaffoldKey.currentState?.openEndDrawer();
+  }
+
+  ///
+  void closeEndDrawer() {
+    _scaffoldKey.currentState?.closeEndDrawer();
   }
 
   bool endDrawerEnableOpenDragGesture() {
