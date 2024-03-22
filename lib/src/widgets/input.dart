@@ -28,6 +28,7 @@ class InputWidget extends StatelessWidget {
     this.prefixIcon,
     this.suffixIcon,
     this.textInputAction,
+    this.selectionControls,
     this.onSubmitted,
     this.onChanged,
     this.cursorColor,
@@ -99,7 +100,7 @@ class InputWidget extends StatelessWidget {
 
   /// 键盘右下角按钮显示的文字
   final TextInputAction? textInputAction;
-
+  final TextSelectionControls? selectionControls;
   final Function(String)? onSubmitted;
   final ValueChanged<String>? onChanged;
   @override
@@ -135,7 +136,7 @@ class InputWidget extends StatelessWidget {
         keyboardAppearance: Brightness.light,
         textInputAction: textInputAction ?? TextInputAction.done,
         inputFormatters: inputFormatters,
-
+        selectionControls: selectionControls,
         decoration: InputDecoration(
           // filled: true,
           counterStyle: TextStyle(
