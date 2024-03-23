@@ -11,6 +11,8 @@ class EdenSnackbar {
     TextButton? mainButton,
     SnackPosition? snackPosition,
     EdgeInsets? margin,
+    bool? showCloseButton = false,
+    double? iconSize,
   }) {
     Get.snackbar(
       title ?? "Message",
@@ -18,9 +20,24 @@ class EdenSnackbar {
       colorText: kIsDark ? snackBarTextColor : snackBarTextLightColor,
       backgroundColor: kIsDark ? snackBarColor : snackBarLightColor,
       maxWidth: maxWidth,
-      mainButton: mainButton,
       snackPosition: snackPosition,
       margin: margin,
+      mainButton: mainButton ??
+          (showCloseButton == true
+              ? TextButton(
+                  onPressed: () {
+                    closeAllSnackbars();
+                  },
+                  style: TextButton.styleFrom(
+                    backgroundColor: Colors.transparent,
+                  ),
+                  child: Icon(
+                    Icons.close,
+                    color: Colors.white,
+                    size: iconSize ?? 30,
+                  ),
+                )
+              : null),
     );
   }
 }
