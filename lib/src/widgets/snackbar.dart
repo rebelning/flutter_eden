@@ -8,6 +8,9 @@ class EdenSnackbar {
     Function? action,
     String? actionMessage,
     double? maxWidth,
+    TextButton? mainButton,
+    SnackPosition? snackPosition,
+    EdgeInsets? margin,
   }) {
     Get.snackbar(
       title ?? "Message",
@@ -15,6 +18,9 @@ class EdenSnackbar {
       colorText: kIsDark ? snackBarTextColor : snackBarTextLightColor,
       backgroundColor: kIsDark ? snackBarColor : snackBarLightColor,
       maxWidth: maxWidth,
+      mainButton: mainButton,
+      snackPosition: snackPosition,
+      margin: margin,
     );
   }
 }
