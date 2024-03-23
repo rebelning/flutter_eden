@@ -7,12 +7,14 @@ class EdenSnackbar {
     bool? error,
     Function? action,
     String? actionMessage,
+    double? maxWidth,
   }) {
     Get.snackbar(
       title ?? "Message",
       message,
       colorText: kIsDark ? snackBarTextColor : snackBarTextLightColor,
       backgroundColor: kIsDark ? snackBarColor : snackBarLightColor,
+      maxWidth: maxWidth,
     );
   }
 }
