@@ -4,7 +4,7 @@ import 'package:example/domain/repositories/impl/login/login_provider.dart';
 import 'package:example/domain/repositories/login_respository.dart';
 import 'package:flutter_eden/eden.dart';
 
-class LoginRespositoryImpl extends EdenBaseRespository
+class LoginRespositoryImpl extends EdenBaseRepository
     implements ILoginRespository {
   final ILoginProvider provider;
 
@@ -14,7 +14,7 @@ class LoginRespositoryImpl extends EdenBaseRespository
 
   @override
   Future<LoginModel?> doLogin(String? username, String? password) async {
-    return getRespository<LoginModel>(provider.doLogin(username, password));
+    return getRepository<LoginModel>(provider.doLogin(username, password));
     // final login = await provider.doLogin(username, password);
     // if (login.status.hasError) {
     //   return Future.error(login.statusText ?? "");

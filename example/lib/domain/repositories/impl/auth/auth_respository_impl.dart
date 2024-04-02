@@ -3,7 +3,7 @@ import 'package:example/domain/repositories/auth_respository.dart';
 import 'package:example/domain/repositories/impl/auth/auth_provider.dart';
 import 'package:flutter_eden/eden.dart';
 
-class AuthRespositoryImpl extends EdenBaseRespository
+class AuthRespositoryImpl extends EdenBaseRepository
     implements IAuthRespository {
   final IAuthProvider provider;
   AuthRespositoryImpl({
@@ -11,7 +11,7 @@ class AuthRespositoryImpl extends EdenBaseRespository
   });
   @override
   Future<NetCheckedModel?> doNetChecked() async {
-    return getRespository<NetCheckedModel>(provider.doNetChecked());
+    return getRepository<NetCheckedModel>(provider.doNetChecked());
     // final authChecked = await provider.doNetChecked();
     // if (authChecked.hasError) {
     //   return Future.error(authChecked.statusText ?? "");
