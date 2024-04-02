@@ -12,7 +12,7 @@ class EdenMaterialWrapper extends StatelessWidget {
   final List<GetPage>? Function()? onGetPages;
   final GetPage? unknownRoute;
   final Size? designSize;
-  // final ThemeData? theme;
+  final ThemeData? cupertinoThemeData;
   final ThemeData? Function()? onTheme;
   final Bindings? initialBinding;
   final TransitionBuilder? splashBuilder;
@@ -33,6 +33,7 @@ class EdenMaterialWrapper extends StatelessWidget {
     this.designSize,
     this.unknownRoute,
     this.onGetPages,
+    this.cupertinoThemeData,
     this.onTheme,
     this.initialBinding,
     this.splashBuilder,
@@ -52,21 +53,22 @@ class EdenMaterialWrapper extends StatelessWidget {
       builder: (context, child) {
         return RefreshConfiguration(
           headerBuilder: () => Theme(
-              data: Theme.of(context).copyWith(
-                cupertinoOverrideTheme: const CupertinoThemeData(
-                  brightness: Brightness.light,
-                ),
-              ),
+              data: cupertinoThemeData ??
+                  Theme.of(context).copyWith(
+                    cupertinoOverrideTheme: const CupertinoThemeData(
+                      brightness: Brightness.light,
+                    ),
+                  ),
               child: const WaterDropHeader()),
           // 配置默认头部指示器,假如你每个页面的头部指示器都一样的话,你需要设置这个
           footerBuilder: () => const ClassicFooter(),
           // 配置默认底部指示器
-          headerTriggerDistance: 80,
+          headerTriggerDistance: 80.rpx,
           // 头部触发刷新的越界距离
           springDescription:
-              const SpringDescription(stiffness: 170, damping: 16, mass: 1.9),
+              SpringDescription(stiffness: 170.rpx, damping: 16, mass: 1.9),
           // 自定义回弹动画,三个属性值意义请查询flutter api
-          maxOverScrollExtent: 100,
+          maxOverScrollExtent: 100.rpx,
           //头部最大可以拖动的范围,如果发生冲出视图范围区域,请设置这个属性
           maxUnderScrollExtent: 0,
           // 底部最大可以拖动的范围

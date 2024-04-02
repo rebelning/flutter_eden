@@ -12,8 +12,8 @@ export 'controllers/eden_nav_base_controller.dart';
 ///service
 export 'service/eden_base_service.dart';
 
-///respository
-export 'domain/respository/eden_base_respository.dart';
+///repository
+export 'domain/repository/eden_base_repository.dart';
 
 ///provider
 export 'domain/provider/eden_base_provider.dart';
