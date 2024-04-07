@@ -1,15 +1,12 @@
 import 'package:flutter_eden/eden.dart';
 
-/// 用于定义弹框确认按钮的文本颜色
 enum ConfirmColors {
-  /// 警告，为红色
   warn,
 
-  /// 主要颜色，为蓝色
   primary,
 }
 
-/// 弹框中，“确认”文本的颜色，目前仅提供两种
+///
 Map<ConfirmColors, Color> _confirmTextColors = {
   ConfirmColors.warn: const Color(0xfffe1a1a),
   ConfirmColors.primary: const Color(0xff1077fe),
@@ -18,6 +15,7 @@ Map<ConfirmColors, Color> _confirmTextColors = {
 class CustomDialog extends StatelessWidget {
   CustomDialog({
     Key? key,
+    this.themeData,
     this.title,
     this.titleText,
     this.content,
@@ -38,6 +36,7 @@ class CustomDialog extends StatelessWidget {
     this.isShowCancel = true,
     this.hasHandleButton = true,
   }) : super(key: key);
+  final ThemeData? themeData;
 
   /// Widget标题
   final Widget? title;
@@ -99,15 +98,23 @@ class CustomDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return UnconstrainedBox(
-      constrainedAxis: Axis.vertical,
-      child: SizedBox(
-        width: width ?? 590.rpx,
-        child: Dialog(
-          insetPadding: EdgeInsets.zero,
-          shape: const RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(Radius.circular(8))),
-          child: Container(
+    return Theme(
+      data: themeData ??
+          Theme.of(context).copyWith(
+            dialogBackgroundColor: Colors.white,
+            dialogTheme: const DialogTheme(
+              backgroundColor: Colors.white,
+              surfaceTintColor: Colors.white,
+            ),
+          ),
+      child: UnconstrainedBox(
+        constrainedAxis: Axis.vertical,
+        child: SizedBox(
+          width: width ?? 590.rpx,
+          child: Dialog(
+            insetPadding: EdgeInsets.zero,
+            shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(8))),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -230,11 +237,12 @@ class CustomDialog extends StatelessWidget {
     return InkWell(
       child: Container(
         height: 94.rpx,
+        alignment: Alignment.center,
         child: Text(
           cancelText != null ? cancelText! : "取消",
           textAlign: TextAlign.center,
           style: TextStyle(
-            color: Color(0xff8b8b8b),
+            color: const Color(0xff8b8b8b),
             fontSize: 32.rpx,
             height: 74 / 32,
           ),
@@ -262,6 +270,7 @@ class CustomDialog extends StatelessWidget {
     return InkWell(
       child: Container(
         height: 94.rpx,
+        alignment: Alignment.center,
         child: Text(
           confirmText != null ? confirmText! : "确定",
           textAlign: TextAlign.center,
