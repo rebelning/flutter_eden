@@ -9,6 +9,7 @@ import 'app/routes/routes.dart';
 
 void main() {
   runApp(
+    //测试
     EdenMaterialWrapper(
       logTag: "Example",
       enableLog: true,
