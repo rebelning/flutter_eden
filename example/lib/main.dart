@@ -7,7 +7,24 @@ import 'app/modules/splash/controllers/splash_service.dart';
 import 'app/modules/splash/views/splash_view.dart';
 import 'app/routes/routes.dart';
 
-void main() {
+void main() async {
+  //动态加载国际化资源文件
+  WidgetsFlutterBinding.ensureInitialized();
+  final appTranslations = AppTranslations();
+  if (kDebugMode) {
+    print(
+        "-----main--languageCode---${Get.deviceLocale?.languageCode}---countryCode-${Get.deviceLocale?.countryCode}");
+  }
+  final localStr =
+      "${Get.deviceLocale?.languageCode}_${Get.deviceLocale?.countryCode}";
+  await appTranslations.loadTranslations(localStr);
+
+  //切换语言的地方可以
+  // Locale locale = const Locale('zh', 'CN');
+  // final localStr = "${locale.languageCode}_${locale.countryCode}";
+  // await appTranslations().loadTranslations(localStr);
+  // Get.updateLocale(locale);
+
   runApp(
     EdenMaterialWrapper(
       logTag: "Example",
@@ -33,7 +50,7 @@ void main() {
         ),
       ),
       initialBinding: ServiceBindings(),
-      translations: AppTranslations(),
+      translations: appTranslations,
       locale: const Locale('en', 'US'), // 默认的语言
       fallbackLocale: const Locale('en', 'US'), // 当指定的语言没有提供本地化字符串时使用的备用语言
 
