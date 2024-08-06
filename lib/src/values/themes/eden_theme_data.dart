@@ -149,7 +149,7 @@ class EdenThemeData {
           _lightFillColor.withOpacity(0.80),
           _darkFillColor,
         ),
-        contentTextStyle: _textTheme.subtitle1?.apply(color: _darkFillColor),
+        contentTextStyle: _textTheme.titleMedium?.apply(color: _darkFillColor),
       ),
       cardColor: cardColor,
       dividerColor: lineColor,
@@ -175,11 +175,11 @@ class EdenThemeData {
         type: BottomNavigationBarType.fixed,
         selectedLabelStyle: TextStyle(
           color: selectedLabelColor,
-          fontFamily: _textTheme.subtitle1?.fontFamily,
+          fontFamily: _textTheme.titleMedium?.fontFamily,
         ),
         unselectedLabelStyle: TextStyle(
           color: unSelectedLabelColor,
-          fontFamily: _textTheme.subtitle1?.fontFamily,
+          fontFamily: _textTheme.titleMedium?.fontFamily,
         ),
         selectedItemColor: selectedItemColor,
         unselectedItemColor: unSelectedItemColor,
@@ -230,16 +230,16 @@ class EdenThemeData {
   static const _bold = FontWeight.w700;
 
   static final TextTheme _textTheme = TextTheme(
-    headline4: textFonts(fontWeight: _bold, fontSize: 20.0),
-    caption: textFonts(fontWeight: _semiBold, fontSize: 16.0),
-    headline5: textFonts(fontWeight: _medium, fontSize: 16.0),
-    subtitle1: textFonts(fontWeight: _medium, fontSize: 16.0),
-    overline: textFonts(fontWeight: _medium, fontSize: 12.0),
-    bodyText1: textFonts(fontWeight: _regular, fontSize: 14.0),
-    subtitle2: textFonts(fontWeight: _medium, fontSize: 14.0),
-    bodyText2: textFonts(fontWeight: _regular, fontSize: 16.0),
-    headline6: textFonts(fontWeight: _bold, fontSize: 16.0),
-    button: textFonts(fontWeight: _semiBold, fontSize: 14.0),
+    headlineMedium: textFonts(fontWeight: _bold, fontSize: 20.0),
+    bodySmall: textFonts(fontWeight: _semiBold, fontSize: 16.0),
+    headlineSmall: textFonts(fontWeight: _medium, fontSize: 16.0),
+    titleMedium: textFonts(fontWeight: _medium, fontSize: 16.0),
+    labelSmall: textFonts(fontWeight: _medium, fontSize: 12.0),
+    bodyLarge: textFonts(fontWeight: _regular, fontSize: 14.0),
+    titleSmall: textFonts(fontWeight: _medium, fontSize: 14.0),
+    bodyMedium: textFonts(fontWeight: _regular, fontSize: 16.0),
+    titleLarge: textFonts(fontWeight: _bold, fontSize: 16.0),
+    labelLarge: textFonts(fontWeight: _semiBold, fontSize: 14.0),
   );
 }
 
