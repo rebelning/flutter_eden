@@ -66,6 +66,8 @@ flutter:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
   assets:
+    - assets/lang/en_US.json
+    - assets/lang/zh_CN.json
     - assets/logo.png
     - assets/logo_header.png
     - assets/images/
