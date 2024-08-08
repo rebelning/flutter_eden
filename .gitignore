@@ -94,3 +94,28 @@ lint/outputs/
 lint/tmp/
 # lint/reports/
 *.lock
+
+# Android
+/android/build/
+/android/app/build
+/build/
+.gradle/
+/local.properties
+/.idea/libraries
+/.idea/caches
+/.idea/modules.xml
+/.idea/workspace.xml
+.DS_Store
+
+# iOS
+Pods/
+Podfile.lock
+Podfile.user.lock
+# Pods.xcodeproj/
+*.xcworkspace/
+*.pbxproj
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+*.xcuserstate
+*.xccheckout
