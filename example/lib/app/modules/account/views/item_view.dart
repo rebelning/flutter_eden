@@ -28,7 +28,7 @@ class ItemView extends StatelessWidget {
             Expanded(
               child: Text(
                 "${menu?.section}",
-                style: Theme.of(context).textTheme.headline5,
+                style: Theme.of(context).textTheme.headlineSmall,
                 textAlign: TextAlign.left,
               ),
               flex: 7,
@@ -39,7 +39,7 @@ class ItemView extends StatelessWidget {
                 children: [
                   Text(
                     "",
-                    style: Theme.of(context).textTheme.headline6,
+                    style: Theme.of(context).textTheme.titleLarge,
                     textAlign: TextAlign.right,
                   ),
                   IconButton(
