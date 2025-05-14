@@ -17,7 +17,7 @@ class TextWidget extends StatelessWidget {
     this.color,
     this.maxLines,
     this.center = true,
-    this.underline,
+    this.underline = false,
     this.align,
     this.fontWeight,
     this.height,
@@ -27,12 +27,16 @@ class TextWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      "$text",
-      textAlign: center == true ? TextAlign.center : align,
+      text ?? "",
+      maxLines: maxLines,
+      textAlign: center == true ? TextAlign.center : align ?? TextAlign.start,
       style: TextStyle(
         decoration:
             underline == true ? TextDecoration.underline : TextDecoration.none,
-        color: kIsDark == true ? titleColor : titleLightColor,
+        color: color ??
+            (Theme.of(context).brightness == Brightness.dark
+                ? Colors.white
+                : Colors.black),
         fontSize: fontSize,
         fontWeight: fontWeight,
         height: height,

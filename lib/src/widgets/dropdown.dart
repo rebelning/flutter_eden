@@ -3,7 +3,7 @@ import 'package:flutter_eden/src/values/color/colors.dart' as colors;
 import 'package:flutter_eden/src/values/dimen/dimens.dart' as dimens;
 
 import 'modal.dart';
-import 'text.dart';
+import 'text_widget.dart';
 
 class DropdownWidget extends StatelessWidget {
   final BuildContext? context;

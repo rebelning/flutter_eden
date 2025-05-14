@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'card_view.dart';
-import 'text.dart';
+import 'text_widget.dart';
 
 class NavBottomSheetWidget extends StatelessWidget {
   final String? buttonLeft;

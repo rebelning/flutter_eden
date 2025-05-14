@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'text.dart';
+import 'text_widget.dart';
 
 class ModalWidget {
   static Future show(BuildContext context,

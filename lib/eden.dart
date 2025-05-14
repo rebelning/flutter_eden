@@ -50,7 +50,7 @@ export 'src/widgets/modal.dart';
 export 'src/widgets/nav_bottom_sheet.dart';
 export 'src/widgets/snackbar.dart';
 export 'src/widgets/tag.dart';
-export 'src/widgets/text.dart';
+export 'src/widgets/text_widget.dart';
 export 'src/widgets/toolbar.dart';
 export 'src/widgets/snack_loadding.dart';
 

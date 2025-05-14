@@ -16,6 +16,7 @@ import 'package:example/app/modules/root/home/views/home_index.dart';
 import 'package:example/app/modules/root/message/views/message_page.dart';
 
 import 'package:example/app/modules/root/views/app_component.dart';
+import 'package:example/app/routes/modules/middleware/auth_middleware.dart';
 
 import 'package:example/domain/repositories/impl/login/login_provider.dart';
 import 'package:example/domain/repositories/impl/login/login_repository_impl.dart';
