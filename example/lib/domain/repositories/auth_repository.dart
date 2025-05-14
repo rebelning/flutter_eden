@@ -1,5 +1,5 @@
 import 'package:example/domain/entity/net_checked_model.dart';
 
-abstract class IAuthRespository {
+abstract class IAuthRepository {
   Future<NetCheckedModel?> doNetChecked();
 }

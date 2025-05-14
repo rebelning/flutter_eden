@@ -18,8 +18,8 @@ import 'package:example/app/modules/root/message/views/message_page.dart';
 import 'package:example/app/modules/root/views/app_component.dart';
 
 import 'package:example/domain/repositories/impl/login/login_provider.dart';
-import 'package:example/domain/repositories/impl/login/login_respository_impl.dart';
-import 'package:example/domain/repositories/login_respository.dart';
+import 'package:example/domain/repositories/impl/login/login_repository_impl.dart';
+import 'package:example/domain/repositories/login_repository.dart';
 import 'package:flutter_eden/eden.dart';
 
 class AppRoute extends EdenBaseRoute {
@@ -98,10 +98,10 @@ class AppRoute extends EdenBaseRoute {
           edenLazyPut<ILoginProvider>(() => LoginProvider());
 
           //service
-          edenLazyPut<ILoginRespository>(
-              () => LoginRespositoryImpl(provider: Get.find()));
+          edenLazyPut<ILoginRepository>(
+              () => LoginRepositoryImpl(provider: Get.find()));
           //controller
-          edenLazyPut(() => LoginController(loginRespository: Get.find()));
+          edenLazyPut(() => LoginController(loginRepository: Get.find()));
         },
       ),
       //profile

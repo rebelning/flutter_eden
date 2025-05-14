@@ -1,5 +1,5 @@
 import 'package:example/domain/entity/menu_model.dart';
 
-abstract class IAccountRespository {
+abstract class IAccountRepository {
   Future<MenuModel?> getMenuList();
 }

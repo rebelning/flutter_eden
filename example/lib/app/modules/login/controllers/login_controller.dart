@@ -1,13 +1,13 @@
 import 'package:example/app/modules/account/controllers/account_controller.dart';
 import 'package:example/config/constants.dart';
 import 'package:example/domain/entity/login_model.dart';
-import 'package:example/domain/repositories/login_respository.dart';
+import 'package:example/domain/repositories/login_repository.dart';
 import 'package:example/service/auth_service.dart';
 import 'package:flutter_eden/eden.dart';
 
 class LoginController extends EdenBaseController {
-  final ILoginRespository loginRespository;
-  LoginController({required this.loginRespository});
+  final ILoginRepository loginRepository;
+  LoginController({required this.loginRepository});
   String? _username;
   String? _password;
   String? get username => _username;
@@ -28,7 +28,7 @@ class LoginController extends EdenBaseController {
     FocusScope.of(Get.context!).requestFocus(FocusNode());
     print("onLogin-username=$username -password=$password");
 
-    return await loginRespository.doLogin(username, password).then((value) {
+    return await loginRepository.doLogin(username, password).then((value) {
       return _loginSuccess(value);
     }).catchError((error) {
       return _loginFailure(error);

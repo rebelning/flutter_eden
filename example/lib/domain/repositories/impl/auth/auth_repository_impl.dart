@@ -1,12 +1,11 @@
 import 'package:example/domain/entity/net_checked_model.dart';
-import 'package:example/domain/repositories/auth_respository.dart';
+import 'package:example/domain/repositories/auth_repository.dart';
 import 'package:example/domain/repositories/impl/auth/auth_provider.dart';
 import 'package:flutter_eden/eden.dart';
 
-class AuthRespositoryImpl extends EdenBaseRepository
-    implements IAuthRespository {
+class AuthRepositoryImpl extends EdenBaseRepository implements IAuthRepository {
   final IAuthProvider provider;
-  AuthRespositoryImpl({
+  AuthRepositoryImpl({
     required this.provider,
   });
   @override

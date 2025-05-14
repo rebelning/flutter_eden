@@ -1,12 +1,12 @@
 import 'package:example/app/routes/routes.dart';
 import 'package:example/domain/entity/menu_model.dart';
-import 'package:example/domain/repositories/account_respository.dart';
+import 'package:example/domain/repositories/account_repository.dart';
 import 'package:example/service/auth_service.dart';
 import 'package:flutter_eden/eden.dart';
 
 class AccountController extends EdenBaseController {
-  final IAccountRespository accountRespository;
-  AccountController({required this.accountRespository});
+  final IAccountRepository accountRepository;
+  AccountController({required this.accountRepository});
   static AccountController get to => Get.find();
   AuthService? authService;
 
@@ -92,7 +92,7 @@ class AccountController extends EdenBaseController {
 
   Future getMenuList() async {
     menuList?.clear();
-    return await accountRespository.getMenuList().then((value) {
+    return await accountRepository.getMenuList().then((value) {
       _setMenuList(value);
     }).catchError((e) {
       print("error=${e.toString()}");

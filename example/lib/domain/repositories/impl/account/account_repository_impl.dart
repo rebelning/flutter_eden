@@ -1,12 +1,12 @@
 import 'package:example/domain/entity/menu_model.dart';
-import 'package:example/domain/repositories/account_respository.dart';
+import 'package:example/domain/repositories/account_repository.dart';
 import 'package:example/domain/repositories/impl/account/account_provider.dart';
 import 'package:flutter_eden/eden.dart';
 
-class AccountRespositoryImpl extends EdenBaseRepository
-    implements IAccountRespository {
+class AccountRepositoryImpl extends EdenBaseRepository
+    implements IAccountRepository {
   final IAccountProvider provider;
-  AccountRespositoryImpl({required this.provider});
+  AccountRepositoryImpl({required this.provider});
   @override
   Future<MenuModel?> getMenuList() async {
     return getRepository<MenuModel>(provider.getMenuList());
