@@ -1,9 +1,9 @@
 import 'package:flutter_eden/eden.dart';
 import 'mixin/eden_refreshable_mixin.dart';
 
-abstract class EdenBaseListWidget<T extends EdenBaseListController>
+abstract class EdenBaseListView<T extends EdenBaseListController>
     extends EdenBaseWidget<T> with EdenRefreshableMixin<T> {
-  EdenBaseListWidget({super.key});
+  EdenBaseListView({super.key});
 
   @override
   Widget buildListView(BuildContext context, T controller);

@@ -1,6 +1,6 @@
 export 'app/eden_material_wrapper.dart';
 export 'base/eden_base_service_view.dart';
-export 'base/eden_nav_base_widget.dart';
+export 'base/eden_nav_base_view.dart';
 
 ///base
 export 'base/eden_base_widget.dart';

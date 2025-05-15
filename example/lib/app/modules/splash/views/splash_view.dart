@@ -2,7 +2,7 @@ import 'package:flutter_eden/eden.dart';
 
 import '../controllers/splash_service.dart';
 
-class SplashView extends EdenBaseServiceWidget<SplashService> {
+class SplashView extends EdenBaseServiceView<SplashService> {
   SplashView({Key? key}) : super(key: key);
 
   @override

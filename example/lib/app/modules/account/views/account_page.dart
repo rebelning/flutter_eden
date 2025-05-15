@@ -3,7 +3,7 @@ import 'package:flutter_eden/eden.dart';
 import '../controllers/account_controller.dart';
 import 'account_view.dart';
 
-class AccountPage extends EdenBaseWidget<AccountController> with AccountView {
+class AccountPage extends EdenBaseView<AccountController> with AccountView {
   final RefreshController _refreshController =
       RefreshController(initialRefresh: false);
 

@@ -1,7 +1,7 @@
 import 'package:example/app/modules/locale/controller/locale_switch_controller.dart';
 import 'package:flutter_eden/eden.dart';
 
-class LocaleSwitchView extends EdenBaseWidget<LocaleSwitchController> {
+class LocaleSwitchView extends EdenBaseView<LocaleSwitchController> {
   @override
   String toolbarTitle() {
     return "language_title".tr;

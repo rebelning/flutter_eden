@@ -3,7 +3,7 @@ import 'package:flutter_eden/eden.dart';
 import '../controllers/home_controller.dart';
 import 'home_view.dart';
 
-class HomeIndex extends EdenBaseListWidget<HomeController> with HomeView {
+class HomeIndex extends EdenBaseListView<HomeController> with HomeView {
   HomeIndex({super.key});
 
   @override

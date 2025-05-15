@@ -4,7 +4,7 @@ import 'package:flutter_eden/eden.dart';
 import 'profile_widget.dart';
 
 ///profile
-class ProfilePage extends EdenBaseWidget<ProfileController> with ProfileWidget {
+class ProfilePage extends EdenBaseView<ProfileController> with ProfileWidget {
   @override
   String toolbarTitle() {
     return "profile";

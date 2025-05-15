@@ -6,7 +6,7 @@ import 'login_view.dart';
 ///login page
 
 // ignore: must_be_immutable
-class LoginPage extends EdenBaseWidget<LoginController> with LoginView {
+class LoginPage extends EdenBaseView<LoginController> with LoginView {
   LoginPage({Key? key}) : super(key: key);
 
   @override
