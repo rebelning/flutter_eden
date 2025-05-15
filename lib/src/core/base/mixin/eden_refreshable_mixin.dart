@@ -12,7 +12,6 @@ mixin EdenRefreshableMixin<T extends EdenBaseListController> {
   Widget buildRefreshableList(BuildContext context, T controller) {
     return Column(
       children: [
-        renderHeadView(context),
         Expanded(
           child: SmartRefresher(
             enablePullDown: controller.enablePullDown,

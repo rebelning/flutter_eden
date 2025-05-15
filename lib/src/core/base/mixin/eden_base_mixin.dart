@@ -72,7 +72,7 @@ mixin EdenBaseMixin<T extends EdenBaseController> {
   @protected
   Widget? endDrawer() => null;
   @protected
-  Widget? renderHeadView(BuildContext context) => const SizedBox.shrink();
+  Widget renderHeadView(BuildContext context) => const SizedBox.shrink();
   @protected
   Widget buildScaffold(BuildContext context, T controller) {
     return Scaffold(
@@ -97,7 +97,7 @@ mixin EdenBaseMixin<T extends EdenBaseController> {
       color: backgroundColor(),
       child: Column(
         children: [
-          renderHeadView(context) ?? const SizedBox.shrink(),
+          renderHeadView(context),
           Expanded(
             child: buildBody(context, controller),
           ),
