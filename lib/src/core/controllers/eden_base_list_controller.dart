@@ -11,9 +11,9 @@ abstract class EdenBaseListController extends EdenBaseController {
   int get pageIndex => _pageIndex;
   bool _isNext = false;
 
-  bool _enablePull = true;
+  bool _enablePullDown = true;
 
-  bool get enablePull => _enablePull;
+  bool get enablePullDown => _enablePullDown;
 
   @override
   void init() {}
@@ -30,8 +30,8 @@ abstract class EdenBaseListController extends EdenBaseController {
     return _isNext;
   }
 
-  void setEnablePull(bool enablePull) {
-    _enablePull = enablePull;
+  void setEnablePull(bool enablePullDown) {
+    _enablePullDown = enablePullDown;
   }
 
   void requestRefresh() {
@@ -58,21 +58,5 @@ abstract class EdenBaseListController extends EdenBaseController {
 
     await Future.delayed(const Duration(seconds: 1));
     refreshController.loadComplete();
-  }
-
-  void getPageIndex(String? hasNext) {
-    try {
-      if (hasNext == null || hasNext == "") {
-        _pageIndex = 1;
-        setNext(false);
-      } else {
-        Uri uri = Uri.parse(hasNext);
-        String? page = uri.queryParameters["page"];
-        if (page != null && page != "") {
-          _pageIndex = int.parse(page);
-          setNext(true);
-        }
-      }
-    } catch (e) {}
   }
 }

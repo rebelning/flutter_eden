@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_eden/eden.dart';
 import 'dart:ui' show window;
 
@@ -22,44 +21,6 @@ class EdenLayoutUtils {
         EdenLayoutUtils.customScreenWidth,
         EdenLayoutUtils.physicalSize.height / EdenLayoutUtils.customScreenRatio,
       );
-
-  /// ScreenUtil要求在首页进行初始化操作
-  /// 设定宽度为750，计算相应高度
-  /// 以iPhone11举例
-  /// 物理像素 828 * 1792
-  /// 逻辑像素 414 * 896
-  /// 像素比 2
-  ///
-  /// 自定义逻辑像素 750 * 1623.19
-
-  /// iPhone 8 plus
-  /// 物理像素 1242 * 2208  为什么官网写的是1920*1080呢？
-  /// 逻辑像素 414 * 736
-  /// 像素比 3
-  /// 自定义逻辑像素 750 * 1333.333
-  ///
-  ///
-  /// 初始化函数，
-  ///
-  /// ScreenUtil最初需要在MaterialApp中初始化，使用[MediaQuery]，需要调用context，
-  /// 这样我们不能在定义主题的时候使用rpx设置字体大小。
-  /// 2.2.0版本改成了使用[window]中的属性，获得屏幕大小进行初始化。
-  /// 2.3.0版本后面又改回了使用[MediaQuery]，好像是在某某情况下window获得的屏幕大小不准确
-  /// 4.0.3+1版本，使用[ScreenUtilInit]包裹MaterialApp进行初始化
-
-  //////// 下面的单位都是使用dp (手机默认的逻辑像素) //////////
-
-  /// 屏幕从上至下可能包括：
-  /// statusBar 状态栏
-  /// AppBar topNavigationBar 顶部导航
-  /// 页面主体
-  /// bottomNavigationBar底部导航
-  /// bottomBar（iPhoneX+底部的部分，普通手机此部分高度为0）
-  ///
-  /// Flutter中的SafeArea是屏幕排除状态栏和bottomBar
-  ///
-  /// 系统默认的底部导航栏的高度不是[bottomNavigationBarHeight]和[bottomBarHeight]相加
-  /// 而是 这俩值的和 再减去选中文字大小的一半。所以略小
 
   /// 屏幕高度
   static double get screenHeight => ScreenUtil().screenHeight;

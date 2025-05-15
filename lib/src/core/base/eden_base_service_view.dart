@@ -1,9 +1,9 @@
 import 'package:flutter_eden/eden.dart';
 
 ///
-abstract class EdenBaseServiceWidget<T extends EdenBaseService>
+abstract class EdenBaseServiceView<T extends EdenBaseService>
     extends GetView<T> {
-  EdenBaseServiceWidget({super.key});
+  EdenBaseServiceView({super.key});
 
   ///toolbar title
   String? _toolbarTitle;
