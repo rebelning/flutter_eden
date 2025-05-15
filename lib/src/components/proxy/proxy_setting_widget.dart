@@ -1,8 +1,8 @@
 import 'package:flutter_eden/eden.dart';
 
-mixin class ProxySettingWdiget {
-  TextEditingController _serverController = TextEditingController();
-  TextEditingController _portController = TextEditingController();
+mixin ProxySettingWidget {
+  final TextEditingController _serverController = TextEditingController();
+  final TextEditingController _portController = TextEditingController();
 
   ///
   Function(String? proxyIp, String? proxyPort)? onProxy;

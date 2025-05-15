@@ -6,7 +6,7 @@ import 'package:flutter_eden/eden.dart';
 
 import '../controllers/app_controller.dart';
 
-class AppComponent extends EdenNavBaseWidget<AppController> {
+class AppComponent extends EdenNavBaseView<AppController> {
   @override
   String toolbarTitle() {
     return "";

@@ -6,13 +6,15 @@ import 'proxy_setting_widget.dart';
 
 ///proxy setting
 class ProxySettingPage extends StatefulWidget {
+  const ProxySettingPage({super.key});
+
   @override
   State<StatefulWidget> createState() => _ProxySettingPageState();
 }
 
 ///
 class _ProxySettingPageState extends State<ProxySettingPage>
-    with ProxySettingWdiget {
+    with ProxySettingWidget {
   // SettingsProvider? settingProvider;
   String? _proxyIP;
   String? _proxyPort;
@@ -29,20 +31,20 @@ class _ProxySettingPageState extends State<ProxySettingPage>
   }
 
   ///
-  void onCallPorxy(String? proxyIp, String? proxyPort) {
-    print("proxyIp=$proxyIp proxyPort=$proxyPort");
+  void onCallProxy(String? proxyIp, String? proxyPort) {
+    debugPrint("proxyIp=$proxyIp proxyPort=$proxyPort");
 
     ///
-    showLoading(onCachePorxy(proxyIp, proxyPort));
+    showLoading(onCacheProxy(proxyIp, proxyPort));
   }
 
-  Future onCachePorxy(String? proxyIp, String? proxyPort) async {
+  Future onCacheProxy(String? proxyIp, String? proxyPort) async {
     StorageHelper.set(StorageKeys.proxyIP, proxyIp ?? "");
     StorageHelper.set(StorageKeys.proxyPort, proxyPort ?? "");
 
     // SettingsProvider
-    // settingProvider?.setPorxy(prefs);
-    await Future.delayed(Duration(milliseconds: 3000));
+    // settingProvider?.setProxy(prefs);
+    await Future.delayed(const Duration(milliseconds: 2000));
     showExitDialog();
   }
 
@@ -84,7 +86,7 @@ class _ProxySettingPageState extends State<ProxySettingPage>
         backgroundColor: kIsDark ? toolBarbgColor : toolBarbgLightColor,
       ),
       backgroundColor: kIsDark ? backgroundColor : backgroundLightColor,
-      body: renderView(context, onCallPorxy),
+      body: renderView(context, onCallProxy),
     );
   }
 
