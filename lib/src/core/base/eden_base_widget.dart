@@ -7,20 +7,30 @@ abstract class EdenBaseWidget<T extends EdenBaseController> extends GetWidget<T>
 
   @protected
   bool useScaffold() => false;
-  @override
-  void onInit() {
-    super.onInit();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
+  @protected
+  void onInitState(GetBuilderState<T> state) {}
+  @protected
+  void onDispose(GetBuilderState<T> dispose) {}
+  @protected
+  void didChangeDependencies(GetBuilderState<T> dispose) {}
+  @protected
+  void didUpdateWidget(
+      GetBuilder<GetxController> controller, GetBuilderState<T> state) {}
 
   @override
   Widget build(BuildContext context) {
-    return useScaffold()
-        ? buildScaffold(context, controller)
-        : buildCustomLayout(context, controller);
+    return GetBuilder<T>(
+      init: controller,
+      initState: onInitState,
+      dispose: onDispose,
+      didChangeDependencies: didChangeDependencies,
+      didUpdateWidget: didUpdateWidget,
+      tag: getViewTag(),
+      builder: (controller) {
+        return useScaffold()
+            ? buildScaffold(context, controller)
+            : buildCustomLayout(context, controller);
+      },
+    );
   }
 }
