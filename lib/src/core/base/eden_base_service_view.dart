@@ -1,6 +1,7 @@
 import 'package:flutter_eden/eden.dart';
 
 ///
+// ignore: must_be_immutable
 abstract class EdenBaseServiceView<T extends EdenBaseService>
     extends GetView<T> {
   EdenBaseServiceView({super.key});
