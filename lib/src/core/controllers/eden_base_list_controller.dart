@@ -6,6 +6,10 @@ abstract class EdenBaseListController extends EdenBaseController {
   late RefreshController _refreshController;
 
   RefreshController get refreshController => _refreshController;
+  set refreshController(RefreshController value) {
+    _refreshController = value;
+  }
+
   int _pageSize = 10;
   int get pageSize => _pageSize;
   int _pageIndex = 1;
@@ -17,7 +21,9 @@ abstract class EdenBaseListController extends EdenBaseController {
   bool get enablePullDown => _enablePullDown;
 
   @override
-  void init() {}
+  void init() {
+    _refreshController = RefreshController();
+  }
 
   void setNext(bool hasNext) {
     _isNext = hasNext;
@@ -59,5 +65,11 @@ abstract class EdenBaseListController extends EdenBaseController {
 
     await Future.delayed(const Duration(seconds: 1));
     refreshController.loadComplete();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _refreshController.dispose();
   }
 }
