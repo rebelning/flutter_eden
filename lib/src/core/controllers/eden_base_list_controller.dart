@@ -4,7 +4,7 @@ import 'package:flutter_eden/eden.dart';
 
 ///ListView controller
 abstract class EdenBaseListController extends EdenBaseController {
-  RefreshController? refreshController;
+  late RefreshController refreshController;
 
   // RefreshController get refreshController => _refreshController;
 
@@ -30,10 +30,10 @@ abstract class EdenBaseListController extends EdenBaseController {
     try {
       await doRequest(true);
       debugPrint("Refresh Controller ${refreshController.hashCode}");
-      refreshController?.refreshCompleted(); // 确保调用
+      refreshController.refreshCompleted(); // 确保调用
     } catch (e) {
       debugPrint("Refresh error: $e");
-      refreshController?.refreshFailed(); // 刷新失败
+      refreshController.refreshFailed(); // 刷新失败
     } finally {
       update(); // 通知 UI 更新
     }
@@ -43,13 +43,13 @@ abstract class EdenBaseListController extends EdenBaseController {
     try {
       await doRequest(false);
       if (!isNext()) {
-        refreshController?.loadNoData(); // 无更多数据
+        refreshController.loadNoData(); // 无更多数据
       } else {
-        refreshController?.loadComplete(); // 加载完成
+        refreshController.loadComplete(); // 加载完成
       }
     } catch (e) {
       debugPrint("Loading error: $e");
-      refreshController?.loadFailed(); // 加载失败
+      refreshController.loadFailed(); // 加载失败
     } finally {
       update(); // 通知 UI 更新
     }
@@ -57,6 +57,6 @@ abstract class EdenBaseListController extends EdenBaseController {
 
   @override
   void dealloc() {
-    refreshController?.dispose();
+    refreshController.dispose();
   }
 }

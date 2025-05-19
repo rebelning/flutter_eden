@@ -13,7 +13,7 @@ mixin EdenRefreshableMixin<T extends EdenBaseListController> {
     debugPrint(
         "buildRefreshableList controller.refreshController=${controller.refreshController.hashCode}");
     return SmartRefresher(
-      controller: controller.refreshController ?? RefreshController(),
+      controller: controller.refreshController,
       enablePullDown: controller.enablePullDown,
       enablePullUp: controller.isNext(),
       onRefresh: () {
