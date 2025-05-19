@@ -21,6 +21,11 @@ abstract class EdenBaseListWidget<T extends EdenBaseListController>
   EdenBaseListWidget({super.key});
 
   @override
+  void onInit() {
+    super.onInit();
+  }
+
+  @override
   Widget buildListView(BuildContext context, T controller);
 
   @override

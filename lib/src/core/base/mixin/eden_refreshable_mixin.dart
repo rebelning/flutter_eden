@@ -10,23 +10,17 @@ mixin EdenRefreshableMixin<T extends EdenBaseListController> {
 
   @protected
   Widget buildRefreshableList(BuildContext context, T controller) {
-    return Column(
-      children: [
-        Expanded(
-          child: SmartRefresher(
-            controller: controller.refreshController,
-            enablePullDown: controller.enablePullDown,
-            enablePullUp: controller.isNext(),
-            onRefresh: () {
-              controller.onRefresh();
-            },
-            onLoading: () async {
-              controller.onLoading();
-            },
-            child: buildListView(context, controller),
-          ),
-        ),
-      ],
+    return SmartRefresher(
+      controller: controller.refreshController ?? RefreshController(),
+      enablePullDown: controller.enablePullDown,
+      enablePullUp: controller.isNext(),
+      onRefresh: () {
+        controller.onRefresh();
+      },
+      onLoading: () {
+        controller.onLoading();
+      },
+      child: buildListView(context, controller),
     );
   }
 }
