@@ -39,7 +39,7 @@ abstract class EdenBaseListController extends EdenBaseController {
   Future onRefresh() async {
     try {
       await doRequest(true);
-      debugPrint("Refresh Controller ${refreshController.hashCode}");
+
       refreshController.refreshCompleted(); // 确保调用
     } catch (e) {
       debugPrint("Refresh error: $e");

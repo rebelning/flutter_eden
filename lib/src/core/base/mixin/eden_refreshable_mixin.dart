@@ -10,8 +10,6 @@ mixin EdenRefreshableMixin<T extends EdenBaseListController> {
 
   @protected
   Widget buildRefreshableList(BuildContext context, T controller) {
-    debugPrint(
-        "buildRefreshableList controller.refreshController=${controller.refreshController.hashCode}");
     return SmartRefresher(
       controller: controller.refreshController,
       enablePullDown: controller.enablePullDown,
