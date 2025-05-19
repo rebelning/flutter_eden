@@ -14,9 +14,9 @@ mixin EdenRefreshableMixin<T extends EdenBaseListController> {
       children: [
         Expanded(
           child: SmartRefresher(
+            controller: controller.refreshController,
             enablePullDown: controller.enablePullDown,
             enablePullUp: controller.isNext(),
-            controller: controller.refreshController,
             onRefresh: () {
               controller.onRefresh();
             },

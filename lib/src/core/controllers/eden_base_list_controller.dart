@@ -2,7 +2,8 @@ import 'package:flutter_eden/eden.dart';
 
 ///ListView controller
 abstract class EdenBaseListController extends EdenBaseController {
-  final RefreshController _refreshController = RefreshController();
+  // final RefreshController _refreshController = RefreshController();
+  late RefreshController _refreshController;
 
   RefreshController get refreshController => _refreshController;
   int _pageSize = 10;
