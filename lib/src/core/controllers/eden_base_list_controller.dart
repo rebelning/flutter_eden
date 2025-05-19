@@ -4,11 +4,12 @@ import 'package:flutter_eden/eden.dart';
 
 ///ListView controller
 abstract class EdenBaseListController extends EdenBaseController {
-  late RefreshController refreshController;
+  late RefreshController _refreshController;
 
-  // RefreshController get refreshController => _refreshController;
-
-  RefreshController getRefreshController();
+  RefreshController get refreshController => _refreshController;
+  set refreshController(RefreshController value) {
+    _refreshController = value;
+  }
 
   bool _isNext = false;
 
