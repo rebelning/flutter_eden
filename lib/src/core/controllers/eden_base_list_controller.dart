@@ -7,8 +7,15 @@ abstract class EdenBaseListController extends EdenBaseController {
   late RefreshController _refreshController;
 
   RefreshController get refreshController => _refreshController;
-  set refreshController(RefreshController value) {
-    _refreshController = value;
+
+  @protected
+  void initRefreshController() {
+    _refreshController = RefreshController(
+      initialRefresh: false,
+      initialLoadStatus: LoadStatus.idle,
+    );
+    debugPrint(
+        " initRefreshController hashCode: ${refreshController.hashCode}");
   }
 
   bool _isNext = false;
@@ -25,7 +32,9 @@ abstract class EdenBaseListController extends EdenBaseController {
   }
 
   @override
-  void init() {}
+  void init() {
+    initRefreshController();
+  }
 
   Future onRefresh() async {
     try {
