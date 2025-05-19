@@ -15,6 +15,8 @@ abstract class EdenBaseView<T extends EdenBaseController> extends GetView<T>
       dispose: onDispose,
       didChangeDependencies: didChangeDependencies,
       didUpdateWidget: didUpdateWidget,
+      autoRemove: autoRemove(),
+      assignId: assignId(),
       tag: getViewTag(),
       builder: (controller) {
         return buildScaffold(context, controller);
@@ -36,6 +38,8 @@ abstract class EdenBaseWidget<T extends EdenBaseController> extends GetWidget<T>
       dispose: onDispose,
       didChangeDependencies: didChangeDependencies,
       didUpdateWidget: didUpdateWidget,
+      autoRemove: autoRemove(),
+      assignId: assignId(),
       tag: getViewTag(),
       builder: (controller) {
         return useScaffold()

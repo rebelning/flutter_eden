@@ -62,7 +62,12 @@ mixin EdenBaseMixin<T extends EdenBaseController> {
   bool extendBodyBehindAppBar() => false;
   @protected
   Color? backgroundColor() => null;
+  @protected
   String? getViewTag() => null;
+  @protected
+  bool autoRemove() => true;
+  @protected
+  bool assignId() => false;
   @protected
   Widget buildBody(BuildContext context, T controller);
   @protected
