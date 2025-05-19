@@ -27,15 +27,31 @@ abstract class EdenBaseListController extends EdenBaseController {
   void init() {}
 
   Future onRefresh() async {
-    await doRequest(true);
-    refreshController?.refreshCompleted();
-    update();
+    try {
+      await doRequest(true);
+      refreshController?.refreshCompleted(); // 确保调用
+    } catch (e) {
+      debugPrint("Refresh error: $e");
+      refreshController?.refreshFailed(); // 刷新失败
+    } finally {
+      update(); // 通知 UI 更新
+    }
   }
 
   Future onLoading() async {
-    await doRequest(false);
-    refreshController?.loadComplete();
-    update();
+    try {
+      await doRequest(false);
+      if (!isNext()) {
+        refreshController?.loadNoData(); // 无更多数据
+      } else {
+        refreshController?.loadComplete(); // 加载完成
+      }
+    } catch (e) {
+      debugPrint("Loading error: $e");
+      refreshController?.loadFailed(); // 加载失败
+    } finally {
+      update(); // 通知 UI 更新
+    }
   }
 
   @override
