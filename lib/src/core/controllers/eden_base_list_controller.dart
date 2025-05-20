@@ -39,13 +39,12 @@ abstract class EdenBaseListController extends EdenBaseController {
   Future onRefresh() async {
     try {
       await doRequest(true);
-
-      refreshController.refreshCompleted(); // 确保调用
+      refreshController.refreshCompleted();
     } catch (e) {
       debugPrint("Refresh error: $e");
-      refreshController.refreshFailed(); // 刷新失败
+      refreshController.refreshFailed();
     } finally {
-      update(); // 通知 UI 更新
+      update();
     }
   }
 
@@ -53,15 +52,15 @@ abstract class EdenBaseListController extends EdenBaseController {
     try {
       await doRequest(false);
       if (!isNext()) {
-        refreshController.loadNoData(); // 无更多数据
+        refreshController.loadNoData();
       } else {
-        refreshController.loadComplete(); // 加载完成
+        refreshController.loadComplete();
       }
     } catch (e) {
       debugPrint("Loading error: $e");
-      refreshController.loadFailed(); // 加载失败
+      refreshController.loadFailed();
     } finally {
-      update(); // 通知 UI 更新
+      update();
     }
   }
 
