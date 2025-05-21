@@ -86,7 +86,7 @@ mixin EdenBaseMixin<T extends EdenBaseController> {
       backgroundColor: backgroundColor(),
       resizeToAvoidBottomInset: resizeToAvoidBottomInset() ?? true,
       appBar: appToolbar(context),
-      body: buildBody(context, controller),
+      body: buildCustomLayout(context, controller),
       endDrawer: endDrawer(),
       onEndDrawerChanged: endDrawer() != null ? onEndDrawerChanged : null,
       onDrawerChanged: onDrawerChanged,
