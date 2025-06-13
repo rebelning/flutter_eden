@@ -86,7 +86,7 @@ mixin EdenBaseMixin<T extends EdenBaseController> {
       backgroundColor: backgroundColor(),
       resizeToAvoidBottomInset: resizeToAvoidBottomInset() ?? true,
       appBar: appToolbar(context),
-      body: buildCustomLayout(context, controller),
+      body: buildCustomScaffoldLayout(context, controller),
       endDrawer: endDrawer(),
       onEndDrawerChanged: endDrawer() != null ? onEndDrawerChanged : null,
       onDrawerChanged: onDrawerChanged,
@@ -107,6 +107,21 @@ mixin EdenBaseMixin<T extends EdenBaseController> {
             child: buildBody(context, controller),
           ),
           if (bottomNavigationBar() != null) bottomNavigationBar()!,
+        ],
+      ),
+    );
+  }
+
+  @protected
+  Widget buildCustomScaffoldLayout(BuildContext context, T controller) {
+    return Container(
+      color: backgroundColor(),
+      child: Column(
+        children: [
+          renderHeadView(context),
+          Expanded(
+            child: buildBody(context, controller),
+          ),
         ],
       ),
     );
