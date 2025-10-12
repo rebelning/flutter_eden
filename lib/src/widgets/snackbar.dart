@@ -13,6 +13,7 @@ class EdenSnackbar {
     EdgeInsets? margin,
     bool? showCloseButton = false,
     double? iconSize,
+    Duration? duration,
   }) {
     Get.snackbar(
       title ?? "Message",
@@ -22,6 +23,7 @@ class EdenSnackbar {
       maxWidth: maxWidth,
       snackPosition: snackPosition,
       margin: margin,
+      duration: duration ?? const Duration(milliseconds: 1500),
       mainButton: mainButton ??
           (showCloseButton == true
               ? TextButton(
