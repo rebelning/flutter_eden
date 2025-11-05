@@ -101,8 +101,7 @@ class CustomDialog extends StatelessWidget {
     return Theme(
       data: themeData ??
           Theme.of(context).copyWith(
-            dialogBackgroundColor: Colors.white,
-            dialogTheme: const DialogTheme(
+            dialogTheme: const DialogThemeData(
               backgroundColor: Colors.white,
               surfaceTintColor: Colors.white,
             ),
